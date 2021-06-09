@@ -4,8 +4,14 @@ const express = require('express');
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+app.use(express.json());
 
-app.listen(port, _ => {
-   console.log(`http://localhost:${port}`);
+
+const router = require('./app/routers/router')
+
+
+app.use(router);
+
+app.listen(process.env.PORT, _ => {
+   console.log(`http://localhost:${process.env.PORT}`);
 });
