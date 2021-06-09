@@ -4,17 +4,17 @@ const initialState = {
   openSettings: false,
 };
 
-const headerReducer = (state = initialState, action={}) => {
-  switch(action.type){
+const headerReducer = (state = initialState, action = {}) => {
+  switch (action.type) {
     case CLICK_ON_TOGGLE: {
       return {
-        ...state, 
+        ...state,
         openSettings: !state.openSettings,
-      }
+      };
     }
-    default: 
+    default:
       return state;
   }
-}
+};
 
 export default headerReducer;
