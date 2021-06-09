@@ -16,7 +16,7 @@ router.post('/signup', async (req, res) => {
         //console.log(member);
 
         if (member.rows.length !== 0) {
-            return res.status(401).send("Member already exists!");
+            return res.status(401).send("Member already registered.");
         }
 
         // CREATING CRYPTED PASSWORD
