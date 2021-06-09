@@ -14,6 +14,7 @@ const SearchBar = ({ searchInputValue, onInputChange }) => {
   return (
     <input
       ref={inputRef}
+      className="searchbar__input"
       type="text"
       placeholder="Jurassic Park"
       value={searchInputValue}
