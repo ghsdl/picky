@@ -21,8 +21,11 @@
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.1",
     "pg": "^8.6.0"
+<<<<<<< HEAD
   },
   "devDependencies": {
     "node-dev": "^7.0.0"
+=======
+>>>>>>> 781e5eb45b711230dd3e3c6f2a8a74bc38b841be
   }
 }

@@ -1,0 +1,36 @@
+.header{
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+ 
+  &-ellipsis{
+    width: 6vh;
+    height: 6vh;
+    margin-left: 4vh;
+    margin-top: 4vh;
+    
+    &--open {
+      transform: rotate(90deg);
+    }
+  }
+
+ 
+  
+  &-logo{
+    width: 10vh;
+    height: 10vh;
+    justify-content: center;
+    margin-top: 4vh;
+  }
+
+  &-iconProfil{
+    width: auto;
+    height: 6vh;
+    margin-top: 4vh;
+    margin-right: 4vh;
+  }
+  .svg-inline--fa.fa-w-16{
+    width: 2em
+  }
+}
