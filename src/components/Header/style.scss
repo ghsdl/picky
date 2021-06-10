@@ -9,6 +9,9 @@
     height: 6vh;
     margin-left: 4vh;
     margin-top: 4vh;
+    z-index: 2;
+    position: relative;
+      transition: all 300ms ease-in-out;
 
     &--onSidebar {
       position: relative;

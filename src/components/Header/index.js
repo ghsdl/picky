@@ -9,13 +9,16 @@ import {
   Backdrop,
   Fade,
   makeStyles,
+  ClickAwayListener,
 } from '@material-ui/core';
-
+// ClickAwayListener is here to spot the click outside its parent element
 // Import pour les îcones de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 // Import de notre logo
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 import logo from 'src/assets/logo_PopCorn.png';
 
 // Import css
@@ -42,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
   backDrop: {
     backgroundColor: 'rgb(197 197 197 / 84%)',
   },
-
 }));
 
 // Creation of my component Header
@@ -58,27 +60,30 @@ export default function Header() {
   // Hook for the curtain menu
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-
+  const handleClickAway = () => setSidebar(false);
   const classes = useStyles();
 
   return (
     <header className="header">
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <div>
+          <FontAwesomeIcon
+            icon={faEllipsisH}
+            className={sidebar ? 'header-ellipsis--onSidebar' : 'header-ellipsis'}
+            onClick={showSidebar}
+          />
 
-      <FontAwesomeIcon
-        icon={faEllipsisH}
-        className={sidebar ? 'header-ellipsis--onSidebar' : 'header-ellipsis'}
-        onClick={showSidebar}
-      />
+          <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
 
-      <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
-
-        <ul onClick={showSidebar}>
-          <li><Link to="/">Picky Find</Link></li>
-          <li><Link to="/mood">Picky Mood</Link></li>
-          <li><Link to="/wish">Picky Wish</Link></li>
-          <li><Link to="/about">A propos</Link></li>
-        </ul>
-      </nav>
+            <ul onClick={showSidebar}>
+              <li><Link to="/">Picky Find</Link></li>
+              <li><Link to="/mood">Picky Mood</Link></li>
+              <li><Link to="/wish">Picky Wish</Link></li>
+              <li><Link to="/about">A propos</Link></li>
+            </ul>
+          </nav>
+        </div>
+      </ClickAwayListener>
       <Link to="/">
         <img src={logo} className="header-logo" alt="Logo Picky" />
       </Link>

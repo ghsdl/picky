@@ -51,4 +51,5 @@
     "requireConfigFile": "false",
     "babelOptions": { "configFile": "./.babelrc" }
   }
+  
 }
