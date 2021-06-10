@@ -34,9 +34,9 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[1],
-    padding: theme.spacing(2, 4, 3),
     outline: 'none',
-    padding: '8em',
+    padding: '10vh',
+    borderRadius: '50px',
   },
 
   backDrop: {
@@ -79,9 +79,9 @@ export default function Header() {
           <li><Link to="/about">A propos</Link></li>
         </ul>
       </nav>
-
-      <img src={logo} className="header-logo" alt="Logo Picky" />
-
+      <Link to="/">
+        <img src={logo} className="header-logo" alt="Logo Picky" />
+      </Link>
       <FontAwesomeIcon
         onClick={handleOpen}
         icon={faUserCircle}
@@ -96,16 +96,20 @@ export default function Header() {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 300,
+          timeout: 500,
           className: classes.backDrop,
         }}
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">
-              react-transition-group animates me.
-            </p>
+            <ul className="test">
+              <li>
+                <Link to="/profil"> Profil </Link>
+              </li>
+              <li>
+                Se deconnecter
+              </li>
+            </ul>
           </div>
         </Fade>
       </Modal>

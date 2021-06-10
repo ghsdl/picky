@@ -66,3 +66,11 @@
   color: #fff;
 }
 
+.test li{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.3em;
+}
