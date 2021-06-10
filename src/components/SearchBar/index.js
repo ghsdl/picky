@@ -17,9 +17,9 @@ const SearchBar = ({ searchInputValue, onInputChange }) => {
       ref={inputRef}
       // When the input of the searchbar is empty, the searchbar is in the center of the page
       // If the user writes something in it, the searchbar moves to the top of the page
-      className={classNames({ 'searchbar__input--center': searchInputValue.length === 0, 'searchbar__input--up': searchInputValue.length > 0 })}
+      className={classNames('searchbar__input', { 'searchbar__input--center': searchInputValue.length === 0, 'searchbar__input--up': searchInputValue.length > 0 })}
       type="text"
-      placeholder="Jurassic Park"
+      placeholder="Rechercher une série ou un film"
       value={searchInputValue}
       onChange={onInputChange}
     />

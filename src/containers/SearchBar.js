@@ -5,7 +5,6 @@ import { changeSearchInput } from 'src/actions/search';
 
 const mapStateToProps = (state) => ({
   searchInputValue: state.search.searchInputValue,
-  isEmpty: state.search.isEmpty,
 });
 
 const mapDispatchToProps = (dispatch) => ({
