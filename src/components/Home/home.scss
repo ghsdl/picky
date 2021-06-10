@@ -7,15 +7,38 @@
   max-width: 750px;
   height: 450px;
 
-  &__searchBar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &--noResearch {
+    .home {
+      &__searchBar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      &__pickyMood {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   }
 
-  &__pickyMood {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &--research {
+    .home {
+      &__searchBar {
+        &__presentation {
+          display: none;
+        }
+        &__suggestion {
+          display: none;
+        }
+      }
+
+      &__pickyMood {
+        display: none;
+      }
+
+    }
   }
+
 }
