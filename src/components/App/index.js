@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-import SearchBar from 'src/containers/SearchBar';
+import Home from 'src/components/Home';
 
 // == Import
 import './styles.css';
@@ -8,7 +8,7 @@ import './styles.css';
 // == Composant
 const App = () => (
   <div className="app">
-    <SearchBar />
+    <Home />
   </div>
 );
 
