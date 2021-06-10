@@ -16,7 +16,7 @@ const moviesController = {
       res.status(500).json(error.toString());
     }
   },
-
+  
   randMovies: async (req, res) => {
     try {
       const movie = await dataMapper.randomMovies();

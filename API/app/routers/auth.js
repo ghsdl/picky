@@ -23,6 +23,8 @@ router.post('/signup', async (req, res) => {
         const saltRound = 10;
         const salt = await bcrypt.genSalt(saltRound);
         const bcryptPassword = await bcrypt.hash(password, salt);
+        console.log(salt);
+        console.log(bcryptPassword);
 
         // CREATING NEW USER IN DATABASE
         const newMember = await pool.query(`INSERT INTO member (pseudo, email, password) VALUES ($1, $2, $3) RETURNING *`, [pseudo, email, bcryptPassword]);
@@ -31,7 +33,7 @@ router.post('/signup', async (req, res) => {
         const token = jwtGenerator(newMember.rows[0].member_id);
 
         // GIVE THE TOKEN BACK TO THE FRONT AND USER CAN SIGN IN
-        res.json( { token });
+        res.json( { token } );
         console.log(token);
         //console.log(member);
 
@@ -47,24 +49,24 @@ router.post('/signin', async (req, res) => {
         // REQ.BODY DESTRUCTURED
         const { email, password } = req.body;
         console.log(email);
-        console.log(password);
+        console.log(req.body.password);
 
         // CHECKING IF USER DOES EXIST
         const member = await pool.query(`SELECT * FROM member WHERE email = $1`, [email]);
         //console.log(member);
 
-        if (member.rows.length === null) {
-            return res.status(401).json("1.Password or email is incorrect.");
+        if (!member.rows.length) {
+            return res.status(401).json("Password or email is incorrect.");
         }
 
         // CHECKING IF PASSWORD IS CORRECT
-        const correctPassword = await bcrypt.compare(password, member.rows.member_password);
+        const correctPassword = await bcrypt.compare(password, member.rows[0].password);
 
         if (!correctPassword) {
-            return res.status(401).json("2.Password or email is incorrect.");
+            return res.status(401).json("Password or email is incorrect.");
         }
 
-        const token = jwtGenerator(member.rows[0].member_id)
+        const token = jwtGenerator(member.rows[0].member_id);
 
         res.json({token});
 
