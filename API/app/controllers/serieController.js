@@ -1,6 +1,6 @@
 const dataMapper = require('../dataMappers/dataMapper')
 
-const seriesController = {
+const serieController = {
   
 
   allSeries: async (req, res) => {
@@ -35,4 +35,4 @@ const seriesController = {
 
 };
 
-module.exports = seriesController;
+module.exports = serieController;
