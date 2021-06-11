@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Prepartion of the curtain menu link
 import { Link } from 'react-router-dom';
@@ -48,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // Creation of my component Header
-export default function Header() {
+export default function Header({ isConnected }) {
+  console.log(isConnected);
   // Hook for modal with two function, opening and closing.
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -62,7 +64,7 @@ export default function Header() {
   const showSidebar = () => setSidebar(!sidebar);
   const handleClickAway = () => setSidebar(false);
   const classes = useStyles();
-
+  const getStarted = <div> Get <br /> started </div>;
   return (
     <header className="header">
       <ClickAwayListener onClickAway={handleClickAway}>
@@ -87,38 +89,76 @@ export default function Header() {
       <Link to="/">
         <img src={logo} className="header-logo" alt="Logo Picky" />
       </Link>
-      <FontAwesomeIcon
-        onClick={handleOpen}
-        icon={faUserCircle}
-        className="header-iconProfil"
-      />
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-          className: classes.backDrop,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <ul className="test">
-              <li>
-                <Link to="/profil"> Profil </Link>
-              </li>
-              <li>
-                Se deconnecter
-              </li>
-            </ul>
-          </div>
-        </Fade>
-      </Modal>
+      { !isConnected && (
+        <>
+          <div className="login">
+            <Link
+              to="/signIn"
+              className="linkSignIn"
+            >
+              Se connecter
+            </Link>
+            <Link
+              to="/signUp"
+              className="linkSignUp"
+            >
+              S'inscrire
+            </Link>
 
+            <Link
+              className="getStarted"
+              to="/signIn"
+            >
+              {getStarted}
+            </Link>
+          </div>
+          <Link
+            className="getStarted"
+            to="/signIn"
+          >
+            {getStarted}
+          </Link>
+        </>
+      )}
+      { isConnected && (
+      <div>
+        <FontAwesomeIcon
+          onClick={handleOpen}
+          icon={faUserCircle}
+          className="header-iconProfil"
+        />
+
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+            className: classes.backDrop,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <ul className="test">
+                <li>
+                  <Link to="/profil"> Profil </Link>
+                </li>
+                <li>
+                  Se deconnecter
+                </li>
+              </ul>
+            </div>
+          </Fade>
+        </Modal>
+      </div>
+      )}
     </header>
   );
 }
+Header.propTypes = {
+  isConnected: PropTypes.bool.isRequired,
+};

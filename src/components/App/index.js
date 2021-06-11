@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Header from 'src/containers/Header';
 // == Import
 import './styles.css';

@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import reducer from 'src/reducers';
 
 const store = createStore(
