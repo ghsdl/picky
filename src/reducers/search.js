@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { CHANGE_SEARCH_INPUT } from 'src/actions/search';
 
 export const initialState = {
