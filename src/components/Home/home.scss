@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .home {
   display: flex;
   flex-direction: column;
@@ -44,5 +46,12 @@
         display: none;
       }
     }
+  }
+}
+
+@media (max-width: vars.$smallest) {
+  .home {
+    margin-left: 25px;
+    margin-right: 25px;
   }
 }
