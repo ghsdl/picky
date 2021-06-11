@@ -16,7 +16,7 @@ const Home = ({ searchInputValue }) => (
     <div className={classNames('home', { 'home--noResearch': searchInputValue.length === 0, 'home--research': searchInputValue.length > 0 })}>
       <div className="home__searchBar">
         <p className="home__searchBar__presentation">Le moteur de recherche pour vos moments devant la TV</p>
-        <SearchBar className="home__searchBar__input" />
+        <SearchBar />
         <p className="home__searchBar__suggestion">Essayez: Jurassic Park, Friends</p>
       </div>
       <div className="home__pickyMood">
