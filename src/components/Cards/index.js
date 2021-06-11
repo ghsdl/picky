@@ -7,6 +7,11 @@ import './cards.scss';
 const Cards = () => (
   <div className="cards">
     <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
   </div>
 );
 
