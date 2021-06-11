@@ -1,65 +1,91 @@
-import React from 'react';
-//import pour la modal
+import React, { useState } from 'react';
+
+// Prepartion of the curtain menu link
+import { Link } from 'react-router-dom';
+
+// import pour la modal
 import {
   Modal,
   Backdrop,
-  Fade
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core'
-import PropTypes from 'prop-types';
-//Import pour les îcones de FontAwesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
-//Import de notre logo
-import logo from 'src/assets/logo_PopCorn.png' 
-//Import css
+  Fade,
+  makeStyles,
+} from '@material-ui/core';
+
+// Import pour les îcones de FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+
+// Import de notre logo
+import logo from 'src/assets/logo_PopCorn.png';
+
+// Import css
 import './style.scss';
 
+/* makeStyle = import for modal use, modal: handling placement of the modal, paper: handling style
+for the modal, back ground collor, border... backDrop: handling modal background.
+-> All those information available in browser's console.
+*/
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
     boxShadow: theme.shadows[1],
-    padding: theme.spacing(2, 4, 3)
-  }
+    padding: theme.spacing(2, 4, 3),
+    outline: 'none',
+    padding: '8em',
+  },
+
+  backDrop: {
+    backgroundColor: 'rgb(197 197 197 / 84%)',
+  },
+
 }));
 
-export default function Header({isOpen, onClickToggleMenuBurger }){
-
-  const classes = useStyles();
+// Creation of my component Header
+export default function Header() {
+  // Hook for modal with two function, opening and closing.
   const [open, setOpen] = React.useState(false);
-
   const handleOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
+  // Hook for the curtain menu
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
 
-  const classnames = isOpen ? 'header-ellipsis header-ellipsis--open' : 'header-ellipsis';
-  console.log(isOpen)
-  
+  const classes = useStyles();
+
   return (
-    <header className='header'>
+    <header className="header">
 
-      <FontAwesomeIcon 
+      <FontAwesomeIcon
         icon={faEllipsisH}
-        className={classnames}
-        onClick={onClickToggleMenuBurger}
+        className={sidebar ? 'header-ellipsis--onSidebar' : 'header-ellipsis'}
+        onClick={showSidebar}
       />
 
-      <img src={logo} className="header-logo" alt="Logo Picky"/>
+      <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
 
-      <FontAwesomeIcon 
+        <ul onClick={showSidebar}>
+          <li><Link to="/">Picky Find</Link></li>
+          <li><Link to="/mood">Picky Mood</Link></li>
+          <li><Link to="/wish">Picky Wish</Link></li>
+          <li><Link to="/about">A propos</Link></li>
+        </ul>
+      </nav>
+
+      <img src={logo} className="header-logo" alt="Logo Picky" />
+
+      <FontAwesomeIcon
         onClick={handleOpen}
         icon={faUserCircle}
-        className="header-iconProfil" 
+        className="header-iconProfil"
       />
       <Modal
         aria-labelledby="transition-modal-title"
@@ -70,7 +96,8 @@ export default function Header({isOpen, onClickToggleMenuBurger }){
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 300
+          timeout: 300,
+          className: classes.backDrop,
         }}
       >
         <Fade in={open}>
@@ -84,10 +111,5 @@ export default function Header({isOpen, onClickToggleMenuBurger }){
       </Modal>
 
     </header>
-  )
-};
-
-Header.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClickToggleMenuBurger: PropTypes.func.isRequired,
-};
+  );
+}
