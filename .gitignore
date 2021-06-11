@@ -5,5 +5,3 @@ dist/
 Thumbs.db
 
 yarn-error.log
-
-sqitch.conf
