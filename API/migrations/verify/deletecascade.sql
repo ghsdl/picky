@@ -1,4 +1,4 @@
--- Verify picky:init on pg
+-- Verify picky:deletecascade on pg
 
 BEGIN;
 
