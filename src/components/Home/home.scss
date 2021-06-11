@@ -20,6 +20,10 @@
     transition: none;
     
     .home {
+      &__results {
+        display: none;
+      }
+
       &__pickyMood {
         display: flex;
         flex-direction: column;
@@ -44,6 +48,10 @@
 
       &__pickyMood {
         display: none;
+      }
+
+      &__results {
+        display: flex;
       }
     }
   }
