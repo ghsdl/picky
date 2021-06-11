@@ -8,8 +8,8 @@ const authController = {
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
 
-      // CHECKING IF USER DOES NOT EXIST THEN THROW ERROR
-      if (!req.body.email) {
+      // CHECKING IF USER DOES EXIST
+      if (req.body.email) {
         return res.status(401).send("User already registered with this email.");
       }
 
@@ -36,31 +36,33 @@ const authController = {
     try {
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
+      console.log(req.body.email);
+      // CHECKING IF EMAIL EXISTS IN DATABASE
+      const member = await authdataMapper.logMember(email);
 
-      // CHECKING IF EMAIL AND PASSWORD DOES NOT EXIST
-      if (!req.body.email && !req.body.password) {
+      if (!member) {
         return res.status(401).json("Password or email is incorrect.");
       }
 
-      const member = await authdataMapper.logMember(email);
-
-      // CHECKING IF PASSWORD IS CORRECT
+      // COMPARING IF PASSWORD IS CORRECT
       const correctPassword = await bcrypt.compare(password, member.password);
 
       const token = jwtGenerator(member.member_id);
 
-      if (correctPassword) {
-        // SENDING THIS TO FRONT SO MUST CHOOSE WHAT TO SEND
-        // FOR NOW WE'RE SENDING EVERYTHING
-        res.json({ member, token });
+      // CHECKING IF PASSWORD IS INCORRECT THEN SEND INFOS
+      if (!correctPassword) {
+        return res.status(401).json("Password or email is incorrect.");
       }
+      // SENDING THIS TO FRONT SO MUST CHOOSE WHAT TO SEND
+      // FOR NOW WE'RE SENDING EVERYTHING
+      res.json({ member, token });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
     }
   },
 
-  // VERIFYING THE TOKEN 
+  // VERIFYING THE TOKEN
   async verify(req, res) {
     try {
       res.json(true);

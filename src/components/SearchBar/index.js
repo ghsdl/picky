@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import './searchbar.scss';
 
@@ -15,9 +14,7 @@ const SearchBar = ({ searchInputValue, onInputChange }) => {
   return (
     <input
       ref={inputRef}
-      // When the input of the searchbar is empty, the searchbar is in the center of the page
-      // If the user writes something in it, the searchbar moves to the top of the page
-      className={classNames('searchbar__input', { 'searchbar__input--center': searchInputValue.length === 0, 'searchbar__input--up': searchInputValue.length > 0 })}
+      className="searchbar__input"
       type="text"
       placeholder="Rechercher une série ou un film"
       value={searchInputValue}
