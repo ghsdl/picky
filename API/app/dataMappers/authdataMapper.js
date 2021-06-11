@@ -12,7 +12,7 @@ module.exports = {
   },
 
   async logMember(email) {
-    // CHECKING IF USER DOES NOT EXIST
+    // CHECKING IF USER DOES EXIST
     const member = await pool.query(`SELECT * FROM member WHERE email = $1`, [
       email,
     ]);
