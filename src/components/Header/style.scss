@@ -22,7 +22,7 @@
       height: 6vh;
       margin-left: 4vh;
       margin-top: 4vh;
-      z-index: 2;
+      z-index: 6;
       transform: rotate(90deg);
       transition: all 300ms ease-in-out;
     }
@@ -33,7 +33,6 @@
     height: 10vh;
     margin-top: 4vh;
     display: flex;
-    margin-left: 3vh;
   }
 
   &-iconProfil{
@@ -54,6 +53,7 @@
   height: 100%;
   background-color:#F4BB01;
   transition: left 300ms ease-out;
+  z-index: 4;
 }
 .sidebar.active {
   left: 0;
