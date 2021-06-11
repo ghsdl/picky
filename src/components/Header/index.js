@@ -32,14 +32,18 @@ const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[1],
     outline: 'none',
-    padding: '10vh',
+    padding: '5vh',
     borderRadius: '50px',
+    alignSelf: 'flex-start',
+    marginTop: 50,
+    marginRight: 50,
   },
 
   backDrop: {

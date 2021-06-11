@@ -3,16 +3,14 @@ import React from 'react';
 import Home from 'src/containers/Home';
 
 // == Import
-<<<<<<< HEAD
-import './style.css';
-=======
 import './styles.css';
->>>>>>> ee89b4e0c81ea127d1474107314428f583b69a9a
+import Header from 'src/components/Header';
 
 // == Composant
 const App = () => (
   <div className="app">
     <Home />
+    <Header />
   </div>
 );
 
