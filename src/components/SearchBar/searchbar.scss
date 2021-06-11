@@ -7,14 +7,6 @@
     padding: 15px;
     font-size: 1.2em;
     transition: top 1s ease 0s;
-
-  &--center {
-    top: 50%;
-  }
-
-  &--up {
-    top: 25%;
-  }
 }
 
 @media (max-width: vars.$normal) {

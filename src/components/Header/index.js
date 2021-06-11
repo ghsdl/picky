@@ -9,13 +9,16 @@ import {
   Backdrop,
   Fade,
   makeStyles,
+  ClickAwayListener,
 } from '@material-ui/core';
-
+// ClickAwayListener is here to spot the click outside its parent element
 // Import pour les îcones de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 // Import de notre logo
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 import logo from 'src/assets/logo_PopCorn.png';
 
 // Import css
@@ -34,15 +37,14 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[1],
-    padding: theme.spacing(2, 4, 3),
     outline: 'none',
-    padding: '8em',
+    padding: '10vh',
+    borderRadius: '50px',
   },
 
   backDrop: {
     backgroundColor: 'rgb(197 197 197 / 84%)',
   },
-
 }));
 
 // Creation of my component Header
@@ -58,30 +60,33 @@ export default function Header() {
   // Hook for the curtain menu
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-
+  const handleClickAway = () => setSidebar(false);
   const classes = useStyles();
 
   return (
     <header className="header">
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <div>
+          <FontAwesomeIcon
+            icon={faEllipsisH}
+            className={sidebar ? 'header-ellipsis--onSidebar' : 'header-ellipsis'}
+            onClick={showSidebar}
+          />
 
-      <FontAwesomeIcon
-        icon={faEllipsisH}
-        className={sidebar ? 'header-ellipsis--onSidebar' : 'header-ellipsis'}
-        onClick={showSidebar}
-      />
+          <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
 
-      <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
-
-        <ul onClick={showSidebar}>
-          <li><Link to="/">Picky Find</Link></li>
-          <li><Link to="/mood">Picky Mood</Link></li>
-          <li><Link to="/wish">Picky Wish</Link></li>
-          <li><Link to="/about">A propos</Link></li>
-        </ul>
-      </nav>
-
-      <img src={logo} className="header-logo" alt="Logo Picky" />
-
+            <ul onClick={showSidebar}>
+              <li><Link to="/">Picky Find</Link></li>
+              <li><Link to="/mood">Picky Mood</Link></li>
+              <li><Link to="/wish">Picky Wish</Link></li>
+              <li><Link to="/about">A propos</Link></li>
+            </ul>
+          </nav>
+        </div>
+      </ClickAwayListener>
+      <Link to="/">
+        <img src={logo} className="header-logo" alt="Logo Picky" />
+      </Link>
       <FontAwesomeIcon
         onClick={handleOpen}
         icon={faUserCircle}
@@ -96,16 +101,20 @@ export default function Header() {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 300,
+          timeout: 500,
           className: classes.backDrop,
         }}
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">
-              react-transition-group animates me.
-            </p>
+            <ul className="test">
+              <li>
+                <Link to="/profil"> Profil </Link>
+              </li>
+              <li>
+                Se deconnecter
+              </li>
+            </ul>
           </div>
         </Fade>
       </Modal>

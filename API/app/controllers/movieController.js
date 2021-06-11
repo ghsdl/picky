@@ -1,6 +1,6 @@
-const dataMapper = require('../dataMappers/dataMapper')
+const dataMapper = require('../dataMappers/dataMapper');
 
-const moviesController = {
+const movieController = {
   
   allMovies: async (req, res)=>{
     try {
@@ -35,4 +35,4 @@ const moviesController = {
 
 };
 
-module.exports = moviesController;
+module.exports = movieController;

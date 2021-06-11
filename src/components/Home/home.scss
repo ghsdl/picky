@@ -1,20 +1,20 @@
 .home {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  margin-top: 25px;
-  margin: auto;
   max-width: 750px;
   height: 450px;
+  margin: auto;
+
+  &__searchBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &--noResearch {
-    .home {
-      &__searchBar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    justify-content: space-around;
     
+    .home {
       &__pickyMood {
         display: flex;
         flex-direction: column;
@@ -24,6 +24,9 @@
   }
 
   &--research {
+    justify-content: flex-start;
+    margin-top: 25px;
+
     .home {
       &__searchBar {
         &__presentation {
@@ -37,8 +40,6 @@
       &__pickyMood {
         display: none;
       }
-
     }
   }
-
 }

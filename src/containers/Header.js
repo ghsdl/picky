@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { connect } from 'react-redux';
 import Header from 'src/components/Header';
 

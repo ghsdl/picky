@@ -9,11 +9,14 @@ import './home.scss';
 const Home = ({ searchInputValue }) => (
   <div>
     <Header />
+    {// When the input of the searchbar is empty, the searchbar is in the center of the page
+    // If the user writes something in it, the searchbar moves to the top of the page
+    }
     <div className={classNames('home', { 'home--noResearch': searchInputValue.length === 0, 'home--research': searchInputValue.length > 0 })}>
       <div className="home__searchBar">
         <p className="home__searchBar__presentation">Le moteur de recherche pour vos moments devant la TV</p>
         <SearchBar className="home__searchBar__input" />
-        <p className="home__searchBar__suggestion">Suggestion: Jurassic Park, Friends</p>
+        <p className="home__searchBar__suggestion">Essayez: Jurassic Park, Friends</p>
       </div>
       <div className="home__pickyMood">
         <p>Vous ne savez pas quoi regarder? Faites nous confiance!</p>
