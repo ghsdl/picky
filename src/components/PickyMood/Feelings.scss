@@ -1,0 +1,97 @@
+.moodEmotion{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+ 
+
+  &-question{
+    margin-top: 2vh;
+    padding: 4vh;
+    display: inline-block;
+    border: 3px solid #333333;
+    font-size: 2.0vh;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    background: #ffffff;
+    position: relative;
+    
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+
+  }
+  
+}
+
+.emotions{
+  display: flex;
+  
+  justify-content: center;
+  margin:0 auto;
+  flex-wrap: wrap; 
+  align-items: center;
+  text-align: center;
+  margin-left: 4vh;
+  margin-right: 4vh;
+  
+
+  &-item{
+    display: inline-block;
+    width: 30%;
+    margin-left: 1vh;
+    margin-top: 10vh;
+    padding: 1em;
+    border-top: solid 1px rgb(204, 202, 202);
+    border-bottom: solid 1px rgb(204, 202, 202);
+    border-radius: 6px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    font-size: 1.5vh;
+    
+  }
+
+  :hover {
+    transform: scale(1.05)
+  }
+  
+}
+
+.button{
+  display: flex;
+  justify-content:  space-between;
+  margin-top: 6vh;
+  margin-left: 6vh;
+  margin-right: 6vh;
+  font-size: 2vh;
+  
+  
+  &-suivant{
+    background-color: rgb(248, 248, 248);
+    border-top: solid 1px rgb(204, 202, 202);
+    border-bottom: solid 1px rgb(204, 202, 202);
+    border-radius: 6px;
+    padding: 1vh;
+    cursor: pointer;
+  }
+
+  &-precedent{
+    background-color: rgb(248, 248, 248);
+    border-top: solid 1px rgb(204, 202, 202);
+    border-bottom: solid 1px rgb(204, 202, 202);
+    border-radius: 6px;
+    padding: 1vh;
+    cursor: pointer;
+  }
+}
