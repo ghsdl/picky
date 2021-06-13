@@ -1,0 +1,64 @@
+.mood {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;;
+  height: 50vh;
+  border: solid lightblue;
+  padding: 2em;
+  margin-top: 2em;
+  
+   &-question {
+    border: solid black;
+    padding: 1em;
+    margin-top: 2vh;
+    padding: 4vh;
+    display: inline-block;
+    border: 3px solid #333333;
+    font-size: 2.0vh;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    background: #ffffff;
+    position: relative;
+   }
+
+   &-buttons {
+    border: solid black;
+    display: flex;
+    padding: 1em;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    width: 40vw;
+   }
+
+   &::before {
+    content: '';
+    border: 2px solid #353535;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+    border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+   }
+
+   &-next {
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+   }
+}
+
+.option-film {
+  border: solid pink;
+}
+
+.option-serie {
+  border: solid purple;
+}
