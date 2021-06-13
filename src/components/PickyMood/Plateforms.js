@@ -4,7 +4,7 @@ import './Plateforms.scss';
 
 export default function Plateforms() {
   const plateforms = ['Anime Digital Network', 'Salto', 'Netflix', 'Canal+', 'Amazon Prime Video', 'OCS Go', 'Disney +', 'Apple TV+'];
-  const plateformsItem = plateforms.map((plateform)=>(
+  const plateformsItem = plateforms.map((plateform) => (
     <li key={plateform} className="plateforms-item">
       {(plateform)}
     </li>
