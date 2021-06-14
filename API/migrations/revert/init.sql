@@ -2,13 +2,11 @@
 
 BEGIN;
 
-DROP TABLE "member_has_provider";
+DROP TABLE "platform_has_member";
 
-DROP TABLE "member_has_watchlist";
+DROP TABLE "platform";
 
-DROP TABLE "provider";
-
-DROP TABLE "watchlist";
+DROP TABLE "bookmark";
 
 DROP TABLE "member";
 
