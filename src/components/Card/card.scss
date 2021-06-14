@@ -47,6 +47,12 @@
 
     border-radius: 20px;
   }
+
+  &__watchlistButton {
+    &--delete {
+      transform: rotate(45deg);
+    }
+  }
 }
 
 @media (max-width: vars.$small) {

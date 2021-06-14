@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Import of components
-import Card from 'src/components/Card';
+import Card from 'src/containers/Card';
 
 // Import of scss
 import './cards.scss';
