@@ -7,6 +7,20 @@
     font-size: 2em;
   }
 
+  &__gradient {
+    width: 100vw;
+    margin: auto;
+    height: 250px;
+  
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    bottom: 0px;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%);;
+  }
+
   &__footer {
     display: flex;
     justify-content: center;
@@ -16,11 +30,10 @@
     margin: auto;
   
     position: absolute;
-    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: -1;
-    color: white;
+    color: black;
     font-weight: bold;
     text-align: center;
     font-size: 1.2em;
@@ -28,6 +41,7 @@
 
     &__link {
       background-color:#FF8177;
+      color: white;
       padding: 10px;
       border-radius: 20px;
       width: 100px;
