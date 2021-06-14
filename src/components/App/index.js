@@ -4,7 +4,6 @@ import React from 'react';
 import './styles.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
-
 // == Composant
 
 const App = () => (

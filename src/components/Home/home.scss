@@ -3,10 +3,11 @@
 .home {
   display: flex;
   flex-direction: column;
-  max-width: 750px;
+
   height: 450px;
   margin: auto;
   margin-top: 100px;
+
   transition: margin-top 700ms ease-in;
 
   &__searchBar {
@@ -20,6 +21,10 @@
     transition: none;
     
     .home {
+      &__results {
+        display: none;
+      }
+
       &__pickyMood {
         display: flex;
         flex-direction: column;
@@ -44,6 +49,10 @@
 
       &__pickyMood {
         display: none;
+      }
+
+      &__results {
+        display: flex;
       }
     }
   }

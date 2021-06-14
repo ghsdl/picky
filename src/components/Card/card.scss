@@ -1,0 +1,57 @@
+@use 'src/styles/vars';
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  width: 250px;
+  height: 360px;
+  margin: 10px;
+  
+  border-radius: 20px;
+
+  &__infos {
+    height: auto;
+    bottom: 68px;
+    position: relative;
+
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 7%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 0 0 20px 20px;
+
+    &__title {
+      margin: 0 10px 10px 10px;
+
+      color:white;
+      font-weight: bold;
+    }
+
+    &__elements {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      margin: 0 10px 10px 10px;
+    }
+  }
+
+  &__poster {
+    height: 100%;
+
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  &__platform, &__watchlistButton{
+    width: 30px;
+    height: 30px;
+
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: vars.$small) {
+  .card {
+    width: 160px;
+    height: 228px;
+  }
+}
