@@ -55,6 +55,17 @@ const memberController = {
     }
   },
 
+  async postPlatform(req, res) {
+    try {
+      const data = req.body;
+      const newPlatformToMember = await memberDataMapper.addPlatformToMember(data);
+      res.json({ newPlatformToMember });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
     // TO DO
     // HANDLE UPDATE AND LOGIN SO THEY MATCH AGAIN IN DATABASE
   async update(req, res, next) {
