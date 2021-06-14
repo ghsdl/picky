@@ -1,19 +1,30 @@
+// Import npm
 import React from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
+// Import scss
 import './card.scss';
 
-const Card = () => (
-  // TODO: make the content of the cards dynamic
+// Display of one card
+const Card = ({ inWatchList }) => (
+  // TODO: make the content of the card dynamic
   <div className="card">
+    { // Poster of the program
+    }
     <img
       className="card__poster"
       src="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
       alt="Affiche du programme"
     />
+    { // Infos on the program (title, platforms and button to add it to/delete from watchlist)
+    }
     <div className="card__infos">
       <p className="card__infos__title">Friends</p>
       <div className="card__infos__elements">
         <div className="card__platforms">
+          { // TODO: make the display of the platforms dynamic
+          }
           <img
             className="card__platform"
             src="https://www.numerama.com/content/uploads/2016/06/13502130_10153696123838870_522765110773053650_n-796x796-2.png"
@@ -25,8 +36,12 @@ const Card = () => (
             alt="Logo de la plateforme"
           />
         </div>
+        {// If the program is in the watchlist, a button to delete it from it is displayed.
+          // Otherwise, a button to add it to the watchlist is displayed.
+          // TODO: Add the action to the button
+        }
         <button
-          className="card__watchlistButton"
+          className={classNames('card__watchlistButton', { 'card__watchlistButton--delete': inWatchList })}
           type="button"
         >
           +
@@ -35,5 +50,9 @@ const Card = () => (
     </div>
   </div>
 );
+
+Card.propTypes = {
+  inWatchList: PropTypes.bool.isRequired,
+};
 
 export default Card;

@@ -46,4 +46,9 @@ module.exports = {
         const result = await pool.query(`SELECT * FROM delete_member($1)`, [id]);
         return result;
     }
-}
+};
+ 
+
+
+
+

@@ -1,4 +1,4 @@
-const dataMapper = require('../dataMappers/dataMapper');
+const dataMapper = require('../dataMappers/movieDataMapper');
 
 const movieController = {
   

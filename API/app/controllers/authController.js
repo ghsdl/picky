@@ -41,7 +41,7 @@ const authController = {
 
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const member = await authDataMapper.getMemberByEmail(email);
-
+      console.log("Info member :" , member)
       if (!member) {
         return res.status(401).json("Password or email is incorrect.");
       }
@@ -50,7 +50,7 @@ const authController = {
       const correctPassword = await bcrypt.compare(password, member.password);
 
       const token = jwtGenerator(member.member_id);
-
+      console.log("Info token :" , token)
       // CHECKING IF PASSWORD IS INCORRECT THEN SEND INFOS
       if (!correctPassword) {
         return res.status(401).json("Password or email is incorrect.");
@@ -67,12 +67,14 @@ const authController = {
   // VERIFYING THE TOKEN
   async verify(req, res) {
     try {
-      res.json(true);
+      res.status(true);
     } catch (err) {
       console.error(error);
       res.status(500).send("A server error occured, please try again later.");
     }
   },
+
+  
 };
 
 module.exports = authController;
