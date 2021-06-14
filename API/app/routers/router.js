@@ -59,6 +59,9 @@ router.route('/member/:id(\\d+)')
 router.route('/member/:id(\\d+)/bookmark')
     .get(memberController.getBookmarkByMember);
 
+router.route('/member/:id(\\d+)/platform')
+    .get(memberController.getPlatformByMember);
+
 // SEARCH ROUTES
 router.get('/search', searchController.get);
 //router.get('/search/:id', searchController.getById);

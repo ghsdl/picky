@@ -1,4 +1,5 @@
 const memberDataMapper = require("../dataMappers/memberDataMapper");
+const platformDataMapper = require("../dataMappers/platformDataMapper");
 
 const memberController = {
   async get(req, res) {
@@ -31,6 +32,27 @@ const memberController = {
       }
       const bookmarkMember = await memberDataMapper.getBookmarkMember(memberId);
       res.json({ bookmarkMember });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
+  async getPlatformByMember (req, res, next) {
+    try {
+      const memberId = parseInt(req.params.id, 10);
+      const member = await memberDataMapper.getOne(memberId);
+      if (!member) {
+        return next();
+      }
+
+      const platformId = parseInt(req.params.id, 10);
+      const platform = await platformDataMapper.getOne(platformId)
+      if (!platform) {
+        return next();
+      }
+
+      
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
