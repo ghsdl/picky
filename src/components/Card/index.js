@@ -3,6 +3,7 @@ import React from 'react';
 import './card.scss';
 
 const Card = () => (
+  // TODO: make the content of the cards dynamic
   <div className="card">
     <img
       className="card__poster"
