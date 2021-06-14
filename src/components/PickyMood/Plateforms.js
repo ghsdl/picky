@@ -19,11 +19,16 @@ export default function Plateforms() {
       <ul className="pickMoodContent">
         {plateformsItem}
       </ul>
-      <div className="result">
-        <div className="result-button">
+
+      <div className="button">
+        <div className="button-precedent">
+          Précedent
+        </div>
+        <div className="button-suivant">
           Search
         </div>
       </div>
+
     </div>
   );
 }
