@@ -15,16 +15,17 @@ SELECT
     "id",
     "betaseries_id",
     "title",
-    "provider",
-    "poster"
-FROM "watchlist"
+    "platform",
+    "poster",
+    "member_id"
+FROM "bookmark"
 WHERE false;
 
 SELECT
     "id",
     "name",
     "logo"
-FROM "provider"
+FROM "platform"
 WHERE false;
 
 ROLLBACK;

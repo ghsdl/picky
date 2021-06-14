@@ -1,14 +1,17 @@
+@use 'src/styles/vars';
+
 .header{
   text-align: center;
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
  
   &-ellipsis{
     width: 6vh;
     height: 6vh;
     margin-left: 4vh;
-    margin-top: 4vh;
+    
     z-index: 2;
     position: relative;
       transition: all 300ms ease-in-out;
@@ -28,8 +31,9 @@
   &-logo{
     width: 10vh;
     height: 10vh;
-    justify-content: center;
     margin-top: 4vh;
+    display: flex;
+    margin-left: 3vh;
   }
 
   &-iconProfil{
@@ -45,8 +49,8 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: -300px;
-  width: 300px;
+  left: -30vh;
+  width: 30vh;
   height: 100%;
   background-color:#F4BB01;
   transition: left 300ms ease-out;
@@ -76,4 +80,44 @@
   text-align: center;
   padding: 1rem;
   font-size: 1.3em;
+}
+
+.login {
+  height: 6vh;
+  margin-top: 4vh;
+  margin-right: 4vh;
+  font-size: 20px;
+  display:flex;
+}
+
+.linkSignUp{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.getStarted{
+ display:none;
+ 
+}
+
+
+
+@media (max-width: vars.$normal){
+  .login {
+    display: none
+  }
+  .getStarted{
+    display:flex;
+    height: 6vh;
+    margin-top: 5vh;
+    margin-right: 4vh;
+    font-size: 3vh;
+    background-color: #f4bb01;
+    text-align: center;
+    padding:0.5em;
+    border-radius: 18%;
+    color: rgb(0, 0, 0);
+    padding-bottom: 7vh;
+  }
+  
 }

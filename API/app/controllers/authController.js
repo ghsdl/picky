@@ -1,4 +1,4 @@
-const authdataMapper = require("../dataMappers/authdataMapper");
+const authDataMapper = require("../dataMappers/authDataMapper");
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
 
@@ -8,9 +8,11 @@ const authController = {
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
 
-      // CHECKING IF USER DOES EXIST
-      if (req.body.email) {
-        return res.status(401).send("User already registered with this email.");
+      // CHECKING IF EMAIL EXISTS IN DATABASE
+      const memberEmail = await authDataMapper.getMemberByEmail(email);
+
+      if (memberEmail) {
+        return res.status(401).json("User already registered with this email.");
       }
 
       // CREATING CRYPTED PASSWORD WITH BCRYPT
@@ -19,7 +21,7 @@ const authController = {
       const bcryptPassword = await bcrypt.hash(password, salt);
 
       // CREATING NEW USER IN DATABASE
-      const newMember = await authdataMapper.addMember({
+      const newMember = await authDataMapper.insertMember({
         pseudo,
         email,
         password: bcryptPassword,
@@ -36,9 +38,9 @@ const authController = {
     try {
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
-      console.log(req.body.email);
+
       // CHECKING IF EMAIL EXISTS IN DATABASE
-      const member = await authdataMapper.logMember(email);
+      const member = await authDataMapper.getMemberByEmail(email);
 
       if (!member) {
         return res.status(401).json("Password or email is incorrect.");

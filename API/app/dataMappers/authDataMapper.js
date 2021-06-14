@@ -1,17 +1,17 @@
 const pool = require("../../database");
 
 module.exports = {
-  async addMember(member) {
+  async insertMember(newMember) {
     // CREATING NEW USER IN DATABASE
-    const newMember = await pool.query(
+    const addedMember = await pool.query(
       `INSERT INTO member (pseudo, email, password) VALUES ($1, $2, $3) RETURNING *`,
-      [member.pseudo, member.email, member.password]
+      [newMember.pseudo, newMember.email, newMember.password]
     );
 
-    return newMember.rows[0];
+    return addedMember.rows[0];
   },
 
-  async logMember(email) {
+  async getMemberByEmail(email) {
     // CHECKING IF USER DOES EXIST
     const member = await pool.query(`SELECT * FROM member WHERE email = $1`, [
       email,
