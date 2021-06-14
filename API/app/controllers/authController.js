@@ -73,6 +73,7 @@ const authController = {
       res.status(500).send("A server error occured, please try again later.");
     }
   },
+  
 };
 
 module.exports = authController;
