@@ -1,0 +1,56 @@
+@use 'src/styles/vars';
+
+.wish {
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  
+    width: 60vw;
+    margin: auto;
+  
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    color: white;
+
+    &__link {
+      background-color: white;
+      color: black;
+      padding: 10px;
+      border-radius: 20px;
+
+    }
+
+    &__text {
+      margin: 0 10px;
+    }
+  }
+}
+
+@media (max-width: vars.$normal) {
+  .wish__footer {
+    width: 70vw;
+  }
+}
+
+@media (max-width: vars.$normal) {
+  .wish__footer {
+    width: 80vw;
+  }
+}
+
+@media (max-width: vars.$small) {
+  .wish__footer {
+    width: 90vw;
+  }
+}
+
+@media (max-width: vars.$smallest) {
+  .wish__footer {
+    width: 100vw;
+  }
+}
+
