@@ -22,10 +22,10 @@ const platformController = {
     }
   },
 
-  async post(req, res) {
+  async addPlatformToMember(req, res) {
     try {
       const data = req.body;
-      const newPlatform = await platformDataMapper.add(data);
+      const newPlatform = await platformDataMapper.post(data);
       res.json({ newPlatform });
     } catch (error) {
       console.log(error);
