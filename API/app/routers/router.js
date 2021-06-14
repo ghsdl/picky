@@ -27,21 +27,6 @@ router.get("/series", serieController.allSeries);
 router.get("/series/random", serieController.randSeries);
 
 // AUTH ROUTES
-<<<<<<< HEAD
-router.post("/signup", authController.add);
-router.post("/signin", authController.log);
-router.get("/verify", auth, authController.verify);
-router.get("/series/random", serieController.randSeries)
-
-// Route pour récuperer la liste des watchlist
-router.get("/wish", watchlistController.allWatchList)
-
-// Route pour ajouter un film ou une serie à la watchlist 
-router.post("/wish/add", watchlistController.addWatchList)
-
-// Route pour supprimer de la watchlist
-router.delete("/wish/:id", watchlistController.deleteOne)
-=======
 router.post('/signup', (validate.body(insertMemberSchema), authController.add));
 router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
@@ -81,6 +66,5 @@ router.route('/member/:id(\\d+)/bookmark')
 // SEARCH ROUTES
 router.get('/search', searchController.get);
 //router.get('/search/:id', searchController.getById);
->>>>>>> 14da7bb3843afc2593ec567bb0a0ebf339092b69
 
 module.exports = router;
