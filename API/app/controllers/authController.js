@@ -9,7 +9,7 @@ const authController = {
       const { pseudo, email, password } = req.body;
 
       // CHECKING IF USER DOES EXIST
-      if (req.body.email) {
+      if (!req.body.email) {
         return res.status(401).send("User already registered with this email.");
       }
 
@@ -70,7 +70,9 @@ const authController = {
       console.error(error);
       res.status(500).send("A server error occured, please try again later.");
     }
-  },
+  }
+
+  
 };
 
 module.exports = authController;

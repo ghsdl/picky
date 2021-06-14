@@ -77,7 +77,6 @@ getWatchList: async () => {
 },
 
 addWatchList: async watchlist  => {
-  
   const data = await client.query(`INSERT INTO "watchlist" ("betaseries_id", "title", "provider", "poster") VALUES($1, $2, $3, $4) RETURNING *`, 
   [watchlist.betaseries_id, watchlist.title, watchlist.provider, watchlist.poster]);
   console.log(data);
@@ -85,14 +84,11 @@ addWatchList: async watchlist  => {
 
 },
 
-
-
-
 deleteWatchList: async (id) => {
-  const data = await client.query(`DELETE FROM "member_has_watchlist" WHERE id=$1`, [id]);
+  const data = await client.query(`DELETE FROM "watchlist" WHERE id=$1`, [id]);
   console.log(data)
   
-}
+},
 
 /*insertPost: async post => {
   // RETURNING * ici aura le même résultat qu'un SELECT *
