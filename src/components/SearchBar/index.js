@@ -1,8 +1,11 @@
+// Import npm
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+// Import scss
 import './searchbar.scss';
 
+// Display of the searchbar
 const SearchBar = ({ searchInputValue, onInputChange }) => {
   // When opening the page, there is an automatic focus on the input of the searchbar
   const inputRef = useRef(null);
