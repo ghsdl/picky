@@ -5,7 +5,7 @@
   justify-content: center;
   flex-wrap: wrap;
 
-  width: 60vw;
+  width: 70vw;
   margin: auto;
   height: 70vh;
   overflow-y: scroll;
@@ -21,7 +21,7 @@
     }
 }
 
-@media (max-width: vars.$normal) {
+@media (max-width: vars.$large) {
   .cards {
     width: 70vw;
   }
@@ -29,7 +29,7 @@
 
 @media (max-width: vars.$normal) {
   .cards {
-    width: 80vw;
+    width: 85vw;
   }
 }
 

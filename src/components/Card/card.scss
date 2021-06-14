@@ -53,5 +53,25 @@
   .card {
     width: 160px;
     height: 228px;
+
+    &__infos {
+      bottom: 49px;
+  
+      &__title {
+        margin: 0 5px 5px 5px;
+      }
+  
+      &__elements {
+        margin: 0 5px 5px 5px;
+      }
+    }
+
+    &__platform, &__watchlistButton{
+      width: 20px;
+      height: 20px;
+  
+      border-radius: 20px;
+      font-size: .7em;
+    }
   }
 }
