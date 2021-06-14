@@ -1,9 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import Header from 'src/containers/Header';
 import SearchBar from 'src/containers/SearchBar';
 import Cards from 'src/components/Cards';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import './home.scss';
 
