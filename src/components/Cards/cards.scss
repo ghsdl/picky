@@ -1,0 +1,47 @@
+@use 'src/styles/vars';
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  width: 70vw;
+  margin: auto;
+  height: 70vh;
+  overflow-y: scroll;
+
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+
+  &::-webkit-scrollbar {
+    display: none;
+    }
+}
+
+@media (max-width: vars.$large) {
+  .cards {
+    width: 70vw;
+  }
+}
+
+@media (max-width: vars.$normal) {
+  .cards {
+    width: 85vw;
+  }
+}
+
+@media (max-width: vars.$small) {
+  .cards {
+    width: 90vw;
+  }
+}
+
+@media (max-width: vars.$smallest) {
+  .cards {
+    width: 100vw;
+  }
+}
+

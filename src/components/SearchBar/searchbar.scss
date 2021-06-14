@@ -3,8 +3,10 @@
 .searchbar__input {
     width: 40vw;
     height: 50px;
-    border-radius: 50px;
     padding: 15px;
+    margin: 20px 0;
+
+    border-radius: 50px;
     font-size: 1.2em;
 }
 
@@ -12,6 +14,7 @@
   .searchbar__input {
     width: 60vw;
     height: 30px;
+    
     border-radius: 20px;
   }
 }
