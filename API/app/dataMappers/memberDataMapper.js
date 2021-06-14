@@ -26,10 +26,12 @@ module.exports = {
         return result.rows;
     },
 
-    async getPlatformByMember(memberId, platformId) {
-        const result = await pool.query(`SELECT * FROM platform_has_member WHERE member_id = $1`, [memberId, platformId]);
+    async getPlatformByMember(memberId) {
+        const result = await pool.query(`SELECT * FROM platform_has_member WHERE member_id = $1`, [memberId]);
         return result.rows;
     },
+
+    
 
     async patch(data, memberId) {
 

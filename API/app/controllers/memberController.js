@@ -46,13 +46,9 @@ const memberController = {
         return next();
       }
 
-      const platformId = parseInt(req.params.id, 10);
-      const platform = await platformDataMapper.getOne(platformId)
-      if (!platform) {
-        return next();
-      }
-
+      const platform = await platformDataMapper.getOne(memberId);
       
+      res.json({ platform });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -110,7 +106,7 @@ const memberController = {
       console.log(error);
       res.status(500).json(error.toString());
     }
-  },
+  }
 
 };
 

@@ -39,3 +39,7 @@ const search = async query => {
 }*/
 
 module.exports = { search };
+
+// construire un tableau de parallèle entre émotions et genres de l'API
+
+// recevoir l'objet et construire l'url en back 
