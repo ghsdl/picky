@@ -1,6 +1,12 @@
 @use 'src/styles/vars';
 
 .wish {
+  & h1 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2em;
+  }
+
   &__footer {
     display: flex;
     justify-content: center;
@@ -15,10 +21,10 @@
     transform: translateX(-50%);
     z-index: -1;
     color: white;
+    font-weight: bold;
 
     &__link {
-      background-color: white;
-      color: black;
+      background-color:#FF8177;
       padding: 10px;
       border-radius: 20px;
 

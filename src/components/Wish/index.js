@@ -9,12 +9,12 @@ import './wish.scss';
 const Wish = () => (
   <div className="wish">
     <Header />
-    <p>Votre watchlist</p>
+    <h1>Votre watchlist</h1>
     <Cards />
     <div className="wish__footer">
-      <Link className="wish__footer__link">Picky Find</Link>
+      <Link className="wish__footer__link" to="/">Picky Find</Link>
       <p className="wish__footer__text">Continuez à explorer</p>
-      <Link className="wish__footer__link">Picky Mood</Link>
+      <Link className="wish__footer__link" to="/mood">Picky Mood</Link>
     </div>
   </div>
 );
