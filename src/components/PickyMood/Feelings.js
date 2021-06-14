@@ -1,26 +1,26 @@
 import React from 'react';
 import Typical from 'react-typical';
 
-import './Feelings.scss';
+import './style.scss';
 
 export default function Feelings() {
   const emotions = ['Amoureux', 'Effrayé', 'Ébahi', 'Transporté', 'Appeuré', 'Instruit', 'Heureux', 'Surpris', 'Extasié', 'Étonné'];
   const emotionsCard = emotions.map((emotion) => (
-    <li key={emotion} className="emotions-item">
+    <li key={emotion} className="pickMoodContent-item">
       {(emotion)}
     </li>
   ));
   console.log(emotionsCard);
   return (
     <div>
-      <div className="moodEmotion">
+      <div className="pickyMood">
         <Typical
-          className="moodEmotion-question"
+          className="pickyMood-question"
           steps={['Vous souhaitez être...', 1000, 'Vous souhaitez être étonné ?', 1000, 'Vous souhaitez être apeuré ?', 1000, 'Vous souhaitez être surpris ?', 1000]}
           loop={Infinity}
         />
       </div>
-      <ul className="emotions">
+      <ul className="pickMoodContent">
         {emotionsCard}
       </ul>
       <div className="button">

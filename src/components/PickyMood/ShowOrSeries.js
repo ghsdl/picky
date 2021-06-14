@@ -1,25 +1,25 @@
 import React from 'react';
-import './ShowOrSeries.scss';
+import './style.scss';
 
 export default function ShowOrSeries() {
   const showOrSeries = ['Une série', 'Un film'];
   const showOrSeriesCard = showOrSeries.map((showOrSerie) => (
-    <li key={showOrSerie} className="showOrSeries-item">
+    <li key={showOrSerie} className="pickMoodContent-item">
       {showOrSerie}
     </li>
   ));
   return (
     <div>
-      <div className="moodShowOrSeries">
-        <div className="moodShowOrSeries-question">
+      <div className="pickyMood">
+        <div className="pickyMood-question">
           Que voulez-vous regarder ?
         </div>
       </div>
-      <ul className="showOrSeries">
+      <ul className="pickMoodContent">
         {showOrSeriesCard}
       </ul>
-      <div className="button">
-        <div className="button-suivant">
+      <div className="search">
+        <div className="search-button">
           Suivant
         </div>
       </div>

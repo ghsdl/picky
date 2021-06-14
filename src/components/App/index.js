@@ -5,14 +5,15 @@ import './styles.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Header from 'src/containers/Header';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import ShowOrSeries from 'src/components/PickyMood/ShowOrSeries';
+
+import Feelings from 'src/components/PickyMood/Feelings';
 
 // == Composant
 
 const App = () => (
   <div className="app">
     <Header />
-    <ShowOrSeries />
+    <Feelings />
   </div>
 );
 
