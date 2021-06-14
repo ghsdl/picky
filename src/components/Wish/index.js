@@ -12,9 +12,9 @@ const Wish = () => (
     <h1>Votre watchlist</h1>
     <Cards />
     <div className="wish__footer">
-      <Link className="wish__footer__link" to="/">Picky Find</Link>
+      <Link className="wish__footer__link" to="/">Find</Link>
       <p className="wish__footer__text">Continuez à explorer</p>
-      <Link className="wish__footer__link" to="/mood">Picky Mood</Link>
+      <Link className="wish__footer__link" to="/mood">Mood</Link>
     </div>
   </div>
 );

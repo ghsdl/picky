@@ -22,11 +22,15 @@
     z-index: -1;
     color: white;
     font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    bottom: 15px;
 
     &__link {
       background-color:#FF8177;
       padding: 10px;
       border-radius: 20px;
+      width: 100px;
 
     }
 
@@ -56,7 +60,9 @@
 
 @media (max-width: vars.$smallest) {
   .wish__footer {
-    width: 100vw;
+    width: 90vw;
+    align-items: center;
+    font-size: 1em;
   }
 }
 
