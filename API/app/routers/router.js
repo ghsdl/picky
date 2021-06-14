@@ -9,9 +9,6 @@ const bookmarkController = require('../controllers/bookmarkController');
 const memberController = require('../controllers/memberController');
 const searchController = require('../controllers/searchController');
 const auth = require("../middleware/authMiddleware");
-const watchlistController = require('../controllers/watchlistController')
-
-
 
 //const { route } = require('./auth');
 const router = express.Router();
@@ -33,35 +30,35 @@ router.get('/verify', auth, authController.verify);
 
 // PLATFORM ROUTES
 router.route('/platform')
-    .get(platformController.get)
-    .post(platformController.post);
+  .get(platformController.get)
+  .post(platformController.post);
 
 router.route('/platform/:id(\\d+)')
-    .get(platformController.getById)
-    .patch(platformController.update)
-    .delete(platformController.delete);
+  .get(platformController.getById)
+  .patch(platformController.update)
+  .delete(platformController.delete);
 
 // BOOKMARK ROUTES
 router.route('/bookmark')
-    .get(bookmarkController.get)
-    .post(bookmarkController.post);
+  .get(bookmarkController.get)
+  .post(bookmarkController.post);
 
 router.route('/bookmark/:id(\\d+)')
-    .get(bookmarkController.getById)
-    .patch(bookmarkController.update)
-    .delete(bookmarkController.delete);
+  .get(bookmarkController.getById)
+  .patch(bookmarkController.update)
+  .delete(bookmarkController.delete);
 
 // MEMBER ROUTES
 router.route('/member')
-    .get(memberController.get);
+  .get(memberController.get);
 
 router.route('/member/:id(\\d+)')
-    .get(memberController.getById)
-    .patch(memberController.update)
-    .delete(memberController.delete);
+  .get(memberController.getById)
+  .patch(memberController.update)
+  .delete(memberController.delete);
 
 router.route('/member/:id(\\d+)/bookmark')
-    .get(memberController.getBookmarkByMember);
+  .get(memberController.getBookmarkByMember);
 
 // SEARCH ROUTES
 router.get('/search', searchController.get);
