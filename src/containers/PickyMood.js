@@ -8,6 +8,7 @@ import {
   emotionsToPlateforms,
   backToEmotions,
   clickOnShowOrMovies,
+  clickOnEmotionsMovie,
 } from 'src/actions/pickyMood';
 
 const mapStateToProps = (state) => ({
@@ -15,6 +16,7 @@ const mapStateToProps = (state) => ({
   displayPickyMoodEmotions: state.pickyMood.pickyMoodEmotions,
   displayPickyMoodPlateforms: state.pickyMood.pickyMoodPlateforms,
   ShowOrMovie: state.pickyMood.ShowOrMovie,
+  urlAxios: state.pickyMood.urlAxios,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -35,6 +37,12 @@ const mapDispatchToProps = (dispatch) => ({
 
   onClickShowOrMovies: (apiNameShowOrMovie) => {
     const action = clickOnShowOrMovies(apiNameShowOrMovie);
+    dispatch(action);
+  },
+
+  onClickEmotionsMovie: (emotionsMoviesGenre) => {
+    console.log(emotionsMoviesGenre);
+    const action = clickOnEmotionsMovie(emotionsMoviesGenre);
     dispatch(action);
   },
 });

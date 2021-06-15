@@ -4,16 +4,16 @@ import './style.scss';
 import PropTypes from 'prop-types';
 
 export default function PickyMood({
-  displayPickyMoodShowOrSerie,
-  displayPickyMoodEmotions,
-  displayPickyMoodPlateforms,
-  handleDisplayPickyMoodEmotions,
-  backToShowOrMovies,
-  handleDisplayPickyMoodPlateforms,
-  backToEmotions,
-  onClickShowOrMovies,
-  ShowOrMovie,
-
+  displayPickyMoodShowOrSerie, // State
+  displayPickyMoodEmotions, // State
+  displayPickyMoodPlateforms, // State
+  handleDisplayPickyMoodEmotions, // Func on "next" button
+  backToShowOrMovies, // Func on "previous" button
+  handleDisplayPickyMoodPlateforms, // Func on "next" button
+  backToEmotions, // Func on "previous" button
+  onClickShowOrMovies, // Func 1st Step, onClick pickyMood-Show or movies
+  ShowOrMovie, // State
+  onClickEmotionsMovie, // Func 2nd Step, onClick pickyMoodEmotions, chose emotions
 }) {
 // ? Envoyer un objet au back construit via correspondance back
 // ! Exemple d'api requête : https://api.betaseries.com/search/shows?v=3.0&=&genres+=action%2Cromance%2Ccomedy&svods+=1%2C2%2C3&limit=35&key=e7da6c21d678&
@@ -75,7 +75,13 @@ export default function PickyMood({
     </li>
   ));
   const emotionsCardforMovie = emotionsMovies.map((emotion) => (
-    <li key={emotion.emotion} className="pickMoodContent-item">
+    <li
+      key={emotion.emotion}
+      className="pickMoodContent-item"
+      onClick={() => {
+        onClickEmotionsMovie(emotion.genre);
+      }}
+    >
       {(emotion.emotion)}
     </li>
   ));
@@ -102,11 +108,13 @@ export default function PickyMood({
           <ul className="pickMoodContent">
             {showOrMovieCard}
           </ul>
-          <div className="search">
-            <div className="search-button" onClick={handleDisplayPickyMoodEmotions}>
-              Suivant
+          { ShowOrMovie !== '' && (
+            <div className="search">
+              <div className="search-button" onClick={handleDisplayPickyMoodEmotions}>
+                Suivant
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
       { displayPickyMoodEmotions && (
@@ -175,4 +183,5 @@ PickyMood.propTypes = {
   backToEmotions: PropTypes.func.isRequired,
   onClickShowOrMovies: PropTypes.func.isRequired,
   ShowOrMovie: PropTypes.string.isRequired,
+  onClickEmotionsMovie: PropTypes.func.isRequired,
 };

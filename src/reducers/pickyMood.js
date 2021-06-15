@@ -5,6 +5,7 @@ import {
   EMOTIONS_TO_PLATEFORMS,
   BACK_TO_EMOTIONS,
   CLICK_ON_SHOW_OR_MOVIES,
+  CLICK_ON_EMOTIONS_MOVIE,
 } from 'src/actions/pickyMood';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   pickyMoodPlateforms: false,
   ShowOrMovie: '',
   urlAxios: {},
+  movieEmotions: [],
 };
 
 const pickyMoodReducer = (state = initialState, action = {}) => {
@@ -52,13 +54,55 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         newState = {
           ...state,
           ShowOrMovie: '',
-          urlAxios: { ...state.urlAxios, ShowOrMovie: action.apiNameShowOrMovie },
+          urlAxios: { ...state.urlAxios, ShowOrMovie: '' },
         };
       }
       return {
         ...newState,
       };
     }
+
+    case CLICK_ON_EMOTIONS_MOVIE: {
+      let newState = {
+        ...state,
+        movieEmotions: state.movieEmotions,
+        urlAxios: {
+          ...state.urlAxios,
+          movieEmotions: state.movieEmotions,
+        },
+      };
+      console.log('newState at beginning: ', newState);
+      console.log('action.emotionsMoviesGenre: ', action.emotionsMoviesGenre);
+      console.log('movieEmotions: ', state.movieEmotions);
+
+      if (state.movieEmotions.includes(action.emotionsMoviesGenre)) {
+        // On le supprime
+        state.movieEmotions.forEach((movieEmotion) => {
+          if (movieEmotion === action.emotionsMoviesGenre) {
+            const indexOfEmotion = state.movieEmotions.indexOf(movieEmotion);
+            console.log('indexOfEmotion: ', indexOfEmotion);
+            newState.movieEmotions.splice(indexOfEmotion, 1);
+          }
+        });
+      }
+      else {
+        // On l'ajoute
+        newState = {
+          ...state,
+          movieEmotions: [...state.movieEmotions, action.emotionsMoviesGenre],
+          urlAxios: {
+            ...state.urlAxios,
+            movieEmotions: [...state.movieEmotions, action.emotionsMoviesGenre],
+          },
+        };
+        console.log('newState after change: ', newState);
+      }
+
+      return {
+        ...newState,
+      };
+    }
+
     default:
       return state;
   }
