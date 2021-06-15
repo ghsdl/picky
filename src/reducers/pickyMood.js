@@ -12,6 +12,7 @@ const initialState = {
   pickyMoodEmotions: false,
   pickyMoodPlateforms: false,
   ShowOrMovie: '',
+  urlAxios: {},
 };
 
 const pickyMoodReducer = (state = initialState, action = {}) => {
@@ -45,11 +46,13 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
       let newState = {
         ...state,
         ShowOrMovie: action.apiNameShowOrMovie,
+        urlAxios: { ...state.urlAxios, ShowOrMovie: action.apiNameShowOrMovie },
       };
       if (state.ShowOrMovie === action.apiNameShowOrMovie) {
         newState = {
           ...state,
           ShowOrMovie: '',
+          urlAxios: { ...state.urlAxios, ShowOrMovie: action.apiNameShowOrMovie },
         };
       }
       return {

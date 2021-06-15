@@ -59,7 +59,10 @@
     letter-spacing: 0.3ch;
     font-size: 1.5vh;
     cursor: pointer;
-    
+    &-clicked{
+      font-style:italic;
+      font-weight: bold;
+    }
   }
 
   :hover {

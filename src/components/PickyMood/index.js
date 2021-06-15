@@ -12,6 +12,7 @@ export default function PickyMood({
   handleDisplayPickyMoodPlateforms,
   backToEmotions,
   onClickShowOrMovies,
+  ShowOrMovie,
 
 }) {
 // ? Envoyer un objet au back construit via correspondance back
@@ -61,10 +62,11 @@ export default function PickyMood({
     { name: 'Apple TV+', id: 255 },
   ];
 
+  const className = ShowOrMovie === 'movies' ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
   const showOrMovieCard = showOrMovies.map((showOrMovie) => (
     <li
-      key={showOrMovie.name}
-      className="pickMoodContent-item"
+      key={showOrMovie.apiName}
+      className={className}
       onClick={() => {
         onClickShowOrMovies(showOrMovie.apiName);
       }}
@@ -117,7 +119,13 @@ export default function PickyMood({
             />
           </div>
           <ul className="pickMoodContent">
-            {emotionsCardforMovie}
+            { ShowOrMovie === 'shows' && (
+              [emotionsCardforShows]
+            )}
+            { ShowOrMovie === 'movies' && (
+              [emotionsCardforMovie]
+            )}
+
           </ul>
           <div className="button">
             <div className="button-precedent" onClick={backToShowOrMovies}>
@@ -166,4 +174,5 @@ PickyMood.propTypes = {
   handleDisplayPickyMoodPlateforms: PropTypes.func.isRequired,
   backToEmotions: PropTypes.func.isRequired,
   onClickShowOrMovies: PropTypes.func.isRequired,
+  ShowOrMovie: PropTypes.string.isRequired,
 };
