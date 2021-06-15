@@ -9,6 +9,8 @@ import Wish from 'src/components/Wish';
 import Profile from 'src/components/Profile';
 import About from 'src/components/About';
 import Error from 'src/components/Error';
+import PickyMood from 'src/containers/PickyMood';
+
 // == Composant
 
 const App = () => (
@@ -19,6 +21,9 @@ const App = () => (
       </Route>
       <Route path="/wish">
         <Wish />
+      </Route>
+      <Route path="/mood">
+        <PickyMood />
       </Route>
       <Route path="/profil">
         <Profile />
