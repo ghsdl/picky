@@ -4,7 +4,7 @@ const platformDataMapper = require("../dataMappers/platformDataMapper");
 const memberController = {
   async get(req, res) {
     try {
-      const member = await memberDataMapper.get();
+      const member = await memberDataMapper.getAll();
       res.json({ member });
     } catch (error) {
       console.log(error);
@@ -46,7 +46,7 @@ const memberController = {
         return next();
       }
 
-      const platform = await platformDataMapper.getOne(memberId);
+      const platform = await memberDataMapper.getPlatformByMember(memberId);
       
       res.json({ platform });
     } catch (error) {

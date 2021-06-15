@@ -31,42 +31,38 @@ router.get('/verify', auth, authController.verify);
 // PLATFORM ROUTES
 router.route('/platform')
   .get(platformController.get)
-  .post(platformController.post);
-
+  .post(platformController.addPlatformToMember);
 router.route('/platform/:id(\\d+)')
   .get(platformController.getById)
   .patch(platformController.update)
   .delete(platformController.delete);
 
-// BOOKMARK ROUTES
+  // BOOKMARK ROUTES
 router.route('/bookmark')
   .get(bookmarkController.get)
   .post(bookmarkController.post);
-
 router.route('/bookmark/:id(\\d+)')
   .get(bookmarkController.getById)
   .patch(bookmarkController.update)
   .delete(bookmarkController.delete);
 
-// MEMBER ROUTES
+  // MEMBER ROUTES
 router.route('/member')
   .get(memberController.get);
-
 router.route('/member/:id(\\d+)')
   .get(memberController.getById)
   .patch(memberController.update)
   .delete(memberController.delete);
-
 router.route('/member/:id(\\d+)/bookmark')
   .get(memberController.getBookmarkByMember);
-
 router.route('/member/:id(\\d+)/platform')
     .get(memberController.getPlatformByMember);
 
-router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
-    .post(memberController.postPlatform);
+//router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
+    //.post(memberController.postPlatform);
 
 
+    
 // SEARCH ROUTES
 router.get('/search', searchController.get);
 //router.get('/search/:id', searchController.getById);

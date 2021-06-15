@@ -26,7 +26,7 @@ module.exports = {
     return result.rows[0];
   },
 
-  async add(data) {
+  async post(data) {
     const result = await pool.query(`SELECT * FROM add_platform($1)`, [data]);
     return result.rows;
   },
