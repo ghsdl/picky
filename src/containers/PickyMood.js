@@ -21,7 +21,8 @@ const mapStateToProps = (state) => ({
   displayPickyMoodPlateforms: state.pickyMood.pickyMoodPlateforms,
   displayPickyMoodResults: state.pickyMood.pickyMoodResults,
   ShowOrMovie: state.pickyMood.ShowOrMovie,
-  urlAxios: state.pickyMood.urlAxios,
+  movieEmotions: state.pickyMood.movieEmotions,
+  platforms: state.pickyMood.platforms,
 });
 
 const mapDispatchToProps = (dispatch) => ({
