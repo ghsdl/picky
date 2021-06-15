@@ -51,7 +51,7 @@ router.route('/member')
   .get(memberController.get);
 router.route('/member/:id(\\d+)')
   .get(memberController.getById)
-  .patch(memberController.update)
+  .patch(validate.body(schemas.memberUpdateSchema), memberController.update)
   .delete(memberController.delete);
 router.route('/member/:id(\\d+)/bookmark')
   .get(memberController.getBookmarkByMember);
