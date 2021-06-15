@@ -8,8 +8,8 @@ import './styles.css';
 // == Composant
 
 const App = () => (
-  <div className="app">
-  </div>
+	<div className="app">
+	</div>
 );
 
 // == Export
