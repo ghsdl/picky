@@ -3,6 +3,7 @@ import React from 'react';
 import './style.scss';
 import PropTypes from 'prop-types';
 
+import Header from 'src/containers/Header';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Results from 'src/components/PickyMood/Results';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -31,6 +32,7 @@ export default function PickyMood({
 }) {
   return (
     <>
+      <Header />
       <ShowOrSeries
         displayPickyMoodShowOrSerie={displayPickyMoodShowOrSerie}
         onClickShowOrMovies={onClickShowOrMovies}

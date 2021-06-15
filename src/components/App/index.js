@@ -19,16 +19,16 @@ const App = () => (
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/wish">
+      <Route exact path="/wish">
         <Wish />
       </Route>
-      <Route path="/mood">
+      <Route exact path="/mood">
         <PickyMood />
       </Route>
-      <Route path="/profil">
+      <Route exact path="/profil">
         <Profile />
       </Route>
-      <Route path="/about">
+      <Route exact path="/about">
         <About />
       </Route>
       <Route>
