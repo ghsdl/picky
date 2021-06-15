@@ -6,6 +6,9 @@ import './styles.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Home from 'src/containers/Home';
 import Wish from 'src/components/Wish';
+import Profile from 'src/components/Profile';
+import About from 'src/components/About';
+import Error from 'src/components/Error';
 // == Composant
 
 const App = () => (
@@ -16,6 +19,15 @@ const App = () => (
       </Route>
       <Route path="/wish">
         <Wish />
+      </Route>
+      <Route path="/profil">
+        <Profile />
+      </Route>
+      <Route path="/about">
+        <About />
+      </Route>
+      <Route>
+        <Error />
       </Route>
     </Switch>
   </div>

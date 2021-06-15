@@ -1,0 +1,17 @@
+.profile {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  align-items: center;
+  flex-direction: column;
+
+  &-title {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+
+  &-delete {
+    margin-top: 30px;
+  }
+}
