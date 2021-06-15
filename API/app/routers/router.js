@@ -1,5 +1,5 @@
 const express = require("express");
-const { insertMemberSchema } = require('../validations/schemas');
+const schemas = require('../validations/schemas');
 const validate = require('../validations/validate');
 const movieController = require('../controllers/movieController');
 const serieController = require('../controllers/serieController');
@@ -24,7 +24,7 @@ router.get("/series", serieController.allSeries);
 router.get("/series/random", serieController.randSeries);
 
 // AUTH ROUTES
-router.post('/signup', (validate.body(insertMemberSchema), authController.add));
+router.post('/signup', (validate.body(schemas.memberInsertSchema)), authController.add);
 router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
 

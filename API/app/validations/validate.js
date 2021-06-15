@@ -6,7 +6,7 @@ const validate = {
         await schema.validateAsync(req.query);
         next();
       } catch (error) {
-        return res.status(400).json({error: `1.Resource not found.`});
+        return res.status(400).json({error: `Access denied.`});
       }
     };
   },
@@ -17,7 +17,7 @@ const validate = {
         await schema.validateAsync(req.body);
         next();
       } catch (error) {
-        return res.status(400).json({error: `2.Resource not found.`});
+        return res.status(400).json({error: `Access denied.`});
       }
     };
   },
@@ -28,7 +28,7 @@ const validate = {
         await schema.validateAsync(req.params);
         next();
       } catch (error) {
-        return res.status(400).json({error: `3.Resource not found.`});
+        return res.status(400).json({error: `Access denied.`});
       }
     };
   },

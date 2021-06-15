@@ -15,6 +15,7 @@ const authController = {
         return res.status(401).json("User already registered with this email.");
       }
 
+      
       // CREATING CRYPTED PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
@@ -67,14 +68,13 @@ const authController = {
   // VERIFYING THE TOKEN
   async verify(req, res) {
     try {
-      res.status(true);
+      res.json(true);
     } catch (err) {
       console.error(error);
       res.status(500).send("A server error occured, please try again later.");
     }
   },
 
-  
 };
 
 module.exports = authController;
