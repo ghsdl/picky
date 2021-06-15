@@ -11,39 +11,33 @@ CREATE TABLE "member" (
     "pseudo" TEXT NOT NULL,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL, 
-    "profile_picture" URL,
+    "profile_picture" TEXT,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz
 );
 
-CREATE TABLE "watchlist" (
+CREATE TABLE "bookmark" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "betaseries_id" INT NOT NULL,
     "title" TEXT NOT NULL,
-    "provider" TEXT NOT NULL,
-    "poster" URL,
+    "platform" TEXT NOT NULL,
+    "poster" TEXT,
+    "member_id" INT NOT NULL REFERENCES "member"("id"),
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz
 );
 
-CREATE TABLE "provider" (
+CREATE TABLE "platform" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "logo" URL
+    "logo" TEXT
 );
 
-CREATE TABLE "member_has_watchlist" (
+CREATE TABLE "platform_has_member" (
+    "platform_id" INT NOT NULL REFERENCES "platform"("id"),
     "member_id" INT NOT NULL REFERENCES "member"("id"),
-    "watchlist_id" INT NOT NULL REFERENCES "watchlist"("id"),
     "created_at" timestamptz NOT NULL DEFAULT now(),
-    PRIMARY KEY ("member_id", "watchlist_id")
-);
-
-CREATE TABLE "member_has_provider" (
-    "member_id" INT NOT NULL REFERENCES "member"("id"),
-    "provider_id" INT NOT NULL REFERENCES "provider"("id"),
-    "created_at" timestamptz NOT NULL DEFAULT now(),
-    PRIMARY KEY ("member_id", "provider_id")
+    PRIMARY KEY ("member_id", "platform_id")
 );
 
 COMMIT;

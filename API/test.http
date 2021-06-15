@@ -1,0 +1,13 @@
+
+### Ajouter un film ou une serie dans la watchlist
+
+POST http://localhost:3000/wish/add
+Content-Type: application/json
+
+{
+    "betaseries_id": 3,
+    "title": "The Perfect Date",
+    "provider": "Netflix",
+    "poster": "https://pictures.betaseries.com/films/affiches/original/67883.jpg"
+    
+}

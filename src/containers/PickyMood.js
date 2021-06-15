@@ -9,12 +9,17 @@ import {
   backToEmotions,
   clickOnShowOrMovies,
   clickOnEmotionsMovie,
+  plateformsToResults,
+  newResearch,
+  clickOnEmotionsShows,
+  clickOnPlateform,
 } from 'src/actions/pickyMood';
 
 const mapStateToProps = (state) => ({
   displayPickyMoodShowOrSerie: state.pickyMood.pickyMoodShowOrSerie,
   displayPickyMoodEmotions: state.pickyMood.pickyMoodEmotions,
   displayPickyMoodPlateforms: state.pickyMood.pickyMoodPlateforms,
+  displayPickyMoodResults: state.pickyMood.pickyMoodResults,
   ShowOrMovie: state.pickyMood.ShowOrMovie,
   urlAxios: state.pickyMood.urlAxios,
 });
@@ -40,10 +45,27 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action);
   },
 
+  onClickEmotionsShows: (emotionsShowGenre) => {
+    const action = clickOnEmotionsShows(emotionsShowGenre);
+    dispatch(action);
+  },
+
   onClickEmotionsMovie: (emotionsMoviesGenre) => {
-    console.log(emotionsMoviesGenre);
     const action = clickOnEmotionsMovie(emotionsMoviesGenre);
     dispatch(action);
+  },
+
+  onClickPlateform: (plateformID) => {
+    const action = clickOnPlateform(plateformID);
+    dispatch(action);
+  },
+
+  handleDisplayPickyMoodResults: () => {
+    dispatch(plateformsToResults());
+  },
+
+  newResearch: () => {
+    dispatch(newResearch());
   },
 });
 

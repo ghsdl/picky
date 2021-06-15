@@ -1,0 +1,82 @@
+@use 'src/styles/vars';
+
+.wish {
+  & h1 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2em;
+  }
+
+  &__gradient {
+    width: 100vw;
+    margin: auto;
+    height: 250px;
+  
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    bottom: 0px;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%);;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  
+    width: 60vw;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
+    z-index: -1;
+  
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+
+    &__link {
+      width: 100px;
+      padding: 10px;
+
+      background-color:#FF8177;
+      color: white;
+      border-radius: 20px;
+    }
+
+    &__text {
+      margin: 0 10px;
+    }
+  }
+}
+
+@media (max-width: vars.$normal) {
+  .wish__footer {
+    width: 70vw;
+  }
+}
+
+@media (max-width: vars.$normal) {
+  .wish__footer {
+    width: 80vw;
+  }
+}
+
+@media (max-width: vars.$small) {
+  .wish__footer {
+    width: 90vw;
+  }
+}
+
+@media (max-width: vars.$smallest) {
+  .wish__footer {
+    width: 90vw;
+    align-items: center;
+    font-size: 1em;
+  }
+}
+
