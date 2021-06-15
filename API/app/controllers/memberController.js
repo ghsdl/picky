@@ -46,19 +46,31 @@ const memberController = {
         return next();
       }
 
-      const platform = await memberDataMapper.getPlatformByMember(memberId);
+      const platforms = await memberDataMapper.getPlatformByMember(memberId);
       
-      res.json({ platform });
+      res.json({ platforms });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
     }
   },
 
-  async postPlatform(req, res) {
+  async addPlatformToMember(req, res, next) {
+
     try {
-      const data = req.body;
-      const newPlatformToMember = await memberDataMapper.addPlatformToMember(data);
+      const platformId = parseInt(req.params.platform_id, 10);
+      const platform = await platformDataMapper.getOne(platformId);
+      if (!platform) {
+        return next();
+      }
+
+      const memberId = parseInt(req.params.member_id, 10);
+      const member = await memberDataMapper.getOne(memberId);
+      if (!member) {
+        return next();
+      }
+
+      const newPlatformToMember = await memberDataMapper.post(platformId, memberId);
       res.json({ newPlatformToMember });
     } catch (error) {
       console.log(error);

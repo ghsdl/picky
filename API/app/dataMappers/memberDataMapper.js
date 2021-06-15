@@ -41,7 +41,7 @@ module.exports = {
     },
 
     async post(platform_id, member_id) {
-        const result = await pool.query(`INSER INTO "platform_has_member" ("platform_id", "member_id") VALUES ($1,$2) RETURNING *` [platform_id, member_id]);
+        const result = await pool.query(`INSERT INTO "platform_has_member" ("platform_id", "member_id") VALUES ($1,$2) RETURNING *`, [platform_id, member_id]);
         return result.rows[0];
     },
 

@@ -30,8 +30,8 @@ router.get('/verify', auth, authController.verify);
 
 // PLATFORM ROUTES
 router.route('/platform')
-  .get(platformController.get)
-  .post(platformController.addPlatformToMember);
+  .get(platformController.get);
+
 router.route('/platform/:id(\\d+)')
   .get(platformController.getById)
   .patch(platformController.update)
@@ -58,11 +58,9 @@ router.route('/member/:id(\\d+)/bookmark')
 router.route('/member/:id(\\d+)/platform')
     .get(memberController.getPlatformByMember);
 
-//router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
-    //.post(memberController.postPlatform);
-
-
-    
+router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
+    .post(memberController.addPlatformToMember);
+ 
 // SEARCH ROUTES
 router.get('/search', searchController.get);
 //router.get('/search/:id', searchController.getById);

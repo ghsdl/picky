@@ -26,10 +26,10 @@ module.exports = {
     return result.rows[0];
   },
 
-  async post(data) {
+  /*async post(data) {
     const result = await pool.query(`SELECT * FROM add_platform($1)`, [data]);
     return result.rows;
-  },
+  },*/
 
   async patch(data) {
     const result = await pool.query(`SELECT * FROM update_platform($1)`, [

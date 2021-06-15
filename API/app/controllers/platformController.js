@@ -22,17 +22,6 @@ const platformController = {
     }
   },
 
-  async addPlatformToMember(req, res) {
-    try {
-      const data = req.body;
-      const newPlatform = await platformDataMapper.post(data);
-      res.json({ newPlatform });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
-    }
-  },
-
   async update(req, res, next) {
     try {
       const PlatformId = parseInt(req.params.id, 10);

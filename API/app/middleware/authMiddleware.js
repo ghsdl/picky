@@ -11,6 +11,7 @@ module.exports = async (req, res, next) => {
 
     const payload = jwt.verify(jwtToken, process.env.secret);
 
+    // à voir si je prends le member ou juste le payload
     req.member = payload.member;
 
     next();
