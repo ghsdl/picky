@@ -1,5 +1,6 @@
 const memberDataMapper = require("../dataMappers/memberDataMapper");
 const platformDataMapper = require("../dataMappers/platformDataMapper");
+const bcrypt = require("bcrypt");
 
 const memberController = {
   async get(req, res) {
@@ -103,6 +104,12 @@ const memberController = {
       if (data.password) {
         data.password = req.body.password;
       }
+
+      // RE-CREATING CRYPTED PASSWORD WITH BCRYPT
+      const saltRound = 10;
+      const salt = await bcrypt.genSalt(saltRound);
+      // GET BACK NEW PASSWORD FROM REQ.BODY AND HASH IT BEFORE SAVING IN DATABASE NEW PASSWORD
+      data.password = await bcrypt.hash(data.password, salt);
 
       if (data.profile_picture) {
         data.profile_picture = req.body.profile_picture;
