@@ -67,7 +67,7 @@ const authController = {
   // VERIFYING THE TOKEN
   async verify(req, res) {
     try {
-      res.status(true);
+      res.json(true);
     } catch (err) {
       console.error(error);
       res.status(500).send("A server error occured, please try again later.");
