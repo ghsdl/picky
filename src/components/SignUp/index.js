@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from 'src/containers/Header';
-import SignUpForm from 'src/components/SignUpForm';
+import SignUpForm from 'src/containers/SignUpForm';
 
 import './signup.scss';
 
