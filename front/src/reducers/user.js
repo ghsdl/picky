@@ -1,6 +1,6 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   CHANGE_INPUT_VALUE,
+  ACTION_SAVE_USER,
 } from 'src/actions/user';
 
 const initialState = {
@@ -17,6 +17,11 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         [action.key]: action.value,
       };
+
+    case ACTION_SAVE_USER: 
+      return {
+        ...state,
+      }
     default:
       return state;
   }
