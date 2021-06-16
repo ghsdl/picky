@@ -13,17 +13,21 @@ export default function ShowOrSeries({
     { name: 'Films', apiName: 'movies' },
   ];
 
-  const showOrMovieCard = showOrMovies.map((showOrMovie) => (
-    <li
-      key={showOrMovie.apiName}
-      className="pickMoodContent-item"
-      onClick={() => {
-        onClickShowOrMovies(showOrMovie.apiName);
-      }}
-    >
-      {showOrMovie.name}
-    </li>
-  ));
+  const showOrMovieCard = showOrMovies.map((showOrMovie) => {
+    const classNameClicked = ShowOrMovie === showOrMovie.apiName ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
+    return (
+      <li
+        key={showOrMovie.apiName}
+        className={classNameClicked}
+        onClick={() => {
+          onClickShowOrMovies(showOrMovie.apiName);
+          console.log('showOrMovie cliqué: ', showOrMovie);
+        }}
+      >
+        {showOrMovie.name}
+      </li>
+    );
+  });
 
   return (
     displayPickyMoodShowOrSerie && (

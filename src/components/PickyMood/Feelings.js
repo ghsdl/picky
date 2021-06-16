@@ -1,7 +1,6 @@
 import React from 'react';
 import Typical from 'react-typical';
 import PropTypes from 'prop-types';
-
 import './style.scss';
 
 export default function Feelings({
@@ -10,6 +9,7 @@ export default function Feelings({
   ShowOrMovie,
   backToShowOrMovies,
   handleDisplayPickyMoodPlateforms,
+  movieEmotions,
 
 }) {
   const emotionsMovies = [
@@ -24,7 +24,7 @@ export default function Feelings({
     { emotion: 'Intrigué', genre: 'mystere' },
     { emotion: 'Bouleversé', genre: 'drame' },
     { emotion: 'Attendri', genre: 'animation' },
-    { emotion: 'Angoissé', genre: 'Thriller' },
+    { emotion: 'Angoissé', genre: 'thriller' },
   ];
 
   const emotionsShows = [
@@ -42,30 +42,35 @@ export default function Feelings({
     { emotion: 'Rêveur', genre: 'anime' },
   ];
 
-  const emotionsCardforMovie = emotionsMovies.map((emotion) => (
-    <li
-      key={emotion.emotion}
-      className="pickMoodContent-item"
-      onClick={() => {
-        onClickEmotionsMovie(emotion.genre);
-      }}
-    >
-      {(emotion.emotion)}
-    </li>
-  ));
-
-  const emotionsCardforShows = emotionsShows.map((emotion) => (
-    <li
-      key={emotion.emotion}
-      className="pickMoodContent-item"
-      onClick={() => {
-        onClickEmotionsShows(emotion.genre);
-      }}
-    >
-      {(emotion.emotion)}
-
-    </li>
-  ));
+  const emotionsCardforMovie = emotionsShows.map((emotion) => {
+    const classNameCliked = movieEmotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
+    return (
+      <li
+        key={emotion.emotion}
+        className={classNameCliked}
+        onClick={() => {
+          onClickEmotionsShows(emotion.genre);
+        }}
+      >
+        {(emotion.emotion)}
+      </li>
+    );
+  });
+  const emotionsCardforShows = emotionsMovies.map((emotion) => {
+    const classNameCliked = movieEmotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
+    return (
+      <li
+        key={emotion.emotion}
+        className={classNameCliked}
+        onClick={() => {
+          onClickEmotionsMovie(emotion.genre);
+        }}
+      >
+        {(emotion.emotion)}
+      </li>
+    );
+  });
+  const className = movieEmotions.length <= 3 ? 'button-suivant' : 'button-suivant button-suivant--hidden';
   return (
     <>
       <div className="pickyMood">
@@ -88,7 +93,10 @@ export default function Feelings({
         <div className="button-precedent" onClick={backToShowOrMovies}>
           Précedent
         </div>
-        <div className="button-suivant" onClick={handleDisplayPickyMoodPlateforms}>
+        <div
+          className={className}
+          onClick={handleDisplayPickyMoodPlateforms}
+        >
           Suivant
         </div>
       </div>
@@ -102,4 +110,9 @@ Feelings.propTypes = {
   ShowOrMovie: PropTypes.string.isRequired,
   onClickEmotionsMovie: PropTypes.func.isRequired,
   onClickEmotionsShows: PropTypes.func.isRequired,
+  movieEmotions: PropTypes.array,
+};
+
+Feelings.defaultProps = {
+  movieEmotions: null,
 };

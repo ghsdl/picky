@@ -1,4 +1,4 @@
-import { CHANGE_PROFILE } from 'src/actions/profileuser.js';
+import { CHANGE_PROFILE } from 'src/actions/profileuser';
 
 export const inialState = {
   email: '',
@@ -15,7 +15,7 @@ const reducer = (state = inialState, action = {}) => {
         [action.email]: action.newValue,
         [action.username]: action.newValue,
         [action.bio]: action.newValue,
-        [action.password]: action.newValue,       
+        [action.password]: action.newValue,
       };
     default:
       return state;

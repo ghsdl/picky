@@ -85,6 +85,14 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
           if (movieEmotion === action.emotionsMoviesGenre) {
             const indexOfEmotion = state.movieEmotions.indexOf(movieEmotion);
             newState.movieEmotions.splice(indexOfEmotion, 1);
+            newState = {
+              ...state,
+              movieEmotions: [...state.movieEmotions],
+              urlAxios: {
+                ...state.urlAxios,
+                movieEmotions: [...state.movieEmotions],
+              },
+            };
           }
         });
       }
@@ -98,7 +106,6 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
             movieEmotions: [...state.movieEmotions, action.emotionsMoviesGenre],
           },
         };
-        console.log('newState after change: ', newState);
       }
 
       return {
@@ -121,6 +128,14 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
           if (movieEmotion === action.emotionsShowGenre) {
             const indexOfEmotion = state.movieEmotions.indexOf(movieEmotion);
             newState.movieEmotions.splice(indexOfEmotion, 1);
+            newState = {
+              ...state,
+              movieEmotions: [...state.movieEmotions],
+              urlAxios: {
+                ...state.urlAxios,
+                movieEmotions: [...state.movieEmotions],
+              },
+            };
           }
         });
       }
@@ -135,7 +150,6 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
           },
         };
       }
-
       return {
         ...newState,
       };
@@ -154,8 +168,16 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         // On le supprime
         state.platforms.forEach((platform) => {
           if (platform === action.plateformID) {
-            const indexOfEmotion = state.platforms.indexOf(platform);
-            newState.platforms.splice(indexOfEmotion, 1);
+            const indexOfPlatform = state.platforms.indexOf(platform);
+            newState.platforms.splice(indexOfPlatform, 1);
+            newState = {
+              ...state,
+              platforms: [...state.platforms],
+              urlAxios: {
+                ...state.urlAxios,
+                platforms: [...state.platforms],
+              },
+            };
           }
         });
       }
@@ -166,7 +188,7 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
           platforms: [...state.platforms, action.plateformID],
           urlAxios: {
             ...state.urlAxios,
-            movieEmotions: [...state.platforms, action.plateformID],
+            platforms: [...state.platforms, action.plateformID],
           },
         };
       }
@@ -187,10 +209,10 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         ...state,
         pickyMoodShowOrSerie: true,
         pickyMoodResults: false,
-        // TODO: Empty feelings and platforms too
         ShowOrMovie: '',
         urlAxios: {},
         movieEmotions: [],
+        platforms: [],
       };
     default:
       return state;

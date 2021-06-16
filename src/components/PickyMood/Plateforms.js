@@ -6,6 +6,7 @@ export default function Plateforms({
   backToEmotions,
   handleDisplayPickyMoodResults,
   onClickPlateform,
+  platforms,
 }) {
   const plateforms = [
     { name: 'Salto', id: 407 },
@@ -17,18 +18,21 @@ export default function Plateforms({
     { name: 'Apple TV+', id: 255 },
   ];
 
-  const plateformsItem = plateforms.map((plateform) => (
-    <li
-      key={plateform.name}
-      className="pickMoodContent-item"
-      onClick={() => {
-        onClickPlateform(plateform.id);
-      }}
-    >
-      {(plateform.name)}
-    </li>
-  ));
-
+  const plateformsItem = plateforms.map((plateform) => {
+    const classNameCliked = platforms.includes(plateform.id) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
+    return (
+      <li
+        key={plateform.name}
+        className={classNameCliked}
+        onClick={() => {
+          onClickPlateform(plateform.id);
+        }}
+      >
+        {(plateform.name)}
+      </li>
+    );
+  });
+  const className = platforms.length <= 0 ? 'button-suivant  button-suivant--hidden' : 'button-suivant';
   return (
     <>
       <div className="pickyMood">
@@ -44,7 +48,7 @@ export default function Plateforms({
         <div className="button-precedent" onClick={backToEmotions}>
           Précedent
         </div>
-        <div className="button-suivant" onClick={handleDisplayPickyMoodResults}>
+        <div className={className} onClick={handleDisplayPickyMoodResults}>
           Search
         </div>
       </div>
@@ -57,4 +61,9 @@ Plateforms.propTypes = {
   backToEmotions: PropTypes.func.isRequired,
   handleDisplayPickyMoodResults: PropTypes.func.isRequired,
   onClickPlateform: PropTypes.func.isRequired,
+  platforms: PropTypes.array,
+};
+
+Plateforms.defaultProps = {
+  platforms: PropTypes.null,
 };
