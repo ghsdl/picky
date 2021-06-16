@@ -9,6 +9,7 @@ const SignUpForm = ({
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log(pseudoInput, emailInput, passwordInput, confirmationPasswordInput);
   };
   return (
     <form
@@ -16,48 +17,56 @@ const SignUpForm = ({
       onSubmit={handleSubmit}
     >
       <div className="signUpForm__field">
-        <label htmlFor="pseudo">Pseudo</label>
-        <input
-          type="text"
-          name="pseudo"
-          placeholder="Pseudo"
-          required
-          value={pseudoInput}
-          onChange={onPseudoChange}
-        />
+        <label htmlFor="pseudo" className="signUpForm__field__label">Pseudo
+          <input
+            className="signUpForm__field__input"
+            type="text"
+            name="pseudo"
+            placeholder="Pseudo"
+            required
+            value={pseudoInput}
+            onChange={onPseudoChange}
+          />
+        </label>
       </div>
       <div className="signUpForm__field">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-          value={emailInput}
-          onChange={onEmailChange}
-        />
+        <label htmlFor="email" className="signUpForm__field__label">Email
+          <input
+            className="signUpForm__field__input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            value={emailInput}
+            onChange={onEmailChange}
+          />
+        </label>
       </div>
       <div className="signUpForm__field">
-        <label htmlFor="password">Mot de passe</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          required
-          value={passwordInput}
-          onChange={onPasswordChange}
-        />
+        <label htmlFor="password" className="signUpForm__field__label">Mot de passe
+          <input
+            className="signUpForm__field__input"
+            type="password"
+            name="password"
+            placeholder="Mot de passe"
+            required
+            value={passwordInput}
+            onChange={onPasswordChange}
+          />
+        </label>
       </div>
       <div className="signUpForm__field">
-        <label htmlFor="password-confirmation">Confirmez votre mot de passe</label>
-        <input
-          type="password"
-          name="password-confirmation"
-          placeholder="Confirmation de mot de passe"
-          required
-          value={confirmationPasswordInput}
-          onChange={onConfirmationPasswordChange}
-        />
+        <label htmlFor="password-confirmation" className="signUpForm__field__label">Confirmez votre mot de passe
+          <input
+            className="signUpForm__field__input"
+            type="password"
+            name="password-confirmation"
+            placeholder="Confirmation de mot de passe"
+            required
+            value={confirmationPasswordInput}
+            onChange={onConfirmationPasswordChange}
+          />
+        </label>
       </div>
       <button type="submit">S'inscrire</button>
     </form>
