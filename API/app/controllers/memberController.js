@@ -104,7 +104,7 @@ const memberController = {
       if (data.password) {
         data.password = req.body.password;
       }
-
+      
       // RE-CREATING CRYPTED PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);

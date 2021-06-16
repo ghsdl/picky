@@ -15,6 +15,7 @@ const authController = {
         return res.status(401).json("User already registered with this email.");
       }
 
+      
       // CREATING CRYPTED PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
@@ -73,7 +74,6 @@ const authController = {
     }
   },
 
-  
 };
 
 module.exports = authController;
