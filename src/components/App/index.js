@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // == Import npm
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -10,7 +11,7 @@ import Profile from 'src/components/Profile';
 import About from 'src/components/About';
 import Error from 'src/components/Error';
 import PickyMood from 'src/containers/PickyMood';
-
+import SignIn from 'src/containers/signIn';
 // == Composant
 
 const App = () => (
@@ -30,6 +31,9 @@ const App = () => (
       </Route>
       <Route exact path="/about">
         <About />
+      </Route>
+      <Route exact path="/signIn">
+        <SignIn />
       </Route>
       <Route>
         <Error />

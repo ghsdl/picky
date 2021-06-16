@@ -16,8 +16,9 @@ export default function Field({
   const inputId = `field-${name}`;
 
   return (
-    <div>
+    <div className="input input--chisato">
       <input
+        className="input__field input__field--chisato"
         value={value}
         onChange={handleChange}
         id={inputId}
@@ -27,7 +28,7 @@ export default function Field({
       />
       <label
         htmlFor={inputId}
-        className="field-label"
+        className="input__label input__label--chisato"
       >
         {placeholder}
       </label>
