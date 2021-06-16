@@ -13,7 +13,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors("*"));
 
-// SWAGGER DOCUMENTATION API 
+// SWAGGER DOCUMENTATION API
 let options = {
    swaggerDefinition: {
        info: {

@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleLogin: () => {
-    console.log('Jattend patiemment mon heure pour me connecter, MAIS LE BACK, QUE FAITES VOUS?')
+    console.log('Jattend patiemment mon heure pour me connecter, MAIS LE BACK, QUE FAITES VOUS?');
   },
 });
 

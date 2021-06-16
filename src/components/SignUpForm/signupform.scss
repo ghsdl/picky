@@ -1,0 +1,20 @@
+.signUpForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+
+  &__field {
+
+    &__label {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      text-align: right;
+    }
+
+    &__input {
+      margin-left: auto;
+    }
+  }
+}

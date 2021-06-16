@@ -209,7 +209,6 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         ...state,
         pickyMoodShowOrSerie: true,
         pickyMoodResults: false,
-        // TODO: Empty feelings and platforms too
         ShowOrMovie: '',
         urlAxios: {},
         movieEmotions: [],

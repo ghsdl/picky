@@ -20,5 +20,4 @@ module.exports = {
     return member.rows[0];
   },
 
-  
 };
