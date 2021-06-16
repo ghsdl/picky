@@ -3,7 +3,9 @@ import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import App from 'src/components/App';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import store from 'src/store';
 
 const rootReactElement = (

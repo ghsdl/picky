@@ -1,7 +1,9 @@
 import React from 'react';
-import { Modal, Backdrop, Fade, makeStyles} from '@material-ui/core';
+import {
+  Modal, Backdrop, Fade, makeStyles,
+} from '@material-ui/core';
 
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import ProfileField from 'src/components/ProfileField';
 
 import './profile.scss';
@@ -29,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Profile () {
+export default function Profile() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -40,35 +42,35 @@ export default function Profile () {
   };
   return (
     <>
-    <Header />
-    <div className="profile">  
-      <h2 className="profile-title"> Mon Profil</h2>
-      <ProfileField />
-      <div className="profile-modal">
-        <button className="profile-delete" onClick={handleOpen}> Supprimer mon compte </button>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              className={classes.modal}
-              open={open}
-              onClose={handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-                className: classes.backDrop,
-              }}
-            >
-              <Fade in={open}>
-                <div className={classes.paper}>
-                  <h2> Voulez vous vraiment supprimer votre compte ?</h2>
-                  <button> Oui </button>
-                  <button> Non </button>
-                </div>
-              </Fade>
-            </Modal>
-          </div>
-    </div>
+      <Header />
+      <div className="profile">
+        <h2 className="profile-title"> Mon Profil</h2>
+        <ProfileField />
+        <div className="profile-modal">
+          <button type="button" className="profile-delete" onClick={handleOpen}> Supprimer mon compte </button>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+              className: classes.backDrop,
+            }}
+          >
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <h2> Voulez vous vraiment supprimer votre compte ?</h2>
+                <button type="button"> Oui </button>
+                <button type="button"> Non </button>
+              </div>
+            </Fade>
+          </Modal>
+        </div>
+      </div>
     </>
   );
-};
+}
