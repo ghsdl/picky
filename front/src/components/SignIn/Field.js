@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { classie, Style } from 'src/selectors/user'
 import './style.scss';
 
 export default function Field({
@@ -14,24 +14,33 @@ export default function Field({
     onChange(evt.target.value, name);
   };
   const inputId = `field-${name}`;
-
+  classie(window);
+  //Style();
+const className= value ? "input input--chisato input--filled" : "input input--chisato"
   return (
-    <div className="input input--chisato">
-      <input
-        className="input__field input__field--chisato"
-        value={value}
-        onChange={handleChange}
-        id={inputId}
-        type={type}
-        placeholder={placeholder}
-        name={name}
-      />
-      <label
-        htmlFor={inputId}
-        className="input__label input__label--chisato"
-      >
-        {placeholder}
-      </label>
+    <div>
+     <span className={className}>
+					<input 
+            className="input__field input__field--chisato" 
+            value={value}
+            onChange={handleChange}
+            id={inputId}
+            type={type}
+            name={name}
+          />
+					<label 
+            className="input__label input__label--chisato" 
+            htmlFor={inputId}>
+              
+						<span 
+              className="input__label-content input__label-content--chisato "
+              data-content= {placeholder}>
+               
+                 {placeholder}
+                
+          </span>
+					</label>
+				</span>
     </div>
   );
 }
@@ -48,3 +57,6 @@ Field.defaultProps = {
   value: '',
   type: 'text',
 };
+
+
+       
