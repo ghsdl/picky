@@ -1,17 +1,14 @@
-const dataMapper = require('../dataMappers/movieDataMapper')
+const dataMapper = require("../dataMappers/movieDataMapper");
 
 const serieController = {
-  
-
   allSeries: async (req, res) => {
     try {
       const series = await dataMapper.getAllSeries();
       if (series) {
         res.json(series);
       } else {
-        res.status(404).json('Cannot find series');
+        res.status(404).json("Cannot find series");
       }
-
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -24,15 +21,13 @@ const serieController = {
       if (serie) {
         res.json(serie);
       } else {
-        res.status(404).json('Cannot find serie');
+        res.status(404).json("Cannot find serie");
       }
-
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
     }
   },
-
 };
 
 module.exports = serieController;

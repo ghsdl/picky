@@ -7,21 +7,19 @@ const authController = require('../controllers/authController');
 const platformController = require('../controllers/platformController');
 const bookmarkController = require('../controllers/bookmarkController');
 const memberController = require('../controllers/memberController');
-const searchController = require('../controllers/searchController');
 const auth = require("../middleware/authMiddleware");
 
-//const { route } = require('./auth');
 const router = express.Router();
 
-//Route pour afficher tous les films
-router.get("/movies", movieController.allMovies);
-// Route pour afficher 5 films au hasard
-router.get("/movies/random", movieController.randMovies);
+// Affiche un résultat de 50 films sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
+router.get('/movies', movieController.allMovies);
+// Methode qui affiche 5 films au hasard
+router.get('/movies/random', movieController.randMovies);
 
-// Route pour afficher toutes les series
-router.get("/series", serieController.allSeries);
-// Route pour afficher 5 series au hasard
-router.get("/series/random", serieController.randSeries);
+// Affiche un résultat de 50 series sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
+router.get('/series', serieController.allSeries);
+// Methode qui affiche 5 series au hasard
+router.get('/series/random', serieController.randSeries);
 
 // AUTH ROUTES
 router.post('/signup', (validate.body(schemas.memberInsertSchema)), authController.add);
@@ -60,9 +58,5 @@ router.route('/member/:id(\\d+)/platform')
 
 router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
     .post(memberController.addPlatformToMember);
- 
-// SEARCH ROUTES
-router.get('/search', searchController.get);
-//router.get('/search/:id', searchController.getById);
 
 module.exports = router;

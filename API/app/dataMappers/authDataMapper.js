@@ -14,7 +14,7 @@ module.exports = {
   async getMemberByEmail(email) {
     // CHECKING IF USER DOES EXIST
     const member = await pool.query(`SELECT * FROM member WHERE email = $1`, [
-      email,
+      email
     ]);
 
     return member.rows[0];

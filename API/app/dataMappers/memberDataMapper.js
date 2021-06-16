@@ -46,12 +46,8 @@ module.exports = {
     },
 
     async patch(data, memberId) {
-
         const result = await pool.query(`SELECT * FROM update_member($1)`, [data]);
         return result.rows[0];
-
-        /*const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4 WHERE id =$5 RETURNING *`, [data.pseudo, data.email, data.password, data.profile_picture, memberId]);
-        return result.rows[0];*/
     },
 
     async delete(id) {
