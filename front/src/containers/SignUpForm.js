@@ -2,28 +2,25 @@ import { connect } from 'react-redux';
 import SignUpForm from 'src/components/SignUpForm';
 
 import {
-  changePseudoInput, changeEmailInput, changePasswordInput, changeConfirmationPasswordInput,
-} from 'src/actions/signup';
+  changeInputValue,
+} from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
-  pseudoInput: state.signup.pseudoInput,
-  emailInput: state.signup.emailInput,
-  passwordInput: state.signup.passwordInput,
-  confirmationPasswordInput: state.signup.confirmationPasswordInput,
+  email: state.user.email,
+  password: state.user.password,
+  confirmationPassword: state.user.confirmationPassword,
+  isConnected: state.user.isConnected,
+  pseudo: state.user.pseudo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onPseudoChange: (event) => {
-    dispatch(changePseudoInput(event.target.value));
+  changeField: (value, key) => {
+    const action = changeInputValue(value, key);
+    dispatch(action);
   },
-  onEmailChange: (event) => {
-    dispatch(changeEmailInput(event.target.value));
-  },
-  onPasswordChange: (event) => {
-    dispatch(changePasswordInput(event.target.value));
-  },
-  onConfirmationPasswordChange: (event) => {
-    dispatch(changeConfirmationPasswordInput(event.target.value));
+
+  handleSignUp: () => {
+    console.log('Jattend patiemment mon heure pour minscrire, MAIS LE BACK, QUE FAITES VOUS?');
   },
 });
 

@@ -7,6 +7,7 @@ const initialState = {
   isConnected: true,
   email: '',
   password: '',
+  confirmationPassword: '',
   pseudo: '',
 };
 
