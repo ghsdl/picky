@@ -1,13 +1,12 @@
 const { Pool } = require('pg');
 
-module.exports = new Pool();
-
-
 // pour se connecter sur Heroku
-/*const { Pool } = require('pg');
 
 const pool = new Pool({
+    connectionString:process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
-});*/
+});
+
+module.exports = pool;
