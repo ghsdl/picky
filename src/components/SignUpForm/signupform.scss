@@ -1,0 +1,13 @@
+.signUpForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+
+  &__field {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    margin: .5rem;
+  }
+}
