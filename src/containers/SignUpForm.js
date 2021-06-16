@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import SignUpForm from 'src/components/SignUpForm';
 
 import {
-  changePseudoInput, changeEmailInput, changePasswordInput, changeConfirmationPasswordInput
+  changePseudoInput, changeEmailInput, changePasswordInput, changeConfirmationPasswordInput,
 } from 'src/actions/signup';
 
 const mapStateToProps = (state) => ({
