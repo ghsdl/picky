@@ -3,12 +3,17 @@ import React from 'react';
 // == Import
 import './styles.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Wish from 'src/components/Wish';
+import Header from 'src/containers/Header';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import SignIn from 'src/containers/signIn';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PickyMood from 'src/containers/PickyMood';
+
 // == Composant
 
 const App = () => (
   <div className="app">
-    <Wish />
+    <SignIn />
   </div>
 );
 
