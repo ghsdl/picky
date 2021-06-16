@@ -21,7 +21,6 @@ export default function ShowOrSeries({
         className={classNameClicked}
         onClick={() => {
           onClickShowOrMovies(showOrMovie.apiName);
-          console.log('showOrMovie cliqué: ', showOrMovie);
         }}
       >
         {showOrMovie.name}
