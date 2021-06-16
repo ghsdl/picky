@@ -27,10 +27,10 @@ const SignUpForm = ({
         />
       </div>
       <div className="signUpForm__field">
-        <label htmlFor="mail">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
-          name="mail"
+          name="email"
           placeholder="Email"
           required
           value={emailInput}

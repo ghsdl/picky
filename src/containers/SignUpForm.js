@@ -1,11 +1,15 @@
 import { connect } from 'react-redux';
 import SignUpForm from 'src/components/SignUpForm';
 
+import {
+  changePseudoInput, changeEmailInput, changePasswordInput, changeConfirmationPasswordInput
+} from 'src/actions/signup';
+
 const mapStateToProps = (state) => ({
-  pseudoInput: state.signup.pseudo,
-  emailInput: state.signup.email,
-  passwordInput: state.signup.password,
-  passwordConfirmation: state.signup.passwordConfirmation,
+  pseudoInput: state.signup.pseudoInput,
+  emailInput: state.signup.emailInput,
+  passwordInput: state.signup.passwordInput,
+  confirmationPasswordInput: state.signup.confirmationPasswordInput,
 });
 
 const mapDispatchToProps = (dispatch) => ({
