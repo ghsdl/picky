@@ -1,87 +1,68 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Field from './Field';
+
 import './signupform.scss';
 
 const SignUpForm = ({
-  pseudoInput, emailInput, passwordInput, confirmationPasswordInput,
-  onPseudoChange, onEmailChange, onPasswordChange, onConfirmationPasswordChange,
+  pseudo,
+  email,
+  password,
+  confirmationPassword,
+  changeField,
+  handleSignUp,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(pseudoInput, emailInput, passwordInput, confirmationPasswordInput);
+    handleSignUp();
   };
   return (
     <form
+      autoComplete="off"
       className="signUpForm"
       onSubmit={handleSubmit}
     >
-      <div className="signUpForm__field">
-        <label htmlFor="pseudo" className="signUpForm__field__label">Pseudo
-          <input
-            className="signUpForm__field__input"
-            type="text"
-            name="pseudo"
-            placeholder="Pseudo"
-            required
-            value={pseudoInput}
-            onChange={onPseudoChange}
-          />
-        </label>
-      </div>
-      <div className="signUpForm__field">
-        <label htmlFor="email" className="signUpForm__field__label">Email
-          <input
-            className="signUpForm__field__input"
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            value={emailInput}
-            onChange={onEmailChange}
-          />
-        </label>
-      </div>
-      <div className="signUpForm__field">
-        <label htmlFor="password" className="signUpForm__field__label">Mot de passe
-          <input
-            className="signUpForm__field__input"
-            type="password"
-            name="password"
-            placeholder="Mot de passe"
-            required
-            value={passwordInput}
-            onChange={onPasswordChange}
-          />
-        </label>
-      </div>
-      <div className="signUpForm__field">
-        <label htmlFor="password-confirmation" className="signUpForm__field__label">Confirmez votre mot de passe
-          <input
-            className="signUpForm__field__input"
-            type="password"
-            name="password-confirmation"
-            placeholder="Confirmation de mot de passe"
-            required
-            value={confirmationPasswordInput}
-            onChange={onConfirmationPasswordChange}
-          />
-        </label>
-      </div>
+      <Field
+        type="text"
+        name="pseudo"
+        placeholder="Pseudo"
+        onChange={changeField}
+        value={pseudo}
+      />
+      <Field
+        type="email"
+        name="email"
+        placeholder="Adresse Email"
+        onChange={changeField}
+        value={email}
+      />
+      <Field
+        type="password"
+        name="password"
+        placeholder="Mot de passe"
+        onChange={changeField}
+        value={password}
+      />
+      <Field
+        type="password"
+        name="confirmationPassword"
+        placeholder="Confirmation du mot de passe"
+        onChange={changeField}
+        value={confirmationPassword}
+      />
       <button type="submit">S'inscrire</button>
     </form>
   );
 };
 
 SignUpForm.propTypes = {
-  pseudoInput: PropTypes.string.isRequired,
-  emailInput: PropTypes.string.isRequired,
-  passwordInput: PropTypes.string.isRequired,
-  confirmationPasswordInput: PropTypes.string.isRequired,
-  onPseudoChange: PropTypes.func.isRequired,
-  onEmailChange: PropTypes.func.isRequired,
-  onPasswordChange: PropTypes.func.isRequired,
-  onConfirmationPasswordChange: PropTypes.func.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  confirmationPassword: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired,
 };
 
 export default SignUpForm;
