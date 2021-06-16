@@ -28,16 +28,23 @@ export default function SignIn({
           <form autoComplete="off" onSubmit={handleSubmit}>
             <Field
               name="email"
-              placeHolder="Adresse Email"
+              placeholder="Adresse Email"
               onChange={changeField}
               value={email}
             />
             <Field
+              type="password"
               name="password"
-              placeHolder="password"
+              placeholder="password"
               onChange={changeField}
               value={password}
             />
+            <button
+              type="submit"
+              className="login"
+            >
+              Se Connecter
+            </button>
           </form>
         </div>
       </div>
