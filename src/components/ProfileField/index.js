@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 import './profilefield.scss'
 
@@ -8,7 +8,6 @@ const ProfileField = ({
   username,
   bio,
   password,
-  updateProfile,
 }) => {
   return (
     <div className="field"> 
@@ -55,17 +54,11 @@ const ProfileField = ({
           maxLength="8"
         />
       </div>
-      <button className="field-update" onClick={updateProfile}> Update Profile </button>
+      <button className="field-update"> Update Profile </button>
     </div>
   );
 };
 
-ProfileField.propTypes = {
-  value: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-}
 
 
 export default ProfileField;
