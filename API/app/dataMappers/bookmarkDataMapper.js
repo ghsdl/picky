@@ -19,9 +19,6 @@ module.exports = {
 
     async patch(data, BookmarkId) {
 
-        /*const result = await pool.query(`SELECT * FROM update_bookmark($1)`, [data]);
-        return result.rows[0];*/
-
         const result = await pool.query(`UPDATE "bookmark" SET betaseries_id = $1, title = $2, platform = $3, poster = $4, member_id = $5 WHERE id =$6 RETURNING *`, [data.betaseries_id, data.title, data.platform, data.poster, data.member_id, BookmarkId]);
         return result.rows[0];
     },

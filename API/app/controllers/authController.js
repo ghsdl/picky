@@ -38,7 +38,6 @@ const authController = {
     try {
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
-
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const member = await authDataMapper.getMemberByEmail(email);
       console.log("Info member :" , member)

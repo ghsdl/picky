@@ -34,24 +34,6 @@ module.exports = {
     }
   },
 
-  async genreSeries() {
-    try {
-      const apiUrl = 'https://api.betaseries.com/shows/genres?key=e7da6c21d678';
-      // Methode qui affiche 5 series au hasard
-      const response = await fetch(apiUrl)
-      let body = await response.json();
-      if (!Array.isArray(body)) {
-        body = [body];
-      }
-      console.log(body);
-      return body;
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  
-
 };
 
 

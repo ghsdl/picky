@@ -7,7 +7,6 @@ const authController = require('../controllers/authController');
 const platformController = require('../controllers/platformController');
 const bookmarkController = require('../controllers/bookmarkController');
 const memberController = require('../controllers/memberController');
-const searchController = require('../controllers/searchController');
 const auth = require("../middleware/authMiddleware");
 
 //const { route } = require('./auth');
@@ -61,8 +60,6 @@ router.route('/member/:id(\\d+)/platform')
 router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
     .post(memberController.addPlatformToMember);
  
-// SEARCH ROUTES
-router.get('/search', searchController.get);
-//router.get('/search/:id', searchController.getById);
+
 
 module.exports = router;
