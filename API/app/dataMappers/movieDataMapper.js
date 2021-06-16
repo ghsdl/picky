@@ -21,17 +21,35 @@ module.exports = {
 
   async randomMovies() {
     try {
+<<<<<<< HEAD
       const apiUrl =
         "https://api.betaseries.com/movies/random?nb=5&=&key=e7da6c21d678&";
       // Methode qui affiche 5 series au hasard
       const response = await fetch(apiUrl);
+=======
+      const apiUrl = 'https://api.betaseries.com/movies/random?nb=5&=&key=e7da6c21d678&';
+      // Methode qui affiche 5 series au hasard
+      const response = await fetch(apiUrl)
+>>>>>>> 428a53b57fc62a0da58d12c9382688e874fa8c0f
       let body = await response.json();
       if (!Array.isArray(body)) {
         body = [body];
       }
+<<<<<<< HEAD
+=======
+      console.log(body);
+>>>>>>> 428a53b57fc62a0da58d12c9382688e874fa8c0f
       return body;
     } catch (error) {
       console.error(error);
     }
   },
+<<<<<<< HEAD
 };
+=======
+
+ 
+};
+
+
+>>>>>>> 428a53b57fc62a0da58d12c9382688e874fa8c0f

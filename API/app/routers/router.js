@@ -58,5 +58,10 @@ router.route('/member/:id(\\d+)/platform')
 
 router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
     .post(memberController.addPlatformToMember);
+<<<<<<< HEAD
+=======
+ 
+
+>>>>>>> 428a53b57fc62a0da58d12c9382688e874fa8c0f
 
 module.exports = router;

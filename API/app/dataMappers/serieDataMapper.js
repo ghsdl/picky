@@ -32,4 +32,11 @@ module.exports = {
       console.error(error);
     }
   },
+<<<<<<< HEAD
 };
+=======
+
+};
+
+
+>>>>>>> 428a53b57fc62a0da58d12c9382688e874fa8c0f
