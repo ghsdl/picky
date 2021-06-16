@@ -38,7 +38,8 @@ router.route('/platform/:id(\\d+)')
   // BOOKMARK ROUTES
 router.route('/bookmark')
   .get(bookmarkController.get)
-  .post(bookmarkController.post);
+  .post(validate.body(schemas.bookmarkInsertSchema), bookmarkController.post);
+
 router.route('/bookmark/:id(\\d+)')
   .get(bookmarkController.getById)
   .patch(bookmarkController.update)
@@ -54,14 +55,9 @@ router.route('/member/:id(\\d+)')
 router.route('/member/:id(\\d+)/bookmark')
   .get(memberController.getBookmarkByMember);
 router.route('/member/:id(\\d+)/platform')
-    .get(memberController.getPlatformByMember);
+  .get(memberController.getPlatformByMember);
 
 router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
-    .post(memberController.addPlatformToMember);
-<<<<<<< HEAD
-=======
+  .post(validate.body(schemas.platformInsertSchema), memberController.addPlatformToMember);
  
-
->>>>>>> 428a53b57fc62a0da58d12c9382688e874fa8c0f
-
 module.exports = router;
