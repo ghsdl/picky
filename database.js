@@ -10,9 +10,4 @@ const pool = new Pool({
     }
 });
 
-<<<<<<< HEAD
 module.exports = pool;
-=======
-module.exports = pool();
-*/
->>>>>>> 0e235295c1f6c4053bb31f5dfa4b5077995209ca
