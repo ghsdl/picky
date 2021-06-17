@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
 module.exports = {
   async getAllMovies() {
@@ -33,6 +33,17 @@ module.exports = {
       console.error(error);
     }
   },
+
+  async searchAllMovies() {
+    
+    const apiUrl = 'https://api.betaseries.com/search/movies?v=3.0&key=e7da6c21d678';
+    const response = await fetch(apiUrl);
+    let body = await response.json();
+    if (!Array.isArray(body)) {
+      body = [body];
+    }
+    return body;
+}
 };
 
 

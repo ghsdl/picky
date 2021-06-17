@@ -1,4 +1,4 @@
-const bookmarkDataMapper = require("../dataMappers/bookmarkDataMapper");
+const bookmarkDataMapper = require('../dataMappers/bookmarkDataMapper');
 
 const bookmarkController = {
   async get(req, res) {

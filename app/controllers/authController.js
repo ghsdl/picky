@@ -1,6 +1,6 @@
-const authDataMapper = require("../dataMappers/authDataMapper");
-const bcrypt = require("bcrypt");
-const jwtGenerator = require("../utils/jwtGenerator");
+const authDataMapper = require('../dataMappers/authDataMapper');
+const bcrypt = require('bcrypt');
+const jwtGenerator = require('../utils/jwtGenerator');
 
 const authController = {
   async add(req, res) {
@@ -27,7 +27,7 @@ const authController = {
         password: bcryptPassword,
       });
 
-      res.json({ newMember });
+      res.json( newMember );
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());

@@ -1,13 +1,14 @@
-const express = require("express");
+const express = require('express');
 const schemas = require('../validations/schemas');
 const validate = require('../validations/validate');
 const movieController = require('../controllers/movieController');
-const serieController = require('../controllers/serieController');
+const showController = require('../controllers/showController');
 const authController = require('../controllers/authController');
 const platformController = require('../controllers/platformController');
 const bookmarkController = require('../controllers/bookmarkController');
 const memberController = require('../controllers/memberController');
-const auth = require("../middleware/authMiddleware");
+const searchController = require('../controllers/searchController');
+const auth = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
@@ -21,14 +22,24 @@ router.get('/movies', movieController.allMovies);
 router.get('/movies/random', movieController.randMovies);
 
 // Affiche un résultat de 50 series sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
-router.get('/series', serieController.allSeries);
+router.get('/shows', showController.allshows);
 // Methode qui affiche 5 series au hasard
-router.get('/series/random', serieController.randSeries);
+router.get('/shows/random', showController.randomShows);
 
 // AUTH ROUTES
 router.post('/signup', (validate.body(schemas.memberInsertSchema)), authController.add);
 router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
+
+// SEARCH ROUTES
+router.route('/search/shows')
+  .get(showController.searchShows);
+
+router.route('/search/movies')
+  .get(movieController.searchMovies);
+
+router.route('/search/:query')
+  .get(searchController.searchAll);
 
 // PLATFORM ROUTES
 router.route('/platform')

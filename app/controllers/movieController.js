@@ -28,6 +28,17 @@ const movieController = {
       res.status(500).json(error.toString());
     }
   },
+
+  async searchMovies(_, res) {
+
+    try {
+        const shows = await movieDataMapper.searchAllMovies();
+        res.json(shows);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error.toString());
+    }
+  },
 };
 
 module.exports = movieController;

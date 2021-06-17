@@ -1,4 +1,4 @@
-const platformDataMapper = require("../dataMappers/platformDataMapper");
+const platformDataMapper = require('../dataMappers/platformDataMapper');
 
 const platformController = {
   async get(req, res) {
