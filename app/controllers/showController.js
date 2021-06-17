@@ -1,13 +1,14 @@
-const showDataMapper = require('../dataMappers/showDataMapper');
+const showDataMapper = require("../dataMappers/showDataMapper");
+const dataMapper = require("../dataMappers/showDataMapper");
 
-const showController = {
-  allshows: async (_, res) => {
+const serieController = {
+  getShows: async (req, res) => {
     try {
-      const shows = await showDataMapper.getAllShows();
+      const shows = await dataMapper.getAllShows();
       if (shows) {
         res.json(shows);
       } else {
-        res.status(404).json("Cannot find shows");
+        res.status(404).json("Cannot find series");
       }
     } catch (error) {
       console.log(error);
@@ -15,13 +16,13 @@ const showController = {
     }
   },
 
-  randomShows: async (_, res) => {
+  randomShows: async (req, res) => {
     try {
-      const shows = await showDataMapper.randomShows();
-      if (shows) {
-        res.json(shows);
+      const serie = await dataMapper.randomShows();
+      if (serie) {
+        res.json(serie);
       } else {
-        res.status(404).json("Cannot find show");
+        res.status(404).json("Cannot find serie");
       }
     } catch (error) {
       console.log(error);
@@ -29,16 +30,21 @@ const showController = {
     }
   },
 
-  async searchShows(_, res) {
-
+  searchShows: async (req, res) =>{
     try {
-        const shows = await showDataMapper.searchAllShows();
-        res.json(shows);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error.toString());
-    }
-  },
+      const text = req.params;
+      console.log("premier log de text", text);
+      const search = await showDataMapper.searchShows(text);
+      res.json(search);
+      /*const search = await searchDataMapper.searchAll();
+      res.json(search);*/
+  } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+  }
+  }
+
+
 };
 
-module.exports = showController;
+module.exports = serieController;

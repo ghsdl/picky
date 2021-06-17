@@ -29,16 +29,19 @@ const movieController = {
     }
   },
 
-  async searchMovies(_, res) {
+  async searchMovies(req, res) {
 
     try {
-        const shows = await movieDataMapper.searchAllMovies();
-        res.json(shows);
+      const text = req.params;
+      console.log("premier log de text", text);
+        const movies = await movieDataMapper.searchMovies(text);
+        res.json(movies);
     } catch (error) {
         console.log(error);
         res.status(500).json(error.toString());
     }
-  },
+  }
+  
 };
 
 module.exports = movieController;
