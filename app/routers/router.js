@@ -38,6 +38,9 @@ router.route('/search/shows')
 router.route('/search/movies')
   .get(movieController.searchMovies);
 
+router.route('/search/:query')
+  .get(searchController.searchAll);
+
 // PLATFORM ROUTES
 router.route('/platform')
   .get(platformController.get);
