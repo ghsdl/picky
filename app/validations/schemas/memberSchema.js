@@ -14,4 +14,4 @@ const updateSchema = Joi.object({
     confirmationPassword: Joi.ref('password')
 }).required();
 
-module.exports = { updateSchema };
+module.exports = { insertSchema, updateSchema };
