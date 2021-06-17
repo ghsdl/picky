@@ -34,11 +34,7 @@ module.exports = {
       console.error(error);
     }
   },
-<<<<<<< HEAD
-};
-=======
 
-<<<<<<< HEAD:app/dataMappers/showDataMapper.js
   async searchAllShows() {
     
       const apiUrl = 'https://api.betaseries.com/search/shows?v=3.0&key=e7da6c21d678';
@@ -51,7 +47,3 @@ module.exports = {
   }
 
 };
-=======
-};
->>>>>>> 0e235295c1f6c4053bb31f5dfa4b5077995209ca
->>>>>>> f59f3e5588af7c1c530203e97d53ac89ba384a42:app/dataMappers/serieDataMapper.js
