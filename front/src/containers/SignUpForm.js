@@ -1,8 +1,9 @@
-import { connect } from 'react-redux';
+import { connect, } from 'react-redux';
 import SignUpForm from 'src/components/SignUpForm';
 
 import {
   changeInputValue,
+  signUp,
 } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
@@ -19,8 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action);
   },
 
-  handleSignUp: () => {
-    console.log('Jattend patiemment mon heure pour minscrire, MAIS LE BACK, QUE FAITES VOUS?');
+  handleSignUp: (value, key) => {
+    const action = signUp(value, key);
+    dispatch(action)
   },
 });
 

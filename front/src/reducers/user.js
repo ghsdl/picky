@@ -1,14 +1,16 @@
 import {
   CHANGE_INPUT_VALUE,
   ACTION_SAVE_USER,
+  LOGOUT,
 } from 'src/actions/user';
 
 const initialState = {
-  isConnected: true,
+  isConnected: false,
   email: '',
   password: '',
   confirmationPassword: '',
   pseudo: '',
+  token:'',
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -22,6 +24,22 @@ const userReducer = (state = initialState, action = {}) => {
     case ACTION_SAVE_USER: 
       return {
         ...state,
+        isConnected: true,
+        email: '',
+        password:'',
+        pseudo: action.pseudo,
+        token: action.token,
+      };
+
+    case LOGOUT: 
+      return {
+        ...state, 
+        isConnected: false,
+        email: '',
+        password: '',
+        confirmationPassword: '',
+        pseudo: '',
+        token:'',
       }
     default:
       return state;
