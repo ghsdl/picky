@@ -33,7 +33,18 @@
   }
   
 }
+.formUser{
+	
+	display: flex;
+	justify-content: center;
+	
 
+	&-input{
+		width: 44vh;
+		margin-top: 2vh;
+	}
+
+}
 .input {
 	position: relative;
 	z-index: 1;

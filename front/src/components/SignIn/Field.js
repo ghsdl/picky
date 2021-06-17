@@ -19,28 +19,26 @@ export default function Field({
 const className= value ? "input input--chisato input--filled" : "input input--chisato"
   return (
     <div>
-     <span className={className}>
-					<input 
-            className="input__field input__field--chisato" 
-            value={value}
-            onChange={handleChange}
-            id={inputId}
-            type={type}
-            name={name}
-          />
-					<label 
-            className="input__label input__label--chisato" 
-            htmlFor={inputId}>
-              
-						<span 
-              className="input__label-content input__label-content--chisato "
-              data-content= {placeholder}>
-               
-                 {placeholder}
-                
+      <span className={className}>
+				<input 
+          className="input__field input__field--chisato" 
+          value={value}
+          onChange={handleChange}
+          id={inputId}
+          type={type}
+          name={name}
+        />
+				<label 
+          className="input__label input__label--chisato" 
+          htmlFor={inputId}>  
+					<span 
+            className="input__label-content input__label-content--chisato "
+            data-content= {placeholder}
+          >
+            {placeholder}
           </span>
-					</label>
-				</span>
+				</label>
+		  </span>
     </div>
   );
 }
