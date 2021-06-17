@@ -2,7 +2,7 @@ const searchDataMapper = require('../dataMappers/searchDataMapper.js');
 
 const searchController = {
 
-    searchAll : async (_, res) => {
+    searchAll : async (req, res) => {
 
         try {
             const query = req.params;
