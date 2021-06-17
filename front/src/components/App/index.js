@@ -11,7 +11,10 @@ import Profile from 'src/components/Profile';
 import About from 'src/components/About';
 import Error from 'src/components/Error';
 import PickyMood from 'src/containers/PickyMood';
-import SignIn from 'src/containers/signIn';
+import SignIn from 'src/containers/SignIn';
+import SignUp from 'src/components/SignUp';
+
+
 // == Composant
 
 const App = () => (
@@ -25,6 +28,12 @@ const App = () => (
       </Route>
       <Route exact path="/mood">
         <PickyMood />
+      </Route>
+      <Route exact path="/signIn">
+        <SignIn />
+      </Route>
+      <Route exact path="/signUp">
+        <SignUp />
       </Route>
       <Route exact path="/profil">
         <Profile />
