@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 // Import of components
 import Header from 'src/containers/Header';
 import SearchBar from 'src/containers/SearchBar';
-import Cards from 'src/components/Cards';
+import Cards from 'src/containers/Cards';
 
 // Import scss
 import './home.scss';
