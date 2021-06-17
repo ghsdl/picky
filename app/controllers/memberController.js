@@ -1,6 +1,6 @@
-const memberDataMapper = require("../dataMappers/memberDataMapper");
-const platformDataMapper = require("../dataMappers/platformDataMapper");
-const bcrypt = require("bcrypt");
+const memberDataMapper = require('../dataMappers/memberDataMapper');
+const platformDataMapper = require('../dataMappers/platformDataMapper');
+const bcrypt = require('bcrypt');
 
 const memberController = {
   async get(req, res) {

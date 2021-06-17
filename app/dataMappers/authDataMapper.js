@@ -1,4 +1,4 @@
-const pool = require("../../database");
+const pool = require('../../database');
 
 module.exports = {
   async insertMember(newMember) {

@@ -1,6 +1,6 @@
-const authDataMapper = require("../dataMappers/authDataMapper");
-const bcrypt = require("bcrypt");
-const jwtGenerator = require("../utils/jwtGenerator");
+const authDataMapper = require('../dataMappers/authDataMapper');
+const bcrypt = require('bcrypt');
+const jwtGenerator = require('../utils/jwtGenerator');
 
 const authController = {
   async add(req, res) {

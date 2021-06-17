@@ -1,9 +1,9 @@
-const dataMapper = require("../dataMappers/movieDataMapper");
+const movieDataMapper = require('../dataMappers/movieDataMapper');
 
 const movieController = {
   allMovies: async (req, res) => {
     try {
-      const movies = await dataMapper.getAllMovies();
+      const movies = await movieDataMapper.getAllMovies();
       if (movies) {
         res.json(movies);
       } else {
@@ -17,7 +17,7 @@ const movieController = {
 
   randMovies: async (req, res) => {
     try {
-      const movie = await dataMapper.randomMovies();
+      const movie = await movieDataMapper.randomMovies();
       if (movie) {
         res.json(movie);
       } else {
@@ -26,6 +26,17 @@ const movieController = {
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
+    }
+  },
+
+  async searchMovies(_, res) {
+
+    try {
+        const shows = await movieDataMapper.searchAllMovies();
+        res.json(shows);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error.toString());
     }
   },
 };
