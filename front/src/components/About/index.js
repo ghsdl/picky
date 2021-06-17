@@ -38,7 +38,7 @@ function About () {
       <div className="about">
         <div className="accordion">
           {data.map((informations, i) => (
-          <div className="container">
+          <div key={informations.title} className="container">
             <div className="container-title" onClick={() => toggle(i)}> 
               <h2> {informations.title}</h2>
               <span> {selected === i ? '-' : '+'} </span>

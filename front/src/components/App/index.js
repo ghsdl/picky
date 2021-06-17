@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // == Import npm
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -39,6 +40,9 @@ const App = () => (
       </Route>
       <Route exact path="/about">
         <About />
+      </Route>
+      <Route exact path="/signIn">
+        <SignIn />
       </Route>
       <Route>
         <Error />
