@@ -27,7 +27,7 @@ router.get('/shows', showController.allshows);
 router.get('/shows/random', showController.randomShows);
 
 // AUTH ROUTES
-router.post('/signup', (validate.body(schemas.memberInsertSchema)), authController.add);
+router.post('/signup', authController.add);
 router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
 

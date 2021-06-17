@@ -1,11 +1,11 @@
 const Joi = require('joi');
 
-const insertSchema = Joi.object({
+/*const insertSchema = Joi.object({
     pseudo: Joi.string().required().min(2),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
     confirmationPassword: Joi.ref('password')
-}).required();
+}).required();*/
 
 const updateSchema = Joi.object({
     pseudo: Joi.string().min(2),
@@ -14,4 +14,4 @@ const updateSchema = Joi.object({
     confirmationPassword: Joi.ref('password')
 }).required();
 
-module.exports = { insertSchema, updateSchema };
+module.exports = { updateSchema };
