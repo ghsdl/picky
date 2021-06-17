@@ -1,4 +1,4 @@
-const dataMapper = require("../dataMappers/movieDataMapper");
+const dataMapper = require("../dataMappers/showDataMapper");
 
 const movieController = {
   allMovies: async (req, res) => {

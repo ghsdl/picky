@@ -2,7 +2,7 @@ const express = require("express");
 const schemas = require('../validations/schemas');
 const validate = require('../validations/validate');
 const movieController = require('../controllers/movieController');
-const serieController = require('../controllers/serieController');
+const showController = require('../controllers/showController');
 const authController = require('../controllers/authController');
 const platformController = require('../controllers/platformController');
 const bookmarkController = require('../controllers/bookmarkController');
@@ -17,9 +17,9 @@ router.get('/movies', movieController.allMovies);
 router.get('/movies/random', movieController.randMovies);
 
 // Affiche un résultat de 50 series sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
-router.get('/series', serieController.allSeries);
+router.get('/series', showController.allSeries);
 // Methode qui affiche 5 series au hasard
-router.get('/series/random', serieController.randSeries);
+router.get('/series/random', showController.randSeries);
 
 // AUTH ROUTES
 router.post('/signup', (validate.body(schemas.memberInsertSchema)), authController.add);
