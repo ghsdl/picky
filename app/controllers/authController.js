@@ -15,6 +15,10 @@ const authController = {
         return res.status(401).json('User already registered with this email.');
       }
 
+      if (correctPassword !== req.body.confirmationPassword) {
+        return res.status(401).json(`Passwords don't match.`);
+      }
+
       // CREATING CRYPTED PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
@@ -38,6 +42,7 @@ const authController = {
     try {
       // DESTRUCTURING REQ.BODY
       const { email, password } = req.body;
+
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const member = await authDataMapper.getMemberByEmail(email);
       if (!member) {
@@ -47,14 +52,14 @@ const authController = {
       // COMPARING IF PASSWORD IS CORRECT
       const correctPassword = await bcrypt.compare(password, member.password);
 
-      const token = jwtGenerator(member.member_id);
       // CHECKING IF PASSWORD IS INCORRECT THEN SEND INFOS
       if (!correctPassword) {
         return res.status(401).json('Password or email is incorrect.');
       }
+
       // SENDING THIS TO FRONT SO MUST CHOOSE WHAT TO SEND
       // FOR NOW WE'RE SENDING EVERYTHING
-      res.json({ email, password, token });
+      res.json({ email, password, token: jwtGenerator(member)});
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
