@@ -7,6 +7,7 @@ const authController = {
     try {
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
+      console.log(req.body);
 
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const memberEmail = await authDataMapper.getMemberByEmail(email);
@@ -26,8 +27,7 @@ const authController = {
         email,
         password: bcryptPassword,
       });
-
-      res.json( newMember );
+      res.json({ newMember });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -37,9 +37,11 @@ const authController = {
   async log(req, res) {
     try {
       // DESTRUCTURING REQ.BODY
-      const { pseudo, email, password } = req.body;
+      const { email, password } = req.body;
+
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const member = await authDataMapper.getMemberByEmail(email);
+
       if (!member) {
         return res.status(401).json('Password or email is incorrect.');
       }
@@ -47,14 +49,14 @@ const authController = {
       // COMPARING IF PASSWORD IS CORRECT
       const correctPassword = await bcrypt.compare(password, member.password);
 
-      const token = jwtGenerator(member.member_id);
       // CHECKING IF PASSWORD IS INCORRECT THEN SEND INFOS
       if (!correctPassword) {
         return res.status(401).json('Password or email is incorrect.');
       }
+
       // SENDING THIS TO FRONT SO MUST CHOOSE WHAT TO SEND
       // FOR NOW WE'RE SENDING EVERYTHING
-      res.json({ member, token });
+      res.json({ member: member.email, pseudo: member.pseudo, token: jwtGenerator(member)});
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());

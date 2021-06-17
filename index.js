@@ -9,7 +9,7 @@ const expressSwagger = require('express-swagger-generator')(app);
 const cors = require('cors');
 
 // MIDDLEWARES
-//app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cors("*"));
 

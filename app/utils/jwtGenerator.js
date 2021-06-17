@@ -12,7 +12,7 @@ function jwtGenerator(member_id) {
     }
   };
   // RETURN THE TOKEN AND SIGNING IT
-  return jwt.sign(payload, process.env.secret, { expiresIn: 60 * 60 });
+  return jwt.sign(payload, `${process.env.JWT_TOKEN}`, { expiresIn: 60 * 60 });
 }
 
 module.exports = jwtGenerator;
