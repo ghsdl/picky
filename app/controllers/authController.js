@@ -37,7 +37,7 @@ const authController = {
   async log(req, res) {
     try {
       // DESTRUCTURING REQ.BODY
-      const { pseudo, email, password } = req.body;
+      const { email, password } = req.body;
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const member = await authDataMapper.getMemberByEmail(email);
       if (!member) {
