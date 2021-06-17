@@ -10,11 +10,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deconnect: () => {
-    window.localStorage.clear()
+    window.localStorage.clear();
     console.log('Je veux me deconnecter');
     const action = logout();
     dispatch(action);
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

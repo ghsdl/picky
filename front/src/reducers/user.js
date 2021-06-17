@@ -2,6 +2,7 @@ import {
   CHANGE_INPUT_VALUE,
   ACTION_SAVE_USER,
   LOGOUT,
+// eslint-disable-next-line import/no-unresolved
 } from 'src/actions/user';
 
 const initialState = {
@@ -10,7 +11,7 @@ const initialState = {
   password: '',
   confirmationPassword: '',
   pseudo: '',
-  token:'',
+  token: '',
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -21,26 +22,26 @@ const userReducer = (state = initialState, action = {}) => {
         [action.key]: action.value,
       };
 
-    case ACTION_SAVE_USER: 
+    case ACTION_SAVE_USER:
       return {
         ...state,
         isConnected: true,
         email: '',
-        password:'',
+        password: '',
         pseudo: action.pseudo,
         token: action.token,
       };
 
-    case LOGOUT: 
+    case LOGOUT:
       return {
-        ...state, 
+        ...state,
         isConnected: false,
         email: '',
         password: '',
         confirmationPassword: '',
         pseudo: '',
-        token:'',
-      }
+        token: '',
+      };
     default:
       return state;
   }
