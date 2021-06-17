@@ -5,8 +5,10 @@ module.exports = {
     try {
       const apiUrl =
         'https://api.betaseries.com/search/shows?limit=50&svods=1%2C2%2C3&="&key=e7da6c21d678&';
-      // Affiche un résultat de 50 series sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
+      
+        // Affiche un résultat de 50 series sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
       const response = await fetch(apiUrl);
+      
       let body = await response.json();
       if (!Array.isArray(body)) {
         body = [body];
@@ -32,11 +34,4 @@ module.exports = {
       console.error(error);
     }
   },
-<<<<<<< HEAD
 };
-=======
-
-};
-
-
->>>>>>> 428a53b57fc62a0da58d12c9382688e874fa8c0f

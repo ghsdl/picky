@@ -1,9 +1,9 @@
-const dataMapper = require("../dataMappers/movieDataMapper");
+const serieDataMapper = require("../dataMappers/serieDataMapper");
 
 const serieController = {
   allSeries: async (req, res) => {
     try {
-      const series = await dataMapper.getAllSeries();
+      const series = await serieDataMapper.getAllSeries();
       if (series) {
         res.json(series);
       } else {
@@ -17,7 +17,7 @@ const serieController = {
 
   randSeries: async (req, res) => {
     try {
-      const serie = await dataMapper.randomSeries();
+      const serie = await serieDataMapper.randomSeries();
       if (serie) {
         res.json(serie);
       } else {

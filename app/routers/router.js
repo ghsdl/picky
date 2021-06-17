@@ -11,6 +11,10 @@ const auth = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+  res.send(`Bienvenue les fronteux sur l'API Picky!`)
+});
+
 // Affiche un résultat de 50 films sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
 router.get('/movies', movieController.allMovies);
 // Methode qui affiche 5 films au hasard
