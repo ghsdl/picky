@@ -21,8 +21,8 @@ router.get('/movies', movieController.allMovies);
 // Methode qui affiche 5 films au hasard
 router.get('/movies/random', movieController.randMovies);
 
-// Affiche un résultat de 50 series sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
-router.get('/shows', showController.allshows);
+// Affiche un résultat de plsuieurs series selon le paramètre text
+router.get('/shows', showController.getShows);
 // Methode qui affiche 5 series au hasard
 router.get('/shows/random', showController.randomShows);
 
@@ -32,14 +32,17 @@ router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
 
 // SEARCH ROUTES
-router.route('/search/shows')
+router.route('/search/shows/:text')
   .get(showController.searchShows);
 
-router.route('/search/movies')
+router.route('/search/movies/:text')
   .get(movieController.searchMovies);
 
 router.route('/search/:query')
   .get(searchController.searchAll);
+
+/*router.route('/search/bookmark/:id')  
+  .post(searchController.addToBookmark)*/
 
 // PLATFORM ROUTES
 router.route('/platform')
