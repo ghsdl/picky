@@ -56,7 +56,7 @@ const authController = {
 
       // SENDING THIS TO FRONT SO MUST CHOOSE WHAT TO SEND
       // FOR NOW WE'RE SENDING EVERYTHING
-      res.json({ member: member.pseudo, token: jwtGenerator(member.member_id)});
+      res.json({ member: member.email, pseudo: member.pseudo, token: jwtGenerator(member.member_id)});
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
