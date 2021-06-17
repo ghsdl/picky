@@ -1,12 +1,15 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import reducer from 'src/reducers';
+import pickyFind from 'src/middlewares/pickyFind';
 
-const store = createStore(
-  reducer,
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const enhancers = composeEnhancers(
+  applyMiddleware(pickyFind),
 );
+
+const store = createStore(reducer, enhancers);
 
 export default store;
