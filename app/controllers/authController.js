@@ -6,7 +6,7 @@ const authController = {
   async add(req, res) {
     try {
       // DESTRUCTURING REQ.BODY
-      const { pseudo, email, password } = req.body;
+      const { pseudo, email, password, confirmationPassword } = req.body;
 
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const memberEmail = await authDataMapper.getMemberByEmail(email);
@@ -15,7 +15,7 @@ const authController = {
         return res.status(401).json('User already registered with this email.');
       }
 
-      if (correctPassword !== req.body.confirmationPassword) {
+      if (password !== confirmationPassword) {
         return res.status(401).json(`Passwords don't match.`);
       }
 
@@ -30,7 +30,6 @@ const authController = {
         email,
         password: bcryptPassword,
       });
-
       res.json({ newMember });
     } catch (error) {
       console.log(error);
@@ -59,7 +58,7 @@ const authController = {
 
       // SENDING THIS TO FRONT SO MUST CHOOSE WHAT TO SEND
       // FOR NOW WE'RE SENDING EVERYTHING
-      res.json({ email, password, token: jwtGenerator(member)});
+      res.json({ email, password, token: jwtGenerator(member.member_id)});
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
