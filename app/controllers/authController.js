@@ -27,7 +27,7 @@ const authController = {
         password: bcryptPassword,
       });
 
-      res.json( newMember );
+      res.json({ newMember });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -54,7 +54,7 @@ const authController = {
       }
       // SENDING THIS TO FRONT SO MUST CHOOSE WHAT TO SEND
       // FOR NOW WE'RE SENDING EVERYTHING
-      res.json({ member, token });
+      res.json({ email, password, token });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
