@@ -12,6 +12,7 @@ export default function SignIn({
   password,
   handleLogin,
   isConnected,
+  errorMessage,
 }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -45,6 +46,11 @@ export default function SignIn({
               onChange={changeField}
               value={password}
             />
+            { errorMessage.length >1 &&  <p className="formUser-ErrorMessage"> 
+              {errorMessage}
+            </p>
+            }
+           
             <button
               type="submit"
               className="formUser-login"
@@ -64,4 +70,5 @@ SignIn.propTypes = {
   password: PropTypes.string.isRequired,
   handleLogin: PropTypes.func.isRequired,
   isConnected: PropTypes.bool,
+  errorMessage: PropTypes.string.isRequired
 };

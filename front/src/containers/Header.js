@@ -4,13 +4,12 @@ import { logout } from 'src/actions/user';
 
 // plusiuers Reducer => Mettre le nom du reducer correspondant dans le mapStateToProps
 const mapStateToProps = (state) => ({
-  isConnected: state.user.isConnected,
+  isConnected: state.status.isConnected,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   deconnect: () => {
     window.localStorage.clear();
-    console.log('Je veux me deconnecter');
     const action = logout();
     dispatch(action); 
   },

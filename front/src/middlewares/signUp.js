@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import { SIGN_UP } from 'src/actions/user'
+import { SIGN_UP, updateProfilError } from 'src/actions/user'
 
 const signUp = (store) => (next) => (action) => {
   switch (action.type){
@@ -14,9 +14,11 @@ const signUp = (store) => (next) => (action) => {
       })
         .then((response) => {
          console.log(response.data)
+         
         })
         .catch((error) => {
-          console.log(`error`, error)
+          console.log(error.response.data.error)
+          store.dispatch(updateProfilError(error.response.data.error))
         });
       break;
     }

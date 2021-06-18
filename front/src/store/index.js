@@ -11,7 +11,7 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user'],
+  whitelist: ['status'],
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)
@@ -22,9 +22,6 @@ const persistedReducer = persistReducer(persistConfig, reducer)
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
-const store = createStore(reducer, enhancers);
 
 const store = createStore(persistedReducer, composeEnhancers(
   applyMiddleware(signUp, auth, suggestions),
