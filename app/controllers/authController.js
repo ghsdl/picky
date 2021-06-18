@@ -24,7 +24,6 @@ const authController = {
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
       const bcryptPassword = await bcrypt.hash(password, salt);
-      console.log("log de bcrypt", bcryptPassword);
 
       // CREATING NEW USER IN DATABASE
       const newMember = await authDataMapper.insertMember({
@@ -32,8 +31,6 @@ const authController = {
         email,
         password: bcryptPassword,
       });
-
-      console.log(newMember);
       res.json({ newMember });
     } catch (error) {
       console.log(error);

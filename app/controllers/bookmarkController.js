@@ -44,7 +44,6 @@ const bookmarkController = {
       }
 
       const data = req.body;
-      console.log(data);
 
       if (data.betaseries_id) {
         data.betaseries_id = req.body.betaseries_id;
