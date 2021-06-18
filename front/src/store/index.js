@@ -8,30 +8,8 @@ import auth from 'src/middlewares/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-function saveToLocalStorage(state) {
-  try {
-    const serialisedState = JSON.stringify(state);
-    localStorage.setItem("persistantState", serialisedState);
-  } catch (e) {
-    console.warn(e);
-  }
-}
-
-function loadFromLocalStorage() {
-  try {
-    const serialisedState = localStorage.getItem("persistantState");
-    if (serialisedState === null) return undefined;
-    return JSON.parse(serialisedState);
-  } catch (e) {
-    console.warn(e);
-    return undefined;
-  }
-}
-
-const store = createStore(reducer,loadFromLocalStorage(), composeEnhancers(
+const store = createStore(reducer, composeEnhancers(
   applyMiddleware(signUp, auth, pickyFind),
 ));
-
-store.subscribe(() => saveToLocalStorage(store.getState()));
 
 export default store;

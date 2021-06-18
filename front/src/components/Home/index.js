@@ -46,7 +46,7 @@ const Home = (props) => {
         {// Display of the results
         }
         <div className="home__results">
-          <Cards />
+          <Cards currentPage="home"/>
         </div>
       </div>
     </div>

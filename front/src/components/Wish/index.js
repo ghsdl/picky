@@ -18,7 +18,7 @@ const Wish = () => (
     <h1>Votre watchlist</h1>
     {// Cards
     }
-    <Cards />
+    <Cards currentPage="wish" loading={false}/>
     {// Footer of the watchlist, with 2 buttons to go to Picky Find and Picky Mood
     }
     <div className="wish__gradient">
