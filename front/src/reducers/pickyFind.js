@@ -1,8 +1,8 @@
 import { SAVE_PROGRAMS } from 'src/actions/pickyFind';
 
 export const initialState = {
-  shows: [],
   movies: [],
+  shows: [],
   loading: true,
 };
 
@@ -12,6 +12,8 @@ const pickyFindReducer = (state = initialState, action = {}) => {
       // console.log('case', SAVE_RECIPES);
       // ici on va traiter le changement de state
       // => on injecte les data contenu dans l'action dans la proriété list
+      console.log('movies in reducer', action.movies);
+      console.log('shows in reducer', action.shows);
       return {
         ...state,
         movies: [...action.movies],

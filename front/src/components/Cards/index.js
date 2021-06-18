@@ -8,10 +8,11 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({programs}) => (
+const Cards = ({movies, shows}) => (
   // TODO: make the display of the cards dynamic with a map
   <div className="cards">
-  {console.log('programs in Cards component', programs)}
+  {console.log('movies in Cards component', movies)}
+  {console.log('shows in Cards component', shows)}
     <Card />
     <Card />
     <Card />

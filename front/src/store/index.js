@@ -34,6 +34,4 @@ const store = createStore(reducer,loadFromLocalStorage(), composeEnhancers(
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
-const store = createStore(reducer, enhancers);
-
 export default store;
