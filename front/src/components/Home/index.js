@@ -27,7 +27,7 @@ const Home = (props) => {
       {// When the input of the searchbar is empty, the searchbar is in the center of the page
       // If the user writes something in it, the searchbar moves to the top of the page
       }
-      <div className={classNames('home', { 'home--noResearch': props.searchInputValue.length === 0, 'home--research': props.searchInputValue.length > 0 })}>
+      <div className={classNames('home', { 'home--noResearch': props.searchInputValue.length <= 2, 'home--research': props.searchInputValue.length > 2 })}>
         <div className="home__searchBar">
           {// Title, searchbar and suggestions
           }
