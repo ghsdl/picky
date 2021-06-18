@@ -6,12 +6,11 @@ const signUp = (store) => (next) => (action) => {
     case SIGN_UP: {
 
       const state = store.getState();
-      console.log(state.user.confirmationPassword);
       axios.post('https://projet-picky.herokuapp.com/signup', {
         pseudo: state.user.pseudo,
         email: state.user.email,
         password: state.user.password,
-        confirmationPassword: state.user.password,
+        confirmationPassword: state.user.confirmationPassword,
       })
         .then((response) => {
          console.log(response.data)
