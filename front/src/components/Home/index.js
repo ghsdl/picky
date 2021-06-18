@@ -17,13 +17,13 @@ const Home = ({ searchInputValue,getRandomMovie, getRandomSerie, random }) => {
 
   useEffect(()=>{
     getRandomMovie();
-    //getRandomSerie();
+    getRandomSerie();
   }, [])
   return(
   <div>
     {// Header
     }
-    <Header />
+    <Header />s
     {// When the input of the searchbar is empty, the searchbar is in the center of the page
     // If the user writes something in it, the searchbar moves to the top of the page
     }
@@ -36,7 +36,7 @@ const Home = ({ searchInputValue,getRandomMovie, getRandomSerie, random }) => {
         {// TODO: Add real random suggestions
         }
         {random.map((randomMS))}
-        <p className="home__searchBar__suggestion">Essayez: {randomMS.movies.title}, {randomMS.series.title}</p>
+        <p className="home__searchBar__suggestion">Essayez: {randomMS.movies.title}, {randomMS.shows.title}</p>
       </div>
       {// Button to go to Picky Mood
       }
@@ -56,11 +56,11 @@ const Home = ({ searchInputValue,getRandomMovie, getRandomSerie, random }) => {
 Home.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   random: PropTypes.arrayOf(
-    PropTypes.shape({
+    PropTypes.arrayOf({
       movies: PropTypes.shape({
         title: PropTypes.string.isRequired,
       }).isRequired,
-      series: PropTypes.shape({
+      shows: PropTypes.shape({
         title: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,

@@ -14,7 +14,7 @@ const suggestions = (store) => (next) => (action) => {
     next(action);
     break;
     case GET_RANDOM_SERIE: {
-      axios.get('https://projet-picky.herokuapp.com/series/random')
+      axios.get('https://projet-picky.herokuapp.com/shows/random')
       .then ((responsebis) => {
         console.log(responsebis);
         store.dispatch(getSerieSuccess(responsebis.data));
