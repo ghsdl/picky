@@ -4,20 +4,26 @@ import Header from 'src/containers/Header';
 import './style.scss';
 import PropTypes from 'prop-types';
 import Field from './Field';
+import { Redirect } from 'react-router-dom'
 
 export default function SignIn({
   changeField,
   email,
   password,
   handleLogin,
+  isConnected,
 }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
   return (
+   
     <>
       <Header />
+      {isConnected && (
+       <Redirect to="/"/>
+    )}
       <div className="pickyMood">
         <div className="pickyMood-question">
           Connectez-Vous à Picky
@@ -41,7 +47,7 @@ export default function SignIn({
             />
             <button
               type="submit"
-              className="login"
+              className="formUser-login"
             >
               Se Connecter
             </button>
@@ -57,4 +63,5 @@ SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   handleLogin: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool,
 };

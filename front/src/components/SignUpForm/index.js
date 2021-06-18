@@ -17,6 +17,7 @@ const SignUpForm = ({
     evt.preventDefault();
     handleSignUp();
   };
+
   return (
     <form
       autoComplete="off"

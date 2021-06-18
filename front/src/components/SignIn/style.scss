@@ -41,9 +41,19 @@
 
 	&-input{
 		width: 44vh;
-		margin-top: 2vh;
+		margin-top: 6vh;
 	}
+	&-login{
+		width: 100%;
+		margin-top: 10vh;
+		padding: 1vh;
+		background: white;
+		color: rgb(0, 0, 0);
+		text-transform: uppercase;
+		font-style: italic;
+		letter-spacing: 0.3ch;
 
+	}
 }
 .input {
 	position: relative;
@@ -64,7 +74,7 @@
 	border: none;
 	border-radius: 0;
 	background: #f0f0f0;
-	color: #aaa;
+	color: rgb(0, 0, 0);
 	font-weight: 400;
 	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	-webkit-appearance: none; /* for box shadows to show on iOS */
@@ -120,7 +130,7 @@
 	padding: 0.8em 0.5em;
 	background: transparent;
 	border: 2px solid;
-	color: #b5b5b5;
+	color: #000000;
 	-webkit-transition: border-color 0.3s;
 	transition: border-color 0.3s;
 }
@@ -148,12 +158,12 @@
 	position: absolute;
 	top: -200%;
 	left: 0;
-	color: #da6484;
+	color: #001797;
 	font-weight: 800;
 }
 .input__field--chisato:focus,
 .input--filled .input__field--chisato {
-	border-color: #da6484;
+	border-color: #001797;
 }
 
 .input__field--chisato:focus + .input__label--chisato,
