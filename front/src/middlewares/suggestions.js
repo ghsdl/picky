@@ -1,23 +1,18 @@
 import axios from 'axios';
 
-import { getMovieSuccess, getSerieSuccess } from 'src/actions/suggestions';
+import { getRandomSuccess, GET_RANDOM } from '../actions/suggestions';
 
 const suggestions = (store) => (next) => (action) => {
   switch (action.type) {
-    case GET_RANDOM_MOVIE:
+    case GET_RANDOM: {
       axios.get('https://projet-picky.herokuapp.com/movies/random')
       .then ((response) => {
-        console.log(response);
-        store.dispatch(getMovieSuccess(response.data));
-      });
-
-    next(action);
-    break;
-    case GET_RANDOM_SERIE: {
-      axios.get('https://projet-picky.herokuapp.com/shows/random')
-      .then ((responsebis) => {
-        console.log(responsebis);
-        store.dispatch(getSerieSuccess(responsebis.data));
+        console.log('response.data[0]', response.data[0]);
+        const { movies } = response.data[0];
+        console.log('movies', movies[0]);
+        const movie = movies[0];
+        console.log('movie', movie);
+        store.dispatch(getRandomSuccess(movie));
       });
     }
     default:

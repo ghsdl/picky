@@ -1,21 +1,17 @@
 import { connect } from 'react-redux';
 import Home from 'src/components/Home';
-import { getRandomMovie, getRandomSerie} from 'src/actions/suggestions'
+import { getRandom } from 'src/actions/suggestions';
 
 const mapStateToProps = (state) => ({
   searchInputValue: state.search.searchInputValue,
-  movie: state.sug.movie,
-  serie: state.sug.serie,
+  ranmovie: state.sug.ranmovie,
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getRandomMovie: () => {
-    dispatch(getRandomMovie())
-  },
-  getRandomSerie: () => {
-    dispatch(getRandomSerie())
+  getRandom: () => {
+    dispatch(getRandom())
   }
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

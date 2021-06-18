@@ -1,17 +1,21 @@
-import { GET_MOVIE_SUCCESS } from '../actions/suggestions';
+import { GET_RANDOM_SUCCESS, GET_RANDOM } from '../actions/suggestions';
 
 export const initialState = {
-  movie : [],
-  serie : [],
+  ranmovie : {},
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-        case GET_MOVIE_SUCCESS:
-          return {
-            ...state,
-            movie: action.movie,
-          };
+    case GET_RANDOM:
+      return {
+        ...state,
+      };
+    case GET_RANDOM_SUCCESS:
+      console.log('action.ranmovie in reducer', action.ranmovie);
+      return {
+        ...state,
+        ranmovie: action.ranmovie,
+      };
       default:
         return state;
   }

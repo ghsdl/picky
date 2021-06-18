@@ -13,17 +13,17 @@ import Cards from 'src/components/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ searchInputValue,getRandomMovie, getRandomSerie, random }) => {
+const Home = ({ searchInputValue,getRandom,ranmovie }) => {
 
   useEffect(()=>{
-    getRandomMovie();
-    getRandomSerie();
-  }, [])
+    getRandom();
+  }, []);
+
   return(
   <div>
     {// Header
     }
-    <Header />s
+    <Header />
     {// When the input of the searchbar is empty, the searchbar is in the center of the page
     // If the user writes something in it, the searchbar moves to the top of the page
     }
@@ -35,8 +35,8 @@ const Home = ({ searchInputValue,getRandomMovie, getRandomSerie, random }) => {
         <SearchBar />
         {// TODO: Add real random suggestions
         }
-        {random.map((randomMS))}
-        <p className="home__searchBar__suggestion">Essayez: {randomMS.movies.title}, {randomMS.shows.title}</p>
+          {console.log('ranmovie in home component', ranmovie)}
+          <p className="home__searchBar__suggestion">Essayez: {ranmovie.title}</p>
       </div>
       {// Button to go to Picky Mood
       }
@@ -55,16 +55,7 @@ const Home = ({ searchInputValue,getRandomMovie, getRandomSerie, random }) => {
 
 Home.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
-  random: PropTypes.arrayOf(
-    PropTypes.arrayOf({
-      movies: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }).isRequired,
-      shows: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-  ).isRequired,
+  ranmovie: PropTypes.object.isRequired,
 };
 
 export default Home;
