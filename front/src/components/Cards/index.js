@@ -8,7 +8,7 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, platforms, currentPage}) => {
+const Cards = ({movies, shows, loading, currentPage}) => {
   //console.log('loading:', loading);
   //console.log('platforms in Cards component', platforms);
   if (loading === true) {
@@ -29,7 +29,7 @@ const Cards = ({movies, shows, loading, platforms, currentPage}) => {
           <Card
             title={movie.title}
             poster={movie.poster}
-            platforms={movie.svods}
+            platformsInfos={movie.svods}
             key= {movie.id}
           />
         ))}

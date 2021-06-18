@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import './card.scss';
 
 // Display of one card
-const Card = ({ inWatchList, title, poster, platforms }) => (
+const Card = ({ inWatchList, title, poster, platformsInfos, platforms }) => (
   // TODO: make the content of the card dynamic
   <div className="card">
     { // Poster of the program
@@ -25,8 +25,19 @@ const Card = ({ inWatchList, title, poster, platforms }) => (
         <div className="card__platforms">
           { // TODO: make the display of the platforms dynamic
           }
-          {platforms.map((platform) => (
-            <p>{platform.name}</p>
+          {platformsInfos.map((platformInfo) => (
+            //<p>{platformInfo.name}</p>
+            platforms.map((platform) => {
+              if(platformInfo.id === platform.id) {
+                return (
+                  <img
+                  className="card__platform"
+                  src={platform.logo}
+                  alt="Logo de la plateforme"
+                />
+                )
+              }
+            })
           ))}
           {/*
           <img
