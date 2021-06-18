@@ -7,7 +7,7 @@ const signUp = (store) => (next) => (action) => {
 
       const state = store.getState();
       console.log(state.user.confirmationPassword);
-      axios.post('http://localhost:3000/signup', {
+      axios.post('https://projet-picky.herokuapp.com/signup', {
         pseudo: state.user.pseudo,
         email: state.user.email,
         password: state.user.password,
