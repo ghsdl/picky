@@ -24,8 +24,10 @@ const Cards = ({movies, shows, loading, currentPage}) => {
         {console.log('shows in Cards component', shows)}
         {movies.map((movie) => (
           <Card
-            title={movie.title ? movie.title : "Friends"}
-            key= {movie.id ? movie.id : 1}
+            title={movie.title}
+            poster={movie.poster}
+            platforms={movie.svods}
+            key= {movie.id}
           />
         ))}
         </div>
