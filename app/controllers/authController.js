@@ -5,9 +5,9 @@ const jwtGenerator = require('../utils/jwtGenerator');
 const authController = {
   async add(req, res) {
     try {
+
       // DESTRUCTURING REQ.BODY
-      const { pseudo, email, password } = req.body;
-      console.log(req.body);
+      const { pseudo, email, password, confirmationPassword } = req.body;
 
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const memberEmail = await authDataMapper.getMemberByEmail(email);
@@ -16,10 +16,15 @@ const authController = {
         return res.status(401).json('User already registered with this email.');
       }
 
+      if(password !== confirmationPassword) {
+        return res.status(401).json(`Passwords don't match`);
+      }
+
       // CREATING CRYPTED PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
       const bcryptPassword = await bcrypt.hash(password, salt);
+      console.log("log de bcrypt", bcryptPassword);
 
       // CREATING NEW USER IN DATABASE
       const newMember = await authDataMapper.insertMember({
@@ -27,6 +32,8 @@ const authController = {
         email,
         password: bcryptPassword,
       });
+
+      console.log(newMember);
       res.json({ newMember });
     } catch (error) {
       console.log(error);
