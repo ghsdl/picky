@@ -64,7 +64,14 @@ router.route('/bookmark/:id(\\d+)')
   .delete(bookmarkController.delete);
 
   // MEMBER ROUTES
+
 router.route('/member')
+  /** 
+   * Member's list
+   * @route GET /members
+   * @returns {Member[]} 200 - Member's list
+   * @returns {Error} 500 - Error servor
+   */
   .get(memberController.get);
 router.route('/member/:id(\\d+)')
   .get(memberController.getById)

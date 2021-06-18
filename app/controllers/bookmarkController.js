@@ -1,5 +1,3 @@
-
-/** @type {*} */
 const bookmarkDataMapper = require('../dataMappers/bookmarkDataMapper');
 
 const bookmarkController = {
