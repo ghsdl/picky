@@ -1,6 +1,15 @@
+
+/** @type {*} */
 const bookmarkDataMapper = require('../dataMappers/bookmarkDataMapper');
 
 const bookmarkController = {
+
+  /**
+   *
+   *
+   * @param {*} req
+   * @param {*} res
+   */
   async get(req, res) {
     try {
       const bookmark = await bookmarkDataMapper.get();
@@ -11,6 +20,12 @@ const bookmarkController = {
     }
   },
 
+  /**
+   *
+   *
+   * @param {*} req
+   * @param {*} res
+   */
   async getById(req, res) {
     try {
       const id = parseInt(req.params.id, 10);
@@ -25,8 +40,8 @@ const bookmarkController = {
   async post(req, res) {
     try {
       const data = req.body;
-      const newBookmark = await bookmarkDataMapper.add(data);
-      res.json({ newBookmark });
+      await bookmarkDataMapper.add(data);
+      res.status(200).json(`Everything's okay!`);
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());

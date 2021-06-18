@@ -1,6 +1,12 @@
 const pool = require('../../database');
 
 module.exports = {
+
+  /**
+   *
+   * @param {*} newMember
+   * @return {*} 
+   */
   async insertMember(newMember) {
     // CREATING NEW USER IN DATABASE
     const addedMember = await pool.query(
@@ -11,6 +17,12 @@ module.exports = {
     return addedMember.rows[0];
   },
 
+
+  /**
+   *
+   * @param {object} email
+   * @return {object[]} 
+   */
   async getMemberByEmail(email) {
     // CHECKING IF USER DOES EXIST
     const member = await pool.query(`SELECT * FROM member WHERE email = $1`, [

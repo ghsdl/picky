@@ -6,7 +6,7 @@ const signUp = (store) => (next) => (action) => {
     case SIGN_UP: {
 
       const state = store.getState();
-      axios.post('https://projet-picky.herokuapp.com/signup', {
+      axios.post('http://localhost:3000/signup', {
         pseudo: state.user.pseudo,
         email: state.user.email,
         password: state.user.password,
@@ -16,7 +16,7 @@ const signUp = (store) => (next) => (action) => {
          console.log(response.data)
         })
         .catch((error) => {
-          console.log(`error`, error)
+          console.log(`error`, error.response.data.password)
         });
       break;
     }
