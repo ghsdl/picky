@@ -2,17 +2,20 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react'
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import App from 'src/components/App';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import store from 'src/store';
+import { store, persistor } from 'src/store';
 
 const rootReactElement = (
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>
 );
 
