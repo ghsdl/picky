@@ -1,5 +1,5 @@
 // Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -13,7 +13,13 @@ import Cards from 'src/components/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ searchInputValue }) => (
+const Home = ({ searchInputValue,getRandomMovie, getRandomSerie, random }) => {
+
+  useEffect(()=>{
+    getRandomMovie();
+    //getRandomSerie();
+  }, [])
+  return(
   <div>
     {// Header
     }
@@ -29,7 +35,8 @@ const Home = ({ searchInputValue }) => (
         <SearchBar />
         {// TODO: Add real random suggestions
         }
-        <p className="home__searchBar__suggestion">Essayez: Jurassic Park, Friends</p>
+        {random.map((randomMS))}
+        <p className="home__searchBar__suggestion">Essayez: {randomMS.movies.title}, {randomMS.series.title}</p>
       </div>
       {// Button to go to Picky Mood
       }
@@ -44,10 +51,20 @@ const Home = ({ searchInputValue }) => (
       </div>
     </div>
   </div>
-);
+  )};
 
 Home.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
+  random: PropTypes.arrayOf(
+    PropTypes.shape({
+      movies: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+      series: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default Home;
