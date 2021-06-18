@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { connect } from 'react-redux';
 import Header from 'src/components/Header';
 import { logout } from 'src/actions/user';
@@ -13,7 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
     window.localStorage.clear();
     console.log('Je veux me deconnecter');
     const action = logout();
-    dispatch(action);
+    dispatch(action); 
   },
 });
 

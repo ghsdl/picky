@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
 
 // Creation of my component Header
 export default function Header({ isConnected, deconnect }) {
-  console.log(isConnected);
   // Hook for modal with two function, opening and closing.
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {

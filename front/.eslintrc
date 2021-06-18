@@ -46,10 +46,8 @@
       }
     }
   },
-
   "parserOptions": {
     "requireConfigFile": "false",
     "babelOptions": { "configFile": "./.babelrc" }
   }
-  
 }
