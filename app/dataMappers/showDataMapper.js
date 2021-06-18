@@ -35,15 +35,28 @@ module.exports = {
     }
   },
 
-  async searchAllShows() {
+  async searchShows(text) {
     
-      const apiUrl = 'https://api.betaseries.com/search/shows?v=3.0&key=e7da6c21d678';
-      const response = await fetch(apiUrl);
-      let body = await response.json();
-      if (!Array.isArray(body)) {
-        body = [body];
-      }
+      const apiUrl = 'https://api.betaseries.com/search/shows?v=3.0',
+      args = {
+        'text': text,
+        'key': process.env.BETASERIES_API_KEY,
+      },
+      params = '&text=' + args.text.text + '&key=' + args.key;
+      console.log(params);
+
+    const result = apiUrl + params;
+    console.log("log de result", result);
+
+    const response = await fetch(result);
+
+    let body = await response.json();
+    if (!Array.isArray(body)) {
+      body = [body];
+      console.log("log de body", body);
+      
       return body;
+    }
   }
 
 };
