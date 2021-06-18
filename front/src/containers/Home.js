@@ -5,6 +5,7 @@ import { getRandom } from 'src/actions/suggestions';
 const mapStateToProps = (state) => ({
   searchInputValue: state.search.searchInputValue,
   ranmovie: state.sug.ranmovie,
+  ranshow: state.sug.ranshow,
 
 });
 

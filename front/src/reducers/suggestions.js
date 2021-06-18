@@ -2,6 +2,7 @@ import { GET_RANDOM_SUCCESS, GET_RANDOM } from '../actions/suggestions';
 
 export const initialState = {
   ranmovie : {},
+  ranshow : {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -11,10 +12,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
       };
     case GET_RANDOM_SUCCESS:
-      console.log('action.ranmovie in reducer', action.ranmovie);
       return {
         ...state,
         ranmovie: action.ranmovie,
+        ranshow: action.ranshow,
       };
       default:
         return state;

@@ -13,7 +13,7 @@ import Cards from 'src/components/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ searchInputValue,getRandom,ranmovie }) => {
+const Home = ({ searchInputValue,getRandom,ranmovie,ranshow }) => {
 
   useEffect(()=>{
     getRandom();
@@ -35,8 +35,8 @@ const Home = ({ searchInputValue,getRandom,ranmovie }) => {
         <SearchBar />
         {// TODO: Add real random suggestions
         }
-          {console.log('ranmovie in home component', ranmovie)}
-          <p className="home__searchBar__suggestion">Essayez: {ranmovie.title}</p>
+          <p className="home__searchBar__suggestion">Essayez: {ranmovie.title} ou {ranshow.title}</p>
+
       </div>
       {// Button to go to Picky Mood
       }
@@ -56,6 +56,7 @@ const Home = ({ searchInputValue,getRandom,ranmovie }) => {
 Home.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   ranmovie: PropTypes.object.isRequired,
+  ranshow: PropTypes.object.isRequired,
 };
 
 export default Home;

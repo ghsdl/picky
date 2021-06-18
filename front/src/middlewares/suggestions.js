@@ -7,17 +7,25 @@ const suggestions = (store) => (next) => (action) => {
     case GET_RANDOM: {
       axios.get('https://projet-picky.herokuapp.com/movies/random')
       .then ((response) => {
-        console.log('response.data[0]', response.data[0]);
         const { movies } = response.data[0];
-        console.log('movies', movies[0]);
         const movie = movies[0];
-        console.log('movie', movie);
-        store.dispatch(getRandomSuccess(movie));
+      axios.get('https://projet-picky.herokuapp.com/shows/random')
+      .then ((response) => {
+        const { shows } = response.data[0];
+        const show = shows[0];
+        store.dispatch(getRandomSuccess(movie, show));
+      })
+      .catch((error) => {
+        console.log(error)
       });
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+      break;
     }
     default:
       next(action);
-      break;
   }
 };
 
