@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import './card.scss';
 
 // Display of one card
-const Card = ({ inWatchList }) => (
+const Card = ({ inWatchList, title }) => (
   // TODO: make the content of the card dynamic
   <div className="card">
     { // Poster of the program
@@ -20,7 +20,7 @@ const Card = ({ inWatchList }) => (
     { // Infos on the program (title, platforms and button to add it to/delete from watchlist)
     }
     <div className="card__infos">
-      <p className="card__infos__title">Friends</p>
+      <p className="card__infos__title">{title}</p>
       <div className="card__infos__elements">
         <div className="card__platforms">
           { // TODO: make the display of the platforms dynamic

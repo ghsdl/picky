@@ -6,6 +6,7 @@ import { fetchPrograms } from 'src/actions/pickyFind';
 
 const mapStateToProps = (state) => ({
   searchInputValue: state.search.searchInputValue,
+  loading: state.pickyFind.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

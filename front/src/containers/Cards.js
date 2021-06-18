@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import Cards from 'src/components/Cards';
 
 const mapStateToProps = (state) => ({
-  programs: state.pickyFind.list,
+  movies: state.pickyFind.movies,
+  shows: state.pickyFind.shows,
+  loading: state.pickyFind.loading,
 });
 
 export default connect(mapStateToProps)(Cards);

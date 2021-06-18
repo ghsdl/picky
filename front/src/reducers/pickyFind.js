@@ -1,4 +1,4 @@
-import { SAVE_PROGRAMS } from 'src/actions/pickyFind';
+import { FETCH_PROGRAMS, SAVE_PROGRAMS } from 'src/actions/pickyFind';
 
 export const initialState = {
   movies: [],
@@ -8,6 +8,12 @@ export const initialState = {
 
 const pickyFindReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case FETCH_PROGRAMS:
+      console.log('loading quand on fetch programs', loading);
+      return {
+        ...state,
+        loading: true,
+      };
     case SAVE_PROGRAMS: {
       // console.log('case', SAVE_RECIPES);
       // ici on va traiter le changement de state
@@ -16,8 +22,8 @@ const pickyFindReducer = (state = initialState, action = {}) => {
       console.log('shows in reducer', action.shows);
       return {
         ...state,
-        movies: [...action.movies],
-        shows: [...action.shows],
+        movies: action.movies,
+        shows: action.shows,
         loading: false,
       };
     }
