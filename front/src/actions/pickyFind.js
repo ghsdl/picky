@@ -9,4 +9,4 @@ export const savePrograms = (movies, shows) => ({
   type: SAVE_PROGRAMS,
   movies,
   shows,
-})
+});

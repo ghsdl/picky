@@ -8,8 +8,9 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, currentPage}) => {
-  console.log('loading:', loading);
+const Cards = ({movies, shows, loading, platforms, currentPage}) => {
+  //console.log('loading:', loading);
+  //console.log('platforms in Cards component', platforms);
   if (loading === true) {
     return (
     <p>Loading</p>)
@@ -20,8 +21,10 @@ const Cards = ({movies, shows, loading, currentPage}) => {
       return (
         // TODO: make the display of the cards dynamic with a map
         <div className="cards">
-        {console.log('movies in Cards component', movies)}
-        {console.log('shows in Cards component', shows)}
+        {//console.log('movies in Cards component', movies)
+        }
+        {//console.log('shows in Cards component', shows)
+        }
         {movies.map((movie) => (
           <Card
             title={movie.title}
