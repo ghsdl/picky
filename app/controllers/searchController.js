@@ -6,7 +6,6 @@ const searchController = {
 
         try {
             const query = req.params;
-            console.log("premier log de query", query);
             const search = await searchDataMapper.searchAll(query);
             res.json(search);
             /*const search = await searchDataMapper.searchAll();

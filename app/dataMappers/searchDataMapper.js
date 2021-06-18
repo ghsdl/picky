@@ -13,24 +13,20 @@ module.exports = {
       },*/
 /*
   async addToBookmark( query) {
-    console.log("second log de query", query);
     const apiUrl = 'https://api.betaseries.com/search/all?v=3.0',
       args = {
         'query': query,
         'key': process.env.BETASERIES_API_KEY,
       },
       params = '&query=' + args.query.query + '&key=' + args.key;
-      console.log(params);
 
     const result = apiUrl + params;
-    console.log("log de result", result);
 
     const response = await fetch(result);
 
     let body = await response.json();
     if (!Array.isArray(body)) {
       body = [body];
-      console.log("log de body", body);
       
       return body;
     }
@@ -45,24 +41,20 @@ module.exports = {
 
 
   async searchAll(query) {
-    console.log("second log de query", query);
     const apiUrl = 'https://api.betaseries.com/search/all?v=3.0',
       args = {
         'query': query,
         'key': process.env.BETASERIES_API_KEY,
       },
       params = '&query=' + args.query.query + '&key=' + args.key;
-      console.log(params);
 
     const result = apiUrl + params;
-    console.log("log de result", result);
 
     const response = await fetch(result);
 
     let body = await response.json();
     if (!Array.isArray(body)) {
       body = [body];
-      console.log("log de body", body);
       
       return body;
     }

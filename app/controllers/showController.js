@@ -33,7 +33,6 @@ const serieController = {
   searchShows: async (req, res) =>{
     try {
       const text = req.params;
-      console.log("premier log de text", text);
       const search = await showDataMapper.searchShows(text);
       res.json(search);
       /*const search = await searchDataMapper.searchAll();

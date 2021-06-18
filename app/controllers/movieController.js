@@ -33,7 +33,6 @@ const movieController = {
 
     try {
       const text = req.params;
-      console.log("premier log de text", text);
         const movies = await movieDataMapper.searchMovies(text);
         res.json(movies);
     } catch (error) {
