@@ -5,13 +5,31 @@ import signUp from 'src/middlewares/signUp';
 import auth from 'src/middlewares/auth';
 
 import suggestions from 'src/middlewares/suggestions';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['user'],
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+
+
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const enhancers = composeEnhancers(
-  applyMiddleware(suggestions),
-);
 
 const store = createStore(reducer, enhancers);
 
-export default store;
+const store = createStore(persistedReducer, composeEnhancers(
+  applyMiddleware(signUp, auth, suggestions),
+));
+
+const persistor= persistStore(store)
+
+export { store, persistor };
