@@ -11,7 +11,6 @@ const signUp = (store) => (next) => (action) => {
         pseudo: state.user.pseudo,
         email: state.user.email,
         password: state.user.password,
-        confirmationPassword: state.user.confirmationPassword,
       })
         .then((response) => {
          console.log(response.data)
