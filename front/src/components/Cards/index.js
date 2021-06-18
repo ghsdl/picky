@@ -16,7 +16,7 @@ const Cards = ({movies, shows, loading, currentPage}) => {
   }
 
   if (loading === false) {
-    if (currentPage="home") {
+    if (currentPage==="home") {
       return (
         // TODO: make the display of the cards dynamic with a map
         <div className="cards">
@@ -34,9 +34,9 @@ const Cards = ({movies, shows, loading, currentPage}) => {
       return (
         // TODO: make the display of the cards dynamic with a map
         <div className="cards">
-        <Card />
-        <Card />
-        <Card />
+        <Card title="Friends" />
+        <Card title="Friends" />
+        <Card title="Friends" />
         </div>
       );
     }

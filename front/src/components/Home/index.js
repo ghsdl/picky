@@ -15,7 +15,7 @@ import './home.scss';
 // Display of home
 const Home = (props) => {
   // If the user types at least 3 letters in the searchbar, the research starts
-  if (props.searchInputValue.length >= 2) {
+  if (props.searchInputValue.length > 2) {
     props.loadPrograms();
   }
 
