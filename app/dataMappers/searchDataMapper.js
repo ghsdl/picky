@@ -66,5 +66,10 @@ module.exports = {
           body = [body];
         }
         return body;*/
-  }
+  },
+
+  /*async moodResults(data) {
+
+  }*/
+
 };

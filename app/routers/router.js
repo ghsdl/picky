@@ -41,6 +41,9 @@ router.route('/search/movies/:text')
 router.route('/search/:query')
   .get(searchController.searchAll);
 
+router.route('/search/:moodresults')
+  .post(searchController.moodSearch);
+
 /*router.route('/search/bookmark/:id')  
   .post(searchController.addToBookmark)*/
 
@@ -72,6 +75,7 @@ router.route('/member')
    * @returns {Member[]} 200 - Member's list
    * @returns {Error} 500 - Error servor
    */
+  
   .get(memberController.get);
 router.route('/member/:id(\\d+)')
   .get(memberController.getById)
