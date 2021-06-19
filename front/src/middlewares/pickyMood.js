@@ -5,7 +5,7 @@ const result = (store) => (next) => (action) => {
   switch (action.type){
     case PICKYMOOD_RESULT: {
       const state = store.getState()
-      axios.post('https://projet-picky.herokuapp.com/moodResults', {
+      axios.post('https://projet-picky.herokuapp.com/moodresults', {
         urlAxios: state.pickyMood.urlAxios
       })
         .then((response) => {

@@ -9,7 +9,7 @@ export default function Feelings({
   ShowOrMovie,
   backToShowOrMovies,
   handleDisplayPickyMoodPlateforms,
-  movieEmotions,
+  emotions,
 
 }) {
   const emotionsMovies = [
@@ -42,8 +42,8 @@ export default function Feelings({
     { emotion: 'Rêveur', genre: 'anime' },
   ];
   
-  const emotionsCardforMovie = emotionsShows.map((emotion) => {
-    const classNameCliked = movieEmotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
+  const emotionsCardforMovie = emotionsMovies.map((emotion) => {
+    const classNameCliked = emotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
     return (
       <li
         key={emotion.emotion}
@@ -56,8 +56,8 @@ export default function Feelings({
       </li>
     );
   });
-  const emotionsCardforShows = emotionsMovies.map((emotion) => {
-    const classNameCliked = movieEmotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
+  const emotionsCardforShows = emotionsShows.map((emotion) => {
+    const classNameCliked = emotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
     return (
       <li
         key={emotion.emotion}
@@ -70,7 +70,7 @@ export default function Feelings({
       </li>
     );
   });
-  const className = movieEmotions.length <= 3 &&  movieEmotions.length > 0 ? 'button-suivant' : 'button-suivant button-suivant--hidden';
+  const className = emotions.length <= 3 &&  emotions.length > 0 ? 'button-suivant' : 'button-suivant button-suivant--hidden';
   return (
     <>
       <div className="pickyMood">
@@ -110,9 +110,9 @@ Feelings.propTypes = {
   ShowOrMovie: PropTypes.string.isRequired,
   onClickEmotionsMovie: PropTypes.func.isRequired,
   onClickEmotionsShows: PropTypes.func.isRequired,
-  movieEmotions: PropTypes.array,
+  emotions: PropTypes.array,
 };
 
 Feelings.defaultProps = {
-  movieEmotions: null,
+  emotions: null,
 };

@@ -3,6 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from 'src/reducers';
 import signUp from 'src/middlewares/signUp';
 import auth from 'src/middlewares/auth';
+import result from 'src/middlewares/pickyMood'
 
 import suggestions from 'src/middlewares/suggestions';
 import { persistStore, persistReducer } from 'redux-persist'
@@ -24,7 +25,7 @@ const persistedReducer = persistReducer(persistConfig, reducer)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(persistedReducer, composeEnhancers(
-  applyMiddleware(signUp, auth, suggestions),
+  applyMiddleware(signUp, auth, suggestions, result),
 ));
 
 const persistor= persistStore(store)

@@ -29,7 +29,7 @@ export default function PickyMood({
   onClickEmotionsMovie,
   onClickEmotionsShows,
   onClickPlateform,
-  movieEmotions,
+  emotions,
   platforms,
   lookForPickyMoodResult,
 }) {
@@ -49,7 +49,7 @@ export default function PickyMood({
           ShowOrMovie={ShowOrMovie}
           backToShowOrMovies={backToShowOrMovies}
           handleDisplayPickyMoodPlateforms={handleDisplayPickyMoodPlateforms}
-          movieEmotions={movieEmotions}
+          emotions={emotions}
         />
       )}
 
@@ -89,12 +89,12 @@ PickyMood.propTypes = {
   onClickEmotionsMovie: PropTypes.func.isRequired,
   onClickEmotionsShows: PropTypes.func.isRequired,
   onClickPlateform: PropTypes.func.isRequired,
-  movieEmotions: PropTypes.array,
+  emotions: PropTypes.array,
   platforms: PropTypes.array,
   lookForPickyMoodResult: PropTypes.func.isRequired,
 };
 
 PickyMood.defaultProps = {
-  movieEmotions: null,
+  emotions: null,
   platforms: PropTypes.null,
 };
