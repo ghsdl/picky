@@ -3,6 +3,7 @@ export const LOGIN = 'LOGIN';
 export const ACTION_SAVE_USER = 'ACTION_SAVE_USER';
 export const SIGN_UP = 'SIGN_UP';
 export const LOGOUT = 'LOGOUT';
+export const UPDATE_PROFIL_ERROR = 'UPDATE_PROFIL_ERROR';
 
 export const changeInputValue = (value, key) => ({
   type: CHANGE_INPUT_VALUE,
@@ -19,6 +20,7 @@ export const actionSaveUser = (member, token, pseudo) => ({
   member,
   token,
   pseudo,
+  
 });
 
 export const signUp = (value, key) => ({
@@ -29,4 +31,9 @@ export const signUp = (value, key) => ({
 
 export const logout = () => ({
   type: LOGOUT,
+});
+
+export const updateProfilError = (value) => ({
+  type: UPDATE_PROFIL_ERROR,
+  value,
 });

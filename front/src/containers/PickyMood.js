@@ -68,6 +68,10 @@ const mapDispatchToProps = (dispatch) => ({
   newResearch: () => {
     dispatch(newResearch());
   },
+
+  lookForPickyMoodResult: () => {
+    dispatch(pickyMoodResult());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PickyMood);

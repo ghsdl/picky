@@ -5,6 +5,7 @@ import './style.scss';
 export default function Plateforms({
   backToEmotions,
   handleDisplayPickyMoodResults,
+  lookForPickyMoodResult,
   onClickPlateform,
   platforms,
 }) {
@@ -48,7 +49,7 @@ export default function Plateforms({
         <div className="button-precedent" onClick={backToEmotions}>
           Précedent
         </div>
-        <div className={className} onClick={handleDisplayPickyMoodResults}>
+        <div className={className} onClick={handleDisplayPickyMoodResults, lookForPickyMoodResult}>
           Search
         </div>
       </div>
@@ -62,6 +63,7 @@ Plateforms.propTypes = {
   handleDisplayPickyMoodResults: PropTypes.func.isRequired,
   onClickPlateform: PropTypes.func.isRequired,
   platforms: PropTypes.array,
+  lookForPickyMoodResult: PropTypes.func.isRequired,
 };
 
 Plateforms.defaultProps = {

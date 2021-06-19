@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import { LOGIN, actionSaveUser } from 'src/actions/user'
+import { LOGIN, actionSaveUser, updateProfilError } from 'src/actions/user'
 
 const auth = (store) => (next) => (action) => {
   switch (action.type){
@@ -11,11 +11,12 @@ const auth = (store) => (next) => (action) => {
       })
         .then((response) => {
           const { email, token, pseudo } = response.data;
-          const saveUser = actionSaveUser(email, pseudo, token);
+          const saveUser = actionSaveUser(email, token, pseudo,);
           store.dispatch(saveUser);
         })
         .catch((error) => {
-          console.log(`error`, error);
+          store.dispatch(updateProfilError(error.response.data))
+          console.log(error.response.data)
         });
       break;
     }
