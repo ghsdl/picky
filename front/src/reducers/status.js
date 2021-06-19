@@ -5,6 +5,7 @@ import {
 
 const initialState= { 
   isConnected: false,
+  token: '',
 }
 
 const statusReducer = (state = initialState, action = {}) => {
@@ -13,7 +14,8 @@ const statusReducer = (state = initialState, action = {}) => {
     case ACTION_SAVE_USER:
       return {
         ...state,
-        isConnected: true,        
+        isConnected: true,
+        token: action.token,        
       };
     case LOGOUT:
     return {

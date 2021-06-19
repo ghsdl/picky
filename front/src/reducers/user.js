@@ -34,9 +34,8 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: true,
-        pseudo: action.pseudo,
-        token: action.token,
-        
+        pseudo: action.value,     
+  
       };
 
     case UPDATE_PROFIL_ERROR: 

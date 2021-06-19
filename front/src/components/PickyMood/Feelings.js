@@ -41,7 +41,7 @@ export default function Feelings({
     { emotion: 'Angoissé', genre: 'crime' },
     { emotion: 'Rêveur', genre: 'anime' },
   ];
-
+  
   const emotionsCardforMovie = emotionsShows.map((emotion) => {
     const classNameCliked = movieEmotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
     return (
@@ -70,7 +70,7 @@ export default function Feelings({
       </li>
     );
   });
-  const className = movieEmotions.length <= 3 ? 'button-suivant' : 'button-suivant button-suivant--hidden';
+  const className = movieEmotions.length <= 3 &&  movieEmotions.length > 0 ? 'button-suivant' : 'button-suivant button-suivant--hidden';
   return (
     <>
       <div className="pickyMood">

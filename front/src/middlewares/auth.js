@@ -11,7 +11,7 @@ const auth = (store) => (next) => (action) => {
       })
         .then((response) => {
           const { email, token, pseudo } = response.data;
-          const saveUser = actionSaveUser(email, pseudo, token);
+          const saveUser = actionSaveUser(email, token, pseudo,);
           store.dispatch(saveUser);
         })
         .catch((error) => {
