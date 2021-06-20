@@ -49,7 +49,7 @@ export default function Plateforms({
         <div className="button-precedent" onClick={backToEmotions}>
           Précedent
         </div>
-        <div className={className} onClick={handleDisplayPickyMoodResults, lookForPickyMoodResult}>
+        <div className={className} onClick={() => {handleDisplayPickyMoodResults(); lookForPickyMoodResult()}}>
           Search
         </div>
       </div>

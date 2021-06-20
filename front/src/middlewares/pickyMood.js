@@ -6,7 +6,10 @@ const result = (store) => (next) => (action) => {
     case PICKYMOOD_RESULT: {
       const state = store.getState()
       axios.post('https://projet-picky.herokuapp.com/moodresults', {
-        urlAxios: state.pickyMood.urlAxios
+        ShowOrMovie: state.pickyMood.ShowOrMovie,
+        emotions: state.pickyMood.emotions,
+        platforms: state.pickyMood.platforms,
+        
       })
         .then((response) => {
           console.log(response)
