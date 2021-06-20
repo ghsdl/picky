@@ -3,7 +3,6 @@ const pool = require('../../database');
 module.exports = {
 
   /**
-   *
    * @param {*} newMember
    * @return {*} 
    */
@@ -16,7 +15,6 @@ module.exports = {
 
     return addedMember.rows[0];
   },
-
 
   /**
    *

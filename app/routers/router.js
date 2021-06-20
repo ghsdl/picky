@@ -32,6 +32,7 @@ router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
 
 // SEARCH ROUTES
+
 router.route('/search/shows/:text')
   .get(showController.searchShows);
 
@@ -41,8 +42,8 @@ router.route('/search/movies/:text')
 router.route('/search/:query')
   .get(searchController.searchAll);
 
-router.route('/search/:moodresults')
-  .post(searchController.moodSearch);
+router.post('/moodresults', searchController.mood);
+
 
 /*router.route('/search/bookmark/:id')  
   .post(searchController.addToBookmark)*/
@@ -70,17 +71,39 @@ router.route('/bookmark/:id(\\d+)')
 
 router.route('/member')
   /** 
-   * Member's list
-   * @route GET /members
+   * Get all the members
+   * @route GET /member
    * @returns {Member[]} 200 - Member's list
    * @returns {Error} 500 - Error servor
    */
-  
   .get(memberController.get);
-router.route('/member/:id(\\d+)')
+
+  router.route('/member/:id(\\d+)')
+  /**  
+   * Get members by their id
+   * @route GET /member/{id}
+   * @param {number} id - Member's id
+   * @returns {Member{}} 200 - One member
+   * @returns {Error} 500 - Error servor
+   */
   .get(memberController.getById)
+    /**  
+   * Updated member
+   * @route PATCH /member/{id}
+   * @param {number} id - Member's id
+   * @returns {Member{}} 200 - Member's update
+   * @returns {Error} 500 - Error servor
+   */
   .patch(validate.body(schemas.memberUpdateSchema), memberController.update)
+    /**  
+   * Deleted member
+   * @route DELETE /member/{id}
+   * @param {number} id - Member's id
+   * @returns {Member{}} 204 - <empty content>
+   * @returns {Error} 500 - Error servor
+   */
   .delete(memberController.delete);
+
 router.route('/member/:id(\\d+)/bookmark')
   .get(memberController.getBookmarkByMember);
 router.route('/member/:id(\\d+)/platform')

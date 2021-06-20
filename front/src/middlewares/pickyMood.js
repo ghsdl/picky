@@ -5,19 +5,21 @@ const result = (store) => (next) => (action) => {
   switch (action.type){
     case PICKYMOOD_RESULT: {
       const state = store.getState()
-      axios.post('https://projet-picky.herokuapp.com/moodResults', {
-        urlAxios: state.pickyMood.urlAxios
+      axios.post('https://projet-picky.herokuapp.com/moodresults', {
+        ShowOrMovie: state.pickyMood.ShowOrMovie,
+        movieEmotions: state.pickyMood.movieEmotions,
+        platforms: state.pickyMood.platforms,
       })
         .then((response) => {
           console.log(response)
         })
         .catch((error) => {
-          console.log(error)
+          console.trace(error)
         });
       break;
     }
     default:
-      next(action);  
+      next(action);
   }
 };
 

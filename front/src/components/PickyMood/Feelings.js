@@ -30,19 +30,19 @@ export default function Feelings({
   const emotionsShows = [
     { emotion: 'Amusé', genre: 'comedy' },
     { emotion: 'Amoureux', genre: 'romance' },
-    { emotion: 'Ébahi', genre: 'science-fiction' },
-    { emotion: 'Transporté', genre: 'aventure' },
+    { emotion: 'Ébahi', genre: 'science_fiction' },
+    { emotion: 'Transporté', genre: 'adventure' },
     { emotion: 'Apeuré', genre: 'horror' },
     { emotion: 'Instruit', genre: 'documentary' },
     { emotion: 'Scotché', genre: 'action' },
     { emotion: 'Diverti', genre: 'reality' },
-    { emotion: 'Bouleversé', genre: 'drame' },
+    { emotion: 'Bouleversé', genre: 'drama' },
     { emotion: 'Attendri', genre: 'animation' },
     { emotion: 'Angoissé', genre: 'crime' },
     { emotion: 'Rêveur', genre: 'anime' },
   ];
   
-  const emotionsCardforMovie = emotionsShows.map((emotion) => {
+  const emotionsCardforMovie = emotionsMovies.map((emotion) => {
     const classNameCliked = movieEmotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
     return (
       <li
@@ -56,7 +56,7 @@ export default function Feelings({
       </li>
     );
   });
-  const emotionsCardforShows = emotionsMovies.map((emotion) => {
+  const emotionsCardforShows = emotionsShows.map((emotion) => {
     const classNameCliked = movieEmotions.includes(emotion.genre) ? 'pickMoodContent-item pickMoodContent-item-clicked' : 'pickMoodContent-item';
     return (
       <li

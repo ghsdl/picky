@@ -1,7 +1,21 @@
 const pool = require('../../database');
 
 module.exports = {
+    /**
+     * @typedef Member
+     * @property {number} id - Unique identifier
+     * @property {string} pseudo - Member's nickname
+     * @property {string} email - Member's email
+     * @property {string} password - Member's password
+     * @property {string} profile_picture - Member's profile picture
+     * @property {string} created_at - Creation date (date ISO 8601)
+     * @property {string} updated_at - Update date (date ISO 8601)
+     */
 
+    /**
+     * Get all members
+     * @return {object[]} Member's list 
+     */
     async getAll() {
         const result = await pool.query(`SELECT * FROM member ORDER BY id`);
         return result.rows;
@@ -22,7 +36,7 @@ module.exports = {
         JOIN bookmark AS b
         ON m.id = b.member_id
         WHERE member_id = $1
-        GROUP BY m.id;;`, [memberId]);
+        GROUP BY m.id;`, [memberId]);
         return result.rows;
     },
 

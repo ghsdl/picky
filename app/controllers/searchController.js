@@ -5,35 +5,25 @@ const searchController = {
     searchAll : async (req, res) => {
         try {
             const query = req.params;
+            console.log(query);
             const search = await searchDataMapper.searchAll(query);
             res.json(search);
-            /*const search = await searchDataMapper.searchAll();
-            res.json(search);*/
         } catch (error) {
             console.log(error);
             res.status(500).json(error.toString());
         }
     },
 
-   /* addToBookmark : async (req, res) => {
+    mood: async (req, res) => {
         try {
-
-            const betaseriesId = req.params.id
-            const add = await searchDataMapper.addToBookmark(betaseriesId);
-
-            res.json(add);
-        } catch (error) {
-            console.log(error);
-            res.status(500).json(error.toString());
-        }
-    }*/
-
-    moodSearch: async (req, res) => {
-        try {
-            const data = req.params;
-            console.log(data);
-            //const result = searchDataMapper.moodResults(data);
-            //res.json(result);
+            const { ShowOrMovie, movieEmotions, platforms } = req.body;
+            
+            const moodresults = await searchDataMapper.results({
+                ShowOrMovie, 
+                movieEmotions, 
+                platforms
+            });
+            res.json(moodresults);
         } catch (error) {
             console.log(error);
             res.status(500).json(error.toString());

@@ -9,8 +9,8 @@ const expressSwagger = require('express-swagger-generator')(app);
 const cors = require('cors');
 
 // MIDDLEWARES
-app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors("*"));
 
 // SWAGGER DOCUMENTATION API
@@ -31,7 +31,7 @@ let options = {
        }
    },
    basedir: __dirname, // app absolute path
-   files: ['./app/routers/*.js'] // Path to the API handle folder
+   files: ['./app/routers/*.js', './app/dataMappers/*.js'] // Path to the API handle folder
 };
 expressSwagger(options);
 

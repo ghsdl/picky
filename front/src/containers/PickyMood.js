@@ -13,6 +13,7 @@ import {
   newResearch,
   clickOnEmotionsShows,
   clickOnPlateform,
+  pickyMoodResult,
 } from 'src/actions/pickyMood';
 
 const mapStateToProps = (state) => ({
@@ -23,6 +24,7 @@ const mapStateToProps = (state) => ({
   ShowOrMovie: state.pickyMood.ShowOrMovie,
   movieEmotions: state.pickyMood.movieEmotions,
   platforms: state.pickyMood.platforms,
+  urlAxios: state.pickyMood.urlAxios,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -71,6 +73,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   lookForPickyMoodResult: () => {
     dispatch(pickyMoodResult());
+    //console.log(urlAxios)
   },
 });
 

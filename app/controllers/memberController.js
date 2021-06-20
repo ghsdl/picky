@@ -2,6 +2,12 @@ const memberDataMapper = require('../dataMappers/memberDataMapper');
 const platformDataMapper = require('../dataMappers/platformDataMapper');
 const bcrypt = require('bcrypt');
 
+
+
+/** 
+ * @typedef Member
+ * 
+ */
 const memberController = {
   async get(req, res) {
     try {
