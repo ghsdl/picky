@@ -7,8 +7,9 @@ const result = (store) => (next) => (action) => {
       const state = store.getState()
       axios.post('https://projet-picky.herokuapp.com/moodresults', {
         ShowOrMovie: state.pickyMood.ShowOrMovie,
-        movieEmotions: state.pickyMood.movieEmotions,
+        emotions: state.pickyMood.emotions,
         platforms: state.pickyMood.platforms,
+        
       })
         .then((response) => {
           console.log(response)

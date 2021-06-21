@@ -22,7 +22,7 @@ const mapStateToProps = (state) => ({
   displayPickyMoodPlateforms: state.pickyMood.pickyMoodPlateforms,
   displayPickyMoodResults: state.pickyMood.pickyMoodResults,
   ShowOrMovie: state.pickyMood.ShowOrMovie,
-  movieEmotions: state.pickyMood.movieEmotions,
+  emotions: state.pickyMood.emotions,
   platforms: state.pickyMood.platforms,
   urlAxios: state.pickyMood.urlAxios,
 });

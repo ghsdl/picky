@@ -12,6 +12,9 @@ import {
   CLICK_ON_PLATEFORM,
 } from 'src/actions/pickyMood';
 
+import { LOCATION_CHANGE } from 'react-router-redux'; 
+
+console.log(LOCATION_CHANGE)
 const initialState = {
   pickyMoodShowOrSerie: true,
   pickyMoodEmotions: false,
@@ -19,7 +22,7 @@ const initialState = {
   pickyMoodResults: false,
   ShowOrMovie: '',
   urlAxios: {},
-  movieEmotions: [],
+  emotions: [],
   platforms: [],
 };
 
@@ -55,14 +58,14 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         ...state,
         ShowOrMovie: action.apiNameShowOrMovie,
         urlAxios: { ...state.urlAxios, ShowOrMovie: action.apiNameShowOrMovie },
-        movieEmotions: [],
+        emotions: [],
       };
       if (state.ShowOrMovie === action.apiNameShowOrMovie) {
         newState = {
           ...state,
           ShowOrMovie: '',
           urlAxios: { ...state.urlAxios, ShowOrMovie: '' },
-          movieEmotions: [],
+          emotions: [],
         };
       }
       return {
@@ -73,24 +76,24 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
     case CLICK_ON_EMOTIONS_MOVIE: {
       let newState = {
         ...state,
-        movieEmotions: state.movieEmotions,
+        emotions: state.emotions,
         urlAxios: {
           ...state.urlAxios,
-          movieEmotions: state.movieEmotions,
+          emotions: state.emotions,
         },
       };
-      if (state.movieEmotions.includes(action.emotionsMoviesGenre)) {
+      if (state.emotions.includes(action.emotionsMoviesGenre)) {
         // On le supprime
-        state.movieEmotions.forEach((movieEmotion) => {
-          if (movieEmotion === action.emotionsMoviesGenre) {
-            const indexOfEmotion = state.movieEmotions.indexOf(movieEmotion);
-            newState.movieEmotions.splice(indexOfEmotion, 1);
+        state.emotions.forEach((emotions) => {
+          if (emotions === action.emotionsMoviesGenre) {
+            const indexOfEmotion = state.emotions.indexOf(emotions);
+            newState.emotions.splice(indexOfEmotion, 1);
             newState = {
               ...state,
-              movieEmotions: [...state.movieEmotions],
+              emotions: [...state.emotions],
               urlAxios: {
                 ...state.urlAxios,
-                movieEmotions: [...state.movieEmotions],
+                emotions: [...state.emotions],
               },
             };
           }
@@ -100,10 +103,10 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         // On l'ajoute
         newState = {
           ...state,
-          movieEmotions: [...state.movieEmotions, action.emotionsMoviesGenre],
+          emotions: [...state.emotions, action.emotionsMoviesGenre],
           urlAxios: {
             ...state.urlAxios,
-            movieEmotions: [...state.movieEmotions, action.emotionsMoviesGenre],
+            emotions: [...state.emotions, action.emotionsMoviesGenre],
           },
         };
       }
@@ -116,24 +119,24 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
     case CLICK_ON_EMOTIONS_SHOW: {
       let newState = {
         ...state,
-        movieEmotions: state.movieEmotions,
+        emotions: state.emotions,
         urlAxios: {
           ...state.urlAxios,
-          movieEmotions: state.movieEmotions,
+          emotions: state.emotions,
         },
       };
-      if (state.movieEmotions.includes(action.emotionsShowGenre)) {
+      if (state.emotions.includes(action.emotionsShowGenre)) {
         // On le supprime
-        state.movieEmotions.forEach((movieEmotion) => {
-          if (movieEmotion === action.emotionsShowGenre) {
-            const indexOfEmotion = state.movieEmotions.indexOf(movieEmotion);
-            newState.movieEmotions.splice(indexOfEmotion, 1);
+        state.emotions.forEach((emotions) => {
+          if (emotions === action.emotionsShowGenre) {
+            const indexOfEmotion = state.emotions.indexOf(emotions);
+            newState.emotions.splice(indexOfEmotion, 1);
             newState = {
               ...state,
-              movieEmotions: [...state.movieEmotions],
+              emotions: [...state.emotions],
               urlAxios: {
                 ...state.urlAxios,
-                movieEmotions: [...state.movieEmotions],
+                emotions: [...state.emotions],
               },
             };
           }
@@ -143,10 +146,10 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         // On l'ajoute
         newState = {
           ...state,
-          movieEmotions: [...state.movieEmotions, action.emotionsShowGenre],
+          emotions: [...state.emotions, action.emotionsShowGenre],
           urlAxios: {
             ...state.urlAxios,
-            movieEmotions: [...state.movieEmotions, action.emotionsShowGenre],
+            emotions: [...state.emotions, action.emotionsShowGenre],
           },
         };
       }
@@ -211,11 +214,17 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         pickyMoodResults: false,
         ShowOrMovie: '',
         urlAxios: {},
-        movieEmotions: [],
+        emotions: [],
         platforms: [],
       };
+
+    case LOCATION_CHANGE: {
+      return state
+    }
     default:
       return state;
+
+    
   }
 };
 
