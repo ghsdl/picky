@@ -12,7 +12,6 @@ const platformsReducer = (state = initialState, action = {}) => {
         ...state,
       };
     case SAVE_PLATFORMS: {
-      console.log('platforms in reducer', action.platforms);
       return {
         ...state,
         platforms: action.platforms,

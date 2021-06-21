@@ -7,14 +7,10 @@ const pickyFind = (store) => (next) => (action) => {
      const searchInput = store.getState().search.searchInputValue;
     axios.get(`https://projet-picky.herokuapp.com/search/movies/${searchInput}`)
       .then((response) => {
-        //console.log('response.data[0] for movies request', response.data[0]);
         const { movies } = response.data[0];
-        //console.log('movies in middleware', movies);
           axios.get(`https://projet-picky.herokuapp.com/search/shows/${searchInput}`)
             .then((response) => {
-              //console.log('response.data[0] for shows request', response.data[0]);
               const { shows } = response.data[0];
-              //console.log('shows in middleware', shows);
               store.dispatch(savePrograms(movies, shows));
             })
             .catch((error) => {

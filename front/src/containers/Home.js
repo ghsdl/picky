@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchPrograms());
   },
   loadPlatforms: () => {
-    console.log('Jappelle loadPlatforms dans home');
     dispatch(fetchPlatforms());
   },
 });

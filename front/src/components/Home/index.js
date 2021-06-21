@@ -16,7 +16,6 @@ import './home.scss';
 const Home = (props) => {
   useEffect(() => {
     props.loadPlatforms();
-    console.log('je charge home');
   }, []);
   // If the user types at least 3 letters in the searchbar, the research starts
   if (props.searchInputValue.length > 2) {
