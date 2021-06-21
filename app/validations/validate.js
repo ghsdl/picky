@@ -17,7 +17,7 @@ const validate = {
         await schema.validateAsync(req.body);
         next();
       } catch (error) {
-        return res.status(400).json({error: `Access denied.`});
+        return res.status(400).json({password: `Veuillez vérifier que les deux mots de passe sont identiques.`, error: error.details[0].message});
       }
     };
   },

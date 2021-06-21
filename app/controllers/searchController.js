@@ -3,33 +3,32 @@ const searchDataMapper = require('../dataMappers/searchDataMapper.js');
 const searchController = {
 
     searchAll : async (req, res) => {
-
         try {
             const query = req.params;
+            console.log(query);
             const search = await searchDataMapper.searchAll(query);
             res.json(search);
-            /*const search = await searchDataMapper.searchAll();
-            res.json(search);*/
         } catch (error) {
             console.log(error);
             res.status(500).json(error.toString());
         }
     },
 
-   /* addToBookmark : async (req, res) => {
+    mood: async (req, res) => {
         try {
-
-            const betaseriesId = req.params.id
-            const add = await searchDataMapper.addToBookmark(betaseriesId);
-
-            res.json(add);
+            const { ShowOrMovie, emotions, platforms } = req.body;
             
-            
+            const moodresults = await searchDataMapper.results({
+                ShowOrMovie, 
+                emotions, 
+                platforms
+            });
+            res.json(moodresults);
         } catch (error) {
             console.log(error);
             res.status(500).json(error.toString());
         }
-    }*/
+    }
 }
 
 module.exports = searchController;

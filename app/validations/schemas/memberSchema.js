@@ -8,10 +8,11 @@ const insertSchema = Joi.object({
 }).required();
 
 const updateSchema = Joi.object({
+    id: Joi.number().integer(),
     pseudo: Joi.string().min(2),
     email: Joi.string().email(),
     password: Joi.string(),
-    confirmationPassword: Joi.ref('password')
+    profile_picture: Joi.string().uri()
 }).required();
 
 module.exports = { insertSchema, updateSchema };

@@ -7,7 +7,8 @@ const authController = {
     try {
 
       // DESTRUCTURING REQ.BODY
-      const { pseudo, email, password, confirmationPassword } = req.body;
+      const { pseudo, email, password } = req.body;
+      console.log(req.body);
 
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const memberEmail = await authDataMapper.getMemberByEmail(email);
@@ -16,7 +17,7 @@ const authController = {
         return res.status(401).json('User already registered with this email.');
       }
 
-      if(password !== confirmationPassword) {
+      if(password !== req.body.confirmationPassword) {
         return res.status(401).json(`Passwords don't match`);
       }
 

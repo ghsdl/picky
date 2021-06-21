@@ -2,6 +2,12 @@ const pool = require('../../database');
 
 module.exports = {
 
+
+    /**
+     *
+     *
+     * @return {*} 
+     */
     async get() {
         const result = await pool.query(`SELECT * FROM bookmark ORDER BY id`);
         return result.rows;
