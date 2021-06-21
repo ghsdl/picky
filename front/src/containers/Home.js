@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Home from 'src/components/Home';
 
 import { fetchPrograms } from 'src/actions/pickyFind';
-import { fetchPlatforms } from 'src/actions/platforms';
 
 const mapStateToProps = (state) => ({
   searchInputValue: state.search.searchInputValue,
@@ -14,9 +13,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadPrograms: () => {
     dispatch(fetchPrograms());
-  },
-  loadPlatforms: () => {
-    dispatch(fetchPlatforms());
   },
 });
 

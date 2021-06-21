@@ -6,7 +6,6 @@ import { fetchPlatforms } from 'src/actions/platforms';
 
 const mapDispatchToProps = (dispatch) => ({
   loadPlatforms: () => {
-    console.log('Jappelle loadPlatforms dans home');
     dispatch(fetchPlatforms());
   },
 });

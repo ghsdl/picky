@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // == Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 // == Import
 import './styles.css';
@@ -17,8 +17,14 @@ import SignUp from 'src/components/SignUp';
 
 // == Composant
 
-const App = () => (
-  <div className="app">
+const App = (props) => {
+  // When the app opens, we get all the platforms to be able to use the logos anywhere
+  useEffect(() => {
+    props.loadPlatforms();
+  }, []);
+
+  return (
+    <div className="app">
     <Switch>
       <Route exact path="/">
         <Home />
@@ -49,7 +55,8 @@ const App = () => (
       </Route>
     </Switch>
   </div>
-);
+  );
+};
 
 // == Export
 export default App;

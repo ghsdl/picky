@@ -26,7 +26,6 @@ const Card = ({ inWatchList, title, poster, platformsInfos, platforms }) => (
           { // TODO: make the display of the platforms dynamic
           }
           {platformsInfos.map((platformInfo) => (
-            //<p>{platformInfo.name}</p>
             platforms.map((platform) => {
               if(platformInfo.id === platform.id) {
                 return (

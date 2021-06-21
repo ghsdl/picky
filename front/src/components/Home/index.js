@@ -1,5 +1,5 @@
 // Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -14,9 +14,6 @@ import './home.scss';
 
 // Display of home
 const Home = (props) => {
-  useEffect(() => {
-    props.loadPlatforms();
-  }, []);
   // If the user types at least 3 letters in the searchbar, the research starts
   if (props.searchInputValue.length > 2) {
     props.loadPrograms();

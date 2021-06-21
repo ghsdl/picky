@@ -9,17 +9,27 @@ import './cards.scss';
 
 // Display of the cards
 const Cards = ({movies, shows, loading, currentPage}) => {
+  {// When the results are loading, "Loading" is displayed
+  }
   if (loading === true) {
     return (
     <p>Loading</p>)
   }
 
+  {// When the results are not loading anymore, they are displayed
+  }
   if (loading === false) {
+    {// If the current page is home (Picky Find), the results displayed depend on the request of
+      // the API
+    }
     if (currentPage==="home") {
       return (
         // TODO: make the display of the cards dynamic with a map
         <div className="cards">
+        {// The movies are displayed
+        }
         {movies.map((movie) => (
+          console.log(movie.svods),
           <Card
             title={movie.title}
             poster={movie.poster}
@@ -27,6 +37,8 @@ const Cards = ({movies, shows, loading, currentPage}) => {
             key= {movie.id}
           />
         ))}
+        {// The shows are displayed
+        }
         {shows.map((show) => (
           <Card
             title={show.title}
@@ -37,13 +49,28 @@ const Cards = ({movies, shows, loading, currentPage}) => {
         ))}
         </div>
       );
+      {// If the current page is not home (Picky Find), the results are not dynamic yet
+      }
     } else {
+      const friendsVod= [{id: 1, name: "Netflix"}];
       return (
         // TODO: make the display of the cards dynamic with a map
         <div className="cards">
-        <Card title="Friends" />
-        <Card title="Friends" />
-        <Card title="Friends" />
+        <Card 
+          title="Friends"
+          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
+          platformsInfos={friendsVod}
+        />
+        <Card 
+          title="Friends"
+          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
+          platformsInfos={friendsVod}
+        />
+        <Card 
+          title="Friends"
+          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
+          platformsInfos={friendsVod}
+        />
         </div>
       );
     }
