@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { classie } from 'src/selectors/user'
 import './signupform.scss';
 
 export default function Field({
@@ -15,20 +15,32 @@ export default function Field({
   };
   const inputId = `field-${name}`;
 
+  classie(window);
+  //Style();
+  const className= value ? "input input--chisato input--filled" : "input input--chisato"
+
   return (
-    <div className="signUpForm__field">
-      <label htmlFor={inputId} className="signUpForm__field__label">{placeholder}
-        <input
-          className="signUpForm__field__input"
+    <div>
+      <span className={className}>
+				<input 
+          className="input__field input__field--chisato" 
           value={value}
           onChange={handleChange}
           id={inputId}
           type={type}
-          placeholder={placeholder}
           name={name}
-          required
         />
-      </label>
+				<label 
+          className="input__label input__label--chisato" 
+          htmlFor={inputId}>  
+					<span 
+            className="input__label-content input__label-content--chisato "
+            data-content= {placeholder}
+          >
+            {placeholder}
+          </span>
+				</label>
+		  </span>
     </div>
   );
 }

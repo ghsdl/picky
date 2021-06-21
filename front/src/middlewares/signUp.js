@@ -1,6 +1,6 @@
 import axios from 'axios'; 
 import { SIGN_UP, updateProfilError } from 'src/actions/user'
-
+import { Redirect } from 'react-router-dom'
 const signUp = (store) => (next) => (action) => {
   switch (action.type){
     case SIGN_UP: {
@@ -14,7 +14,7 @@ const signUp = (store) => (next) => (action) => {
       })
         .then((response) => {
          console.log(response.data)
-         
+         window.location.href="/signIn"
         })
         .catch((error) => {
           console.log(error.response.data.error)

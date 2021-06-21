@@ -32,7 +32,10 @@
     width: 10vh;
     height: 10vh;
     margin-top: 4vh;
-    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -2vh;
   }
 
   &-iconProfil{
