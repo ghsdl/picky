@@ -11,7 +11,7 @@ import About from 'src/components/About';
 import Error from 'src/components/Error';
 import PickyMood from 'src/containers/PickyMood';
 import SignIn from 'src/containers/SignIn';
-import SignUp from 'src/components/SignUp';
+import SignUp from 'src/containers/SignUp';
 
 
 // == Composant

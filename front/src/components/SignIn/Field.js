@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { classie, Style } from 'src/selectors/user'
+import { classie } from 'src/selectors/user'
 import './style.scss';
 
 export default function Field({
@@ -16,7 +16,7 @@ export default function Field({
   const inputId = `field-${name}`;
   classie(window);
   //Style();
-const className= value ? "input input--chisato input--filled" : "input input--chisato"
+  const className= value ? "input input--chisato input--filled" : "input input--chisato"
   return (
     <div>
       <span className={className}>

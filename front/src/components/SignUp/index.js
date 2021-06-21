@@ -1,21 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import SignUpForm from 'src/containers/SignUpForm';
 import PropTypes from 'prop-types';
 
 import './signup.scss';
-
-const SignUp = () => (
+const SignUp = ({isConnected}) => {
+console.log(`isConnected`, isConnected)
+  return (
   <>
+   {isConnected && (
+       <Redirect to="/"/>
+    )}
     <Header />
     <div className="signUp">
-      <h2 className="signUp__title"> Inscrivez-vous à Picky</h2>
-      <SignUpForm />
-      <Link to="/signin" className="signUp__signIn"> Déjà inscrit? Connectez-vous! </Link>
-    </div>
+      <h2 className="signUp__title"> Profitez des avantages d'un Picky Addict, Inscrivez-vous !</h2>
+      <SignUpForm isConnected={isConnected}/>
+      </div>
 
   </>
-);
+  )
+};
 
 export default SignUp;
