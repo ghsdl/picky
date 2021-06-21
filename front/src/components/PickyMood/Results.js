@@ -17,7 +17,7 @@ const Results = ({ newResearch }) => (
     </div>
     {// Cards with the results of the research
     }
-    <Cards />
+    <Cards currentPage="pickyMoodResults" loading={false}/>
     {// Button to do a new research
     }
     <div className="button">

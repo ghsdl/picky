@@ -16,41 +16,42 @@ import SignUp from 'src/components/SignUp';
 
 // == Composant
 
-function App (){
+const App = (props) => {
+  // When the app opens, we get all the platforms to be able to use the logos anywhere
+  useEffect(() => {
+    props.loadPlatforms();
+  }, []);
 
-  return(
+  return (
     <div className="app">
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/wish">
-          <Wish />
-        </Route>
-        <Route exact path="/mood">
-          <PickyMood />
-        </Route>
-        <Route exact path="/signIn">
-          <SignIn />
-        </Route>  
-        <Route exact path="/signUp">
-          <SignUp />
-        </Route>
-        <Route exact path="/profil">
-          <Profile />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/signIn">
-          <SignIn />
-        </Route>
-        <Route>
-          <Error />
-        </Route>
-      </Switch>
-    </div>
-  )
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/wish">
+        <Wish />
+      </Route>
+      <Route exact path="/mood">
+        <PickyMood />
+      </Route>
+      <Route exact path="/signIn">
+        <SignIn />
+      </Route>
+      <Route exact path="/signUp">
+        <SignUp />
+      </Route>
+      <Route exact path="/profil">
+        <Profile />
+      </Route>
+      <Route exact path="/about">
+        <About />
+      </Route>
+      <Route>
+        <Error />
+      </Route>
+    </Switch>
+  </div>
+  );
 };
 
 // == Export

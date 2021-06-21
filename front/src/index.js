@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react'
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import App from 'src/components/App';
+import App from 'src/containers/App';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { store, persistor } from 'src/store';
 
