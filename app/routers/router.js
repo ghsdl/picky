@@ -41,9 +41,6 @@ router.route('/search/movies/:text')
 router.route('/search/:query')
   .get(searchController.searchAll);
 
-/*router.route('/search/bookmark/:id')  
-  .post(searchController.addToBookmark)*/
-
 // PLATFORM ROUTES
 router.route('/platform')
   .get(platformController.get);
