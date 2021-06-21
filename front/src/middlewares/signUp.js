@@ -6,7 +6,7 @@ const signUp = (store) => (next) => (action) => {
     case SIGN_UP: {
 
       const state = store.getState();
-      axios.post('http://localhost:3000/signup', {
+      axios.post('https://projet-picky.herokuapp.com/signup', {
         pseudo: state.user.pseudo,
         email: state.user.email,
         password: state.user.password,
@@ -17,7 +17,8 @@ const signUp = (store) => (next) => (action) => {
          window.location.href="/signIn"
         })
         .catch((error) => {
-          store.dispatch(updateProfilError(error.response.data.error))
+          console.log(error.response.data.error)
+          store.dispatch(updateProfilError(error.response.data.password))
         });
       break;
     }
