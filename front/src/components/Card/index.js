@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 import './card.scss';
 
 // Display of one card
-const Card = ({ inWatchList }) => (
+const Card = ({ inWatchList, props }) => {
+return (
   // TODO: make the content of the card dynamic
   <div className="card">
     { // Poster of the program
@@ -50,7 +51,8 @@ const Card = ({ inWatchList }) => (
       </div>
     </div>
   </div>
-);
+  )
+};
 
 Card.propTypes = {
   inWatchList: PropTypes.bool.isRequired,

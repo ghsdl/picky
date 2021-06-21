@@ -5,4 +5,8 @@ const mapStateToProps = (state) => ({
   inWatchList: state.watchlist.inWatchList,
 });
 
-export default connect(mapStateToProps)(Card);
+const mapDispatchToProps = dispatch => ({
+  addToWatchlist:data=>dispatch(addToList(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
