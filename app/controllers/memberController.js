@@ -2,6 +2,12 @@ const memberDataMapper = require('../dataMappers/memberDataMapper');
 const platformDataMapper = require('../dataMappers/platformDataMapper');
 const bcrypt = require('bcrypt');
 
+
+
+/** 
+ * @typedef Member
+ * 
+ */
 const memberController = {
   async get(req, res) {
     try {
@@ -79,8 +85,6 @@ const memberController = {
     }
   },
 
-    // TO DO
-    // HANDLE UPDATE AND LOGIN SO THEY MATCH AGAIN IN DATABASE
   async update(req, res, next) {
     try {
       const memberId = parseInt(req.params.id, 10);
@@ -115,9 +119,9 @@ const memberController = {
         data.profile_picture = req.body.profile_picture;
       }
 
-      const updatedMember = await memberDataMapper.patch(data, memberId);
+      const updatedMember = await memberDataMapper.patch(data);
 
-      res.json({ updatedMember });
+      res.json( updatedMember );
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -127,6 +131,7 @@ const memberController = {
   async delete(req, res, next) {
     try {
       const oneMember = await memberDataMapper.getOne(parseInt(req.params.id, 10));
+     
       if (!oneMember) {
         return next();
       }

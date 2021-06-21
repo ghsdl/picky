@@ -12,13 +12,17 @@ const SignUpForm = ({
   confirmationPassword,
   changeField,
   handleSignUp,
+  errorMessage
 }) => {
+
+  console.log(errorMessage.error)
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleSignUp();
   };
 
   return (
+    <>
     <form
       autoComplete="off"
       className="signUpForm"
@@ -52,8 +56,16 @@ const SignUpForm = ({
         onChange={changeField}
         value={confirmationPassword}
       />
+       { errorMessage.length >1 &&  
+          <p className="formUser-ErrorMessage"> 
+              {errorMessage}
+          </p>
+        }
+      
       <button type="submit">S'inscrire</button>
+      
     </form>
+    </>
   );
 };
 
@@ -64,6 +76,7 @@ SignUpForm.propTypes = {
   confirmationPassword: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired,
 };
 
 export default SignUpForm;

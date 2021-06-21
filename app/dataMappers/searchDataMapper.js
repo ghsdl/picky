@@ -1,44 +1,6 @@
 const fetch = require("node-fetch");
 
 module.exports = {
-  /*async search(query) {
-
-        const apiUrl = 'https://api.betaseries.com/search/all?v=3.0&query=${encodeURIComponent(query)}&key=e7da6c21d678';
-        const response = await fetch(apiUrl);
-        let body = await response.json();
-        if (!Array.isArray(body)) {
-          body = [body];
-        }
-        return body;
-      },*/
-/*
-  async addToBookmark( query) {
-    const apiUrl = 'https://api.betaseries.com/search/all?v=3.0',
-      args = {
-        'query': query,
-        'key': process.env.BETASERIES_API_KEY,
-      },
-      params = '&query=' + args.query.query + '&key=' + args.key;
-
-    const result = apiUrl + params;
-
-    const response = await fetch(result);
-
-    let body = await response.json();
-    if (!Array.isArray(body)) {
-      body = [body];
-      
-      return body;
-    }
-    const data = JSON.parse(body);
-    const bookmark = data.bookmark || '';
-
-    const res = await pool.query(`INSERT INTO "bookmark" ("betaseries_id", "title", "platform", "poster", "member_id") VALUES ($1,$2,$3,$4,$5) RETURNING *`, 
-    [bookmark.betaseries_id, bookmark.title, bookmark.platform, bookmark.poster, bookmark.member_id]);
-        return res.rows[0];
-
-  },*/
-
 
   async searchAll(query) {
     const apiUrl = 'https://api.betaseries.com/search/all?v=3.0',
@@ -53,18 +15,52 @@ module.exports = {
     const response = await fetch(result);
 
     let body = await response.json();
+
     if (!Array.isArray(body)) {
       body = [body];
-      
       return body;
     }
+  },
 
-    /*const apiUrl = 'https://api.betaseries.com/search/all?v=3.0&query=&key=e7da6c21d678';
-        const response = await fetch(apiUrl);
-        let body = await response.json();
-        if (!Array.isArray(body)) {
-          body = [body];
+  async results(moodresults) {
+    const multipleEmotions = moodresults.emotions;
+    const multipleSvods = moodresults.platforms;
+    const obj = [];
+
+    if (multipleEmotions.length !== 0) {
+
+      const result = [];
+
+      const modulo = "%2C";
+
+      for (const emotion of multipleEmotions) {
+        const apiUrl = 'https://api.betaseries.com/search/';
+
+        const params = moodresults.ShowOrMovie + '?v=3.0' + '&genres=' + emotion
+
+        if (multipleSvods.length === 1) {
+          const svods = '&svods=' + multipleSvods[0] + '&key=' + process.env.BETASERIES_API_KEY;
+         
+          result.push(apiUrl + params + svods);
+          console.log(result);
+        } else {
+          const firstIndexOfSvods = multipleSvods[0];
+          const multipleSvodsWithModulo = multipleSvods.map( svods => modulo + svods);
+          multipleSvodsWithModulo.splice(0,1, firstIndexOfSvods);
+          console.log(multipleSvodsWithModulo);
+          const allSvods = multipleSvodsWithModulo.join('');
+          console.log(allSvods);
+          const svods = '&svods=' + allSvods + '&key=' + process.env.BETASERIES_API_KEY;
+          result.push(apiUrl + params + svods);
+          console.log(result)
         }
-        return body;*/
+      }
+      for (const url of result) {
+        const response = await fetch(url);
+        let body = await response.json();
+        obj.push(body);
+      }
+    }
+    return obj;
   }
 };

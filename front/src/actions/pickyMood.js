@@ -8,6 +8,7 @@ export const PLATEFORMS_TO_RESULTS = 'PLATEFORMS_TO_RESULTS';
 export const NEW_RESEARCH = 'NEW_RESEARCH';
 export const CLICK_ON_EMOTIONS_SHOW = 'CLICK_ON_EMOTIONS_SHOW';
 export const CLICK_ON_PLATEFORM = 'CLICK_ON_PLATEFORM';
+export const PICKYMOOD_RESULT = 'PICKYMOOD_RESULT';
 
 export const showOrSeriesToEmotions = () => ({
   type: SHOW_OR_SERIES_TO_EMOTIONS,
@@ -52,3 +53,7 @@ export const plateformsToResults = () => ({
 export const newResearch = () => ({
   type: NEW_RESEARCH,
 });
+
+export const pickyMoodResult = () => ({
+  type: PICKYMOOD_RESULT,
+})

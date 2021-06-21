@@ -1,12 +1,12 @@
 import axios from 'axios'; 
-import { SIGN_UP } from 'src/actions/user'
+import { SIGN_UP, updateProfilError } from 'src/actions/user'
 
 const signUp = (store) => (next) => (action) => {
   switch (action.type){
     case SIGN_UP: {
 
       const state = store.getState();
-      axios.post('https://projet-picky.herokuapp.com/signup', {
+      axios.post('http://localhost:3000/signup', {
         pseudo: state.user.pseudo,
         email: state.user.email,
         password: state.user.password,
@@ -14,9 +14,10 @@ const signUp = (store) => (next) => (action) => {
       })
         .then((response) => {
          console.log(response.data)
+         
         })
         .catch((error) => {
-          console.log(`error`, error)
+          store.dispatch(updateProfilError(error.response.data.error))
         });
       break;
     }

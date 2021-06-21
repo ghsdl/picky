@@ -40,11 +40,16 @@ module.exports = {
       const apiUrl = 'https://api.betaseries.com/search/shows?v=3.0',
       args = {
         'text': text,
+        'limit': 10,
         'key': process.env.BETASERIES_API_KEY,
       },
-      params = '&text=' + args.text.text + '&key=' + args.key;
+      
+      params = '&text=' + args.text.text + '&limit=' + args.limit + '&key=' + args.key;
+      console.log(args)
 
     const result = apiUrl + params;
+    console.log(result)
+    
 
     const response = await fetch(result);
 
@@ -55,5 +60,4 @@ module.exports = {
       return body;
     }
   }
-
 };

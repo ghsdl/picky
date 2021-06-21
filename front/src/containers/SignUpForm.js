@@ -10,8 +10,9 @@ const mapStateToProps = (state) => ({
   email: state.user.email,
   password: state.user.password,
   confirmationPassword: state.user.confirmationPassword,
-  isConnected: state.user.isConnected,
+  isConnected: state.status.isConnected,
   pseudo: state.user.pseudo,
+  errorMessage: state.user.errorMessage
 });
 
 const mapDispatchToProps = (dispatch) => ({

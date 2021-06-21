@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import SignIn from 'src/components/SignIn';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { changeInputValue, login } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
   password: state.user.password,
-  isConnected: state.user.isConnected,
+  isConnected: state.status.isConnected,
   pseudo: state.user.pseudo,
-  token: state.user.token
+  token: state.user.token,
+  errorMessage: state.user.errorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({

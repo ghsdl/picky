@@ -3,6 +3,7 @@ import Card from 'src/components/Card';
 
 const mapStateToProps = (state) => ({
   inWatchList: state.watchlist.inWatchList,
+  platforms: state.platforms.platforms,
 });
 
 
