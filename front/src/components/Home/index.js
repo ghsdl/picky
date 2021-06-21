@@ -13,7 +13,7 @@ import Cards from 'src/containers/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ getRandom, ranmovie, ranshow, research }) => {
+const Home = ({ getRandom, ranmovie, ranshow, research, isConnected }) => {
 
   useEffect(()=>{
     getRandom();
@@ -39,7 +39,12 @@ const Home = ({ getRandom, ranmovie, ranshow, research }) => {
       }
       <div className="home__pickyMood">
         <p>Vous ne savez pas quoi regarder? Faites nous confiance!</p>
-        <Link to="/mood">Picky Mood</Link>
+        {isConnected && (
+          <Link to="/mood">Picky Mood</Link>
+        )}
+        {!isConnected && (
+          <Link to="/signUp">Picky Mood</Link>
+        )}
       </div>
       {// Display of the results
       }
@@ -54,6 +59,7 @@ Home.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   ranmovie: PropTypes.object.isRequired,
   ranshow: PropTypes.object.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 };
 
 export default Home;

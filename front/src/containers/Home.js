@@ -10,6 +10,8 @@ const mapStateToProps = (state) => ({
   loading: state.pickyFind.loading,
   loadingPlatforms: state.pickyFind.loadingPlatforms,
   research: state.pickyFind.research,
+  isConnected: state.status.isConnected,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({

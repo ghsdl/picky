@@ -11,7 +11,6 @@ import './cards.scss';
 const Cards = ({movies, shows, loading, currentPage}) => {
   {// When the results are loading, "Loading" is displayed
   }
-  console.log('loading dans le composant Cards:', loading);
   if (loading === true) {
     return (
     <p>Loading</p>
