@@ -1,5 +1,4 @@
-/*const express = require('express');
-const request = require('request');
+const express = require('express');
 const pg = require('pg');
 
 const app = express(); 
@@ -12,7 +11,7 @@ app.get('/getdata/:id', function(req, res) {
     } 
     request.get(
         // here I am using JSONPlaceholder API (Fake Online REST API for prototyping)
-        { url: "https://jsonplaceholder.typicode.com/posts/" + req.params.id }, 
+        { url: "https://api.betaseries.com/shows/genres?key=e7da6c21d678" + req.params.id }, 
         function(error, response, body) { 
             if (!error && response.statusCode == 200) { 
                 // get data from body ... e.g. title
@@ -35,4 +34,4 @@ app.get('/getdata/:id', function(req, res) {
             } 
         }
     ); 
-}); */
+});
