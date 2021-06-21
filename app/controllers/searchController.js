@@ -16,11 +16,11 @@ const searchController = {
 
     mood: async (req, res) => {
         try {
-            const { ShowOrMovie, movieEmotions, platforms } = req.body;
+            const { ShowOrMovie, emotions, platforms } = req.body;
             
             const moodresults = await searchDataMapper.results({
                 ShowOrMovie, 
-                movieEmotions, 
+                emotions, 
                 platforms
             });
             res.json(moodresults);

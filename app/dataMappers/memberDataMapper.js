@@ -59,7 +59,7 @@ module.exports = {
         return result.rows[0];
     },
 
-    async patch(data, memberId) {
+    async patch(data) {
         const result = await pool.query(`SELECT * FROM update_member($1)`, [data]);
         return result.rows[0];
     },

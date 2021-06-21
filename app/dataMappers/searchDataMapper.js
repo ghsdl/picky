@@ -15,7 +15,7 @@ module.exports = {
     const response = await fetch(result);
 
     let body = await response.json();
-    
+
     if (!Array.isArray(body)) {
       body = [body];
       return body;
@@ -23,28 +23,44 @@ module.exports = {
   },
 
   async results(moodresults) {
-    const multipleEmotions = moodresults.movieEmotions;
+    const multipleEmotions = moodresults.emotions;
     const multipleSvods = moodresults.platforms;
     const obj = [];
 
-    if (multipleEmotions.length !== 0 && multipleSvods.length !==0) {
+    if (multipleEmotions.length !== 0) {
 
       const result = [];
+
+      const modulo = "%2C";
 
       for (const emotion of multipleEmotions) {
         const apiUrl = 'https://api.betaseries.com/search/';
 
-        const params = moodresults.ShowOrMovie + '?v=3.0' + '&genres=' + emotion + '&svods=' + moodresults.platforms + '&key=' + process.env.BETASERIES_API_KEY;
+        const params = moodresults.ShowOrMovie + '?v=3.0' + '&genres=' + emotion
 
-        result.push(apiUrl + params);
+        if (multipleSvods.length === 1) {
+          const svods = '&svods=' + multipleSvods[0] + '&key=' + process.env.BETASERIES_API_KEY;
+         
+          result.push(apiUrl + params + svods);
+          console.log(result);
+        } else {
+          const firstIndexOfSvods = multipleSvods[0];
+          const multipleSvodsWithModulo = multipleSvods.map( svods => modulo + svods);
+          multipleSvodsWithModulo.splice(0,1, firstIndexOfSvods);
+          console.log(multipleSvodsWithModulo);
+          const allSvods = multipleSvodsWithModulo.join('');
+          console.log(allSvods);
+          const svods = '&svods=' + allSvods + '&key=' + process.env.BETASERIES_API_KEY;
+          result.push(apiUrl + params + svods);
+          console.log(result)
+        }
       }
-
       for (const url of result) {
         const response = await fetch(url);
         let body = await response.json();
         obj.push(body);
       }
-    } 
+    }
     return obj;
   }
 };
