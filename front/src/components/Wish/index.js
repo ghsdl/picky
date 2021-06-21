@@ -10,7 +10,9 @@ import Cards from 'src/components/Cards';
 import './wish.scss';
 
 // Display of watchlist
-const Wish = () => (
+const Wish = ({ wish }) => {
+
+  return (
   <div className="wish">
     {// Header
     }
@@ -18,7 +20,11 @@ const Wish = () => (
     <h1>Votre watchlist</h1>
     {// Cards
     }
-    <Cards currentPage="wish" loading={false}/>
+    {wish.map((list) => { 
+    <Cards 
+      currentPage="wish" loading={false}
+      key={list.id}
+    /> })}
     {// Footer of the watchlist, with 2 buttons to go to Picky Find and Picky Mood
     }
     <div className="wish__gradient">
@@ -29,6 +35,7 @@ const Wish = () => (
       </div>
     </div>
   </div>
-);
+  )
+};
 
 export default Wish;

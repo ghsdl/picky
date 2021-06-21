@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 
 // Import scss
 import './card.scss';
+import {addToWish, removeFromWish } from '../../actions/watchlist';
 
 // Display of one card
-const Card = ({ inWatchList, title, poster, platformsInfos, platforms }) => (
+const Card = ({ inWatchList, title, poster, platformsInfos, platforms, id }) => {
   // TODO: make the content of the card dynamic
   <div className="card">
     { // Poster of the program
@@ -59,13 +60,13 @@ const Card = ({ inWatchList, title, poster, platformsInfos, platforms }) => (
         <button
           className={classNames('card__watchlistButton', { 'card__watchlistButton--delete': inWatchList })}
           type="button"
+          onClick={() => addToWish(id)}
         >
           +
         </button>
       </div>
     </div>
   </div>
-  )
 };
 
 Card.propTypes = {
