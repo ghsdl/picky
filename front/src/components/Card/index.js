@@ -44,7 +44,6 @@ return (
         <button
           className={classNames('card__watchlistButton', { 'card__watchlistButton--delete': inWatchList })}
           type="button"
-          onClick={props.addToWatchlist()}
         >
           +
         </button>
