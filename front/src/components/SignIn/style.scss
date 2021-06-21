@@ -54,6 +54,18 @@
 		letter-spacing: 0.3ch;
 
 	}
+	
+}
+.redirect{
+	width: 100%;
+	margin-top: 3vh;
+	padding: 1vh;
+	background: white;
+	color: rgb(0, 0, 0);
+	text-transform: uppercase;
+	font-style: italic;
+	letter-spacing: 0.3ch;
+	font-size: 0.8vh;
 }
 .input {
 	position: relative;
@@ -86,7 +98,7 @@
 
 .input__label {
 	display: inline-block;
-	float: right;
+	
 	padding: 0 1em;
 	width: 40%;
 	color: #6a7989;

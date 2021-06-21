@@ -11,6 +11,8 @@ const mapStateToProps = (state) => ({
   ranshow: state.sug.ranshow,
   loading: state.pickyFind.loading,
   loadingPlatforms: state.pickyFind.loadingPlatforms,
+  isConnected: state.status.isConnected,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
