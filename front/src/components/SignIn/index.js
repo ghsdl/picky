@@ -4,7 +4,7 @@ import Header from 'src/containers/Header';
 import './style.scss';
 import PropTypes from 'prop-types';
 import Field from './Field';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 export default function SignIn({
   changeField,
@@ -57,7 +57,13 @@ export default function SignIn({
             >
               Se Connecter
             </button>
+          
           </form>
+          <button className = "redirect">
+            <Link to='/signUp'>
+              Pas encore de compte? Inscrivez-vous ! 🍿🍿
+            </Link>
+            </button>
         </div>
       </div>
     </>

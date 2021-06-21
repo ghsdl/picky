@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './searchbar.scss';
 
 // Display of the searchbar
-const SearchBar = ({ searchInputValue, onInputChange }) => {
+const SearchBar = ({ searchInputValue, onInputChange, loadPrograms }) => {
   // When opening the page, there is an automatic focus on the input of the searchbar
   const inputRef = useRef(null);
 
@@ -14,15 +14,23 @@ const SearchBar = ({ searchInputValue, onInputChange }) => {
     inputRef.current.focus();
   }, []);
 
+  // When the user submits, there is a request to load the programs
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    loadPrograms();
+  };
+
   return (
-    <input
-      ref={inputRef}
-      className="searchbar__input"
-      type="text"
-      placeholder="Rechercher une série ou un film"
-      value={searchInputValue}
-      onChange={onInputChange}
-    />
+    <form onSubmit={handleSubmit}>
+      <input
+        ref={inputRef}
+        className="searchbar__input"
+        type="text"
+        placeholder="Rechercher une série ou un film"
+        value={searchInputValue}
+        onChange={onInputChange}
+      />
+    </form>
   );
 };
 

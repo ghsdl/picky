@@ -82,8 +82,18 @@ export default function Header({ isConnected, deconnect }) {
 
             <ul onClick={showSidebar}>
               <li><Link to="/">Picky Find</Link></li>
-              <li><Link to="/mood">Picky Mood</Link></li>
-              <li><Link to="/wish">Picky Wish</Link></li>
+              {isConnected && (
+                <li><Link to="/mood">Picky Mood</Link></li>
+              )}
+              {!isConnected && (
+                <li><Link to="/signUp">Picky Mood</Link></li>
+              )}
+              {isConnected && (
+                <li><Link to="/wish">Picky Wish</Link></li>
+              )}
+              {!isConnected && (
+                <li><Link to="/signUp">Picky Wish</Link></li>
+              )}
               <li><Link to="/about">A propos</Link></li>
             </ul>
           </nav>

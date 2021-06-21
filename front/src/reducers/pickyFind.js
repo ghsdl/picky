@@ -1,5 +1,5 @@
-import { FETCH_PROGRAMS, SAVE_PROGRAMS } from 'src/actions/pickyFind';
-import { FETCH_PLATFORMS, SAVE_PLATFORMS } from 'src/actions/platforms';
+import { SAVE_PROGRAMS, CHANGE_STATE } from 'src/actions/pickyFind';
+import { SAVE_PLATFORMS } from 'src/actions/platforms';
 
 export const initialState = {
   movies: [],
@@ -7,32 +7,32 @@ export const initialState = {
   platforms: [],
   loading: true,
   loadingPlatforms: true,
+  research: false,
 };
 
 const pickyFindReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case FETCH_PROGRAMS:
-      return {
-        ...state,
-        loading: true,
-      };
     case SAVE_PROGRAMS: {
       return {
         ...state,
         movies: action.movies,
         shows: action.shows,
         loading: false,
+        research: true,
       };
     };
-    case FETCH_PLATFORMS:
-      return {
-        ...state,
-      };
     case SAVE_PLATFORMS: {
       return {
         ...state,
         platforms: action.platforms,
       };
+    };
+    case CHANGE_STATE: {
+      return {
+        ...state,
+        loading: true,
+        research: true,
+      }
     }
     default:
       return state;

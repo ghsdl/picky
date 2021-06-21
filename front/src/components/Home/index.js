@@ -13,25 +13,21 @@ import Cards from 'src/containers/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ searchInputValue,getRandom,ranmovie,ranshow, loadPrograms }) => {
+const Home = ({ getRandom, ranmovie, ranshow, research, isConnected }) => {
 
   useEffect(()=>{
     getRandom();
   }, []);
-
-  if (searchInputValue.length > 2) {
-    loadPrograms();
-  }
 
   return(
   <div>
     {// Header
     }
     <Header />
-    {// When the input of the searchbar is empty, the searchbar is in the center of the page
-    // If the user writes something in it, the searchbar moves to the top of the page
+    {// In the beginning, the searchbar is in the center of the page
+    // When the user submits their research, the searchbar moves to the top of the page
     }
-    <div className={classNames('home', { 'home--noResearch': searchInputValue.length <= 2, 'home--research': searchInputValue.length > 2 })}>
+    <div className={classNames('home', { 'home--noResearch': !research, 'home--research': research })}>
       <div className="home__searchBar">
         {// Title, searchbar and suggestions
         }
@@ -43,7 +39,12 @@ const Home = ({ searchInputValue,getRandom,ranmovie,ranshow, loadPrograms }) => 
       }
       <div className="home__pickyMood">
         <p>Vous ne savez pas quoi regarder? Faites nous confiance!</p>
-        <Link to="/mood">Picky Mood</Link>
+        {isConnected && (
+          <Link to="/mood">Picky Mood</Link>
+        )}
+        {!isConnected && (
+          <Link to="/signUp">Picky Mood</Link>
+        )}
       </div>
       {// Display of the results
       }
@@ -58,6 +59,7 @@ Home.propTypes = {
   searchInputValue: PropTypes.string.isRequired,
   ranmovie: PropTypes.object.isRequired,
   ranshow: PropTypes.object.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 };
 
 export default Home;
