@@ -6,6 +6,8 @@ import watchlistReducer from './watchlist';
 import pickyMoodReducer from './pickyMood';
 import suggestionsReducer from './suggestions';
 import statusReducer from './status';
+import pickyFindReducer from './pickyFind';
+import platformsReducer from './platforms';
 
 const rootReducer = combineReducers({
   search: searchReducer,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
   pickyMood: pickyMoodReducer,
   sug: suggestionsReducer,
   status: statusReducer,
+  pickyFind: pickyFindReducer,
+  platforms: platformsReducer,
 });
 
 export default rootReducer;
