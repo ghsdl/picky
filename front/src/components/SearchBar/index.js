@@ -29,6 +29,7 @@ const SearchBar = ({ searchInputValue, onInputChange, loadPrograms }) => {
         placeholder="Rechercher une série ou un film"
         value={searchInputValue}
         onChange={onInputChange}
+        required
       />
     </form>
   );

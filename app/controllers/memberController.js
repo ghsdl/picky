@@ -1,17 +1,14 @@
+// REQUIRING MEMBER DATAMAPPER AND PACKAGES
 const memberDataMapper = require('../dataMappers/memberDataMapper');
 const platformDataMapper = require('../dataMappers/platformDataMapper');
 const bcrypt = require('bcrypt');
 
-
-
-/** 
- * @typedef Member
- * 
- */
 const memberController = {
   async get(req, res) {
     try {
+      // GETTING THE LIST OF MEMBERS
       const member = await memberDataMapper.getAll();
+      
       res.json({ member });
     } catch (error) {
       console.log(error);
@@ -21,8 +18,22 @@ const memberController = {
 
   async getById(req, res) {
     try {
+      // GETTING THE URL PARAMETER
       const id = parseInt(req.params.id, 10);
+
+      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
+      if(isNaN(id)){
+        return next();
+      }
+
+      // GETTING THE MEMBER BY ITS ID
       const member = await memberDataMapper.getOne(id);
+
+      // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
+      if (!member) {
+        return next();
+      }
+
       res.json({ member });
     } catch (error) {
       console.log(error);
@@ -32,12 +43,24 @@ const memberController = {
 
   async getBookmarkByMember(req, res, next) {
     try {
-      const memberId = parseInt(req.params.id, 10);
-      const member = await memberDataMapper.getOne(memberId);
+      // GETTING THE URL PARAMETER
+      const id = parseInt(req.params.id, 10);
+
+      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
+      if(isNaN(id)){
+        return next();
+      }
+      // GETTING THE MEMBER BY ITS ID
+      const member = await memberDataMapper.getOne(id);
+
+      // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
         return next();
       }
-      const bookmarkMember = await memberDataMapper.getBookmarkMember(memberId);
+
+      // GETTING ALL BOOMARKS FOR A MEMBER
+      const bookmarkMember = await memberDataMapper.getBookmarkMember(id);
+
       res.json({ bookmarkMember });
     } catch (error) {
       console.log(error);
@@ -119,7 +142,7 @@ const memberController = {
         data.profile_picture = req.body.profile_picture;
       }
 
-      const updatedMember = await memberDataMapper.patch(data);
+      const updatedMember = await memberDataMapper.patch(data, memberId);
 
       res.json( updatedMember );
     } catch (error) {
