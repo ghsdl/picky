@@ -65,8 +65,8 @@ module.exports = {
         return result.rows[0];
     },
 
-    async patch(data, memberId) {
-        const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4 WHERE id =$5 RETURNING *`, [data.pseudo, data.email, data.password, data.profile_picture, memberId]);
+    async patch(member, id) {
+        const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4 WHERE id =$5 RETURNING *`, [member.pseudo, member.email, member.password, member.profile_picture, id]);
         return result.rows[0];
     },
 

@@ -110,9 +110,9 @@ const memberController = {
 
   async update(req, res, next) {
     try {
-      const memberId = parseInt(req.params.id, 10);
+      const id = parseInt(req.params.id, 10);
 
-      const member = await memberDataMapper.getOne(memberId);
+      const member = await memberDataMapper.getOne(id);
 
       if (!member) {
         return next();
@@ -121,30 +121,30 @@ const memberController = {
       const data = req.body;
 
       if (data.pseudo) {
-        data.pseudo = req.body.pseudo;
+        member.pseudo = req.body.pseudo;
       }
 
       if (data.email) {
-        data.email = req.body.email;
+        member.email = req.body.email;
       }
 
       if (data.password) {
-        data.password = req.body.password;
+        member.password = req.body.password;
       }
       
       // RE-CREATING CRYPTED PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
       // GET BACK NEW PASSWORD FROM REQ.BODY AND HASH IT BEFORE SAVING IN DATABASE NEW PASSWORD
-      data.password = await bcrypt.hash(data.password, salt);
+      member.password = await bcrypt.hash(member.password, salt);
 
       if (data.profile_picture) {
-        data.profile_picture = req.body.profile_picture;
+        member.profile_picture = req.body.profile_picture;
       }
 
-      const updatedMember = await memberDataMapper.patch(data, memberId);
+      const updatedMember = await memberDataMapper.patch(member, id);
 
-      res.json( updatedMember );
+      res.json( { updatedMember });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
