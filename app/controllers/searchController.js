@@ -1,3 +1,4 @@
+// REQUIRING SEARCH DATAMAPPER 
 const searchDataMapper = require('../dataMappers/searchDataMapper.js');
 
 const searchController = {

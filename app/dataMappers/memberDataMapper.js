@@ -13,9 +13,15 @@ module.exports = {
      */
 
     /**
-     * Get all members
-     * @return {object[]} Member's list 
+     * @typedef MemberInput
+     * @property {string} pseudo - Member's nickname
+     * @property {string} email - Member's email
+     * @property {string} password - Member's password
+     * @property {string} profile_picture - Member's profile picture
+     * @property {string} created_at - Creation date (date ISO 8601)
+     * @property {string} updated_at - Update date (date ISO 8601)
      */
+
     async getAll() {
         const result = await pool.query(`SELECT * FROM member ORDER BY id`);
         return result.rows;
@@ -59,8 +65,8 @@ module.exports = {
         return result.rows[0];
     },
 
-    async patch(data) {
-        const result = await pool.query(`SELECT * FROM update_member($1)`, [data]);
+    async patch(data, memberId) {
+        const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4 WHERE id =$5 RETURNING *`, [data.pseudo, data.email, data.password, data.profile_picture, memberId]);
         return result.rows[0];
     },
 
