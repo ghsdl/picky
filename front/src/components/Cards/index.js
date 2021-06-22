@@ -13,7 +13,7 @@ const Cards = ({movies, shows, loading, currentPage, results}) => {
   }
   if (loading === true) {
     return (
-    <p>Loading</p>
+    <p className="cards">Loading</p>
     )
   }
   {// When the results are not loading anymore, they are displayed
@@ -53,7 +53,7 @@ const Cards = ({movies, shows, loading, currentPage, results}) => {
     } else if(currentPage === "mood") {
       if(results.length === 0) {
         return (
-          <p>Il n'y a aucun résultat pour votre recherche</p>
+          <p className="cards">Il n'y a aucun résultat pour votre recherche</p>
         )
       } else {
         return (
