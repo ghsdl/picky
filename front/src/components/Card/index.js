@@ -9,6 +9,8 @@ import {addToWish, removeFromWish } from '../../actions/watchlist';
 
 // Display of one card
 const Card = ({ inWatchList, title, poster, platformsInfos, platforms, id }) => {
+  
+  return (
   // TODO: make the content of the card dynamic
   <div className="card">
     { // Poster of the program
@@ -67,6 +69,7 @@ const Card = ({ inWatchList, title, poster, platformsInfos, platforms, id }) => 
       </div>
     </div>
   </div>
+  )
 };
 
 Card.propTypes = {
