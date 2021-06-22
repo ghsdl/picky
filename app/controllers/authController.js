@@ -1,24 +1,31 @@
+// REQUIRING PACKAGES
 const authDataMapper = require('../dataMappers/authDataMapper');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('../utils/jwtGenerator');
 
 const authController = {
+
   async add(req, res) {
     try {
 
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
-      console.log(req.body);
+
+      if(!pseudo) {
+        return res.status(401).json('Le pseudo doit contenir au moins 2 caractères.');
+      }
 
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const memberEmail = await authDataMapper.getMemberByEmail(email);
 
+      // IF MEMBER EMAIL EXISTS THROW 401 STATUS
       if (memberEmail) {
-        return res.status(401).json('User already registered with this email.');
+        return res.status(401).json('Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email.');
       }
 
+      // CHECKING IF BOTH PASSWORDS ARE THE SAME
       if(password !== req.body.confirmationPassword) {
-        return res.status(401).json(`Passwords don't match`);
+        return res.status(401).json(`Les mots de passe doivent être identiques.`);
       }
 
       // CREATING CRYPTED PASSWORD WITH BCRYPT
@@ -32,6 +39,7 @@ const authController = {
         email,
         password: bcryptPassword,
       });
+
       res.json({ newMember });
     } catch (error) {
       console.log(error);
@@ -44,23 +52,23 @@ const authController = {
       // DESTRUCTURING REQ.BODY
       const { email, password } = req.body;
 
-      // CHECKING IF EMAIL EXISTS IN DATABASE
+      // CHECKING IF MEMBER DOES EXIST IN DATABASE VIA THEIR EMAIL
       const member = await authDataMapper.getMemberByEmail(email);
 
+      // IF MEMBER DOEST NOT EXIST THROW 401 STATUS
       if (!member) {
-        return res.status(401).json('Password or email is incorrect.');
+        return res.status(401).json('Email ou mot de passe incorrect.');
       }
 
-      // COMPARING IF PASSWORD IS CORRECT
+      // COMPARING IF PASSWORD IN DATABASE IS THE SAME AS THE ONE TYPED
       const correctPassword = await bcrypt.compare(password, member.password);
 
-      // CHECKING IF PASSWORD IS INCORRECT THEN SEND INFOS
+      // IF PASSWORD IS INCORRECT THROW 401 STATUS
       if (!correctPassword) {
-        return res.status(401).json('Password or email is incorrect.');
+        return res.status(401).json('Email ou mot de passe incorrect.');
       }
 
-      // SENDING THIS TO FRONT SO MUST CHOOSE WHAT TO SEND
-      // FOR NOW WE'RE SENDING EVERYTHING
+      // SENDING EMAIL PSEUDO AND TOKEN TO THE FRONT
       res.json({ member: member.email, pseudo: member.pseudo, token: jwtGenerator(member)});
     } catch (error) {
       console.log(error);
@@ -68,15 +76,15 @@ const authController = {
     }
   },
 
-  // VERIFYING THE TOKEN
-  async verify(req, res) {
+  // VERIFYING THE TOKEN - ONLY FOR BACKEND
+  async verify(_, res) {
     try {
       res.json(true);
     } catch (err) {
-      console.error(error);
-      res.status(500).send('A server error occured, please try again later.');
+      console.log(error);
+      res.status(500).json(error.toString());
     }
-  },
+  }
 
 };
 

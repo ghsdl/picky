@@ -1,5 +1,6 @@
 const express = require('express');
-const schemas = require('../validations/schemas');
+
+const { memberInsertSchema } = require('../validations/schemas');
 const validate = require('../validations/validate');
 const movieController = require('../controllers/movieController');
 const showController = require('../controllers/showController');
@@ -8,6 +9,7 @@ const platformController = require('../controllers/platformController');
 const bookmarkController = require('../controllers/bookmarkController');
 const memberController = require('../controllers/memberController');
 const searchController = require('../controllers/searchController');
+const errorController = require('../controllers/errorController');
 const auth = require('../middleware/authMiddleware');
 
 const router = express.Router();
@@ -27,12 +29,11 @@ router.get('/shows', showController.getShows);
 router.get('/shows/random', showController.randomShows);
 
 // AUTH ROUTES
-router.post('/signup', (validate.body(schemas.memberInsertSchema)), authController.add);
+router.post('/signup', (validate.body(memberInsertSchema)), authController.add);
 router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
 
 // SEARCH ROUTES
-
 router.route('/search/shows/:text')
   .get(showController.searchShows);
 
@@ -60,15 +61,14 @@ router.route('/platform/:id(\\d+)')
   // BOOKMARK ROUTES
 router.route('/bookmark')
   .get(bookmarkController.get)
-  .post(validate.body(schemas.bookmarkInsertSchema), bookmarkController.post);
+  .post(bookmarkController.post);
 
 router.route('/bookmark/:id(\\d+)')
   .get(bookmarkController.getById)
-  .patch(bookmarkController.update)
+  //.patch(bookmarkController.update)
   .delete(bookmarkController.delete);
 
   // MEMBER ROUTES
-
 router.route('/member')
   /** 
    * Get all the members
@@ -82,8 +82,8 @@ router.route('/member')
   /**  
    * Get members by their id
    * @route GET /member/{id}
-   * @param {number} id - Member's id
-   * @returns {Member{}} 200 - One member
+   * @param {integer} id - Member's id
+   * @returns {MemberInput[]} 200 - One member
    * @returns {Error} 500 - Error servor
    */
   .get(memberController.getById)
@@ -91,25 +91,28 @@ router.route('/member')
    * Updated member
    * @route PATCH /member/{id}
    * @param {number} id - Member's id
-   * @returns {Member{}} 200 - Member's update
+   * @returns {Member[]} 200 - Member's update
    * @returns {Error} 500 - Error servor
    */
-  .patch(validate.body(schemas.memberUpdateSchema), memberController.update)
+  .patch(memberController.update)
     /**  
    * Deleted member
    * @route DELETE /member/{id}
    * @param {number} id - Member's id
-   * @returns {Member{}} 204 - <empty content>
+   * @returns {Member[]} 204 - <empty content>
    * @returns {Error} 500 - Error servor
    */
   .delete(memberController.delete);
 
 router.route('/member/:id(\\d+)/bookmark')
   .get(memberController.getBookmarkByMember);
+
 router.route('/member/:id(\\d+)/platform')
   .get(memberController.getPlatformByMember);
 
 router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
-  .post(validate.body(schemas.platformInsertSchema), memberController.addPlatformToMember);
- 
+  .post(memberController.addPlatformToMember);
+
+router.use(errorController.resourceNotFound);
+
 module.exports = router;
