@@ -6,6 +6,7 @@ const pickyFind = (store) => (next) => (action) => {
    case FETCH_PROGRAMS: {
      // Firt request for movies based on what the user has typed in the searchbar
      const searchInput = store.getState().search.searchInputValue;
+     console.log(`token`, store.getState().status.token)
     axios.get(`https://projet-picky.herokuapp.com/search/movies/${searchInput}`)
       .then((response) => {
         const { movies } = response.data[0];

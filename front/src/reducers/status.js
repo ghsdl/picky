@@ -21,6 +21,7 @@ const statusReducer = (state = initialState, action = {}) => {
     return {
       ...state,
       isConnected: false,
+      token: '',
       };
 
     default:

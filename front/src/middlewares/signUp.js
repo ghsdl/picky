@@ -18,7 +18,7 @@ const signUp = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error.response.data.error)
-          store.dispatch(updateProfilError(error.response.data.password))
+          store.dispatch(updateProfilError(error.response.data.error))
         });
       break;
     }

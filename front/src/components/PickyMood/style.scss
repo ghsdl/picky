@@ -16,6 +16,7 @@
     letter-spacing: 0.3ch;
     background: #ffffff;
     position: relative;
+    z-index: -2;
     
     &::before {
         content: '';
