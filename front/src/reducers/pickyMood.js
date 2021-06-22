@@ -11,6 +11,8 @@ import {
   CLICK_ON_EMOTIONS_SHOW,
   CLICK_ON_PLATEFORM,
   RESET,
+  SAVE_RESULTS,
+  CHANGE_STATE,
 } from 'src/actions/pickyMood';
 
 const initialState = {
@@ -22,6 +24,8 @@ const initialState = {
   urlAxios: {},
   emotions: [],
   platforms: [],
+  results: [],
+  loading: true,
 };
 
 const pickyMoodReducer = (state = initialState, action = {}) => {
@@ -228,11 +232,24 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         emotions: [],
         platforms: [],
       }
+    };
+
+    case SAVE_RESULTS: {
+      return {
+          ...state,
+        results: action.results,
+        loading: false,
+      };
+    };
+    case CHANGE_STATE: {
+      return {
+        ...state,
+        results: [],
+        loading: true,
+      }
     }
     default:
       return state;
-
-    
   }
 };
 

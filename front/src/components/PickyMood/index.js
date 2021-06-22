@@ -33,7 +33,8 @@ export default function PickyMood({
   emotions,
   platforms,
   lookForPickyMoodResult,
-  resetPage
+  resetPage,
+  loading,
 }) {
 
   useEffect(() => {
@@ -76,6 +77,7 @@ export default function PickyMood({
 
         <Results
           newResearch={newResearch}
+          loading={loading}
         />
       )}
     </>

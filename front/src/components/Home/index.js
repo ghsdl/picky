@@ -13,7 +13,7 @@ import Cards from 'src/containers/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage }) => {
+const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, loading }) => {
 
   useEffect(()=>{
     getRandom();
@@ -54,7 +54,7 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage }
       {// Display of the results
       }
       <div className="home__results">
-        <Cards currentPage="home"/>
+        <Cards currentPage="home" loading={loading} />
       </div>
     </div>
   </div>
