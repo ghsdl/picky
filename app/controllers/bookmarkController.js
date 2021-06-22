@@ -1,16 +1,13 @@
+// REQUIRING BOOKMARK DATAMAPPER
 const bookmarkDataMapper = require('../dataMappers/bookmarkDataMapper');
 
 const bookmarkController = {
 
-  /**
-   *
-   *
-   * @param {*} req
-   * @param {*} res
-   */
-  async get(req, res) {
+  async get(_, res) {
     try {
+      // GETTING THE LIST OF BOOKMARKS
       const bookmark = await bookmarkDataMapper.get();
+
       res.json({ bookmark });
     } catch (error) {
       console.log(error);
@@ -18,16 +15,24 @@ const bookmarkController = {
     }
   },
 
-  /**
-   *
-   *
-   * @param {*} req
-   * @param {*} res
-   */
-  async getById(req, res) {
+  async getById(req, res, next) {
     try {
+      // GETTING THE URL PARAMETER
       const id = parseInt(req.params.id, 10);
+
+      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
+      if(isNaN(id)){
+        return next();
+      }
+
+      // GETTING THE BOOKMARK BY ITS ID
       const bookmark = await bookmarkDataMapper.getOne(id);
+
+      // IF BOOKMARK DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
+      if (!bookmark) {
+        return next();
+      }
+      
       res.json({ bookmark });
     } catch (error) {
       console.log(error);
@@ -37,50 +42,13 @@ const bookmarkController = {
 
   async post(req, res) {
     try {
-      const data = req.body;
-      await bookmarkDataMapper.add(data);
-      res.status(200).json(`Everything's okay!`);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
-    }
-  },
+      // GETTING THE BODY
+      const bookmark = req.body;
 
-  async update(req, res, next) {
-    try {
-      const BookmarkId = parseInt(req.params.id, 10);
-
-      const bookmark = await bookmarkDataMapper.getOne(BookmarkId);
-
-      if (!bookmark) {
-        return next();
-      }
-
-      const data = req.body;
-
-      if (data.betaseries_id) {
-        data.betaseries_id = req.body.betaseries_id;
-      }
-
-      if (data.title) {
-        data.title = req.body.title;
-      }
-
-      if (data.platform) {
-        data.platform = req.body.platform;
-      }
-
-      if (data.poster) {
-        data.poster = req.body.poster;
-      }
-
-      if (data.member_id) {
-        data.member_id = req.body.member_id;
-      }
-
-      const updatedBookmark = await bookmarkDataMapper.patch(data, BookmarkId);
-
-      res.json({ updatedBookmark });
+      // ADDING THE BOOKMARK TO DATABASE
+      await bookmarkDataMapper.add(bookmark);
+      
+      res.status(200).json(`Everything went okay!`);
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -89,17 +57,31 @@ const bookmarkController = {
 
   async delete(req, res, next) {
     try {
-      const oneBookmark = await bookmarkDataMapper.getOne(parseInt(req.params.id, 10));
-      if (!oneBookmark) {
+      // GETTING THE URL PARAMETER
+      const id = parseInt(req.params.id, 10);
+
+      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
+      if(isNaN(id)){
         return next();
       }
-      const deletedBookmark = await bookmarkDataMapper.delete(parseInt(req.params.id, 10));
+
+      // GETTING THE BOOKMARK BY ITS ID
+      const bookmark = await bookmarkDataMapper.getOne(id);
+      
+      // IF BOOKMARK DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
+      if (!bookmark) {
+        return next();
+      }
+      
+      // DELETING THE BOOKMARK FROM DATABASE
+      await bookmarkDataMapper.delete(id);
+
       res.status(204).json();
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
     }
-  },
+  }
 
 };
 

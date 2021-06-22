@@ -1,3 +1,4 @@
+// REQUIRING PLATFORM DATAMAPPER 
 const platformDataMapper = require('../dataMappers/platformDataMapper');
 
 const platformController = {
