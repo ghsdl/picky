@@ -30,6 +30,7 @@ const Card = ({ inWatchList, title, poster, platformsInfos, platforms }) => (
               if(platformInfo.id === platform.id) {
                 return (
                   <img
+                  key={platform.id}
                   className="card__platform"
                   src={platform.logo}
                   alt="Logo de la plateforme"

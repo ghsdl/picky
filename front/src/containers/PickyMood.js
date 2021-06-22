@@ -14,6 +14,7 @@ import {
   clickOnEmotionsShows,
   clickOnPlateform,
   pickyMoodResult,
+  reset,
 } from 'src/actions/pickyMood';
 
 const mapStateToProps = (state) => ({
@@ -74,6 +75,9 @@ const mapDispatchToProps = (dispatch) => ({
   lookForPickyMoodResult: () => {
     dispatch(pickyMoodResult());
     //console.log(urlAxios)
+  },
+  resetPage: () => {
+    dispatch(reset())
   },
 });
 

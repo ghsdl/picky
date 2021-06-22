@@ -10,9 +10,12 @@ import Cards from 'src/components/Cards';
 import './wish.scss';
 
 // Display of watchlist
-const Wish = () => (
+const Wish = () => {
+
+  
+  return(
   <div className="wish">
-    {// Header
+    {// Header 
     }
     <Header />
     <h1>Votre watchlist</h1>
@@ -29,6 +32,7 @@ const Wish = () => (
       </div>
     </div>
   </div>
-);
+  )
+};
 
 export default Wish;
