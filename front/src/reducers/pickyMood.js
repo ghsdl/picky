@@ -226,8 +226,6 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
     };
 
     case SAVE_RESULTS: {
-      console.log('results in pickyMood reducer', state.results);
-      console.log('action.results in pickyMood reducer', action.results);
       return {
           ...state,
         results: action.results,

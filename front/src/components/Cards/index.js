@@ -16,7 +16,6 @@ const Cards = ({movies, shows, loading, currentPage, results}) => {
     <p>Loading</p>
     )
   }
-{console.log('currentPage in cards component', currentPage)}
   {// When the results are not loading anymore, they are displayed
   }
   if (loading === false) {
@@ -61,7 +60,6 @@ const Cards = ({movies, shows, loading, currentPage, results}) => {
           <div className="cards">
             {// The programs are displayed
             }
-            {console.log('results in cards component', results)}
             {results.map((result) => (
               <Card
                 title={result.title}
