@@ -10,54 +10,73 @@ const ProfileField = ({
   password,
 }) => {
   return (
-    <div className="field"> 
-      <div className="field-container">
-        <label> Adresse e-mail </label>
+  <form>
+    <div className="row"> 
+      <span>
         <input
-          defaultValue={email}
           name="email"
-          className="field-input"
-          placeholder=""
+          className="gate"
+          placeholder={email}
           type="email"
+          id="email"
         />
-      </div>
-      <div className="field-container"> 
-        <label> Pseudo </label>
+        <label htmlFor="element">
+          Email
+        </label>
+      </span>
+      
+      <span>
         <input
-          defaultValue={username}
           name="pseudo"
-          className="field-input"
-          placeholder= ""
+          className="gate"
+          placeholder= {username}
           type="text"
           maxLength="8"
+          id="usernam"
         />
-      </div>
-      <div className="field-container">
-        <label> Biographie </label>
+        <label htmlFor="username">
+            Pseudo
+        </label> 
+      </span>  
+
+      
+     
+      <span>
         <input
-          defaultValue={bio}
           name="bio"
-          className="field-input"
-          placeholder= ""
+          className="gate"
+          placeholder={bio}
           type="text"
           maxLength="100"
+          id="bio"
         />
-      </div>
-      <div className="field-container">
-        <label> Mot de passe </label>
+        <label htmlFor="Bio">
+          Bio
+        </label>
+      </span>  
+      
+      
+      <span>
         <input
-          defaultValue={password}
           name="password"
-          className="field-input"
-          placeholder= ""
+          className="gate"
+          placeholder={password}
           type="password"
           maxLength="8"
+          id="password"
         />
-      </div>
-      <button className="field-update"> Update Profile </button>
+        <label htmlFor="MotDePasse">
+          Mot de Passe
+        </label>
+      </span>
     </div>
+
+    <button className="field-update"> Update Profile </button>
+  </form>
   );
 };
+
+
 
 
 
