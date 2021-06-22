@@ -11,6 +11,7 @@ import {
   CLICK_ON_EMOTIONS_SHOW,
   CLICK_ON_PLATEFORM,
   SAVE_RESULTS,
+  CHANGE_STATE,
 } from 'src/actions/pickyMood';
 
 import { LOCATION_CHANGE } from 'react-router-redux'; 
@@ -232,6 +233,13 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
         loading: false,
       };
     };
+    case CHANGE_STATE: {
+      return {
+        ...state,
+        results: [],
+        loading: true,
+      }
+    }
     default:
       return state;
   }

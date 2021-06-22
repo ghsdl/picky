@@ -14,6 +14,7 @@ import {
   clickOnEmotionsShows,
   clickOnPlateform,
   pickyMoodResult,
+  changeState
 } from 'src/actions/pickyMood';
 
 const mapStateToProps = (state) => ({
@@ -66,6 +67,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleDisplayPickyMoodResults: () => {
     dispatch(plateformsToResults());
+    dispatch(changeState());
   },
 
   newResearch: () => {
