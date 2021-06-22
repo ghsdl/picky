@@ -34,7 +34,8 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: true,
-        pseudo: action.value,     
+        pseudo: action.value, 
+        token: action.token    
   
       };
 

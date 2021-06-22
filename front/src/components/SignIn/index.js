@@ -34,6 +34,7 @@ export default function SignIn({
         <div className="formUser-input">
           <form autoComplete="off" onSubmit={handleSubmit}>
             <Field
+              type="email"
               name="email"
               placeholder="Adresse Email"
               onChange={changeField}
@@ -42,7 +43,7 @@ export default function SignIn({
             <Field
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="Mot de passe"
               onChange={changeField}
               value={password}
             />

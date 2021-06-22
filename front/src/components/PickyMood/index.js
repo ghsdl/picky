@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react'
 
 import './style.scss';
 import PropTypes from 'prop-types';
@@ -33,6 +34,13 @@ export default function PickyMood({
   platforms,
   lookForPickyMoodResult,
 }) {
+
+  useEffect(() => {
+  return () => {
+    console.log(emotions);
+    
+  }
+}, [emotions.current]);
   return (
     <>
       <Header />
