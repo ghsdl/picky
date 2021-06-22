@@ -6,8 +6,7 @@ const mapStateToProps = (state) => ({
   shows: state.pickyFind.shows,
   loading: state.pickyFind.loading,
   loadingPlatforms: state.platforms.loadingPlatforms,
-  movies: state.watchlist.movies,
-  shows: state.watchlist.shows,
+  programswish: state.watchlist.programswish,
 });
 
 export default connect(mapStateToProps)(Cards);

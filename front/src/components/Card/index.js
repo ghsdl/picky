@@ -8,7 +8,7 @@ import './card.scss';
 import {addToWish, removeFromWish } from '../../actions/watchlist';
 
 // Display of one card
-const Card = ({ inWatchList, title, poster, platformsInfos, platforms, id }) => {
+const Card = ({ inWatchList, title, poster, platformsInfos, platforms, key }) => {
   
   return (
   // TODO: make the content of the card dynamic
@@ -62,7 +62,7 @@ const Card = ({ inWatchList, title, poster, platformsInfos, platforms, id }) => 
         <button
           className={classNames('card__watchlistButton', { 'card__watchlistButton--delete': inWatchList })}
           type="button"
-          onClick={() => addToWish(id)}
+          onClick={() => addRemoveWish(key)}
         >
           +
         </button>

@@ -1,20 +1,18 @@
-export const ADD_TO_WISH = 'ADD_TO_WISH';
-export const REMOVE_FROM_WISH = 'REMOVE_FROM_WISH';
+export const ADD_REMOVE_WISH = 'ADD_REMOVE_WISH';
+export const GET_BOOKMARK = 'GET_BOOKMARK';
+export const GET_BOOKMARK_SUCCESS = 'GET_BOOKMARK_SUCCESS';
 
-export const addToWish = (itemID) => {
-  return {
-    type: ADD_TO_WISH,
-    payload: {
-      id: itemID,
-    },
-  };
-};
+export const addRemoveWish = (id) => ({
+  type: ADD_REMOVE_WISH,
+    id,
+});
 
-export const removeFromWish = (itemID) => {
-  return {
-    type: REMOVE_FROM_WISH,
-    payload: {
-      id: itemID,
-    },
-  };
-};
+export const getBookmark = () => ({
+  type: GET_BOOKMARK,
+});
+
+export const getBookmarkSuccess = (wishlist) => ({
+  type: GET_BOOKMARK_SUCCESS,
+  wishlist,
+});
+

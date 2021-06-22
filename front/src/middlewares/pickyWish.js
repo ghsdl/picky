@@ -1,37 +1,24 @@
 import axios from 'axios';
-import { ADD_TO_WISH, addToWish, REMOVE_FROM_WISH, removeFromWish } from 'src/actions/watchlist';
+import { ADD_REMOVE_WISH, GET_BOOKMARK, getBookmark, getBookmarkSuccess} from 'src/actions/watchlist';
 
 const pickyWish = (store) => (next) => (action) => {
   switch (action.type){
-    case ADD_TO_WISH: {
-      const state = store.getState();
-      const getWatchlist = {
-        method: 'get',
-        url: 'https://projet-picky.herokuapp.com/bookmark',
-        headers: {
-          Authorization: `Bearer ${state.user.token}`,
-        },
-      };
+    case ADD_REMOVE_WISH: {
 
-      axios(getWatchlist)
-      .then((response) => {
-        store.dispatch(addToWish(response.data.wish));
-      });
-      break;
     }
-    case REMOVE_FROM_WISH: {
-      const state = store.getState();
-      const removeWatchlist = {
-        method: 'delete',
+    case GET_BOOKMARK: {
+      const state = store.getState().status.token;
+      const getBookmarkRequest = {
+        method: 'get',
         url: 'https://projet-picky.herokuapp.com/bookmark',
         headers: {
           Authorization: `Bearer ${state.user.token}`,
       },
     };
 
-    axios(removeWatchlist)
+    axios(getBookmarkRequest)
     .then ((response) => {
-      store.dispatch(removeFromWish(response.data.wish));
+      store.dispatch(getBookmarkSuccess(response.data.wish));
     });
     break;
   }

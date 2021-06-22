@@ -8,7 +8,7 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, currentPage}) => {
+const Cards = ({movies, shows, loading, currentPage, programswish}) => {
   {// When the results are loading, "Loading" is displayed
   }
   if (loading === true) {
@@ -51,7 +51,22 @@ const Cards = ({movies, shows, loading, currentPage}) => {
       );
       {// If the current page is not home (Picky Find), the results are not dynamic yet
       }
+    } else if (currentPage === 'wish') {
+      return (
+      <div className="cards">
+      {programswish.map((program) => (
+        <Card
+          title={program.title}
+          poster={program.poster}
+          platformsInfos={program.platform}
+          key= {program.id}
+        />
+      ))}
+      </div>
+      );
+
     } else {
+
       const friendsVod= [{id: 1, name: "Netflix"}];
       return (
         // TODO: make the display of the cards dynamic with a map
