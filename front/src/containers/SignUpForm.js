@@ -4,6 +4,7 @@ import SignUpForm from 'src/components/SignUpForm';
 import {
   changeInputValue,
   signUp,
+  reset,
 } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
@@ -25,6 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
     const action = signUp(value, key);
     dispatch(action)
   },
+  resetPage: () => {
+    dispatch(reset())
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

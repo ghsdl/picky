@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from './Field';
 
 import './signupform.scss';
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const SignUpForm = ({
   pseudo,
   email,
@@ -13,7 +13,15 @@ const SignUpForm = ({
   changeField,
   handleSignUp,
   errorMessage,
+  resetPage,
 }) => {
+
+  useEffect(() => {
+    return () => {
+      resetPage();
+      
+    }
+  }, []);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -33,6 +41,7 @@ const SignUpForm = ({
           placeholder="Pseudo"
           onChange={changeField}
           value={pseudo}
+          required
         />
         <Field
           type="email"
@@ -40,6 +49,7 @@ const SignUpForm = ({
           placeholder="Adresse Email"
           onChange={changeField}
           value={email}
+          required
         />
         <Field
           type="password"
@@ -47,6 +57,7 @@ const SignUpForm = ({
           placeholder="Mot de passe"
           onChange={changeField}
           value={password}
+          required
         />
         <Field
           type="password"
@@ -54,6 +65,7 @@ const SignUpForm = ({
           placeholder="Confirmation du mot de passe"
           onChange={changeField}
           value={confirmationPassword}
+          required
         />
         { errorMessage.length >1 &&  
             <p className="formUser-ErrorMessage"> 
@@ -82,6 +94,7 @@ SignUpForm.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired,
   errorMessage: PropTypes.string.isRequired,
+  resetPage: PropTypes.func.isRequired,
 };
 
 export default SignUpForm;

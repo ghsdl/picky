@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react'
 
 import './style.scss';
-import PropTypes from 'prop-types';
+import PropTypes, { resetWarningCache } from 'prop-types';
 
 import Header from 'src/containers/Header';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -33,14 +33,15 @@ export default function PickyMood({
   emotions,
   platforms,
   lookForPickyMoodResult,
+  resetPage
 }) {
 
   useEffect(() => {
   return () => {
-    console.log(emotions);
+    resetPage();
     
   }
-}, [emotions.current]);
+}, []);
   return (
     <>
       <Header />
@@ -100,6 +101,7 @@ PickyMood.propTypes = {
   emotions: PropTypes.array,
   platforms: PropTypes.array,
   lookForPickyMoodResult: PropTypes.func.isRequired,
+  resetPage: PropTypes.func.isRequired,
 };
 
 PickyMood.defaultProps = {

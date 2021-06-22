@@ -13,12 +13,17 @@ import Cards from 'src/containers/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ getRandom, ranmovie, ranshow, research, isConnected }) => {
+const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage }) => {
 
   useEffect(()=>{
     getRandom();
   }, []);
-
+  useEffect(() => {
+    return () => {
+      resetPage();
+      
+    }
+  }, []);
   return(
   <div>
     {// Header
@@ -60,6 +65,7 @@ Home.propTypes = {
   ranmovie: PropTypes.object.isRequired,
   ranshow: PropTypes.object.isRequired,
   isConnected: PropTypes.bool.isRequired,
+  resetPage: PropTypes.func.isRequired
 };
 
 export default Home;

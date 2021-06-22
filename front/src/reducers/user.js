@@ -3,6 +3,7 @@ import {
   ACTION_SAVE_USER,
   UPDATE_PROFIL_ERROR,
   LOGIN,
+  RESET,
 } from 'src/actions/user';
 
 const initialState = {
@@ -44,7 +45,16 @@ const userReducer = (state = initialState, action = {}) => {
       ...state,
       errorMessage: action.value,
     };  
-
+    case RESET: 
+    return {
+      ...state, 
+      email: '',
+      password: '',
+      confirmationPassword: '',
+      pseudo: '',
+      token: '',
+      errorMessage: '',
+    }
     default:
       return state;
   }

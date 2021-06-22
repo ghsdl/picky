@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { CHANGE_SEARCH_INPUT } from 'src/actions/search';
+import { RESET } from 'src/actions/suggestions';
 
 export const initialState = {
   searchInputValue: '',
@@ -14,6 +15,12 @@ const searchReducer = (state = initialState, action = {}) => {
         ...state,
         searchInputValue: action.newValue,
       };
+
+    case RESET: 
+      return {
+        ...state, 
+        searchInputValue: '',
+      }
     default:
       return state;
   }
