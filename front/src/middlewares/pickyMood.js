@@ -14,16 +14,24 @@ const result = (store) => (next) => (action) => {
         .then((response) => {
           if(response.data[0].movies) {
             let results = [];
+            let randomResults = [];
             for (let i=0; i < response.data.length; i++) {
               results = results.concat(response.data[i].movies);
-            }
-            store.dispatch(saveResults(results));
+            };
+            for(let i=0; i < 20; i++) {
+              randomResults.push(results[Math.floor(Math.random()*results.length)]);
+            };
+            store.dispatch(saveResults(randomResults));
           } else if (response.data[0].shows) {
             let results = [];
+            let randomResults = [];
             for (let i=0; i < response.data.length; i++) {
               results = results.concat(response.data[i].shows);
-            }
-            store.dispatch(saveResults(results));
+            };
+            for(let i=0; i < 20; i++) {
+              randomResults.push(results[Math.floor(Math.random()*results.length)]);
+            };
+            store.dispatch(saveResults(randomResults));
           }
         })
         .catch((error) => {

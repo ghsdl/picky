@@ -70,7 +70,7 @@ export default function Feelings({
       </li>
     );
   });
-  const className = emotions.length <= 3 &&  emotions.length > 0 ? 'button-suivant' : 'button-suivant button-suivant--hidden';
+  const className = 'button-suivant';
   return (
     <>
       <div className="pickyMood">
