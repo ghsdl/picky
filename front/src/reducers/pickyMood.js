@@ -10,6 +10,7 @@ import {
   NEW_RESEARCH,
   CLICK_ON_EMOTIONS_SHOW,
   CLICK_ON_PLATEFORM,
+  SAVE_RESULTS,
 } from 'src/actions/pickyMood';
 
 import { LOCATION_CHANGE } from 'react-router-redux'; 
@@ -24,6 +25,8 @@ const initialState = {
   urlAxios: {},
   emotions: [],
   platforms: [],
+  results: [],
+  loading: true,
 };
 
 const pickyMoodReducer = (state = initialState, action = {}) => {
@@ -219,12 +222,20 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
       };
 
     case LOCATION_CHANGE: {
-      return state
-    }
+      return state;
+    };
+
+    case SAVE_RESULTS: {
+      console.log('results in pickyMood reducer', state.results);
+      console.log('action.results in pickyMood reducer', action.results);
+      return {
+          ...state,
+        results: action.results,
+        loading: false,
+      };
+    };
     default:
       return state;
-
-    
   }
 };
 

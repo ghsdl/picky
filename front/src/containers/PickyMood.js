@@ -25,6 +25,7 @@ const mapStateToProps = (state) => ({
   emotions: state.pickyMood.emotions,
   platforms: state.pickyMood.platforms,
   urlAxios: state.pickyMood.urlAxios,
+  loading: state.pickyMood.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

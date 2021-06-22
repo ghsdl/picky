@@ -32,6 +32,7 @@ export default function PickyMood({
   emotions,
   platforms,
   lookForPickyMoodResult,
+  loading,
 }) {
   return (
     <>
@@ -67,6 +68,7 @@ export default function PickyMood({
 
         <Results
           newResearch={newResearch}
+          loading={loading}
         />
       )}
     </>

@@ -8,7 +8,7 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, currentPage}) => {
+const Cards = ({movies, shows, loading, currentPage, results}) => {
   {// When the results are loading, "Loading" is displayed
   }
   if (loading === true) {
@@ -16,7 +16,7 @@ const Cards = ({movies, shows, loading, currentPage}) => {
     <p>Loading</p>
     )
   }
-
+{console.log('currentPage in cards component', currentPage)}
   {// When the results are not loading anymore, they are displayed
   }
   if (loading === false) {
@@ -51,6 +51,22 @@ const Cards = ({movies, shows, loading, currentPage}) => {
       );
       {// If the current page is not home (Picky Find), the results are not dynamic yet
       }
+    } else if(currentPage === "mood") {
+      return (
+        <div className="cards">
+          {// The programs are displayed
+          }
+          {console.log('results in cards component', results)}
+          {results.map((result) => (
+            <Card
+              title={result.title}
+              poster={result.poster}
+              platformsInfos={result.svods}
+              key= {result.id}
+            />
+          ))}
+          </div>
+      )
     } else {
       const friendsVod= [{id: 1, name: "Netflix"}];
       return (

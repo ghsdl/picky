@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PICKYMOOD_RESULT } from 'src/actions/pickyMood';
+import { PICKYMOOD_RESULT, saveResults } from 'src/actions/pickyMood';
 
 const result = (store) => (next) => (action) => {
   switch (action.type){
@@ -12,7 +12,19 @@ const result = (store) => (next) => (action) => {
         
       })
         .then((response) => {
-          console.log(response)
+          if(response.data[0].movies) {
+            let results = [];
+            for (let i=0; i < response.data.length; i++) {
+              results = results.concat(response.data[i].movies);
+            }
+            store.dispatch(saveResults(results));
+          } else if (response.data[0].shows) {
+            let results = [];
+            for (let i=0; i < response.data.length; i++) {
+              results = results.concat(response.data[i].shows);
+            }
+            store.dispatch(saveResults(results));
+          }
         })
         .catch((error) => {
           console.trace(error)
