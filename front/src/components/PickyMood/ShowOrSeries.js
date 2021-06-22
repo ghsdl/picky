@@ -9,7 +9,7 @@ export default function ShowOrSeries({
   handleDisplayPickyMoodEmotions,
 }) {
   const showOrMovies = [
-    { name: 'Série', apiName: 'shows' },
+    { name: 'Séries', apiName: 'shows' },
     { name: 'Films', apiName: 'movies' },
   ];
 

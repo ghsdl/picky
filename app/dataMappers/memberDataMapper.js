@@ -33,16 +33,14 @@ module.exports = {
     },
 
     async getBookmarkMember(memberId) {
-        const result = await pool.query(`SELECT m.*, 
-        array_agg(DISTINCT b.betaseries_id) AS betaseries_id,
-        array_agg(DISTINCT b.title) AS title,
-        array_agg(DISTINCT b.platform) AS platform,
-        array_agg(DISTINCT b.poster) AS poster
+        const result = await pool.query(`SELECT m.pseudo, m.profile_picture, b.created_at,
+        json_agg((b.betaseries_id,b.title,b.platform,b.poster)) bookmark
         FROM member AS m
         JOIN bookmark AS b
         ON m.id = b.member_id
         WHERE member_id = $1
-        GROUP BY m.id;`, [memberId]);
+        GROUP BY b.title,m.pseudo, m.profile_picture,b.created_at
+		ORDER BY b.created_at;`, [memberId]);
         return result.rows;
     },
 
@@ -65,8 +63,8 @@ module.exports = {
         return result.rows[0];
     },
 
-    async patch(data, memberId) {
-        const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4 WHERE id =$5 RETURNING *`, [data.pseudo, data.email, data.password, data.profile_picture, memberId]);
+    async patch(member, id) {
+        const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4 WHERE id =$5 RETURNING *`, [member.pseudo, member.email, member.password, member.profile_picture, id]);
         return result.rows[0];
     },
 

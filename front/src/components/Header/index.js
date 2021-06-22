@@ -161,7 +161,9 @@ export default function Header({ isConnected, deconnect }) {
                   <Link to="/profil"> Profil </Link>
                 </li>
                 <li onClick={deconnect}>
-                  Se deconnecter
+                  <Link to="/">
+                    Se deconnecter
+                  </Link>
                 </li>
               </ul>
             </div>

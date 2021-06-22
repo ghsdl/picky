@@ -1,5 +1,6 @@
 import { SAVE_PROGRAMS, CHANGE_STATE } from 'src/actions/pickyFind';
 import { SAVE_PLATFORMS } from 'src/actions/platforms';
+import { RESET } from 'src/actions/suggestions';
 
 export const initialState = {
   movies: [],
@@ -32,6 +33,18 @@ const pickyFindReducer = (state = initialState, action = {}) => {
         ...state,
         loading: true,
         research: true,
+      }
+    }
+
+    case RESET: {
+      return {
+        ...state,
+        movies: [],
+        shows: [],
+        platforms: [],
+        loading: true,
+        loadingPlatforms: true,
+        research: false,
       }
     }
     default:

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Home from 'src/components/Home';
-import { getRandom } from 'src/actions/suggestions';
+import { getRandom, reset } from 'src/actions/suggestions';
 
 const mapStateToProps = (state) => ({
   searchInputValue: state.search.searchInputValue,
@@ -18,6 +18,10 @@ const mapDispatchToProps = (dispatch) => ({
   getRandom: () => {
     dispatch(getRandom())
   },
+
+  resetPage: () => {
+    dispatch(reset())
+  }
 });
 
 

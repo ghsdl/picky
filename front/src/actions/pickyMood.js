@@ -9,6 +9,9 @@ export const NEW_RESEARCH = 'NEW_RESEARCH';
 export const CLICK_ON_EMOTIONS_SHOW = 'CLICK_ON_EMOTIONS_SHOW';
 export const CLICK_ON_PLATEFORM = 'CLICK_ON_PLATEFORM';
 export const PICKYMOOD_RESULT = 'PICKYMOOD_RESULT';
+export const RESET = 'RESET';
+export const SAVE_RESULTS = 'SAVE_RESULTS';
+export const CHANGE_STATE = 'CHANGE_STATE';
 
 export const showOrSeriesToEmotions = () => ({
   type: SHOW_OR_SERIES_TO_EMOTIONS,
@@ -56,4 +59,17 @@ export const newResearch = () => ({
 
 export const pickyMoodResult = () => ({
   type: PICKYMOOD_RESULT,
-})
+});
+
+export const reset = () => ({
+  type: RESET,
+});
+
+export const saveResults = (results) => ({
+  type: SAVE_RESULTS,
+  results,
+});
+
+export const changeState = () => ({
+  type: CHANGE_STATE,
+});

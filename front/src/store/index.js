@@ -17,6 +17,7 @@ const persistConfig = {
   whitelist: ['status'],
 }
 
+
 const persistedReducer = persistReducer(persistConfig, reducer)
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

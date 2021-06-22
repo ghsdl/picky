@@ -14,7 +14,7 @@ const Wish = ({ wish }) => {
 
   return (
   <div className="wish">
-    {// Header
+    {// Header 
     }
     <Header />
     <h1>Votre watchlist</h1>

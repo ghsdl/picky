@@ -14,6 +14,8 @@ import {
   clickOnEmotionsShows,
   clickOnPlateform,
   pickyMoodResult,
+  reset,
+  changeState
 } from 'src/actions/pickyMood';
 
 const mapStateToProps = (state) => ({
@@ -25,6 +27,7 @@ const mapStateToProps = (state) => ({
   emotions: state.pickyMood.emotions,
   platforms: state.pickyMood.platforms,
   urlAxios: state.pickyMood.urlAxios,
+  loading: state.pickyMood.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -65,6 +68,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleDisplayPickyMoodResults: () => {
     dispatch(plateformsToResults());
+    dispatch(changeState());
   },
 
   newResearch: () => {
@@ -74,6 +78,9 @@ const mapDispatchToProps = (dispatch) => ({
   lookForPickyMoodResult: () => {
     dispatch(pickyMoodResult());
     //console.log(urlAxios)
+  },
+  resetPage: () => {
+    dispatch(reset())
   },
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Typical from 'react-typical';
 import PropTypes from 'prop-types';
 import './style.scss';
@@ -12,6 +12,7 @@ export default function Feelings({
   emotions,
 
 }) {
+
   const emotionsMovies = [
     { emotion: 'Amusé', genre: 'comedie' },
     { emotion: 'Amoureux', genre: 'romance' },
@@ -70,7 +71,7 @@ export default function Feelings({
       </li>
     );
   });
-  const className = emotions.length <= 3 &&  emotions.length > 0 ? 'button-suivant' : 'button-suivant button-suivant--hidden';
+  const className = 'button-suivant';
   return (
     <>
       <div className="pickyMood">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Header from 'src/containers/Header';
 import './style.scss';
@@ -13,11 +13,19 @@ export default function SignIn({
   handleLogin,
   isConnected,
   errorMessage,
+  resetPage,
 }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
+
+  useEffect(() => {
+    return () => {
+      resetPage();
+      
+    }
+  }, []);
   return (
    
     <>
@@ -34,17 +42,20 @@ export default function SignIn({
         <div className="formUser-input">
           <form autoComplete="off" onSubmit={handleSubmit}>
             <Field
+              type="email"
               name="email"
               placeholder="Adresse Email"
               onChange={changeField}
               value={email}
+              required
             />
             <Field
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="Mot de passe"
               onChange={changeField}
               value={password}
+              required
             />
             { errorMessage.length >1 &&  <p className="formUser-ErrorMessage"> 
               {errorMessage}
@@ -76,5 +87,6 @@ SignIn.propTypes = {
   password: PropTypes.string.isRequired,
   handleLogin: PropTypes.func.isRequired,
   isConnected: PropTypes.bool,
-  errorMessage: PropTypes.string.isRequired
+  errorMessage: PropTypes.string.isRequired,
+  resetPage: PropTypes.func.isRequired,
 };

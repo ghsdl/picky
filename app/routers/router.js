@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { memberInsertSchema } = require('../validations/schemas');
+const { memberInsertSchema, memberUpdateSchema } = require('../validations/schemas');
 const validate = require('../validations/validate');
 const movieController = require('../controllers/movieController');
 const showController = require('../controllers/showController');
@@ -94,7 +94,7 @@ router.route('/member')
    * @returns {Member[]} 200 - Member's update
    * @returns {Error} 500 - Error servor
    */
-  .patch(memberController.update)
+  .patch(validate.body(memberUpdateSchema), memberController.update)
     /**  
    * Deleted member
    * @route DELETE /member/{id}
