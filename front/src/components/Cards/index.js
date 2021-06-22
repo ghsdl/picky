@@ -52,21 +52,27 @@ const Cards = ({movies, shows, loading, currentPage, results}) => {
       {// If the current page is not home (Picky Find), the results are not dynamic yet
       }
     } else if(currentPage === "mood") {
-      return (
-        <div className="cards">
-          {// The programs are displayed
-          }
-          {console.log('results in cards component', results)}
-          {results.map((result) => (
-            <Card
-              title={result.title}
-              poster={result.poster}
-              platformsInfos={result.svods}
-              key= {result.id}
-            />
-          ))}
-          </div>
-      )
+      if(results.length === 0) {
+        return (
+          <p>Il n'y a aucun résultat pour votre recherche</p>
+        )
+      } else {
+        return (
+          <div className="cards">
+            {// The programs are displayed
+            }
+            {console.log('results in cards component', results)}
+            {results.map((result) => (
+              <Card
+                title={result.title}
+                poster={result.poster}
+                platformsInfos={result.svods}
+                key= {result.id}
+              />
+            ))}
+            </div>
+        )
+      }
     } else {
       const friendsVod= [{id: 1, name: "Netflix"}];
       return (
