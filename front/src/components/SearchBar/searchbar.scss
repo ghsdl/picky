@@ -48,28 +48,28 @@ input, button
 {
   width: 550px;
   padding: 35px;
-  background-color: #ff7575;
+  background-color: #E43E54;
   border-radius: 20px;
-  box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
+  box-shadow: 0 10px 40px #E43E54, 0 0 0 20px #ffffffeb;
   transform: scale(0.6);
 }
 
 form
 {
-    height: 96px;
+    height: 50px;
 }
 
 input[type="text"]
 {
     width: 100%;
-    height: 96px;
-    font-size: 60px;
+    height: 50px;
+    font-size: 45px;
     line-height: 1;
 }
 
 input[type="text"]::placeholder
 {
-    color: #e16868;
+    color: #923340;
 }
 
 #s-cover
@@ -82,21 +82,22 @@ button
 {
     position: relative;
     display: block;
-    width: 84px;
-    height: 96px;
+    width: 46px;
+    height: 50px;
     cursor: pointer;
+    margin-right: 25px;
 }
 
 #s-circle
 {
     position: relative;
-    top: -8px;
+    top: -12px;
     left: 0;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     margin-top: 0;
-    border-width: 15px;
-    border: 15px solid #fff;
+    border-width: 13px;
+    border: 13px solid #fff;
     background-color: transparent;
     border-radius: 50%;
     transition: 0.5s ease all;
@@ -105,8 +106,8 @@ button
 button span
 {
     position: absolute;
-    top: 68px;
-    left: 43px;
+    top: 42px;
+    left: 36px;
     display: block;
     width: 45px;
     height: 15px;
@@ -122,8 +123,8 @@ button span:before, button span:after
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 45px;
-    height: 15px;
+    width: 40px;
+    height: 12px;
     background-color: #fff;
     border-radius: 10px;
     transform: rotateZ(0);
