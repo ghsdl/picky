@@ -41,11 +41,11 @@ module.exports = {
       args = {
         'text': text,
         'limit': 10,
-        'country': "fr",
+        'locale': "fr",
         'key': process.env.BETASERIES_API_KEY,
       },
       
-      params = '&text=' + args.text.text + '&limit=' + args.limit + '&country=' + args.country + '&key=' + args.key;
+      params = '&text=' + args.text.text + '&limit=' + args.limit + '&locale=' + args.locale + '&key=' + args.key;
       console.log(args)
 
     const result = apiUrl + params;
