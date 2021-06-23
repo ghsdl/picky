@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 // Import of components
-import Header fr{}om 'src/containers/Header';
+import Header from 'src/containers/Header';
 import SearchBar from 'src/containers/SearchBar';
 import Cards from 'src/containers/Cards';
 

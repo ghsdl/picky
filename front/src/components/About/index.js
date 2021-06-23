@@ -54,14 +54,13 @@ function About () {
     setSelected(i)
   }
 
-const aboutPeople = about.map (person => )
 
   return (
     <>
       <Header /> 
       <div className="about">
         <div className="accordion">
-          {data.map((informations, i) => (
+          {data.map((informations, i) => {
           <div key={informations.title} className="container">
             <div className="container-title" onClick={() => toggle(i)}> 
               <h2> {informations.title}</h2>
@@ -69,9 +68,17 @@ const aboutPeople = about.map (person => )
             </div>
             <div className={selected === i ? 'content-show' : 'content'}>
               <p> {informations.infos}</p>
+              <div> 
+              {informations.about.map(child => {
+                <div> 
+                  Nom: {child.name}
+                  Role: {child.role} 
+                </div>
+                })},
+              </div>
             </div>
           </div>
-          ))}
+          })}
         </div>
       </div>
     </>
