@@ -70,7 +70,6 @@ const authController = {
 
       // SENDING EMAIL PSEUDO AND TOKEN TO THE FRONT
       res.json({ member: member.email, pseudo: member.pseudo, token: jwtGenerator(member)});
-      console.log(jwtGenerator(member.id));
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());

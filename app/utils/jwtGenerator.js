@@ -7,10 +7,9 @@ function jwtGenerator(member_id) {
   // CREATING THE PAYLOAD
   const payload = {
     // SENDING THE DATA
-    member: {
-      id: member_id,
-    }
+      id: member_id.id,
   };
+  
   // RETURN THE TOKEN AND SIGNING IT
   return jwt.sign(payload, `${process.env.JWT_TOKEN}`, { expiresIn: 60 * 60 });
 }
