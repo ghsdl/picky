@@ -6,7 +6,7 @@ import { actionSaveUser } from 'src/actions/user'
 import './styles.css';
 import Home from 'src/containers/Home';
 import Wish from 'src/components/Wish';
-import Profile from 'src/components/Profile';
+import ProfileField from 'src/containers/ProfileField';
 import About from 'src/components/About';
 import Error from 'src/components/Error';
 import PickyMood from 'src/containers/PickyMood';
@@ -41,7 +41,7 @@ const App = (props) => {
         <SignUp />
       </Route>
       <Route exact path="/profil">
-        <Profile />
+        <ProfileField />
       </Route>
       <Route exact path="/about">
         <About />

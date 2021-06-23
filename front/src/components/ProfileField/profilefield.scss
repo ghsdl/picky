@@ -1,3 +1,40 @@
+.profile {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 8vh;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 14vh;
+
+  &-title {
+    margin-top: 4vh;
+    padding: 2vh;
+    display: inline-block;
+    border: 3px solid #333333;
+    font-size: 2.0vh;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    background: #ffffff;
+    position: relative;
+    z-index: -2;
+    
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+  }
+
+
+}
 
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
@@ -6,35 +43,46 @@
 
 @mixin epic-sides() { // https://codepen.io/MichaelArestad/pen/qltuk
     position: relative;
-    z-index: 1;
+    
 
     &:before {
         position: absolute;
         content: "";
         display: block;
-        top: 0;
-        left: -5000px;
-        height: 100%;
-        width: 15000px;
         z-index: -1;
         @content;
     }
 }
+
+
+.form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  &-p{
+     text-align: center;
+     font-size: 1.5vh;
+     font-style: italic;
+     font-weight: bold;
+     letter-spacing:0.2ch ;
+     text-transform: uppercase;
+  }
+}
+
+.field-update {
+  font-size: 1.5vh;
+  font-style: italic;
+  font-weight: bold;
+  border: 1px solid black;
+  background: #F4BB01;
+  border-radius: 5px;
+  padding: 1vh
+}
 .row {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 30px;
-  background: #d2d2d2;
   @include epic-sides() {background: inherit;}
   text-align: center;
-  
-  &:first-child {
-    padding: 40px 30px;
-  }
-  &:nth-child(2)
-  {
-    background: #134A46;
-  }
   
   span {
     position: relative;
@@ -44,12 +92,11 @@
 }
 .gate {
   display: inline-block;
-  width: 30vh;
+  width: 50vh;
   padding: 10px 0 10px 15px;
   font-family: "Open Sans", sans;
   font-weight: 400;
-  color: #377D6A;
-  background: #efefef;
+  background: #ffffff;
   border: 0;
   border-radius: 3px;
   outline: 0;
@@ -57,7 +104,9 @@
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
-    color: #efefef;
+    color: #070707;
+    text-align: center;
+    font-style: italic;
     text-indent: 0;
     font-weight: 300;
   }
@@ -67,14 +116,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: 11.5px 15px;
+    padding: 11.5px 12px;
     text-shadow: 0 1px 0 rgba(19,74,70,.4);
-    background: #960000;
+    background: #F4BB01;
     transition: all .4s ease-in-out;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     transform-origin: left bottom;
-    z-index: 99;
+    z-index: 20;
     
     &:before,
     &:after {
@@ -85,7 +134,7 @@
       bottom: 0;
       left: 0;
       border-radius: 3px;
-      background: #960000;
+      background: #F4BB01;
       transform-origin: left bottom;
       transition: all .4s ease-in-out;
       pointer-events: none;
@@ -107,7 +156,6 @@ span:nth-child(2) .gate:active{
 }
 .gate:focus,
 .gate:active {
-  color: #377D6A;
   text-indent: 0;
   background: #fff;
   border-top-right-radius: 3px;
@@ -124,4 +172,21 @@ span:nth-child(2) .gate:active{
       transform: rotate(10deg);
     }
   }
+}
+
+.profile-delete{
+  font-size: 1.5vh;
+  font-style: italic;
+  font-weight: bold;
+  border: 1px, solid, black;
+  background: #910000ce;
+  border-radius: 5px;
+  padding: 1vh;
+  color: white;
+};
+
+.profile-modal{
+display: flex;
+justify-content: center;
+margin-top: 4vh;
 }
