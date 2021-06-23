@@ -5,7 +5,7 @@ import { actionSaveUser } from 'src/actions/user'
 // == Import
 import './styles.css';
 import Home from 'src/containers/Home';
-import Wish from 'src/components/Wish';
+import Wish from 'src/containers/Wish';
 import Profile from 'src/components/Profile';
 import About from 'src/components/About';
 import Error from 'src/components/Error';

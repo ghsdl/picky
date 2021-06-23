@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import './card.scss';
 
 // Display of one card
-const Card = ({ inWatchList, title, poster, platformsInfos, platforms }) => (
+const Card = ({ inWatchList, title, poster, platformsInfos, platforms, addRemoveWish, program }) => (
   // TODO: make the content of the card dynamic
   <div className="card">
     { // Poster of the program
@@ -60,6 +60,7 @@ const Card = ({ inWatchList, title, poster, platformsInfos, platforms }) => (
         <button
           className={classNames('card__watchlistButton', { 'card__watchlistButton--delete': inWatchList })}
           type="button"
+          onClick = {() => addRemoveWish(program)}
         >
           +
         </button>
