@@ -1,13 +1,192 @@
-.field {
+.profile {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 8vh;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 14vh;
+
+  &-title {
+    margin-top: 4vh;
+    padding: 2vh;
+    display: inline-block;
+    border: 3px solid #333333;
+    font-size: 2.0vh;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    background: #ffffff;
+    position: relative;
+    z-index: -2;
+    
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+  }
+
+
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
+
+
+
+@mixin epic-sides() { // https://codepen.io/MichaelArestad/pen/qltuk
+    position: relative;
+    
+
+    &:before {
+        position: absolute;
+        content: "";
+        display: block;
+        z-index: -1;
+        @content;
+    }
+}
+
+
+.form {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-content: center;
-  
-  &-container {
-    display: flex;
-    justify-content: space-between;
-    width: auto;
-    margin: .5rem;
+  width: 100%;
+
+  &-p{
+     text-align: center;
+     font-size: 1.5vh;
+     font-style: italic;
+     font-weight: bold;
+     letter-spacing:0.2ch ;
+     text-transform: uppercase;
   }
+}
+
+.field-update {
+  font-size: 1.5vh;
+  font-style: italic;
+  font-weight: bold;
+  border: 1px solid black;
+  background: #F4BB01;
+  border-radius: 5px;
+  padding: 1vh
+}
+.row {
+  max-width: 800px;
+  @include epic-sides() {background: inherit;}
+  text-align: center;
+  
+  span {
+    position: relative;
+    display: flex;
+    margin: 30px 10px;
+  }
+}
+.gate {
+  display: inline-block;
+  width: 50vh;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  background: #ffffff;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 65px; // Arbitrary.
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #070707;
+    text-align: center;
+    font-style: italic;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+  + label {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 11.5px 12px;
+    text-shadow: 0 1px 0 rgba(19,74,70,.4);
+    background: #F4BB01;
+    transition: all .4s ease-in-out;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    transform-origin: left bottom;
+    z-index: 20;
+    
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 3px;
+      background: #F4BB01;
+      transform-origin: left bottom;
+      transition: all .4s ease-in-out;
+      pointer-events: none;
+      z-index: -1;
+    }
+    &:before {
+      background: rgba(3,36,41,.2);
+      z-index: -2;
+      right: 20%;
+    }
+  }
+}
+span:nth-child(2) .gate {
+  text-indent: 85px;
+}
+span:nth-child(2) .gate:focus,
+span:nth-child(2) .gate:active{
+  text-indent: 0;
+}
+.gate:focus,
+.gate:active {
+  text-indent: 0;
+  background: #fff;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+  + label {
+    transform: rotate(-66deg);
+    border-radius: 3px;
+    
+    &:before {
+      transform: rotate(10deg);
+    }
+  }
+}
+
+.profile-delete{
+  font-size: 1.5vh;
+  font-style: italic;
+  font-weight: bold;
+  border: 1px, solid, black;
+  background: #910000ce;
+  border-radius: 5px;
+  padding: 1vh;
+  color: white;
+};
+
+.profile-modal{
+display: flex;
+justify-content: center;
+margin-top: 4vh;
 }

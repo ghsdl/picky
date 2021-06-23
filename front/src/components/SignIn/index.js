@@ -29,10 +29,11 @@ export default function SignIn({
   return (
    
     <>
+    {isConnected && (
+      <Redirect to="/"/>
+     )}
       <Header />
-      {isConnected && (
-       <Redirect to="/"/>
-    )}
+      
       <div className="pickyMood">
         <div className="pickyMood-question">
           Connectez-Vous à Picky
