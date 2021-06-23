@@ -10,7 +10,7 @@ import Cards from 'src/components/Cards';
 import './wish.scss';
 
 // Display of watchlist
-const Wish = ({ wish }) => {
+const Wish = ({ wish, addRemoveWish }) => {
 
   return (
   <div className="wish">
@@ -23,7 +23,11 @@ const Wish = ({ wish }) => {
     {wish.map((list) => { 
     <Cards 
       currentPage="wish" loading={false}
-      key={list.id}
+      title={list.title}
+      poster={list.poster}
+      platformsInfos={list.platform}
+      key= {list.id}
+      onClick = {() => addRemoveWish(list)}
     /> })}
     {// Footer of the watchlist, with 2 buttons to go to Picky Find and Picky Mood
     }

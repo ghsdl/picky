@@ -4,6 +4,7 @@ import React from 'react';
 // Import of components
 import Card from 'src/containers/Card';
 
+
 // Import of scss
 import './cards.scss';
 
@@ -34,6 +35,7 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
             poster={movie.poster}
             platformsInfos={movie.svods}
             key= {movie.id}
+            program={movie}
           />
         ))}
         {// The shows are displayed
@@ -44,6 +46,7 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
             poster={show.poster}
             platformsInfos={show.svods}
             key= {show.id}
+            program={show}
           />
         ))}
         </div>
@@ -59,6 +62,7 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
           poster={program.poster}
           platformsInfos={program.platform}
           key= {program.id}
+          program={program}
         />
       ))}
       </div>
