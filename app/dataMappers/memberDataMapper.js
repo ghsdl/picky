@@ -44,6 +44,8 @@ module.exports = {
         return result.rows;
     },
 
+    // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
+    /*
     async getPlatformByMember(memberId) {
         const result = await pool.query(`SELECT m.*, 
 		array_agg(DISTINCT p.name) AS platform_name,
@@ -57,12 +59,16 @@ module.exports = {
         GROUP BY m.id;`, [memberId]);
         return result.rows;
     },
+    */
 
+    // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
+    /*
     async post(platform_id, member_id) {
         const result = await pool.query(`INSERT INTO "platform_has_member" ("platform_id", "member_id") VALUES ($1,$2) RETURNING *`, [platform_id, member_id]);
         return result.rows[0];
     },
-
+    */
+   
     async patch(member, id) {
         const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4 WHERE id =$5 RETURNING *`, [member.pseudo, member.email, member.password, member.profile_picture, id]);
         return result.rows[0];
