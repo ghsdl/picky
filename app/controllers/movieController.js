@@ -2,13 +2,17 @@
 const movieDataMapper = require('../dataMappers/movieDataMapper');
 
 const movieController = {
-  allMovies: async (req, res) => {
+  async allMovies(_, res) {
     try {
+      // FETCHING MOVIES FROM THIRD PARTY API
       const movies = await movieDataMapper.getAllMovies();
+
+      // IF FETCHING IS A SUCCESS
       if (movies) {
         res.json(movies);
+        // ELSE THROW ERROR
       } else {
-        res.status(404).json("Cannot find movies");
+        res.status(404).json("Cannot find movies.");
       }
     } catch (error) {
       console.log(error);
@@ -16,13 +20,17 @@ const movieController = {
     }
   },
 
-  randMovies: async (req, res) => {
+  async randomMovies(_, res) {
     try {
+      // FETCHING RANDOM MOVIES FROM THIRD PARTY API
       const movie = await movieDataMapper.randomMovies();
+
+      // IF FETCHING IS A SUCCESS
       if (movie) {
         res.json(movie);
+        // ELSE THROW ERROR
       } else {
-        res.status(404).json("Cannot find movie");
+        res.status(404).json("Cannot find movie.");
       }
     } catch (error) {
       console.log(error);
@@ -31,17 +39,20 @@ const movieController = {
   },
 
   async searchMovies(req, res) {
-
     try {
+      // GETTING THE URL PARAMETER
       const text = req.params;
-        const movies = await movieDataMapper.searchMovies(text);
-        res.json(movies);
+      
+      // SEARCHING MOVIES FROM THIRD PARTY API
+      const movies = await movieDataMapper.searchMovies(text);
+      
+      res.json(movies);
     } catch (error) {
-        console.log(error);
-        res.status(500).json(error.toString());
+      console.log(error);
+      res.status(500).json(error.toString());
     }
   }
-  
+
 };
 
 module.exports = movieController;

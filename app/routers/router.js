@@ -14,14 +14,14 @@ const auth = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (_, res) => {
   res.send(`Bienvenue les fronteux sur l'API Picky!`)
 });
 
 // Affiche un résultat de 50 films sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
 router.get('/movies', movieController.allMovies);
 // Methode qui affiche 5 films au hasard
-router.get('/movies/random', movieController.randMovies);
+router.get('/movies/random', movieController.randomMovies);
 
 // Affiche un résultat de plsuieurs series selon le paramètre text
 router.get('/shows', showController.getShows);
@@ -45,18 +45,20 @@ router.route('/search/:query')
 
 router.post('/moodresults', searchController.mood);
 
-
 /*router.route('/search/bookmark/:id')  
   .post(searchController.addToBookmark)*/
 
 // PLATFORM ROUTES
 router.route('/platform')
-  .get(platformController.get);
+  .get(platformController.allPlatforms);
 
+// V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
+ /* 
 router.route('/platform/:id(\\d+)')
   .get(platformController.getById)
   .patch(platformController.update)
   .delete(platformController.delete);
+*/
 
   // BOOKMARK ROUTES
 router.route('/bookmark')
@@ -107,11 +109,17 @@ router.route('/member')
 router.route('/member/:id(\\d+)/bookmark')
   .get(memberController.getBookmarkByMember);
 
+// V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
+/*
 router.route('/member/:id(\\d+)/platform')
   .get(memberController.getPlatformByMember);
+*/
 
+// V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
+/*
 router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
   .post(memberController.addPlatformToMember);
+*/
 
 router.use(errorController.resourceNotFound);
 

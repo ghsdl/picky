@@ -1,4 +1,4 @@
-const pool = require('../../database');
+/*const pool = require('../../database');*/
 const fetch = require('node-fetch');
 
 module.exports = {
@@ -13,18 +13,27 @@ module.exports = {
     return body;
   },
 
+  // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
+  /*
   async getOne(id) {
     const result = await pool.query(`SELECT * FROM platform WHERE id =$1`, [id]);
     return result.rows[0];
   },
+  */
 
-  async patch(data) {
-    const result = await pool.query(`SELECT * FROM update_platform($1)`, [data]);
+  // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
+  /*
+  async patch(newData) {
+    const result = await pool.query(`SELECT * FROM update_platform($1)`, [newData]);
     return result.rows[0];
   },
+  */
 
+  // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
+  /*
   async delete(id) {
     const result = await pool.query(`SELECT * FROM delete_platform($1)`, [id]);
     return result;
   },
+  */
 };
