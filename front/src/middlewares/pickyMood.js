@@ -6,7 +6,7 @@ const result = (store) => (next) => (action) => {
     case PICKYMOOD_RESULT: {
       const state = store.getState();
       // Request for programs based on what the user chose in Picky Mood
-      axios.post('https://projet-picky.herokuapp.com/moodresults', {
+      axios.post('http://localhost:3000/moodresults', {
         ShowOrMovie: state.pickyMood.ShowOrMovie,
         emotions: state.pickyMood.emotions,
         platforms: state.pickyMood.platforms,
