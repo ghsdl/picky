@@ -17,7 +17,10 @@ const pickyWish = (store) => (next) => (action) => {
         };
         */
         axios.post('https://projet-picky.herokuapp.com/bookmark', {
-          program: action.programswish,
+          betaseries_id: action.programswish.id,
+          poster: action.programswish.poster,
+          platform: action.programswish.svods,
+          title: action.programswish.title,
           headers: { 
             Authorization: `Bearer ${token}`,
           },
