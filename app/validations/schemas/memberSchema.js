@@ -41,7 +41,7 @@ const updateSchema = Joi.object({
     
     email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: true } })
-        .message('Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email.'),
+        .message('Veuillez saisir un email valide.'),
     
     password: Joi.string()
     .min(4)
@@ -52,7 +52,6 @@ const updateSchema = Joi.object({
         .message(`Le mot de passe peut contenir des chiffres, des lettres et des caractères spéciaux.`),
 
     confirmationPassword: Joi.string()
-    .required()
     .valid(Joi.ref('password'))
         .messages({'any.only': 'Les mots de passe doivent être identiques.'}),
     
