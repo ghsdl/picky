@@ -43,9 +43,7 @@ module.exports = {
       'key': process.env.BETASERIES_API_KEY,
     },
     params = '&text=' + args.text.text + '&limit=' + args.limit + '&key=' + args.key;
-    console.log(args)
   const result = apiUrl + params;
-  console.log(result)
 
   const response = await fetch(result);
 

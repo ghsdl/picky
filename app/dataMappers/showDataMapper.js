@@ -46,11 +46,8 @@ module.exports = {
       },
       
       params = '&text=' + args.text.text + '&limit=' + args.limit + '&locale=' + args.locale + '&key=' + args.key;
-      console.log(args)
 
     const result = apiUrl + params;
-    console.log(result)
-    
 
     const response = await fetch(result);
 

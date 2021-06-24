@@ -1,8 +1,5 @@
 // REQUIRING BOOKMARK DATAMAPPER
 const bookmarkDataMapper = require('../dataMappers/bookmarkDataMapper');
-const jwt = require('jsonwebtoken');
-require("dotenv").config();
-const jwtGenerator = require('../utils/jwtGenerator');
 const { log } = require('./authController');
 
 const bookmarkController = {
@@ -45,6 +42,7 @@ const bookmarkController = {
   },
 
   async post(req, res) {
+    console.log(req.member.id);
     try {
       // GETTING THE BODY
       const { betaseries_id, title, platform, poster } = req.body;
