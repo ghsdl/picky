@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
       return res.status(403).json("You are not authorized dammit.");
     }*/
 
-    const payload = jwt.verify(jwtToken, `${process.env.JWT_TOKEN}`);
+    const payload = jwt.verify(jwtToken, process.env.JWT_TOKEN);
 
     // à voir si je prends le member ou juste le payload
     req.member = payload;
