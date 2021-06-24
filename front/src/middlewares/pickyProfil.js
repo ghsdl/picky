@@ -10,8 +10,11 @@ const profil =  (store) => (next) => (action) => {
       console.log(store.getState().status.token)
       axios.get('https://projet-picky.herokuapp.com/member',{
         header: {
-          "Bearer": `${store.getState().status.token}`
+          "Bearer": `${store.getState().status.token}`,
+          "Accept": "application/json",
+          "Content-Type": "application/json",
         },
+        
       })
         .then((response) => {
           console.log(response)
