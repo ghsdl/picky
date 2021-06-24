@@ -10,8 +10,8 @@ const auth = (store) => (next) => (action) => {
         password: state.user.password,
       })
         .then((response) => {
-          const { email, token, pseudo } = response.data;
-          const saveUser = actionSaveUser(email, token, pseudo,);
+          const { email, token, pseudo} = response.data;
+          const saveUser = actionSaveUser(email, token, pseudo);
           store.dispatch(saveUser);
         })
         .catch((error) => {

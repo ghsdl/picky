@@ -7,9 +7,9 @@ const profil =  (store) => (next) => (action) => {
   
   switch (action.type){
     case GET_PROFIL: {
-      axios.get('https://projet-picky.herokuapp.com/member/id',{
+      axios.get('https://projet-picky.herokuapp.com/member',{
         header: {
-          Authorization: ` Bearer ${store.getState().status.token}`
+          Bearer: `${store.getState().status.token}`
         },
       })
         .then((response) => {

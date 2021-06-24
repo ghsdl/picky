@@ -71,7 +71,7 @@ router.route('/bookmark/:id(\\d+)')
   .delete(bookmarkController.delete);
 
   // MEMBER ROUTES
-router.route('/member')
+router.route('/members')
   /** 
    * Get all the members
    * @route GET /member
@@ -80,7 +80,7 @@ router.route('/member')
    */
   .get(memberController.get);
 
-  router.route('/member/:id(\\d+)')
+  router.route('/member')
   /**  
    * Get members by their id
    * @route GET /member/{id}
@@ -88,7 +88,7 @@ router.route('/member')
    * @returns {MemberInput[]} 200 - One member
    * @returns {Error} 500 - Error servor
    */
-  .get(memberController.getById)
+  .get(auth, memberController.getById)
     /**  
    * Updated member
    * @route PATCH /member/{id}

@@ -4,6 +4,8 @@ require("dotenv").config();
 module.exports = async (req, res, next) => {
   try {
     const jwtToken = req.header("Bearer");
+    console.log("log de jwtToken", jwtToken);
+    
     if (!jwtToken) {
       return res.status(403).json("You are not authorized.");
     }
@@ -12,6 +14,7 @@ module.exports = async (req, res, next) => {
 
     // à voir si je prends le member ou juste le payload
     req.member = payload;
+    console.log(req.member);
 
     next();
 
