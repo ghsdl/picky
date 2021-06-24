@@ -13,8 +13,15 @@ module.exports = {
     },
 
     async add(bookmark) {
+        // CREATING NEW USER IN DATABASE
+        /*const addedBookmark = await pool.query(
+            `INSERT INTO bookmark (betaseries_id, title, platform, poster, member_id) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+            [bookmark.betaseries_id, bookmark.title, bookmark.platform, bookmark.poster, bookmark.member_id]);
+        
+        return addedBookmark.rows[0];*/
+
         const result = await pool.query(`SELECT * FROM add_bookmark($1)`, [bookmark]);
-        return result.rows;
+        return result.rows[0];
     },
 
     /*async patch(data, BookmarkId) {

@@ -42,19 +42,22 @@ module.exports = {
           const svods = '&svods=' + multipleSvods[0] + '&key=' + process.env.BETASERIES_API_KEY;
          
           result.push(apiUrl + params + svods);
-          console.log(result);
+
         } else {
+          
           const firstIndexOfSvods = multipleSvods[0];
           const multipleSvodsWithModulo = multipleSvods.map( svods => modulo + svods);
           multipleSvodsWithModulo.splice(0,1, firstIndexOfSvods);
-          console.log(multipleSvodsWithModulo);
+
           const allSvods = multipleSvodsWithModulo.join('');
-          console.log(allSvods);
+
           const svods = '&svods=' + allSvods + '&key=' + process.env.BETASERIES_API_KEY;
+
           result.push(apiUrl + params + svods);
-          console.log(result)
+
         }
       }
+
       for (const url of result) {
         const response = await fetch(url);
         let body = await response.json();

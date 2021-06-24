@@ -4,11 +4,12 @@ import React from 'react';
 // Import of components
 import Card from 'src/containers/Card';
 
+
 // Import of scss
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, currentPage, results}) => {
+const Cards = ({movies, shows, loading, currentPage, results, programswish }) => {
   {// When the results are loading, "Loading" is displayed
   }
   if (loading === true) {
@@ -34,6 +35,7 @@ const Cards = ({movies, shows, loading, currentPage, results}) => {
             poster={movie.poster}
             platformsInfos={movie.svods}
             key= {movie.id}
+            program={movie}
           />
         ))}
         {// The shows are displayed
@@ -44,12 +46,28 @@ const Cards = ({movies, shows, loading, currentPage, results}) => {
             poster={show.poster}
             platformsInfos={show.svods}
             key= {show.id}
+            program={show}
           />
         ))}
         </div>
       );
       {// If the current page is not home (Picky Find), the results are not dynamic yet
       }
+    } else if (currentPage === 'wish') {
+      return (
+      <div className="cards">
+      {programswish.map((program) => (
+        <Card
+          title={program.title}
+          poster={program.poster}
+          platformsInfos={program.platform}
+          key= {program.id}
+          program={program}
+        />
+      ))}
+      </div>
+      );
+
     } else if(currentPage === "mood") {
       if(results.length === 0) {
         return (
@@ -72,6 +90,7 @@ const Cards = ({movies, shows, loading, currentPage, results}) => {
         )
       }
     } else {
+
       const friendsVod= [{id: 1, name: "Netflix"}];
       return (
         // TODO: make the display of the cards dynamic with a map
