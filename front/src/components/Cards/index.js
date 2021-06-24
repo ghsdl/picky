@@ -1,5 +1,6 @@
 // Import npm
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
+import lottie from 'lottie-web';
 
 // Import of components
 import Card from 'src/containers/Card';
@@ -10,11 +11,26 @@ import './cards.scss';
 
 // Display of the cards
 const Cards = ({movies, shows, loading, currentPage, results, programswish }) => {
+  const container = useRef(null)
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: require('./movieloading.json')
+    })
+  }, [])
+
   {// When the results are loading, "Loading" is displayed
   }
   if (loading === true) {
     return (
+  <div>
     <p className="cards">Loading</p>
+    <div className="cards-container" ref={container}></div>
+  </div>
     )
   }
   {// When the results are not loading anymore, they are displayed
@@ -71,7 +87,9 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
     } else if(currentPage === "mood") {
       if(results.length === 0) {
         return (
-          <p className="cards">Il n'y a aucun résultat pour votre recherche</p>
+          <div className="cards-img">
+            <p className="cards">Il n'y a aucun résultat pour votre recherche</p>
+          </div>
         )
       } else {
         return (
