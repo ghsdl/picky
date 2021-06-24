@@ -54,7 +54,7 @@ const profil =  (store) => (next) => (action) => {
           console.log(response)
         })
         .catch((error)=> {
-          console.log('case Patch MiddleWare',error)
+          console.log('case Patch MiddleWare',error.response.data)
         });
       break;
     }
