@@ -4,12 +4,15 @@ import { PICKYMOOD_RESULT, saveResults } from 'src/actions/pickyMood';
 const result = (store) => (next) => (action) => {
   switch (action.type){
     case PICKYMOOD_RESULT: {
+      console.log(store.getState().status.token)
+      const token =  store.getState().status.token;
       const state = store.getState();
       // Request for programs based on what the user chose in Picky Mood
       axios.post('https://projet-picky.herokuapp.com/moodresults', {
         ShowOrMovie: state.pickyMood.ShowOrMovie,
         emotions: state.pickyMood.emotions,
         platforms: state.pickyMood.platforms,
+       
       })
         .then((response) => {
           if(response.data[0].movies) {

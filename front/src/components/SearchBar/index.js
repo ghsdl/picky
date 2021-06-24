@@ -19,7 +19,7 @@ const SearchBar = ({ searchInputValue, onInputChange, loadPrograms }) => {
     evt.preventDefault();
     loadPrograms();
   };
-
+/*
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -33,6 +33,32 @@ const SearchBar = ({ searchInputValue, onInputChange, loadPrograms }) => {
       />
     </form>
   );
+  */
+ return (
+  <div className="cover">
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="tb">
+        <div className="td">
+          <input 
+            className="input"
+            ref={inputRef}
+            type="text"
+            placeholder="Search"
+            value={searchInputValue}
+            onChange={onInputChange}
+            required
+          />
+        </div>
+        <div className="td" className="s-cover">
+          <button className="button" type="submit">
+            <div className="s-circle" />
+            <span className="span" />
+          </button>
+        </div>
+      </div>
+    </form>
+</div>
+ )
 };
 
 SearchBar.propTypes = {

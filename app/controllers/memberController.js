@@ -19,7 +19,7 @@ const memberController = {
   async getById(req, res) {
     try {
       // GETTING THE URL PARAMETER
-      const id = parseInt(req.params.id, 10);
+      const id = parseInt(req.member.id, 10);
 
       // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
       if (isNaN(id)) {
