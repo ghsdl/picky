@@ -81,33 +81,34 @@ const ProfileField = ({
     </div>
       <div className="form">
         <div className="form-input"> 
-        <form onSubmit={handleSubmit}> 
-        <p className="form-p"> Modifier vos info's personnelles</p>
-        <div className="row"> 
-        
-          <Field
-            type="text"
-            name="pseudo"
-            placeholder="pseudo"
-            onChange={changeField}
-            value={pseudo}
-          />
+          <form onSubmit={handleSubmit}> 
+          <p className="form-p"> Modifier vos info's personnelles</p>
+          <div className="row"> 
           
-          <Field
-            type="email"
-            name="email"
-            placeholder="email"
-            onChange={changeField}
-            value={email}
-          />
-          <button 
-            className="field-update"
-            type="submit"
-          > 
-          Modifer votre profil
-          </button>
-        </div> 
-        </form>
+            <Field
+              type="text"
+              name="pseudo"
+              placeholder="pseudo"
+              onChange={changeField}
+              value={pseudo}
+            />
+            
+            <Field
+              type="email"
+              name="email"
+              placeholder="email"
+              onChange={changeField}
+              value={email}
+            />
+            <button 
+              className="field-update"
+              type="submit"
+            > 
+            Modifer votre profil
+            </button>
+          </div> 
+          </form>
+          
         <form>
           <div className="row">
             <Field
