@@ -1,7 +1,6 @@
 // REQUIRING BOOKMARK DATAMAPPER
 const bookmarkDataMapper = require('../dataMappers/bookmarkDataMapper');
-const memberDataMapper = require('../dataMappers/memberDataMapper');
-
+const { log } = require('./authController');
 
 const bookmarkController = {
 
@@ -43,10 +42,10 @@ const bookmarkController = {
   },
 
   async post(req, res) {
+    console.log(req.member.id);
     try {
       // GETTING THE BODY
-      const { betaseries_id, title, platform, poster, member_id } = req.body;
-      console.log(req.body);
+      const { betaseries_id, title, platform, poster } = req.body;
 
       // ADDING THE BOOKMARK TO DATABASE
       const bookmark = await bookmarkDataMapper.add({
@@ -54,7 +53,7 @@ const bookmarkController = {
         title,
         platform,
         poster,
-        member_id
+        member_id: req.member.id
       });
       
       res.status(200).json(`Everything went okay!`);

@@ -63,7 +63,7 @@ router.route('/platform/:id(\\d+)')
   // BOOKMARK ROUTES
 router.route('/bookmark')
   .get(bookmarkController.get)
-  .post(bookmarkController.post);
+  .post(auth, bookmarkController.post);
 
 router.route('/bookmark/:id(\\d+)')
   .get(bookmarkController.getById)

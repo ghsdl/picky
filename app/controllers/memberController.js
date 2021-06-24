@@ -17,6 +17,7 @@ const memberController = {
   },
 
   async getById(req, res, next) {
+    console.log(req.member.id);
     try {
       // GETTING THE MEMBER BY ITS ID
       const member = await memberDataMapper.getOne(req.member.id);
