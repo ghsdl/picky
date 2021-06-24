@@ -169,6 +169,11 @@ const memberController = {
         member.password = newData.password;
       }
 
+      // CHECKING IF BOTH PASSWORDS ARE THE SAME
+      if (newData.password !== newData.confirmationPassword) {
+        return res.status(401).json(`Les mots de passe doivent être identiques.`);
+      }
+
       // RE-CRYPTING PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
