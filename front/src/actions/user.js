@@ -16,12 +16,11 @@ export const login = () => ({
   type: LOGIN,
 });
 
-export const actionSaveUser = (member, pseudo, member_id) => ({
+export const actionSaveUser = (member, token, pseudo) => ({
   type: ACTION_SAVE_USER,
   member,
+  token,
   pseudo,
-  member_id
-  
 });
 
 export const signUp = (value, key) => ({
