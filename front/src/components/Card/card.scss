@@ -9,11 +9,13 @@
   margin: 10px;
   
   border-radius: 20px;
+  position: relative;
 
   &__infos {
     height: auto;
-    bottom: 69px;
-    position: relative;
+    bottom: 0;
+    width: 250px;
+    position: absolute;
 
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 7%, rgba(0, 0, 0, 0) 100%);
     border-radius: 0 0 20px 20px;
