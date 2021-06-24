@@ -6,6 +6,7 @@ import {
 const initialState= { 
   isConnected: false,
   token: '',
+ 
 }
 
 const statusReducer = (state = initialState, action = {}) => {
@@ -15,7 +16,8 @@ const statusReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: true,
-        token: action.token,        
+        token: action.token,   
+            
       };
     case LOGOUT:
     return {
