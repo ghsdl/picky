@@ -21,6 +21,7 @@ const pickyWish = (store) => (next) => (action) => {
           poster: action.programswish.poster,
           platform: action.programswish.svods,
           title: action.programswish.title,
+          // créer objet config avec headerssssssssssssssssssssssssssssssss
           header: { 
             Authorization: `Bearer ${token}`,
           },
