@@ -43,7 +43,7 @@ router.route('/search/movies/:text')
 router.route('/search/:query')
   .get(searchController.searchAll);
 
-router.post('/moodresults', auth, searchController.mood);
+router.post('/moodresults', searchController.mood);
 
 /*router.route('/search/bookmark/:id')  
   .post(searchController.addToBookmark)*/
@@ -63,12 +63,12 @@ router.route('/platform/:id(\\d+)')
   // BOOKMARK ROUTES
 router.route('/bookmark')
   .get(bookmarkController.get)
-  .post(auth, bookmarkController.post);
+  .post(bookmarkController.post);
 
 router.route('/bookmark/:id(\\d+)')
   .get(bookmarkController.getById)
   //.patch(bookmarkController.update)
-  .delete(auth, bookmarkController.delete);
+  .delete(bookmarkController.delete);
 
   // MEMBER ROUTES
 router.route('/member')
@@ -96,7 +96,7 @@ router.route('/member')
    * @returns {Member[]} 200 - Member's update
    * @returns {Error} 500 - Error servor
    */
-  .patch(validate.body(memberUpdateSchema), auth, memberController.update)
+  .patch(validate.body(memberUpdateSchema), memberController.update)
     /**  
    * Deleted member
    * @route DELETE /member/{id}
@@ -104,10 +104,10 @@ router.route('/member')
    * @returns {Member[]} 204 - <empty content>
    * @returns {Error} 500 - Error servor
    */
-  .delete(auth, memberController.delete);
+  .delete(memberController.delete);
 
 router.route('/member/:id(\\d+)/bookmark')
-  .get(auth, memberController.getBookmarkByMember);
+  .get(memberController.getBookmarkByMember);
 
 // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
 /*
