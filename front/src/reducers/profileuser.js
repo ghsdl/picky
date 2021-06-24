@@ -7,19 +7,6 @@ export const inialState = {
   password: '',
 };
 
-const reducer = (state = inialState, action = {}) => {
-  switch (action.type) {
-    case CHANGE_PROFILE:
-      return {
-        ...state,
-        [action.email]: action.newValue,
-        [action.username]: action.newValue,
-        [action.bio]: action.newValue,
-        [action.password]: action.newValue,
-      };
-    default:
-      return state;
-  }
-};
+
 
 export default reducer;

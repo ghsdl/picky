@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ProfileField from 'src/components/ProfileField';
 // import {} from 'src/actions/profileuser';
 import {changeInputValue, reset} from 'src/actions/user';
-import { getProfil } from 'src/actions/profil'
+import { getProfil, patchProfil, deleteProfil } from 'src/actions/profil'
 const mapStateToProps = (state) => ({
   email: state.user.email,
   pseudo: state.user.pseudo,
@@ -23,7 +23,16 @@ const mapDispatchToProps = (dispatch) => ({
 
   getProfil: () => {
     dispatch(getProfil())
-  }
+  },
+
+  deleteProfil: () => {
+    dispatch(deleteProfil())
+  },
+
+  patchProfil: () => {
+    dispatch(patchProfil())
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileField);
