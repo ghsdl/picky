@@ -8,7 +8,7 @@ const profil =  (store) => (next) => (action) => {
   switch (action.type){
     case GET_PROFIL: {
       console.log(store.getState().status.token)
-      axios.get('https://projet-picky.herokuapp.com/member',{
+      axios.get('https://projet-picky.herokuapp.com/member', {}, {
         header: {
           "Bearer": `${store.getState().status.token}`,
           "Accept": "application/json",
