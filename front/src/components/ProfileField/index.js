@@ -64,6 +64,11 @@ const ProfileField = ({
       
     }
   }, []);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    patchProfil();
+  }
   return (
     
   <> 
@@ -75,7 +80,10 @@ const ProfileField = ({
       <h2 className="profile-title"> Mon Profil</h2>
     </div>
     <div className="form">
-      <form className="form-input"> 
+      <form 
+      className="form-input"
+      onSubmit={handleSubmit}
+      > 
         <p className="form-p"> Modifier vos info's personnelles</p>
         <div className="row"> 
         
@@ -104,7 +112,7 @@ const ProfileField = ({
           />
           <button 
             className="field-update"
-            onClick={patchProfil}
+            type="submit"
           > 
           Modifer votre profil
           </button>

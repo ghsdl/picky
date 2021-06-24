@@ -1,13 +1,14 @@
 import axios from 'axios'
 
-import { GET_PROFIL, PATCH_PROFIL, DELETE_PROFIL } from 'src/actions/profil'
+import {actionSaveProfil, GET_PROFIL, PATCH_PROFIL, DELETE_PROFIL } from 'src/actions/profil'
 
 
 const profil =  (store) => (next) => (action) => {
   
   switch (action.type){
     case GET_PROFIL: {
-      console.log(store.getState().status.token)
+      const state = store.getState();
+      console.log(state.user.email)
       axios.get('https://projet-picky.herokuapp.com/member', {
         headers: {
           "Bearer": `${store.getState().status.token}`,
@@ -18,6 +19,9 @@ const profil =  (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response)
+          const { member , pseudo } = response.data
+          const saveProfil = actionSaveProfil(member, pseudo);
+          store.dispatch(saveProfil)
         })
         .catch((error)=> {
           console.log(error)
@@ -26,19 +30,27 @@ const profil =  (store) => (next) => (action) => {
     }
 
     case PATCH_PROFIL: {
+      console.log(action)
+      const state = store.getState();
       const config = {
-        header: {
+        headers: {
           "Bearer": `${store.getState().status.token}`,
-          "Accept": "application/json",
-          "Content-Type": "application/json",
         }
       }
-      axios.patch('https://projet-picky.herokuapp.com/member', {
-        pseudo: state.user.pseudo,
-        email: state.user.email,
+      
+      const email = !state.user.email ? state.profil.member : state.user.email
+      const pseudo = !state.user.pseudo ? state.profil.pseudo : state.user.pseudo;
+            
+      const bodyParameters = {
+        pseudo: pseudo,
+        email: email,
         password: state.user.password,
+     };
+     
+      axios.patch('https://projet-picky.herokuapp.com/member',
+        bodyParameters,
         config
-      })
+      )
         .then((response) => {
           console.log(response)
         })
@@ -52,9 +64,7 @@ const profil =  (store) => (next) => (action) => {
       console.log(store.getState().status.token)
       axios.delete('https://projet-picky.herokuapp.com/member', {
         headers: {
-          "Bearer": `${store.getState().status.token}`,
-          "Accept": "application/json",
-          "Content-Type": "application/json",
+          "Bearer": `${store.getState().status.token}`
         },
         
       })
