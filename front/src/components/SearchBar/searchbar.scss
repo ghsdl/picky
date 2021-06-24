@@ -1,16 +1,4 @@
 /*
-@use 'src/styles/vars';
-
-.searchbar__input {
-    width: 40vw;
-    height: 50px;
-    padding: 15px;
-    margin: 20px 0;
-
-    border-radius: 10px;
-    font-size: 1.2em;
-}
-
 @media (max-width: vars.$normal) {
   .searchbar__input {
     width: 60vw;
@@ -20,150 +8,151 @@
   }
 }
 */
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-.tb
-{
-    display: table;
-    width: 100%;
-}
-
-.td
-{
-    display: table-cell;
-    vertical-align: middle;
-}
-
-input, button
-{
-    color: #fff;
-    font-family: Nunito;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    background-color: transparent;
-}
-
-#cover
-{
+.cover {
   width: 550px;
   padding: 35px;
   background-color: #E43E54;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0 10px 40px #E43E54, 0 0 0 20px #ffffffeb;
   transform: scale(0.6);
+  .tb
+  {
+      display: table;
+      width: 100%;
+  }
+
+  .td
+  {
+      display: table-cell;
+      vertical-align: middle;
+  }
+  .input, .button
+  {
+      color: #fff;
+      font-family: Nunito;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background-color: transparent;
+  }
+  .input
+  {
+      width: 100%;
+      height: 50px;
+      font-size: 45px;
+      line-height: 1;
+  }
+
+  .form
+  {
+      height: 50px;
+  }
+  .input::placeholder
+  {
+      color: #923340a9;
+  }
+  
+  .s-cover
+  {
+      width: 1px;
+      padding-left: 35px;
+  }
+  
+  .button
+  {
+      position: relative;
+      display: block;
+      width: 46px;
+      height: 50px;
+      cursor: pointer;
+      margin-right: 25px;
+  }
+  .s-circle
+  {
+      position: relative;
+      top: -12px;
+      left: -63px;
+      width: 60px;
+      height: 60px;
+      margin-top: 0;
+      border-width: 13px;
+      border: 13px solid #fff;
+      background-color: transparent;
+      border-radius: 50%;
+      transition: 0.5s ease all;
+  }
+  .button .span
+  {
+      position: absolute;
+      top: 42px;
+      left: -25px;
+      display: block;
+      width: 45px;
+      height: 15px;
+      background-color: transparent;
+      border-radius: 10px;
+      transform: rotateZ(52deg);
+      transition: 0.5s ease all;
+  }
+
+  .button .span:before, .button .span:after
+  {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 40px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 10px;
+      transform: rotateZ(0);
+      transition: 0.5s ease all;
+  }
+
+  .s-cover:hover .s-circle
+  {
+      top: -1px;
+      width: 67px;
+      height: 15px;
+      border-width: 0;
+      background-color: #fff;
+      border-radius: 20px;
+  }
+
+  .s-cover:hover .span
+  {
+      top: 50%;
+      left: -20px;
+      width: 25px;
+      margin-top: -9px;
+      transform: rotateZ(0);
+  }
+
+  .s-cover:hover .button .span:before
+  {
+      bottom: 11px;
+      transform: rotateZ(52deg);
+  }
+
+  .s-cover:hover .button .span:after
+  {
+      bottom: -11px;
+      transform: rotateZ(-52deg);
+  }
+  .s-cover:hover .button .span:before, .s-cover:hover .button .span:after
+  {
+      right: -6px;
+      width: 40px;
+      background-color: #fff;
+  }
+
 }
 
-form
-{
-    height: 50px;
-}
 
-input[type="text"]
-{
-    width: 100%;
-    height: 50px;
-    font-size: 45px;
-    line-height: 1;
-}
 
-input[type="text"]::placeholder
-{
-    color: #923340a9;
-}
 
-#s-cover
-{
-    width: 1px;
-    padding-left: 35px;
-}
 
-button
-{
-    position: relative;
-    display: block;
-    width: 46px;
-    height: 50px;
-    cursor: pointer;
-    margin-right: 25px;
-}
 
-#s-circle
-{
-    position: relative;
-    top: -12px;
-    left: 0;
-    width: 60px;
-    height: 60px;
-    margin-top: 0;
-    border-width: 13px;
-    border: 13px solid #fff;
-    background-color: transparent;
-    border-radius: 50%;
-    transition: 0.5s ease all;
-}
-
-button span
-{
-    position: absolute;
-    top: 42px;
-    left: 36px;
-    display: block;
-    width: 45px;
-    height: 15px;
-    background-color: transparent;
-    border-radius: 10px;
-    transform: rotateZ(52deg);
-    transition: 0.5s ease all;
-}
-
-button span:before, button span:after
-{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 40px;
-    height: 12px;
-    background-color: #fff;
-    border-radius: 10px;
-    transform: rotateZ(0);
-    transition: 0.5s ease all;
-}
-
-#s-cover:hover #s-circle
-{
-    top: -1px;
-    width: 67px;
-    height: 15px;
-    border-width: 0;
-    background-color: #fff;
-    border-radius: 20px;
-}
-
-#s-cover:hover span
-{
-    top: 50%;
-    left: 56px;
-    width: 25px;
-    margin-top: -9px;
-    transform: rotateZ(0);
-}
-
-#s-cover:hover button span:before
-{
-    bottom: 11px;
-    transform: rotateZ(52deg);
-}
-
-#s-cover:hover button span:after
-{
-    bottom: -11px;
-    transform: rotateZ(-52deg);
-}
-#s-cover:hover button span:before, #s-cover:hover button span:after
-{
-    right: -6px;
-    width: 40px;
-    background-color: #fff;
-}

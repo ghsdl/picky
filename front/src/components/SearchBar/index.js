@@ -35,11 +35,12 @@ const SearchBar = ({ searchInputValue, onInputChange, loadPrograms }) => {
   );
   */
  return (
-  <div id="cover">
-    <form onSubmit={handleSubmit}>
+  <div className="cover">
+    <form className="form" onSubmit={handleSubmit}>
       <div className="tb">
         <div className="td">
           <input 
+            className="input"
             ref={inputRef}
             type="text"
             placeholder="Search"
@@ -48,10 +49,10 @@ const SearchBar = ({ searchInputValue, onInputChange, loadPrograms }) => {
             required
           />
         </div>
-        <div className="td" id="s-cover">
-          <button type="submit">
-            <div id="s-circle" />
-            <span />
+        <div className="td" className="s-cover">
+          <button className="button" type="submit">
+            <div className="s-circle" />
+            <span className="span" />
           </button>
         </div>
       </div>
