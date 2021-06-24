@@ -41,17 +41,18 @@ module.exports = {
       args = {
         'text': text,
         'limit': 10,
-        'locale': "fr",
         'key': process.env.BETASERIES_API_KEY,
       },
       
-      params = '&text=' + args.text.text + '&limit=' + args.limit + '&locale=' + args.locale + '&key=' + args.key;
+      params = '&text=' + args.text.text + '&limit=' + args.limit +  '&key=' + args.key;
 
     const result = apiUrl + params;
 
     const response = await fetch(result);
 
     let body = await response.json();
+      console.log(body);
+
     if (!Array.isArray(body)) {
       body = [body];
       
