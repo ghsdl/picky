@@ -44,7 +44,6 @@ const profil =  (store) => (next) => (action) => {
       const bodyParameters = {
         pseudo: pseudo,
         email: email,
-        password: state.user.password,
      };
      
       axios.patch('https://projet-picky.herokuapp.com/member',

@@ -79,18 +79,16 @@ const ProfileField = ({
     <div className="profile">
       <h2 className="profile-title"> Mon Profil</h2>
     </div>
-    <div className="form">
-      <form 
-      className="form-input"
-      onSubmit={handleSubmit}
-      > 
+      <div className="form">
+        <div className="form-input"> 
+        <form onSubmit={handleSubmit}> 
         <p className="form-p"> Modifier vos info's personnelles</p>
         <div className="row"> 
         
           <Field
             type="text"
             name="pseudo"
-            placeholder="Pseudo"
+            placeholder="pseudo"
             onChange={changeField}
             value={pseudo}
           />
@@ -98,17 +96,9 @@ const ProfileField = ({
           <Field
             type="email"
             name="email"
-            placeholder="Adresse Email"
+            placeholder="email"
             onChange={changeField}
             value={email}
-          />
-                    
-          <Field
-            type="password"
-            name="password"
-            placeholder="Mot de Passe"
-            onChange={changeField}
-            value={password}
           />
           <button 
             className="field-update"
@@ -116,10 +106,24 @@ const ProfileField = ({
           > 
           Modifer votre profil
           </button>
-        </div>
-
-        
-      </form>
+        </div> 
+        </form>
+        <form>
+          <div className="row">
+            <Field
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={changeField}
+            value={password}
+            />
+          </div>
+        </form>
+      </div>
+      
+      
+      
+     
     </div>
     <div className="profile-modal">
           <button type="button" className="profile-delete" onClick={handleOpen}> Supprimer mon compte </button>
