@@ -4,9 +4,7 @@ import { addRemoveWish, ADD_REMOVE_WISH, GET_BOOKMARK, getBookmarkSuccess, getBo
 const pickyWish = (store) => (next) => (action) => {
   switch (action.type){
     case ADD_REMOVE_WISH: {
-        const token =  store.getState().status.token;
         console.log('action.programswish in middleware', action.programswish);
-        console.log('token in pickywish add_remove_wish middleware', token);
         /*
         const addRequest = {
           method: 'post',
@@ -22,10 +20,13 @@ const pickyWish = (store) => (next) => (action) => {
           platform: action.programswish.svods,
           title: action.programswish.title,
           // créer objet config avec headerssssssssssssssssssssssssssssssss
-          header: { 
-            Authorization: `Bearer ${token}`,
+          headers: { 
+            "Bearer": `${store.getState().status.token}`,
+            "Accept": "application/json",
+            "Content-Type": "application/json",
           },
-        })
+          },
+          )
           .then((response) => {
             console.log(response.data);
             //store.dispatch(addRequest(response.data))
@@ -34,14 +35,15 @@ const pickyWish = (store) => (next) => (action) => {
         break;
     }
     case GET_BOOKMARK: {
-      const token = store.getState().status.token;
       console.log('token in pickywish get_bookmark middleware', token);
       const getBookmarkRequest = {
         method: 'get',
-        url: 'https://projet-picky.herokuapp.com/bookmark',
-        headers: {
-          Authorization: `Bearer ${token}`,
-      },
+        url: 'https://projet-picky.herokuapp.com/member/bookmark',
+        headers: { 
+          "Bearer": `${store.getState().status.token}`,
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
     };
 
     axios(getBookmarkRequest)
