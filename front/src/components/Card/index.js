@@ -2,6 +2,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import posterPopcorn from 'src/assets/poster-popcorn.jpg';
 
 // Import scss
 import './card.scss';
@@ -14,7 +15,7 @@ const Card = ({ inWatchList, title, poster, platformsInfos, platforms, addRemove
     }
     <img
       className="card__poster"
-      src={poster}
+      src={poster ? poster : posterPopcorn}
       alt="Affiche du programme"
     />
     { // Infos on the program (title, platforms and button to add it to/delete from watchlist)
@@ -39,19 +40,6 @@ const Card = ({ inWatchList, title, poster, platformsInfos, platforms, addRemove
               }
             })
           ))}
-          {/*
-          <img
-            className="card__platform"
-            src="https://www.numerama.com/content/uploads/2016/06/13502130_10153696123838870_522765110773053650_n-796x796-2.png"
-            alt="Logo de la plateforme"
-          />
-          <img
-            className="card__platform"
-            src="https://play-lh.googleusercontent.com/VojafVZNddI6JvdDGWFrRmxc-prrcInL2AuBymsqGoeXjT4f9sv7KnetB-v3iLxk_Koi=w300"
-            alt="Logo de la plateforme"
-          />
-          */
-          }
         </div>
         {// If the program is in the watchlist, a button to delete it from it is displayed.
           // Otherwise, a button to add it to the watchlist is displayed.
