@@ -96,7 +96,7 @@ router.route('/members')
    * @returns {Member[]} 200 - Member's update
    * @returns {Error} 500 - Error servor
    */
-  .patch(validate.body(memberUpdateSchema), memberController.update)
+  .patch(auth, validate.body(memberUpdateSchema), memberController.update)
     /**  
    * Deleted member
    * @route DELETE /member/{id}
@@ -104,7 +104,7 @@ router.route('/members')
    * @returns {Member[]} 204 - <empty content>
    * @returns {Error} 500 - Error servor
    */
-  .delete(memberController.delete);
+  .delete(auth, memberController.delete);
 
 router.route('/member/:id(\\d+)/bookmark')
   .get(memberController.getBookmarkByMember);
