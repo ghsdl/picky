@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 //import PropTypes from 'prop-types';
-
+import PropTypes from 'prop-types';
 import './profilefield.scss';
 import Header from 'src/containers/Header';
 import {
@@ -40,6 +40,8 @@ const ProfileField = ({
   resetPage,
   isConnected,
   getProfil,
+  deleteProfil,
+  patchProfil
 }) => {
 
 
@@ -100,7 +102,12 @@ const ProfileField = ({
             onChange={changeField}
             value={password}
           />
-          <button className="field-update"> Update Profile </button>
+          <button 
+            className="field-update"
+            onClick={patchProfil}
+          > 
+          Modifer votre profil
+          </button>
         </div>
 
         
@@ -121,10 +128,10 @@ const ProfileField = ({
               className: classes.backDrop,
             }}
           >
-            <Fade in={open}>
+            <Fade in={open} onClick={handleClose}>
               <div className={classes.paper}>
                 <h2> Voulez vous vraiment supprimer votre compte ?</h2>
-                <button type="button"> Oui </button>
+                <button type="button" onClick={deleteProfil}> Oui </button>
                 <button type="button"> Non </button>
               </div>
             </Fade>
@@ -133,6 +140,8 @@ const ProfileField = ({
   </>
   );
 };
+
+
 
 
 
