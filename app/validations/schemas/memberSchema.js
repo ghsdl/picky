@@ -33,12 +33,15 @@ const insertSchema = Joi.object({
 const updateSchema = Joi.object({
     pseudo: Joi.string()
     .min(2)
+        .message(`Le pseudo doit contenir au moins 2 caractères.`)
     .max(30)
+        .message(`Le pseudo doit contenir au maximum 30 caractères.`)
     .pattern(new RegExp('^[^0-9][^@#]+$'))
         .message(`Le pseudo peut contenir seulement des lettres, des chiffres et des espaces.`),
     
     email: Joi.string()
-    .email(),
+    .email({ minDomainSegments: 2, tlds: { allow: true } })
+        .message('Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email.'),
     
     password: Joi.string()
     .min(4)
