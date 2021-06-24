@@ -15,4 +15,12 @@ export const DELETE_PROFIL = 'DELETE_PROFIL';
 
 export const deleteProfil = () => ({
   type: DELETE_PROFIL,
-})
+});
+
+export const ACTION_SAVE_PROFIL = 'SAVE_PROFIL';
+
+export const actionSaveProfil = (member, pseudo) => ({
+  type: ACTION_SAVE_PROFIL,
+  member,
+  pseudo,
+});

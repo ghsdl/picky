@@ -8,6 +8,7 @@ import suggestionsReducer from './suggestions';
 import statusReducer from './status';
 import pickyFindReducer from './pickyFind';
 import platformsReducer from './platforms';
+import profilReducer from './profil';
 
 const rootReducer = combineReducers({
   search: searchReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   status: statusReducer,
   pickyFind: pickyFindReducer,
   platforms: platformsReducer,
+  profil: profilReducer,
 });
 
 export default rootReducer;
