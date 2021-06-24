@@ -106,8 +106,8 @@ router.route('/members')
    */
   .delete(auth, memberController.delete);
 
-router.route('/member/:id(\\d+)/bookmark')
-  .get(memberController.getBookmarkByMember);
+router.route('/member/bookmark')
+  .get(auth, memberController.getBookmarkByMember);
 
 // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
 /*
