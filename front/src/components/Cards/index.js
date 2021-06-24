@@ -87,7 +87,9 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
     } else if(currentPage === "mood") {
       if(results.length === 0) {
         return (
-          <p className="cards">Il n'y a aucun résultat pour votre recherche</p>
+          <div className="cards-img">
+            <p className="cards">Il n'y a aucun résultat pour votre recherche</p>
+          </div>
         )
       } else {
         return (
