@@ -21,7 +21,7 @@ const pickyWish = (store) => (next) => (action) => {
           poster: action.programswish.poster,
           platform: action.programswish.svods,
           title: action.programswish.title,
-          headers: { 
+          header: { 
             Authorization: `Bearer ${token}`,
           },
         })
