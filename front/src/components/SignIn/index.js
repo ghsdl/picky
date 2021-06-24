@@ -14,6 +14,7 @@ export default function SignIn({
   isConnected,
   errorMessage,
   resetPage,
+  
 }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();

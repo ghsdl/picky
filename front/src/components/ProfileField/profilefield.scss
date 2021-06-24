@@ -83,6 +83,7 @@
   max-width: 800px;
   @include epic-sides() {background: inherit;}
   text-align: center;
+  margin-bottom: 5vh;
   
   span {
     position: relative;

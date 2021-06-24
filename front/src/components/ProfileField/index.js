@@ -37,14 +37,19 @@ const ProfileField = ({
   changeField,
   pseudo,
   password,
+  confirmationPassword,
   resetPage,
   isConnected,
   getProfil,
   deleteProfil,
-  patchProfil
+  patchProfil,
+  patchPswdProfil,
+  errorMessage,
+  errorMessagePswd
 }) => {
 
-
+  console.log(errorMessage)
+  console.log(errorMessagePswd.length)
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -69,6 +74,11 @@ const ProfileField = ({
     evt.preventDefault();
     patchProfil();
   }
+
+  const handlePswdSubmit = (evt) => {
+    evt.preventDefault();
+    patchPswdProfil();
+  }
   return (
     
   <> 
@@ -82,62 +92,73 @@ const ProfileField = ({
       <div className="form">
         <div className="form-input"> 
           <form onSubmit={handleSubmit}> 
-          <p className="form-p"> Modifier vos info's personnelles</p>
-          <div className="row"> 
-          
-            <Field
-              type="text"
-              name="pseudo"
-              placeholder="pseudo"
-              onChange={changeField}
-              value={pseudo}
-            />
+            <p className="form-p"> Modifier vos info's personnelles</p>
+            <div className="row"> 
             
-            <Field
-              type="email"
-              name="email"
-              placeholder="email"
-              onChange={changeField}
-              value={email}
-            />
-            <button 
-              className="field-update"
-              type="submit"
-            > 
-            Modifer votre profil
-            </button>
-          </div> 
+              <Field
+                type="text"
+                name="pseudo"
+                placeholder="Pseudo"
+                onChange={changeField}
+                value={pseudo}
+              />
+              
+              <Field
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={changeField}
+                value={email}
+              />
+
+              {errorMessage &&  <p className="row"> 
+                {errorMessage}
+              </p>
+              }
+
+              <button 
+                className="field-update"
+                type="submit"
+              > 
+              Modifer votre profil
+              </button>
+            </div> 
           </form>
           
-        <form>
-          <div className="row">
-            <Field
-            type="password"
-            name="password"
-            placeholder="password"
-            onChange={changeField}
-            value={password}
-            />
-            <Field
-              type="email"
-              name="email"
-              placeholder="email"
-              onChange={changeField}
-              value={email}
-            />
-            <button 
-              className="field-update"
-              type="submit"
-            > 
-            Modifer password
-            </button>
-          </div>
-        </form>
-      </div>
-      
-      
-      
-     
+          <form onSubmit={handlePswdSubmit}>
+            <div className="form-input">
+              <div className="row">
+                <Field
+                  type="password"
+                  name="password"
+                  placeholder="New Password"
+                  onChange={changeField}
+                  value={password}
+                  required
+                />
+                <Field
+                  type="password"
+                  name="confirmationPassword"
+                  placeholder="New Password Confirmation"
+                  onChange={changeField}
+                  value={confirmationPassword}
+                  required
+                />
+                {errorMessagePswd.length > 1 &&  
+                <p className="row"> 
+                  {errorMessagePswd} 
+                </p>
+                }
+                <button 
+                  className="field-update"
+                  type="submit"
+                > 
+                Modifer Votre password
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
     </div>
     <div className="profile-modal">
           <button type="button" className="profile-delete" onClick={handleOpen}> Supprimer mon compte </button>
