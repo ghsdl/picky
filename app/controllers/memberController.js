@@ -2,7 +2,6 @@
 const memberDataMapper = require('../dataMappers/memberDataMapper');
 /*const platformDataMapper = require('../dataMappers/platformDataMapper');*/
 const bcrypt = require('bcrypt');
-const jwtGenerator = require('../utils/jwtGenerator');
 
 const memberController = {
   async get(_, res) {
@@ -18,6 +17,7 @@ const memberController = {
   },
 
   async getById(req, res, next) {
+    console.log(req.member.id);
     try {
       // GETTING THE MEMBER BY ITS ID
       const member = await memberDataMapper.getOne(req.member.id);
@@ -27,10 +27,7 @@ const memberController = {
         return next();
       }
 
-      res.json({ 
-        member: member.email, 
-        pseudo: member.pseudo});
-
+      res.json({ member: member.email, pseudo: member.pseudo});
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -39,15 +36,8 @@ const memberController = {
 
   async getBookmarkByMember(req, res, next) {
     try {
-      // GETTING THE URL PARAMETER
-      const id = parseInt(req.params.id, 10);
-
-      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      if (isNaN(id)) {
-        return next();
-      }
       // GETTING THE MEMBER BY ITS ID
-      const member = await memberDataMapper.getOne(id);
+      const member = await memberDataMapper.getOne(req.member.id);
 
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
@@ -55,7 +45,7 @@ const memberController = {
       }
 
       // GETTING ALL BOOMARKS FOR A MEMBER
-      const bookmarkMember = await memberDataMapper.getBookmarkMember(id);
+      const bookmarkMember = await memberDataMapper.getBookmarkMember(req.member.id);
 
       res.json({ bookmarkMember });
     } catch (error) {
@@ -144,16 +134,8 @@ const memberController = {
 
   async update(req, res, next) {
     try {
-      // GETTING THE URL PARAMETER
-      const id = parseInt(req.params.id, 10);
-
-      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-       if (isNaN(id)) {
-        return next();
-      }
-
       // GETTING THE MEMBER BY ITS ID
-      const member = await memberDataMapper.getOne(id);
+      const member = await memberDataMapper.getOne(req.member.id);
 
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
@@ -190,7 +172,7 @@ const memberController = {
       }
 
       // UPDATING MEMBER AND SAVE IN DATABASE
-      const updatedMember = await memberDataMapper.patch(member, id);
+      const updatedMember = await memberDataMapper.patch(member, req.member.id);
 
       res.json({ updatedMember });
     } catch (error) {
@@ -201,16 +183,8 @@ const memberController = {
 
   async delete(req, res, next) {
     try {
-      // GETTING THE URL PARAMETER
-      const id = parseInt(req.params.id, 10);
-
-      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-       if (isNaN(id)) {
-        return next();
-      }
-
       // GETTING THE MEMBER BY ITS ID
-      const member = await memberDataMapper.getOne(id);
+      const member = await memberDataMapper.getOne(req.member.id);
 
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
@@ -218,7 +192,7 @@ const memberController = {
       }
 
       // DELETING MEMBER FROM DATABASE
-      await memberDataMapper.delete(id);
+      await memberDataMapper.delete(req.member.id);
       
       res.status(204).json();
     } catch (error) {

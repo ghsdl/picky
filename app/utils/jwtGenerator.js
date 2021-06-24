@@ -1,6 +1,5 @@
 // REQUIRE JSON WEB TOKEN
 const jwt = require('jsonwebtoken');
-const { log } = require('../controllers/authController');
 // REQUIRE DOTENV TO HAVE ACCESS TO OUR ENVIRONMENT VARIABLES
 require('dotenv').config();
 

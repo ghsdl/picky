@@ -5,7 +5,6 @@ const searchController = {
     searchAll : async (req, res) => {
         try {
             const query = req.params;
-            console.log(query);
             const search = await searchDataMapper.searchAll(query);
             res.json(search);
         } catch (error) {
