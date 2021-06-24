@@ -42,7 +42,6 @@ const bookmarkController = {
   },
 
   async post(req, res) {
-    console.log(req.member.id);
     try {
       // GETTING THE BODY
       const { betaseries_id, title, platform, poster } = req.body;
