@@ -176,8 +176,14 @@ const memberController = {
 
       res.json({ updatedMember });
     } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
+      
+    if (error.code === '23505') {
+        error = `Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email.`;
+    } 
+    
+    console.log(error);
+    res.status(500).json(error.toString());
+     
     }
   },
 
