@@ -9,7 +9,8 @@
 }
 
 .accordion {
-  width: 500px;
+  width: 65vw;
+  justify-content: center;
 }
 
 .container {
@@ -31,9 +32,37 @@
   transition: all 0.5s cubic-brezier(0,1,0,1);
 
   &-show {
+    display: flex;
     height: auto;
     max-height: 100vh;
+    max-width: 100vw;
+    flex-direction: row;
+    justify-content: space-around;
     transition: all 0.5s cubic-brezier(0,1,0,1);
+  }
+
+}
+
+.row {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  &-name {
+    color: #CE4257;
+    font-weight: bold;
+  }
+
+  &-role {
+    font-style: italic;
+  }
+
+  &-img {
+    border-radius: 20px;
+    object-fit: contain;
+    width: 60px;
   }
 
 }

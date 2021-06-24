@@ -4,12 +4,13 @@ import { useState } from 'react';
 // import PropTypes from 'prop-types';
 
 import './about.scss';
+import logo from './logo_PopCorn.png';
 
 function About () {
   const data = [
     {
       title: 'About Us - Crew',
-      infos: "Présentations:",
+      infos: " ",
       about: [
         { 
           name: "Maeva", 
@@ -39,8 +40,8 @@ function About () {
       infos: 'blablabla',
       about: [
         {
-          name : " ",
-          role: " ",
+          name : null,
+          role: null,
         }
       ]
     },
@@ -50,8 +51,8 @@ function About () {
       infos: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
       about: [
         {
-          name: " ",
-          role: " ",
+          name: null,
+          role: null,
         }
       ]
     }
@@ -82,24 +83,13 @@ function About () {
               <p> {informations.infos}</p>
               {informations.about.map((child) => {
                 return (
-                  <div className="container">
-                  <div className="front">
-                    <div class="inner">
-                      <p>Diligord</p>
-                      <span>Lorem ipsum</span>
-                    </div>
+                <>
+                  <div className="row">
+                    <img className="row-img" src={logo} alt="logo" />
+                    <h4 className="row-name"> {child.name} </h4>
+                    <h5 className="row-role"> {child.role} </h5>
                   </div>
-                  <div class="back">
-                    <div class="inner">
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-                  <div>
-                  {child.name}
-                  {child.role} 
-                </div>
+              </>
               )})}
             </div>
           </div>
