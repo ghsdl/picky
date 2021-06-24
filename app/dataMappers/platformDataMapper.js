@@ -2,6 +2,13 @@ const pool = require('../../database');
 const fetch = require('node-fetch');
 
 module.exports = {
+
+  /**
+     * @typedef platforms
+     * @property {string} name - platforms's name
+     * @property {number} id - unique identifier
+     * @property {string} logo - platforms's logo
+     */
   
   async get() {
     const apiUrl = 'https://api.betaseries.com/platforms/list?key=e7da6c21d678';

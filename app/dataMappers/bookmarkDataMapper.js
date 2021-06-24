@@ -2,6 +2,29 @@ const pool = require('../../database');
 
 module.exports = {
 
+     /**
+     * @typedef bookmarks
+     * @property {number} id - Unique identifier
+     * @property {string} betaseries_id - Member's nickname
+     * @property {string} title - bookmark's email
+     * @property {string} platform - bookmark's platform
+     * @property {string} member_id - references "member" ("id")
+     * @property {string} created_at - Creation date (date ISO 8601)
+     * @property {string} updated_at - Update date (date ISO 8601)
+     */
+
+     /**
+     * @typedef oneBookmark
+     * @property {number} id - Unique identifier
+     * @property {string} betaseries_id - Member's nickname
+     * @property {string} title - bookmark's email
+     * @property {string} platform - bookmark's platform
+     * @property {string} member_id - references "member" ("id")
+     * @property {string} created_at - Creation date (date ISO 8601)
+     * @property {string} updated_at - Update date (date ISO 8601)
+     */
+
+
     async get() {
         const result = await pool.query(`SELECT * FROM bookmark ORDER BY id`);
         return result.rows;
