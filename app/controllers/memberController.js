@@ -19,14 +19,6 @@ const memberController = {
 
   async getById(req, res, next) {
     try {
-      // GETTING THE URL PARAMETER
-      //const id = parseInt(req.params.id, 10);
-
-      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      /*if (isNaN(id)) {
-        return next();
-      }*/
-
       // GETTING THE MEMBER BY ITS ID
       const member = await memberDataMapper.getOne(req.member.id);
 
@@ -37,9 +29,7 @@ const memberController = {
 
       res.json({ 
         member: member.email, 
-        pseudo: member.pseudo, 
-        //token: jwtGenerator(member), 
-        member_id : member.id});
+        pseudo: member.pseudo});
 
     } catch (error) {
       console.log(error);
