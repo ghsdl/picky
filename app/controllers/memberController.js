@@ -1,5 +1,6 @@
 // REQUIRING MEMBER DATAMAPPER AND PACKAGES
 const memberDataMapper = require('../dataMappers/memberDataMapper');
+const authDataMapper = require('../dataMappers/authDataMapper');
 /*const platformDataMapper = require('../dataMappers/platformDataMapper');*/
 const bcrypt = require('bcrypt');
 
@@ -27,7 +28,7 @@ const memberController = {
         return next();
       }
 
-      res.json({ member: member.email, pseudo: member.pseudo});
+      res.json({ member: member.email, pseudo: member.pseudo });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -150,6 +151,14 @@ const memberController = {
         member.pseudo = newData.pseudo;
       }
 
+      // CHECKING IF EMAIL EXISTS IN DATABASE
+      const memberEmail = await authDataMapper.getMemberByEmail(newData.email);
+
+      // IF MEMBER EMAIL EXISTS THROW 401 STATUS
+      if (memberEmail) {
+        return res.status(401).json('Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email.');
+      }
+
       // UPDATING EMAIL
       if (newData.email) {
         member.email = newData.email;
@@ -158,6 +167,11 @@ const memberController = {
       // UPDATING PSEUDO PASSWORD
       if (newData.password) {
         member.password = newData.password;
+      }
+
+      // CHECKING IF BOTH PASSWORDS ARE THE SAME
+      if (newData.password !== newData.confirmationPassword) {
+        return res.status(401).json(`Les mots de passe doivent être identiques.`);
       }
 
       // RE-CRYPTING PASSWORD WITH BCRYPT
@@ -176,14 +190,8 @@ const memberController = {
 
       res.json({ updatedMember });
     } catch (error) {
-      
-    if (error.code === '23505') {
-        error = `Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email.`;
-    } 
-    
-    console.log(error);
-    res.status(500).json(error.toString());
-     
+      console.log(error);
+      res.status(500).json(error.toString());
     }
   },
 
@@ -199,7 +207,7 @@ const memberController = {
 
       // DELETING MEMBER FROM DATABASE
       await memberDataMapper.delete(req.member.id);
-      
+
       res.status(204).json();
     } catch (error) {
       console.log(error);
