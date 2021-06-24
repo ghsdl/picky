@@ -118,6 +118,19 @@ const ProfileField = ({
             onChange={changeField}
             value={password}
             />
+            <Field
+              type="email"
+              name="email"
+              placeholder="email"
+              onChange={changeField}
+              value={email}
+            />
+            <button 
+              className="field-update"
+              type="submit"
+            > 
+            Modifer password
+            </button>
           </div>
         </form>
       </div>
