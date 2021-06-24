@@ -16,6 +16,7 @@
 
   &__infos {
     height: auto;
+    padding-top: 25px;
     bottom: 0;
     width: 250px;
     position: absolute;
@@ -48,6 +49,10 @@
 
   &__platforms {
     color: white;
+  }
+
+  &__platform {
+    margin-right: 5px;
   }
 
   &__platform, &__watchlistButton{
