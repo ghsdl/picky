@@ -21,7 +21,6 @@ export const actionSaveUser = (member, token, pseudo) => ({
   member,
   token,
   pseudo,
-  
 });
 
 export const signUp = (value, key) => ({
