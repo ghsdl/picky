@@ -35,11 +35,13 @@
 
   &--research {
     justify-content: flex-start;
-    margin-top: 25px;
+    margin-top: 13vh;
 
     .home {
       &__searchBar {
-        margin-top: 15vh;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
         &__presentation {
           display: none;
         }
