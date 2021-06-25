@@ -13,11 +13,11 @@
     margin: auto;
     height: 250px;
   
-    position: absolute;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
     z-index: -1;
-    bottom: 0px;
+    bottom: 0;
 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%);;
   }

@@ -20,37 +20,21 @@ const pickyWish = (store) => (next) => (action) => {
           platform: action.programswish.svods,
           title: action.programswish.title,
         };
-        /*
-        const addRequest = {
-          method: 'post',
-          url: 'https://projet-picky.herokuapp.com/bookmark',
-          headers: { 
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        */
+        
         axios.post('https://projet-picky.herokuapp.com/bookmark',
           bodyParameters,
-          // créer objet config avec headerssssssssssssssssssssssssssssssss
           config
           )
           .then((response) => {
             console.log(response.data);
-            //store.dispatch(addRequest(response.data))
-            //store.dispatch(addRemoveWish(programswish));
           });
         break;
     }
     case GET_BOOKMARK: {
-      const getBookmarkRequest = {
-        method: 'get',
-        url: 'https://projet-picky.herokuapp.com/bookmark',
-        config
-    };
-
-    axios(getBookmarkRequest)
+    axios.get('https://projet-picky.herokuapp.com/member/bookmark',
+    config)
     .then ((response) => {
-      const bookmarks = response.data.bookmark;
+      const bookmarks = response.data.data;
 
       const bookmarksTransformed = [];
 

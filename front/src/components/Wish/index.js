@@ -10,7 +10,7 @@ import Cards from 'src/containers/Cards';
 import './wish.scss';
 
 // Display of watchlist
-const Wish = ({ wish, addRemoveWish, loadBookmark }) => {
+const Wish = ({ loadBookmark }) => {
   useEffect(() => {
     loadBookmark();
   }, []);
@@ -24,18 +24,6 @@ const Wish = ({ wish, addRemoveWish, loadBookmark }) => {
     {// Cards
     }
     <Cards currentPage="wish" loading={false} />
-    {/*
-    {wish.map((list) => { 
-    <Cards 
-      currentPage="wish" loading={false}
-      title={list.title}
-      poster={list.poster}
-      platformsInfos={list.platform}
-      key= {list.id}
-      onClick = {() => addRemoveWish(list)}
-    /> })} 
-    */
-    }
     {// Footer of the watchlist, with 2 buttons to go to Picky Find and Picky Mood
     }
     <div className="wish__gradient">
