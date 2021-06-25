@@ -1,9 +1,11 @@
 
 .about {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  height: 450px;
+  margin: auto;
+  margin-top: 25vh;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   background-image: url(./popcorn.png);
   background-size: 20%;
@@ -48,6 +50,7 @@
     max-height: 100vh;
     max-width: 100vw;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 15px;
     transition: all 0.5s cubic-brezier(0,1,0,1);

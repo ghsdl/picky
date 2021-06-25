@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 //import PropTypes from 'prop-types';
-
+import PropTypes from 'prop-types';
 import './profilefield.scss';
 import Header from 'src/containers/Header';
 import {
@@ -37,12 +37,19 @@ const ProfileField = ({
   changeField,
   pseudo,
   password,
+  confirmationPassword,
   resetPage,
   isConnected,
   getProfil,
+  deleteProfil,
+  patchProfil,
+  patchPswdProfil,
+  errorMessage,
+  errorMessagePswd
 }) => {
 
-
+  console.log(errorMessage)
+  console.log(errorMessagePswd.length)
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -62,6 +69,16 @@ const ProfileField = ({
       
     }
   }, []);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    patchProfil();
+  }
+
+  const handlePswdSubmit = (evt) => {
+    evt.preventDefault();
+    patchPswdProfil();
+  }
   return (
     
   <> 
@@ -72,39 +89,76 @@ const ProfileField = ({
     <div className="profile">
       <h2 className="profile-title"> Mon Profil</h2>
     </div>
-    <div className="form">
-      <form className="form-input"> 
-        <p className="form-p"> Modifier vos info's personnelles</p>
-        <div className="row"> 
-        
-          <Field
-            type="text"
-            name="pseudo"
-            placeholder="Pseudo"
-            onChange={changeField}
-            value={pseudo}
-          />
-          
-          <Field
-            type="email"
-            name="email"
-            placeholder="Adresse Email"
-            onChange={changeField}
-            value={email}
-          />
-                    
-          <Field
-            type="password"
-            name="password"
-            placeholder="Mot de Passe"
-            onChange={changeField}
-            value={password}
-          />
-          <button className="field-update"> Update Profile </button>
-        </div>
+      <div className="form">
+        <div className="form-input"> 
+          <form onSubmit={handleSubmit}> 
+            <p className="form-p"> Modifier vos info's personnelles</p>
+            <div className="row"> 
+            
+              <Field
+                type="text"
+                name="pseudo"
+                placeholder="Pseudo"
+                onChange={changeField}
+                value={pseudo}
+              />
+              
+              <Field
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={changeField}
+                value={email}
+              />
 
-        
-      </form>
+              {errorMessage &&  <p className="row"> 
+                {errorMessage}
+              </p>
+              }
+
+              <button 
+                className="field-update"
+                type="submit"
+              > 
+              Modifer votre profil
+              </button>
+            </div> 
+          </form>
+          
+          <form onSubmit={handlePswdSubmit}>
+            <div className="form-input">
+              <div className="row">
+                <Field
+                  type="password"
+                  name="password"
+                  placeholder="New Password"
+                  onChange={changeField}
+                  value={password}
+                  required
+                />
+                <Field
+                  type="password"
+                  name="confirmationPassword"
+                  placeholder="New Password Confirmation"
+                  onChange={changeField}
+                  value={confirmationPassword}
+                  required
+                />
+                {errorMessagePswd.length > 1 &&  
+                <p className="row"> 
+                  {errorMessagePswd} 
+                </p>
+                }
+                <button 
+                  className="field-update"
+                  type="submit"
+                > 
+                Modifer Votre password
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
     </div>
     <div className="profile-modal">
           <button type="button" className="profile-delete" onClick={handleOpen}> Supprimer mon compte </button>
@@ -121,10 +175,10 @@ const ProfileField = ({
               className: classes.backDrop,
             }}
           >
-            <Fade in={open}>
+            <Fade in={open} onClick={handleClose}>
               <div className={classes.paper}>
                 <h2> Voulez vous vraiment supprimer votre compte ?</h2>
-                <button type="button"> Oui </button>
+                <button type="button" onClick={deleteProfil}> Oui </button>
                 <button type="button"> Non </button>
               </div>
             </Fade>
@@ -133,6 +187,8 @@ const ProfileField = ({
   </>
   );
 };
+
+
 
 
 
