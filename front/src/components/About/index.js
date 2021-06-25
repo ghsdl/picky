@@ -42,7 +42,7 @@ function About () {
           name: "Delia", 
           id: 5,
           role: "Scrum Master",
-          img: "https://ca.slack-edge.com/T01H7FN28C9-U01J4T1FGSX-b2014cb10ccd-512",
+          img: "https://ca.slack-edge.com/T01H7FN28C9-U01J4T1FGSX-5a82dcdf059e-192",
         },
       ]
     },
