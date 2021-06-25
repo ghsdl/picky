@@ -18,7 +18,7 @@ export default function Field({
   //Style();
   const className= value ? "input input--chisato input--filled" : "input input--chisato"
   return (
-    <div>
+    <div className="input-middle">
       <span className={className}>
 				<input 
           className="input__field input__field--chisato" 

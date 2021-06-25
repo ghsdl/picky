@@ -68,7 +68,7 @@ const SignUpForm = ({
           required
         />
         { errorMessage.length >1 &&  
-            <p className="formUser-ErrorMessage"> 
+            <p className="input-middle-errorMessage"> 
                 {errorMessage}
             </p>
           }

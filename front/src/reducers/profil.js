@@ -1,4 +1,4 @@
-import { UPDATE_PROFIL_ERROR_FOR_PSWD, ACTION_SAVE_PROFIL, UPDATE_PROFIL_ERROR } from 'src/actions/profil';
+import { RESET_PROFIL, UPDATE_PROFIL_ERROR_FOR_PSWD, ACTION_SAVE_PROFIL, UPDATE_PROFIL_ERROR } from 'src/actions/profil';
 
 export const inialState = {
   member: '',
@@ -26,6 +26,13 @@ const profilReducer = (state = inialState, action = {}) => {
       return {
         ...state,
         errorMessagePswd: action.value
+      }
+
+      case RESET_PROFIL: 
+      return {
+        ...state, 
+        errorMessage: '',
+        errorMessagePswd: ''
       }
       default:
         return state;
