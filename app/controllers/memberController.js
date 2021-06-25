@@ -51,7 +51,7 @@ const memberController = {
 
       console.log(bookmarkMember);
       
-      res.json({ bookmarkMember });
+      res.json({ data: bookmarkMember[0].bookmark });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
