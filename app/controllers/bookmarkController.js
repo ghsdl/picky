@@ -65,15 +65,15 @@ const bookmarkController = {
   async delete(req, res, next) {
     try {
       // GETTING THE URL PARAMETER
-      const id = parseInt(req.params.id, 10);
+      const betaseries_id = parseInt(req.params.id, 10);
 
       // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      if(isNaN(id)){
+      if(isNaN(betaseries_id)){
         return next();
       }
 
       // GETTING THE BOOKMARK BY ITS ID
-      const bookmark = await bookmarkDataMapper.getOne(id);
+      const bookmark = await bookmarkDataMapper.getOne(betaseries_id);
       
       // IF BOOKMARK DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!bookmark) {
@@ -81,7 +81,7 @@ const bookmarkController = {
       }
       
       // DELETING THE BOOKMARK FROM DATABASE
-      await bookmarkDataMapper.delete(id);
+      await bookmarkDataMapper.delete(betaseries_id, req.member.id);
 
       res.status(204).json({ message: `Favori supprimé avec succès.`});
     } catch (error) {
