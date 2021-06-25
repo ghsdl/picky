@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 import {updateProfilErrorForPswd, updateProfilError, actionSaveProfil, GET_PROFIL, PATCH_PROFIL, DELETE_PROFIL, PATCH_PSWD_PROFIL } from 'src/actions/profil'
-
-
+import { resetProfil } from 'src/actions/profil';
+import { reset } from 'src/actions/user'
 const profil =  (store) => (next) => (action) => {
   
   switch (action.type){
@@ -22,6 +22,7 @@ const profil =  (store) => (next) => (action) => {
           const { member , pseudo } = response.data
           const saveProfil = actionSaveProfil(member, pseudo);
           store.dispatch(saveProfil)
+          
         })
         .catch((error)=> {
           console.log(error)
@@ -50,7 +51,8 @@ const profil =  (store) => (next) => (action) => {
         config
       )
         .then((response) => {
-          console.log(response)
+         store.dispatch(reset(),resetProfil())
+         window.location.reload(false)
         })
         .catch((error)=> {
           store.dispatch(updateProfilError(error.response.data))
@@ -77,6 +79,8 @@ const profil =  (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response)
+          store.dispatch(reset(),resetProfil())
+          window.location.reload(false)
         })
         .catch((error)=> {
 

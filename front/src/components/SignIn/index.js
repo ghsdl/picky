@@ -59,7 +59,7 @@ export default function SignIn({
               value={password}
               required
             />
-            { errorMessage.length >1 &&  <p className="formUser-ErrorMessage"> 
+            { errorMessage.length >1 &&  <p className="input-middle-errorMessage"> 
               {errorMessage}
             </p>
             }

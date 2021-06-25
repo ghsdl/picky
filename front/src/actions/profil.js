@@ -42,4 +42,8 @@ export const updateProfilErrorForPswd  = (value) => ({
   value,
 })
 
+export const RESET_PROFIL = 'RESET_PROFIL'; 
 
+export const resetProfil = () => ({
+  type: RESET_PROFIL,
+})

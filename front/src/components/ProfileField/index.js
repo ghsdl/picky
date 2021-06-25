@@ -45,11 +45,11 @@ const ProfileField = ({
   patchProfil,
   patchPswdProfil,
   errorMessage,
-  errorMessagePswd
+  errorMessagePswd,
+  member,
+  profilPseudo,
+  resetProfil,
 }) => {
-
-  console.log(errorMessage)
-  console.log(errorMessagePswd.length)
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -66,6 +66,7 @@ const ProfileField = ({
   useEffect(() => {
     return () => {
       resetPage();
+      resetProfil();
       
     }
   }, []);
@@ -96,22 +97,24 @@ const ProfileField = ({
             <div className="row"> 
             
               <Field
+                namebis="Pseudo"
                 type="text"
                 name="pseudo"
-                placeholder="Pseudo"
+                placeholder={profilPseudo}
                 onChange={changeField}
                 value={pseudo}
               />
               
               <Field
+                namebis="Email"
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder={member}
                 onChange={changeField}
                 value={email}
               />
 
-              {errorMessage &&  <p className="row"> 
+              {errorMessage &&  <p className="row-error"> 
                 {errorMessage}
               </p>
               }
@@ -129,6 +132,7 @@ const ProfileField = ({
             <div className="form-input">
               <div className="row">
                 <Field
+                  namebis="New Password"
                   type="password"
                   name="password"
                   placeholder="New Password"
@@ -137,6 +141,7 @@ const ProfileField = ({
                   required
                 />
                 <Field
+                  namebis="New Password Confirmation"
                   type="password"
                   name="confirmationPassword"
                   placeholder="New Password Confirmation"
@@ -145,7 +150,7 @@ const ProfileField = ({
                   required
                 />
                 {errorMessagePswd.length > 1 &&  
-                <p className="row"> 
+                <p className="row-error"> 
                   {errorMessagePswd} 
                 </p>
                 }
