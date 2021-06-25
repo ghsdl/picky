@@ -72,12 +72,11 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish, wish
     } else if (currentPage === 'wish') {
       return (
       <div className="cards">
-        {console.log('wish in cards component', wish)}
       {wish.map((program) => (
         <Card
           title={program.title}
           poster={program.poster}
-          platformsInfos={program.platform}
+          platformsInfos={program.platforms}
           key= {program.id}
           program={program}
         />

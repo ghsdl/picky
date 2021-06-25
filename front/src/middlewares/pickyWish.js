@@ -42,7 +42,6 @@ const pickyWish = (store) => (next) => (action) => {
         break;
     }
     case GET_BOOKMARK: {
-      console.log('config in getbookmark middleware', config);
       const getBookmarkRequest = {
         method: 'get',
         url: 'https://projet-picky.herokuapp.com/bookmark',
@@ -51,13 +50,26 @@ const pickyWish = (store) => (next) => (action) => {
 
     axios(getBookmarkRequest)
     .then ((response) => {
-      console.log(response);
-      //console.log('parsed response', JSON.parse(response.data.bookmark));
-      console.log('response for getbookmark in middleware', response.data.bookmark);
-      console.log(response.data.bookmark[19].f);
-      console.log('parsed platforms', JSON.parse(response.data.bookmark[19].platform));
-      const bookmark = response.data.bookmark;
-      store.dispatch(getBookmarkSuccess(bookmark));
+      const bookmarks = response.data.bookmark;
+
+      const bookmarksTransformed = [];
+
+      bookmarks.forEach((bookmark) => {
+        const bookmarkTransformed = {id: bookmark.id, betaseries_id: bookmark.betaseries_id, title: bookmark.title, poster: bookmark.poster, platforms: []};
+        const platform = `"${bookmark.platform}"`;
+        const replacedPlatform1 = platform.replaceAll(`","`, `,`);
+        const replacedPlatform2 = replacedPlatform1.replace(`{"{`, `[{`);
+        const replacedPlatform3 = replacedPlatform2.replace(`}"}`, `}]`);
+        const replacedPlatform4 = replacedPlatform3.replace(`{}`, `[]`);
+        const parsedPlatform = JSON.parse(replacedPlatform4);
+        const parsedTwicePlatform = JSON.parse(parsedPlatform);
+
+        bookmarkTransformed.platforms = parsedTwicePlatform;
+
+        bookmarksTransformed.push(bookmarkTransformed);
+      });
+
+      store.dispatch(getBookmarkSuccess(bookmarksTransformed));
     });
     break;
   }
