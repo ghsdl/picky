@@ -9,6 +9,7 @@ const mapStateToProps = (state) => (
   loadingPlatforms: state.platforms.loadingPlatforms,
   programswish: state.watchlist.programswish,
   results: state.pickyMood.results,
+  wish: state.watchlist.wish,
 });
 
 const mapDispatchToProps = (dispatch) => ({
