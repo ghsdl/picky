@@ -68,7 +68,7 @@ router.route('/bookmark')
 router.route('/bookmark/:id(\\d+)')
   .get(bookmarkController.getById)
   //.patch(bookmarkController.update)
-  .delete(bookmarkController.delete);
+  .delete(auth, bookmarkController.delete);
 
   // MEMBER ROUTES
 router.route('/members')

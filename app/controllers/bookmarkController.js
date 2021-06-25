@@ -83,7 +83,7 @@ const bookmarkController = {
       // DELETING THE BOOKMARK FROM DATABASE
       await bookmarkDataMapper.delete(id);
 
-      res.status(204).json();
+      res.status(204).json({ message: `Favori supprimé avec succès.`});
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
