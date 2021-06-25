@@ -2,11 +2,24 @@ import axios from 'axios';
 import { addRemoveWish, ADD_REMOVE_WISH, GET_BOOKMARK, getBookmarkSuccess, getBookmark} from 'src/actions/watchlist';
 
 const pickyWish = (store) => (next) => (action) => {
+  const config = {
+    headers: { 
+      "Bearer": `${store.getState().status.token}`,
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+  };
   switch (action.type){
     case ADD_REMOVE_WISH: {
-        const token =  store.getState().status.token;
         console.log('action.programswish in middleware', action.programswish);
-        console.log('token in pickywish add_remove_wish middleware', token);
+        console.log('token in pickyWish middleware', store.getState().status.token);
+
+        const bodyParameters = {
+          betaseries_id: action.programswish.id,
+          poster: action.programswish.poster,
+          platform: action.programswish.svods,
+          title: action.programswish.title,
+        };
         /*
         const addRequest = {
           method: 'post',
@@ -16,16 +29,11 @@ const pickyWish = (store) => (next) => (action) => {
           },
         };
         */
-        axios.post('https://projet-picky.herokuapp.com/bookmark', {
-          betaseries_id: action.programswish.id,
-          poster: action.programswish.poster,
-          platform: action.programswish.svods,
-          title: action.programswish.title,
+        axios.post('https://projet-picky.herokuapp.com/bookmark',
+          bodyParameters,
           // créer objet config avec headerssssssssssssssssssssssssssssssss
-          header: { 
-            Authorization: `Bearer ${token}`,
-          },
-        })
+          config
+          )
           .then((response) => {
             console.log(response.data);
             //store.dispatch(addRequest(response.data))
@@ -34,19 +42,22 @@ const pickyWish = (store) => (next) => (action) => {
         break;
     }
     case GET_BOOKMARK: {
-      const token = store.getState().status.token;
-      console.log('token in pickywish get_bookmark middleware', token);
+      console.log('config in getbookmark middleware', config);
       const getBookmarkRequest = {
         method: 'get',
         url: 'https://projet-picky.herokuapp.com/bookmark',
-        headers: {
-          Authorization: `Bearer ${token}`,
-      },
+        config
     };
 
     axios(getBookmarkRequest)
     .then ((response) => {
-      store.dispatch(getBookmarkSuccess(response.data.wish));
+      console.log(response);
+      //console.log('parsed response', JSON.parse(response.data.bookmark));
+      console.log('response for getbookmark in middleware', response.data.bookmark);
+      console.log(response.data.bookmark[19].f);
+      console.log('parsed platforms', JSON.parse(response.data.bookmark[19].platform));
+      const bookmark = response.data.bookmark;
+      store.dispatch(getBookmarkSuccess(bookmark));
     });
     break;
   }

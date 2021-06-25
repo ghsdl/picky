@@ -1,16 +1,19 @@
 // Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // Import of components
 import Header from 'src/containers/Header';
-import Cards from 'src/components/Cards';
+import Cards from 'src/containers/Cards';
 
 // Import scss
 import './wish.scss';
 
 // Display of watchlist
-const Wish = ({ wish, addRemoveWish }) => {
+const Wish = ({ wish, addRemoveWish, loadBookmark }) => {
+  useEffect(() => {
+    loadBookmark();
+  }, []);
 
   return (
   <div className="wish">
@@ -20,6 +23,8 @@ const Wish = ({ wish, addRemoveWish }) => {
     <h1>Votre watchlist</h1>
     {// Cards
     }
+    <Cards currentPage="wish" loading={false} />
+    {/*
     {wish.map((list) => { 
     <Cards 
       currentPage="wish" loading={false}
@@ -28,7 +33,9 @@ const Wish = ({ wish, addRemoveWish }) => {
       platformsInfos={list.platform}
       key= {list.id}
       onClick = {() => addRemoveWish(list)}
-    /> })}
+    /> })} 
+    */
+    }
     {// Footer of the watchlist, with 2 buttons to go to Picky Find and Picky Mood
     }
     <div className="wish__gradient">

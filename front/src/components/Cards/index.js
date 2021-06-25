@@ -10,7 +10,7 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, currentPage, results, programswish }) => {
+const Cards = ({movies, shows, loading, currentPage, results, programswish, wish }) => {
   const container = useRef(null)
 
   useEffect(() => {
@@ -72,7 +72,8 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
     } else if (currentPage === 'wish') {
       return (
       <div className="cards">
-      {programswish.map((program) => (
+        {console.log('wish in cards component', wish)}
+      {wish.map((program) => (
         <Card
           title={program.title}
           poster={program.poster}
