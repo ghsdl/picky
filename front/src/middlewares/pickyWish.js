@@ -51,7 +51,11 @@ const pickyWish = (store) => (next) => (action) => {
 
     axios(getBookmarkRequest)
     .then ((response) => {
+      console.log(response);
+      //console.log('parsed response', JSON.parse(response.data.bookmark));
       console.log('response for getbookmark in middleware', response.data.bookmark);
+      console.log(response.data.bookmark[19].f);
+      console.log('parsed platforms', JSON.parse(response.data.bookmark[19].platform));
       const bookmark = response.data.bookmark;
       store.dispatch(getBookmarkSuccess(bookmark));
     });
