@@ -31,8 +31,8 @@ function Field({
           onChange={handleChange}
           
         />
-        <label htmlFor={name}>
-          {name}
+        <label htmlFor={placeholder}>
+          {placeholder}
         </label>
       </span>
     </>
