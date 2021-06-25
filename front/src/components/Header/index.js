@@ -134,13 +134,15 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
         </>
       )}
       { isConnected && (
+      <>
+      
       <div>
+        
         <FontAwesomeIcon
           onClick={handleOpen}
           icon={faUserCircle}
           className="header-iconProfil"
         />
-
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
@@ -170,6 +172,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
           </Fade>
         </Modal>
       </div>
+      </>
       )}
     </header>
   );

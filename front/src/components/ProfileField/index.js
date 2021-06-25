@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 //import PropTypes from 'prop-types';
 import PropTypes from 'prop-types';
 import './profilefield.scss';
@@ -9,6 +11,7 @@ import {
 import Field from './Field.js'
 import { Redirect } from 'react-router-dom'
 
+import { successToastifyEmailPseudo } from 'src/actions/profil'
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -49,6 +52,7 @@ const ProfileField = ({
   member,
   profilPseudo,
   resetProfil,
+  succesToastify
 }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -67,7 +71,6 @@ const ProfileField = ({
     return () => {
       resetPage();
       resetProfil();
-      
     }
   }, []);
 
@@ -75,11 +78,12 @@ const ProfileField = ({
     evt.preventDefault();
     patchProfil();
   }
-
+  
   const handlePswdSubmit = (evt) => {
     evt.preventDefault();
     patchPswdProfil();
   }
+  const notify = () => toast("Wow so easy!")
   return (
     
   <> 
@@ -122,9 +126,14 @@ const ProfileField = ({
               <button 
                 className="field-update"
                 type="submit"
+                onclick={successToastify}
               > 
               Modifer votre profil
               </button>
+              <div>
+              <button onClick={notify}>Notify!</button>
+              <ToastContainer />
+              </div>
             </div> 
           </form>
           

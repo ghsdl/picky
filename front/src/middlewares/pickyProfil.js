@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import {updateProfilErrorForPswd, updateProfilError, actionSaveProfil, GET_PROFIL, PATCH_PROFIL, DELETE_PROFIL, PATCH_PSWD_PROFIL } from 'src/actions/profil'
+import {successToastifyEmailPseudo, updateProfilErrorForPswd, updateProfilError, actionSaveProfil, GET_PROFIL, PATCH_PROFIL, DELETE_PROFIL, PATCH_PSWD_PROFIL } from 'src/actions/profil'
 import { resetProfil } from 'src/actions/profil';
 import { reset } from 'src/actions/user'
 const profil =  (store) => (next) => (action) => {
@@ -52,6 +52,7 @@ const profil =  (store) => (next) => (action) => {
       )
         .then((response) => {
          store.dispatch(reset(),resetProfil())
+         store.dispatch(successToastifyEmailPseudo())
          window.location.reload(false)
         })
         .catch((error)=> {
