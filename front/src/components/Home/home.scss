@@ -29,6 +29,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        &__link {
+          width: auto;
+          padding: 15px;
+
+          margin-top: 20px;
+
+          //background: linear-gradient(206.57deg, #FCD89F 19%, #E43E54 88.33%);
+          background: #FCD89F;
+          box-shadow: inset 0px 3px 5px rgba(255, 255, 255, 0.25);
+          color: white;
+          font-weight: bold;
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
+          border-radius: 10px;
+          text-align: center;
+        }
       }
     }
   }
