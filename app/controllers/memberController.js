@@ -3,6 +3,7 @@ const memberDataMapper = require('../dataMappers/memberDataMapper');
 const authDataMapper = require('../dataMappers/authDataMapper');
 /*const platformDataMapper = require('../dataMappers/platformDataMapper');*/
 const bcrypt = require('bcrypt');
+const { log } = require('./authController');
 
 const memberController = {
   async get(_, res) {
@@ -48,7 +49,14 @@ const memberController = {
       // GETTING ALL BOOMARKS FOR A MEMBER
       const bookmarkMember = await memberDataMapper.getBookmarkMember(req.member.id);
 
+      console.log(bookmarkMember);
+
+      //ParsedBookmarkMember = JSON.parse(bookmarkMember);
+
+      //console.log(ParsedBookmarkMember);
+
       res.json({ bookmarkMember });
+      console.log(bookmarkMember[0].bookmark[0].platform);
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
