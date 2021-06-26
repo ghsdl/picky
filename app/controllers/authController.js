@@ -12,7 +12,7 @@ const authController = {
       const { pseudo, email, password } = req.body;
 
       // IF PSEUDO DOES NOT EXIST THEN THROW ERROR
-      if(!pseudo) {
+      if (!pseudo) {
         return res.status(401).json('Le pseudo doit contenir au moins 2 caractères.');
       }
 
@@ -25,7 +25,7 @@ const authController = {
       }
 
       // CHECKING IF BOTH PASSWORDS ARE THE SAME
-      if(password !== req.body.confirmationPassword) {
+      if (password !== req.body.confirmationPassword) {
         return res.status(401).json(`Les mots de passe doivent être identiques.`);
       }
 
@@ -70,7 +70,7 @@ const authController = {
       }
 
       // SENDING EMAIL PSEUDO AND TOKEN TO THE FRONT
-      res.json({ member: member.email, pseudo: member.pseudo, token: jwtGenerator(member.id), member_id: member.id});
+      res.json({ member: member.email, pseudo: member.pseudo, token: jwtGenerator(member.id), member_id: member.id });
 
     } catch (error) {
       console.log(error);
@@ -78,7 +78,7 @@ const authController = {
     }
   },
 
-  
+
   async verify(_, res) { // BACKEND METHOD
     try {
       // VERIFYING THE TOKEN IN HEADERS
