@@ -76,11 +76,11 @@ const SignUpForm = ({
         <button type="submit" className="formUser-login">S'inscrire</button>
           
       </form>
-      <button className = "redirect"> 
-        <Link to="/signin"> 
-          Déjà inscrit? Connectez-vous! 
-        </Link>
-      </button>
+      <Link to="/signin"> 
+        <button className = "redirect"> 
+            Déjà inscrit? Connectez-vous! 
+        </button>
+      </Link>
     </div>
     </div>
   );

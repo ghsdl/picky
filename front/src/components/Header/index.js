@@ -16,6 +16,7 @@ import {
 // Import pour les îcones de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from "@fortawesome/free-brands-svg-icons"
 import LogoPicky from 'src/assets/logoPicky.png'
 // Import de notre logo
 
@@ -94,9 +95,28 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
               {!isConnected && (
                 <li><Link to="/signUp">Picky Wish</Link></li>
               )}
-              <li><Link to="/about">A propos</Link></li>
+              <li><Link to="/about">Picky About</Link></li>
             </ul>
+            <div className="separation"></div>
+            <div className="brandIcon">
+            <FontAwesomeIcon
+              className="faFacebookSquare"
+              icon={faFacebookSquare}
+            
+            />
+            <FontAwesomeIcon
+              className="faTwitterSquare"
+              icon={faTwitterSquare}
+            
+            />
+            <FontAwesomeIcon
+              className="faInstagramSquare"
+              icon={faInstagramSquare}
+            
+            />
+          </div>
           </nav>
+          
         </div>
       </ClickAwayListener>
       <Link to="/" onClick={resetPickyFind}>

@@ -72,11 +72,11 @@ export default function SignIn({
             </button>
           
           </form>
-          <button className = "redirect">
-            <Link to='/signUp'>
-              Pas encore de compte? Inscrivez-vous ! 🍿🍿
-            </Link>
+          <Link to='/signUp'>
+            <button className = "redirect">
+                Pas encore de compte? Inscrivez-vous ! 🍿🍿
             </button>
+          </Link>
         </div>
       </div>
     </>
