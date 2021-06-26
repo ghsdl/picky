@@ -17,7 +17,7 @@ const signUp = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error.response.data)
-          store.dispatch(updateSignInError(error.response.data))
+          store.dispatch(updateSignInError(error.response.data.error || error.response.data))
         });
       break;
     }

@@ -158,7 +158,7 @@ const ProfileField = ({
                   required
                 />
                 <Field
-                  namebis="New Password Confirmation"
+                  namebis="Confirmation"
                   type="password"
                   name="confirmationPassword"
                   placeholder="New Password Confirmation"
