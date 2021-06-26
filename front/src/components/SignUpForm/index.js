@@ -19,7 +19,7 @@ const SignUpForm = ({
   useEffect(() => {
     return () => {
       resetPage();
-      
+
     }
   }, []);
 
@@ -30,58 +30,58 @@ const SignUpForm = ({
 
   return (
     <div className="formUser">
-    <div className="formUser-input">
-      <form
-        autoComplete="off"
-        onSubmit={handleSubmit}
-      >
-        <Field
-          type="text"
-          name="pseudo"
-          placeholder="Pseudo"
-          onChange={changeField}
-          value={pseudo}
-          required
-        />
-        <Field
-          type="email"
-          name="email"
-          placeholder="Adresse Email"
-          onChange={changeField}
-          value={email}
-          required
-        />
-        <Field
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          onChange={changeField}
-          value={password}
-          required
-        />
-        <Field
-          type="password"
-          name="confirmationPassword"
-          placeholder="Confirmation du mot de passe"
-          onChange={changeField}
-          value={confirmationPassword}
-          required
-        />
-        { errorMessage.length >1 &&  
-            <p className="input-middle-errorMessage"> 
-                {errorMessage}
+      <div className="formUser-input">
+        <form
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <Field
+            type="text"
+            name="pseudo"
+            placeholder="Pseudo"
+            onChange={changeField}
+            value={pseudo}
+            required
+          />
+          <Field
+            type="email"
+            name="email"
+            placeholder="Adresse Email"
+            onChange={changeField}
+            value={email}
+            required
+          />
+          <Field
+            type="password"
+            name="password"
+            placeholder="Mot de passe"
+            onChange={changeField}
+            value={password}
+            required
+          />
+          <Field
+            type="password"
+            name="confirmationPassword"
+            placeholder="Confirmation du mot de passe"
+            onChange={changeField}
+            value={confirmationPassword}
+            required
+          />
+          {errorMessage.length > 1 &&
+            <p className="input-middle-errorMessage">
+              {errorMessage}
             </p>
           }
-        
-        <button type="submit" className="formUser-login">S'inscrire</button>
-          
-      </form>
-      <button className = "redirect"> 
-        <Link to="/signin"> 
-          Déjà inscrit? Connectez-vous! 
+
+          <button type="submit" className="formUser-login">S'inscrire</button>
+
+        </form>
+        <Link to="/signin">
+          <button className="redirect">
+            Déjà inscrit? Connectez-vous!
+          </button>
         </Link>
-      </button>
-    </div>
+      </div>
     </div>
   );
 };

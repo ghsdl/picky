@@ -14,73 +14,21 @@ const auth = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.get('/', (_, res) => {
-  res.send(`Bienvenue les fronteux sur l'API Picky!`)
-});
-
-// Affiche un résultat de 50 films sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
-router.get('/movies', movieController.allMovies);
-// Methode qui affiche 5 films au hasard
-router.get('/movies/random', movieController.randomMovies);
-
-// Affiche un résultat de plsuieurs series selon le paramètre text
-router.get('/shows', showController.allShows);
-// Methode qui affiche 5 series au hasard
-router.get('/shows/random', showController.randomShows);
-
 // AUTH ROUTES
 router.post('/signup', (validate.body(memberInsertSchema)), authController.add);
 router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
 
-// SEARCH ROUTES
-router.route('/search/shows/:text')
-  .get(showController.searchShows);
-
-router.route('/search/movies/:text')
-  .get(movieController.searchMovies);
-
-router.route('/search/:query')
-  .get(searchController.searchAll);
-
-router.post('/moodresults', searchController.mood);
-
-/*router.route('/search/bookmark/:id')  
-  .post(searchController.addToBookmark)*/
-
-// PLATFORM ROUTES
-router.route('/platform')
-  .get(platformController.allPlatforms);
-
-// V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
- /* 
-router.route('/platform/:id(\\d+)')
-  .get(platformController.getById)
-  .patch(platformController.update)
-  .delete(platformController.delete);
-*/
-
-  // BOOKMARK ROUTES
-router.route('/bookmark')
-  .get(bookmarkController.get)
-  .post(auth, bookmarkController.post);
-
-router.route('/bookmark/:id(\\d+)')
-  .get(bookmarkController.getById)
-  //.patch(bookmarkController.update)
-  .delete(auth, bookmarkController.delete);
-
-  // MEMBER ROUTES
-router.route('/members')
+// MEMBERS ROUTE
   /** 
    * Get all the members
    * @route GET /member
    * @returns {Member[]} 200 - Member's list
    * @returns {Error} 500 - Error servor
    */
-  .get(memberController.get);
+router.get('/members', memberController.get)
 
-  router.route('/member')
+router.route('/member')
   /**  
    * Get members by their id
    * @route GET /member/{id}
@@ -89,7 +37,7 @@ router.route('/members')
    * @returns {Error} 500 - Error servor
    */
   .get(auth, memberController.getById)
-    /**  
+  /**  
    * Updated member
    * @route PATCH /member/{id}
    * @param {number} id - Member's id
@@ -97,7 +45,7 @@ router.route('/members')
    * @returns {Error} 500 - Error servor
    */
   .patch(auth, validate.body(memberUpdateSchema), memberController.update)
-    /**  
+  /**  
    * Deleted member
    * @route DELETE /member/{id}
    * @param {number} id - Member's id
@@ -106,21 +54,36 @@ router.route('/members')
    */
   .delete(auth, memberController.delete);
 
-router.route('/member/bookmark')
-  .get(auth, memberController.getBookmarkByMember);
+// BOOKMARK ROUTES
+router.route('/bookmark')
+.get(bookmarkController.get)
+.post(auth, bookmarkController.post);
 
-// V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
-/*
-router.route('/member/:id(\\d+)/platform')
-  .get(memberController.getPlatformByMember);
-*/
+router.route('/bookmark/:id(\\d+)')
+.get(bookmarkController.getById)
+.delete(auth, bookmarkController.delete);
 
-// V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
-/*
-router.route('/member/:member_id(\\d+)/platform/:platform_id(\\d+)')
-  .post(memberController.addPlatformToMember);
-*/
+// MEMBER AND THEIR BOOKMARKS ROUTE
+router.get('/member/bookmark', auth, memberController.getBookmarkByMember);
 
+// SEARCH ROUTES
+router.get('/search/shows/:text', showController.searchShows);
+router.get('/search/movies/:text', movieController.searchMovies);
+router.get('/search/:query', searchController.searchAll);
+router.post('/moodresults', searchController.mood);
+
+// MOVIES ROUTES
+router.get('/movies', movieController.allMovies);
+router.get('/movies/random', movieController.randomMovies);
+
+// SHOWS ROUTES
+router.get('/shows', showController.allShows);
+router.get('/shows/random', showController.randomShows);
+
+// PLATFORMS ROUTES
+router.get('/platform', platformController.allPlatforms);
+
+// ERROR CONTROLLER
 router.use(errorController.resourceNotFound);
 
 module.exports = router;
