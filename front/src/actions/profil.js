@@ -30,10 +30,10 @@ export const actionSaveProfil = (member, pseudo) => ({
   member,
   pseudo,
 });
-export const UPDATE_PROFIL_ERROR = 'UPDATE_PROFIL_ERROR';
+export const UPDATE_PROFIL_ERROR_EMAIL_OR_PSEUDO = 'UPDATE_PROFIL_ERROR';
 
-export const updateProfilError = (value) => ({
-  type: UPDATE_PROFIL_ERROR,
+export const updateProfilErrorEmailOrPseudo = (value) => ({
+  type: UPDATE_PROFIL_ERROR_EMAIL_OR_PSEUDO,
   value,
 })
 export const UPDATE_PROFIL_ERROR_FOR_PSWD = 'UPDATE_PROFIL_ERROR_FOR_PSWD';

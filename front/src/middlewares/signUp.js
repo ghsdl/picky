@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import { SIGN_UP, updateProfilError } from 'src/actions/user'
+import { SIGN_UP, updateSignInError } from 'src/actions/user'
 import { Redirect } from 'react-router-dom'
 const signUp = (store) => (next) => (action) => {
   switch (action.type){
@@ -18,7 +18,7 @@ const signUp = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error.response.data.error)
-          store.dispatch(updateProfilError(error.response.data.error))
+          store.dispatch(updateSignInError(error.response.data.error))
         });
       break;
     }

@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import { LOGIN, actionSaveUser, updateProfilError } from 'src/actions/user'
+import { LOGIN, actionSaveUser, updateSignInError } from 'src/actions/user'
 import { logout } from 'src/actions/user'
 const auth = (store) => (next) => (action) => {
   switch (action.type){
@@ -20,7 +20,7 @@ const auth = (store) => (next) => (action) => {
           }, 3600000 );
         })
         .catch((error) => {
-          store.dispatch(updateProfilError(error.response.data))
+          store.dispatch(updateSignInError(error.response.data))
           console.log(error.response.data)
         });
       break;

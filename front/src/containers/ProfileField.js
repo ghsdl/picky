@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
   password: state.user.password,
   isConnected: state.status.isConnected,
   confirmationPassword: state.user.confirmationPassword,
-  errorMessage: state.profil.errorMessage,
+  errorMessageEmailOrPseudo: state.profil.errorMessageEmailOrPseudo,
   errorMessagePswd: state.profil.errorMessagePswd,
   member: state.profil.member,
   profilPseudo: state.profil.pseudo,

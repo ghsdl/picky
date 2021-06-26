@@ -46,7 +46,7 @@ const ProfileField = ({
   deleteProfil,
   patchProfil,
   patchPswdProfil,
-  errorMessage,
+  errorMessageEmailOrPseudo,
   errorMessagePswd,
   member,
   profilPseudo,
@@ -117,8 +117,8 @@ const ProfileField = ({
                 value={email}
               />
 
-              {errorMessage.length > 1 &&  <p className="row-error"> 
-                {errorMessage}
+              {errorMessageEmailOrPseudo.length > 1 &&  <p className="row-error"> 
+                {errorMessageEmailOrPseudo}
               </p>
               }
 

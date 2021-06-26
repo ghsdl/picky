@@ -1,9 +1,9 @@
-import {SUCCESS_TOASTIFY_EMAIL_PSEUDO, RESET_PROFIL, UPDATE_PROFIL_ERROR_FOR_PSWD, ACTION_SAVE_PROFIL, UPDATE_PROFIL_ERROR } from 'src/actions/profil';
+import { RESET_PROFIL, UPDATE_PROFIL_ERROR_FOR_PSWD, ACTION_SAVE_PROFIL, UPDATE_PROFIL_ERROR_EMAIL_OR_PSEUDO } from 'src/actions/profil';
 
 export const inialState = {
   member: '',
   pseudo: '',
-  errorMessage: '',
+  errorMessageEmailOrPseudo: '',
   errorMessagePswd: '',
   
 };
@@ -17,10 +17,10 @@ const profilReducer = (state = inialState, action = {}) => {
         pseudo: action.pseudo,
       };
 
-    case UPDATE_PROFIL_ERROR: 
+    case UPDATE_PROFIL_ERROR_EMAIL_OR_PSEUDO: 
       return {
         ...state, 
-        errorMessage: action.value
+        errorMessageEmailOrPseudo: action.value
       }  
     
       case UPDATE_PROFIL_ERROR_FOR_PSWD: 
@@ -32,7 +32,7 @@ const profilReducer = (state = inialState, action = {}) => {
       case RESET_PROFIL: 
       return {
         ...state, 
-        errorMessage: '',
+        errorMessageEmailOrPseudo: '',
         errorMessagePswd: ''
       }
       default:
