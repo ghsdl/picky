@@ -109,6 +109,10 @@ const memberController = { // BACKEND METHOD
         member.email = newData.email;
       }
 
+      if (newData.email === null) {
+        member.email = newData.email 
+      }
+
       // UPDATING PSEUDO PASSWORD
       if (newData.password) {
         member.password = newData.password;
