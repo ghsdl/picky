@@ -3,6 +3,28 @@ import axios from 'axios'
 import {successToastifyEmailPseudo, updateProfilErrorForPswd, updateProfilError, actionSaveProfil, GET_PROFIL, PATCH_PROFIL, DELETE_PROFIL, PATCH_PSWD_PROFIL } from 'src/actions/profil'
 import { resetProfil } from 'src/actions/profil';
 import { reset } from 'src/actions/user'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const notify = () => {toast.success("Pseudo et/ou Email modifié !"),{
+position: "top-center",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+}}
+
+const notifyPswd = () => {toast.success("Password modifié"),{
+  position: "top-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  }}
+
 const profil =  (store) => (next) => (action) => {
   
   switch (action.type){
@@ -52,8 +74,12 @@ const profil =  (store) => (next) => (action) => {
       )
         .then((response) => {
          store.dispatch(reset(),resetProfil())
-         store.dispatch(successToastifyEmailPseudo())
-         window.location.reload(false)
+         notify()
+         setTimeout(() => {
+          window.location.reload(false)
+         }, 2000);
+         
+         
         })
         .catch((error)=> {
           store.dispatch(updateProfilError(error.response.data))
@@ -79,9 +105,11 @@ const profil =  (store) => (next) => (action) => {
         config
       )
         .then((response) => {
-          console.log(response)
           store.dispatch(reset(),resetProfil())
+          notifyPswd()
+         setTimeout(() => {
           window.location.reload(false)
+         }, 2000);
         })
         .catch((error)=> {
 

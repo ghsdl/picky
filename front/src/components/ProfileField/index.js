@@ -11,7 +11,6 @@ import {
 import Field from './Field.js'
 import { Redirect } from 'react-router-dom'
 
-import { successToastifyEmailPseudo } from 'src/actions/profil'
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -52,7 +51,6 @@ const ProfileField = ({
   member,
   profilPseudo,
   resetProfil,
-  succesToastify
 }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -83,7 +81,7 @@ const ProfileField = ({
     evt.preventDefault();
     patchPswdProfil();
   }
-  const notify = () => toast("Wow so easy!")
+  const notify = () => {toast("Wow so easy!")}
   return (
     
   <> 
@@ -126,13 +124,23 @@ const ProfileField = ({
               <button 
                 className="field-update"
                 type="submit"
-                onclick={successToastify}
               > 
               Modifer votre profil
               </button>
               <div>
-              <button onClick={notify}>Notify!</button>
-              <ToastContainer />
+              <ToastContainer
+                className="toast-Container"
+                color="black"
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
               </div>
             </div> 
           </form>
