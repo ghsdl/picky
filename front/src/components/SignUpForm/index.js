@@ -72,6 +72,7 @@ const SignUpForm = ({
               {errorMessage}
             </p>
           }
+<<<<<<< HEAD
 
           <button type="submit" className="formUser-login">S'inscrire</button>
 
@@ -82,6 +83,18 @@ const SignUpForm = ({
           </button>
         </Link>
       </div>
+=======
+        
+        <button type="submit" className="formUser-login">S'inscrire</button>
+          
+      </form>
+      <Link to="/signin"> 
+        <button className = "redirect"> 
+            Déjà inscrit? Connectez-vous! 
+        </button>
+      </Link>
+    </div>
+>>>>>>> a1206d728ae78bc9bf93ec35eb8b597e22356966
     </div>
   );
 };
