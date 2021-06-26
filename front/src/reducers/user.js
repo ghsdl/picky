@@ -29,6 +29,7 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         email: '',
         password: '',
+        errorMessage: '',
       }
 
     case ACTION_SAVE_USER:
@@ -36,7 +37,8 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         isConnected: true,
         token: action.token,   
-        pseudo: action.value,  
+        pseudo: action.value,
+        errorMessage: '',  
   
       };
 

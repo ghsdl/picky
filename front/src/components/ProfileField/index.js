@@ -52,6 +52,8 @@ const ProfileField = ({
   profilPseudo,
   resetProfil,
 }) => {
+  console.log(member)
+  console.log(profilPseudo)
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -81,7 +83,6 @@ const ProfileField = ({
     evt.preventDefault();
     patchPswdProfil();
   }
-  const notify = () => {toast("Wow so easy!")}
   return (
     
   <> 
@@ -116,7 +117,7 @@ const ProfileField = ({
                 value={email}
               />
 
-              {errorMessage &&  <p className="row-error"> 
+              {errorMessage.length > 1 &&  <p className="row-error"> 
                 {errorMessage}
               </p>
               }

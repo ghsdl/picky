@@ -34,7 +34,6 @@ const profil =  (store) => (next) => (action) => {
   switch (action.type){
     case GET_PROFIL: {
       const state = store.getState();
-      console.log(state.user.email)
       axios.get('https://projet-picky.herokuapp.com/member', {
         headers: {
           "Bearer": `${store.getState().status.token}`,
@@ -86,6 +85,7 @@ const profil =  (store) => (next) => (action) => {
          
         })
         .catch((error)=> {
+          console.log(error)
           store.dispatch(updateProfilError(error.response.data))
         });
       break;
