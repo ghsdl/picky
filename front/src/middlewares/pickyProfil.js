@@ -21,7 +21,7 @@ const notifyPswd = () => {toast.success("Password modifié"),{
   draggable: true,
 }};
 
-const notifySup = () => {toast.error("Votre compte va être supprimé.."),{
+const notifySup = () => {toast.error("Votre compte va être supprimé..."),{
   position: "top-center",
   autoClose: 3000,
   closeOnClick: true,

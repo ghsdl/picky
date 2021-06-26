@@ -96,7 +96,7 @@ const ProfileField = ({
       <div className="form">
         <div className="form-input"> 
           <form onSubmit={handleSubmit}> 
-            <p className="form-p"> Modifier vos info's personnelles</p>
+            <p className="form-p"> Modifier vos infos personnelles</p>
             <div className="row"> 
             
               <Field
@@ -126,7 +126,7 @@ const ProfileField = ({
                 className="field-update"
                 type="submit"
               > 
-              Modifer votre profil
+              Modifier votre profil
               </button>
               <div>
               <ToastContainer
@@ -161,7 +161,7 @@ const ProfileField = ({
                   namebis="Confirmation"
                   type="password"
                   name="confirmationPassword"
-                  placeholder="New Password Confirmation"
+                  placeholder="Confirmation"
                   onChange={changeField}
                   value={confirmationPassword}
                   required
@@ -175,7 +175,7 @@ const ProfileField = ({
                   className="field-update"
                   type="submit"
                 > 
-                Modifer Votre password
+                Modifier votre password
                 </button>
               </div>
             </div>
@@ -199,7 +199,7 @@ const ProfileField = ({
           >
             <Fade in={open} onClick={handleClose}>
               <div className={classes.paper}>
-                <h2> Voulez vous vraiment supprimer votre compte ?</h2>
+                <h2> Voulez-vous vraiment supprimer votre compte ?</h2>
                 <button type="button" onClick={deleteProfil}> Oui </button>
                 <button type="button"> Non </button>
               </div>
