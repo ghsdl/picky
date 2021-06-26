@@ -1,11 +1,9 @@
 // REQUIRING MEMBER DATAMAPPER AND PACKAGES
 const memberDataMapper = require('../dataMappers/memberDataMapper');
 const authDataMapper = require('../dataMappers/authDataMapper');
-/*const platformDataMapper = require('../dataMappers/platformDataMapper');*/
 const bcrypt = require('bcrypt');
-const { log } = require('./authController');
 
-const memberController = {
+const memberController = { // BACKEND METHOD
   async get(_, res) {
     try {
       // GETTING THE LIST OF MEMBERS
@@ -18,8 +16,7 @@ const memberController = {
     }
   },
 
-  async getById(req, res, next) {
-    console.log(req.member.id);
+  async getById(req, res, next) { // BACKEND AND FRONTEND METHOD
     try {
       // GETTING THE MEMBER BY ITS ID
       const member = await memberDataMapper.getOne(req.member.id);

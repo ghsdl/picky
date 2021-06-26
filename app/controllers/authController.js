@@ -1,16 +1,17 @@
-// REQUIRING PACKAGES
+// REQUIRING AUTH DATAMAPPER AND PACKAGES
 const authDataMapper = require('../dataMappers/authDataMapper');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('../utils/jwtGenerator');
 
 const authController = {
 
-  async add(req, res) {
+  async add(req, res) { // BACKEND AND FRONTEND METHOD
     try {
 
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
 
+      // IF PSEUDO DOES NOT EXIST THEN THROW ERROR
       if(!pseudo) {
         return res.status(401).json('Le pseudo doit contenir au moins 2 caractères.');
       }
@@ -47,7 +48,7 @@ const authController = {
     }
   },
 
-  async log(req, res) {
+  async log(req, res) { // BACKEND AND FRONTEND METHOD
     try {
       // DESTRUCTURING REQ.BODY
       const { email, password } = req.body;
@@ -77,9 +78,10 @@ const authController = {
     }
   },
 
-  // VERIFYING THE TOKEN - ONLY FOR BACKEND
-  async verify(_, res) {
+  
+  async verify(_, res) { // BACKEND METHOD
     try {
+      // VERIFYING THE TOKEN IN HEADERS
       res.json(true);
     } catch (err) {
       console.log(error);
