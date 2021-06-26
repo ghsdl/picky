@@ -60,10 +60,12 @@ const profil =  (store) => (next) => (action) => {
       const config = {
         headers: {
           "Bearer": `${store.getState().status.token}`,
+          "Accept": "application/json",
+          "Content-Type": "application/json",
         }
       }
       
-      const email = !state.user.email ? state.profil.member : state.user.email
+      const email = state.user.email ? state.profil.member : state.user.email
       const pseudo = !state.user.pseudo ? state.profil.pseudo : state.user.pseudo;
             
       const bodyParameters = {
