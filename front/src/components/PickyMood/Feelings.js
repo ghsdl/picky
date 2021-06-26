@@ -75,11 +75,10 @@ export default function Feelings({
   return (
     <>
       <div className="pickyMood">
-        <Typical
-          className="pickyMood-question"
-          steps={['Vous souhaitez être...', 100, 'Vous souhaitez être amusé ?', 1000, 'Vous souhaitez être bouleversé ?', 1000, 'Vous souhaitez être attendri ?', 1000]}
-          loop={Infinity}
-        />
+        <h2 className="pickyMood-question">
+          Vous souhaitez être...
+        </h2>
+          
       </div>
       <ul className="pickMoodContent">
         { ShowOrMovie === 'shows' && (

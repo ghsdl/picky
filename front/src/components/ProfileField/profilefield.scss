@@ -1,3 +1,9 @@
+.toast-Container{
+  color: rgb(53, 53, 53);
+  font-style: italic;
+  box-shadow: 0px 1px 5px rgba(248, 175, 175, 0.1)
+}
+
 .profile {
   display: flex;
   justify-content: space-around;
@@ -95,7 +101,7 @@
     color: red;
 	font-weight: bold;
 	font-style: italic;
-	font-size: 1vh;
+	font-size: 1.2vh;
   }
 }
 .gate__pseudo {

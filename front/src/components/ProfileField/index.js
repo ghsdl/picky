@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 //import PropTypes from 'prop-types';
 import PropTypes from 'prop-types';
 import './profilefield.scss';
@@ -67,7 +69,6 @@ const ProfileField = ({
     return () => {
       resetPage();
       resetProfil();
-      
     }
   }, []);
 
@@ -75,11 +76,12 @@ const ProfileField = ({
     evt.preventDefault();
     patchProfil();
   }
-
+  
   const handlePswdSubmit = (evt) => {
     evt.preventDefault();
     patchPswdProfil();
   }
+  const notify = () => {toast("Wow so easy!")}
   return (
     
   <> 
@@ -125,6 +127,20 @@ const ProfileField = ({
               > 
               Modifer votre profil
               </button>
+              <div>
+              <ToastContainer
+                className="toast-Container"
+                color="black"
+                position="top-center"
+                autoClose={5000}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
+              </div>
             </div> 
           </form>
           

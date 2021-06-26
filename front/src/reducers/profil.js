@@ -1,10 +1,11 @@
-import { RESET_PROFIL, UPDATE_PROFIL_ERROR_FOR_PSWD, ACTION_SAVE_PROFIL, UPDATE_PROFIL_ERROR } from 'src/actions/profil';
+import {SUCCESS_TOASTIFY_EMAIL_PSEUDO, RESET_PROFIL, UPDATE_PROFIL_ERROR_FOR_PSWD, ACTION_SAVE_PROFIL, UPDATE_PROFIL_ERROR } from 'src/actions/profil';
 
 export const inialState = {
   member: '',
   pseudo: '',
   errorMessage: '',
   errorMessagePswd: '',
+  
 };
 
 const profilReducer = (state = inialState, action = {}) => {

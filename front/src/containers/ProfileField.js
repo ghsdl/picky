@@ -13,7 +13,8 @@ const mapStateToProps = (state) => ({
   errorMessage: state.profil.errorMessage,
   errorMessagePswd: state.profil.errorMessagePswd,
   member: state.profil.member,
-  profilPseudo: state.profil.pseudo
+  profilPseudo: state.profil.pseudo,
+  success: state.profil.success
 });
 
 const mapDispatchToProps = (dispatch) => ({
