@@ -24,7 +24,7 @@ router.get('/movies', movieController.allMovies);
 router.get('/movies/random', movieController.randomMovies);
 
 // Affiche un résultat de plsuieurs series selon le paramètre text
-router.get('/shows', showController.getShows);
+router.get('/shows', showController.allShows);
 // Methode qui affiche 5 series au hasard
 router.get('/shows/random', showController.randomShows);
 
