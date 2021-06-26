@@ -133,7 +133,6 @@ const ProfileField = ({
                 color="black"
                 position="top-center"
                 autoClose={5000}
-                hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}

@@ -1,29 +1,33 @@
 import axios from 'axios'
 
-import {successToastifyEmailPseudo, updateProfilErrorForPswd, updateProfilError, actionSaveProfil, GET_PROFIL, PATCH_PROFIL, DELETE_PROFIL, PATCH_PSWD_PROFIL } from 'src/actions/profil'
+import {updateProfilErrorForPswd, updateProfilError, actionSaveProfil, GET_PROFIL, PATCH_PROFIL, DELETE_PROFIL, PATCH_PSWD_PROFIL } from 'src/actions/profil'
 import { resetProfil } from 'src/actions/profil';
-import { reset } from 'src/actions/user'
-import { ToastContainer, toast } from 'react-toastify';
+import { reset, logout } from 'src/actions/user'
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const notify = () => {toast.success("Pseudo et/ou Email modifié !"),{
 position: "top-center",
 autoClose: 5000,
-hideProgressBar: false,
 closeOnClick: true,
 pauseOnHover: true,
 draggable: true,
-progress: undefined,
 }}
 
 const notifyPswd = () => {toast.success("Password modifié"),{
   position: "top-center",
   autoClose: 5000,
-  hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
-  progress: undefined,
-  }}
+}};
+
+const notifySup = () => {toast.error("Votre compte va être supprimé.."),{
+  position: "top-center",
+  autoClose: 3000,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+    }}
 
 const profil =  (store) => (next) => (action) => {
   
@@ -109,7 +113,7 @@ const profil =  (store) => (next) => (action) => {
           notifyPswd()
          setTimeout(() => {
           window.location.reload(false)
-         }, 2000);
+         }, 3000);
         })
         .catch((error)=> {
 
@@ -128,6 +132,11 @@ const profil =  (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log('case Delete MiddleWare',response)
+          notifySup();
+          window.localStorage.clear();
+          setTimeout(() => {
+            store.dispatch(logout())
+           }, 3000);
         })
         .catch((error)=> {
           console.log(error)

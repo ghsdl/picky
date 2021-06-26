@@ -16,7 +16,7 @@ import {
 // Import pour les îcones de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-
+import LogoPicky from 'src/assets/logoPicky.png'
 // Import de notre logo
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -100,7 +100,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
         </div>
       </ClickAwayListener>
       <Link to="/" onClick={resetPickyFind}>
-        <img src={logo} className="header-logo" alt="Logo Picky" />
+        <img src={LogoPicky} className="header-logo" alt="Logo Picky" />
       </Link>
       { !isConnected && (
         <>
@@ -164,7 +164,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
                 </li>
                 <li onClick={deconnect}>
                   <Link to="/">
-                    Se deconnecter
+                    Se déconnecter
                   </Link>
                 </li>
               </ul>
