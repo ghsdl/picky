@@ -5,7 +5,7 @@ const serieController = {
   allShows: async (_, res) => {
     try {
       // FETCHING SHOWS FROM THIRD PARTY API
-      const shows = await dataMapper.getAllShows();
+      const shows = await showDataMapper.getAllShows();
 
       // IF FETCHING IS A SUCCESS
       if (shows) {
@@ -23,7 +23,7 @@ const serieController = {
   randomShows: async (_, res) => {
     try {
       // FETCHING RANDOM SHOWS FROM THIRD PARTY API
-      const serie = await dataMapper.randomShows();
+      const serie = await showDataMapper.randomShows();
 
       // IF FETCHING IS A SUCCESS
       if (serie) {
