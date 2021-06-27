@@ -11,9 +11,6 @@ const pickyWish = (store) => (next) => (action) => {
   };
   switch (action.type){
     case ADD_REMOVE_WISH: {
-        console.log('action.programswish in middleware', action.programswish);
-        console.log('token in pickyWish middleware', store.getState().status.token);
-
         const bodyParameters = {
           betaseries_id: action.programswish.id,
           poster: action.programswish.poster,
