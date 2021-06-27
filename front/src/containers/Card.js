@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Card from 'src/components/Card';
-import { addRemoveWish } from 'src/actions/watchlist';
+import { addRemoveWish, getBookmarksIds } from 'src/actions/watchlist';
 
 const mapStateToProps = (state) => ({
   inWatchList: state.watchlist.inWatchList,
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     addRemoveWish: (program) => {
     dispatch(addRemoveWish(program));
-    }
+    },
+    getBookmarksIds: () => dispatch(getBookmarksIds()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

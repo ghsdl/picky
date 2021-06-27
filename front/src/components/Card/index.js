@@ -8,7 +8,7 @@ import posterPopcorn from 'src/assets/poster-popcorn.jpg';
 import './card.scss';
 
 // Display of one card
-const Card = ({ inWatchList, id, title, poster, platformsInfos, platforms, addRemoveWish, program, bookmarksIds }) => {
+const Card = ({ inWatchList, id, title, poster, platformsInfos, platforms, addRemoveWish, program, bookmarksIds, getBookmarksIds }) => {
   let isInWatchList = false;
   
   return (
@@ -57,6 +57,7 @@ const Card = ({ inWatchList, id, title, poster, platformsInfos, platforms, addRe
             type="button"
             onClick = {() => {
               removeFromWish(program);
+              getBookmarksIds();
               }}
           >
             +
@@ -68,6 +69,7 @@ const Card = ({ inWatchList, id, title, poster, platformsInfos, platforms, addRe
             type="button"
             onClick = {() => {
               addRemoveWish(program);
+              getBookmarksIds();
             }}
           >
             +
