@@ -14,7 +14,7 @@ export default function SignIn({
   isConnected,
   errorMessage,
   resetPage,
-  
+
 }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -24,17 +24,17 @@ export default function SignIn({
   useEffect(() => {
     return () => {
       resetPage();
-      
+
     }
   }, []);
   return (
-   
+
     <>
-    {isConnected && (
-      <Redirect to="/"/>
-     )}
+      {isConnected && (
+        <Redirect to="/" />
+      )}
       <Header />
-      
+
       <div className="pickyMood">
         <div className="pickyMood-question">
           Connectez-Vous à Picky
@@ -59,22 +59,27 @@ export default function SignIn({
               value={password}
               required
             />
-            { errorMessage.length >1 &&  <p className="input-middle-errorMessage"> 
+            {errorMessage.length > 1 && <p className="input-middle-errorMessage">
               {errorMessage}
             </p>
             }
-           
+
             <button
               type="submit"
               className="formUser-login"
             >
               Se Connecter
             </button>
-          
+
           </form>
           <Link to='/signUp'>
+<<<<<<< HEAD
+            <button className="redirect">
+              Pas encore de compte? Inscrivez-vous ! 🍿🍿
+=======
             <button className = "redirect">
                 Pas encore de compte? Inscrivez-vous ! 🍿🍿
+>>>>>>> a1206d728ae78bc9bf93ec35eb8b597e22356966
             </button>
           </Link>
         </div>

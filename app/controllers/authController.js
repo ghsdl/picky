@@ -78,7 +78,6 @@ const authController = {
     }
   },
 
-
   async verify(_, res) { // BACKEND METHOD
     try {
       // VERIFYING THE TOKEN IN HEADERS
