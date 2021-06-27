@@ -29,6 +29,8 @@ const pickyWish = (store) => (next) => (action) => {
     };
 
     case REMOVE_FROM_WISH: {
+      const programId = action.programId;
+      
       axios.delete(`https://projet-picky.herokuapp.com/bookmark/${programId}`,
         config
         )
