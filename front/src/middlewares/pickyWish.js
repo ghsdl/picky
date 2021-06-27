@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { addRemoveWish, ADD_REMOVE_WISH, GET_BOOKMARK, getBookmarkSuccess, getBookmark} from 'src/actions/watchlist';
+import { ADD_REMOVE_WISH, GET_BOOKMARK, GET_BOOKMARKS_IDS, getBookmarkSuccess, getBookmarksIdsSuccess,} from 'src/actions/watchlist';
 
 const pickyWish = (store) => (next) => (action) => {
   const config = {
@@ -11,6 +11,7 @@ const pickyWish = (store) => (next) => (action) => {
   };
   switch (action.type){
     case ADD_REMOVE_WISH: {
+      console.log(action);
         const bodyParameters = {
           betaseries_id: action.programswish.id,
           poster: action.programswish.poster,
@@ -26,7 +27,8 @@ const pickyWish = (store) => (next) => (action) => {
             console.log(response.data);
           });
         break;
-    }
+    };
+
     case GET_BOOKMARK: {
     axios.get('https://projet-picky.herokuapp.com/member/bookmark',
     config)
@@ -51,6 +53,25 @@ const pickyWish = (store) => (next) => (action) => {
       });
 
       store.dispatch(getBookmarkSuccess(bookmarksTransformed));
+    });
+    break;
+  };
+
+  case GET_BOOKMARKS_IDS: {
+      axios.get('https://projet-picky.herokuapp.com/member/bookmark',
+    config)
+    .then ((response) => {
+      const bookmarks = response.data.data;
+
+      const bookmarksIds = [];
+
+      bookmarks.forEach((bookmark) => {
+        const bookmarkId = bookmark.betaseries_id;
+        bookmarksIds.push(bookmarkId);
+      });
+
+      console.log('bookmarksIds in pickyWish middleware', bookmarksIds);
+      store.dispatch(getBookmarksIdsSuccess(bookmarksIds));
     });
     break;
   }

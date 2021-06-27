@@ -5,6 +5,7 @@ import { addRemoveWish } from 'src/actions/watchlist';
 const mapStateToProps = (state) => ({
   inWatchList: state.watchlist.inWatchList,
   platforms: state.platforms.platforms,
+  bookmarksIds: state.watchlist.bookmarksIds,
 });
 
 const mapDispatchToProps = (dispatch) => ({

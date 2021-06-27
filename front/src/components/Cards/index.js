@@ -10,7 +10,7 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, currentPage, results, programswish, wish }) => {
+const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarksIds }) => {
   const container = useRef(null)
 
   useEffect(() => {
@@ -20,7 +20,8 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish, wish
       loop: true,
       autoplay: true,
       animationData: require('./movieloading.json')
-    })
+    });
+    getBookmarksIds();
   }, [])
 
   {// When the results are loading, "Loading" is displayed
@@ -45,8 +46,10 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish, wish
         <div className="cards">
         {// The movies are displayed
         }
+        {console.log(movies)}
         {movies.map((movie) => (
           <Card
+            id={movie.id}
             title={movie.title}
             poster={movie.poster}
             platformsInfos={movie.svods}
@@ -58,6 +61,7 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish, wish
         }
         {shows.map((show) => (
           <Card
+            id={show.id}
             title={show.title}
             poster={show.poster}
             platformsInfos={show.svods}
@@ -74,6 +78,7 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish, wish
       <div className="cards">
       {wish.map((program) => (
         <Card
+          id={program.id}
           title={program.title}
           poster={program.poster}
           platformsInfos={program.platforms}
@@ -98,38 +103,17 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish, wish
             }
             {results.map((result) => (
               <Card
+                id={result.id}
                 title={result.title}
                 poster={result.poster}
                 platformsInfos={result.svods}
                 key= {result.id}
+                program={result}
               />
             ))}
             </div>
         )
       }
-    } else {
-
-      const friendsVod= [{id: 1, name: "Netflix"}];
-      return (
-        // TODO: make the display of the cards dynamic with a map
-        <div className="cards">
-        <Card 
-          title="Friends"
-          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
-          platformsInfos={friendsVod}
-        />
-        <Card 
-          title="Friends"
-          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
-          platformsInfos={friendsVod}
-        />
-        <Card 
-          title="Friends"
-          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
-          platformsInfos={friendsVod}
-        />
-        </div>
-      );
     }
   }
 };
