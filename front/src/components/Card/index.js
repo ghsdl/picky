@@ -8,7 +8,7 @@ import posterPopcorn from 'src/assets/poster-popcorn.jpg';
 import './card.scss';
 
 // Display of one card
-const Card = ({ inWatchList, id, title, poster, platformsInfos, platforms, addRemoveWish, program, bookmarksIds, getBookmarksIds }) => {
+const Card = ({ id, title, poster, platformsInfos, platforms, addRemoveWish, removeFromWish, program, bookmarksIds, getBookmarksIds }) => {
   let isInWatchList = false;
   
   return (
@@ -56,7 +56,7 @@ const Card = ({ inWatchList, id, title, poster, platformsInfos, platforms, addRe
             className='card__watchlistButton, card__watchlistButton--delete'
             type="button"
             onClick = {() => {
-              removeFromWish(program);
+              removeFromWish(id);
               getBookmarksIds();
               }}
           >
@@ -79,10 +79,6 @@ const Card = ({ inWatchList, id, title, poster, platformsInfos, platforms, addRe
       </div>
     </div>
   );
-};
-
-Card.propTypes = {
-  inWatchList: PropTypes.bool.isRequired,
 };
 
 export default Card;

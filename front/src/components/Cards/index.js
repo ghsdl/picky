@@ -72,7 +72,6 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
         </div>
       );
     } else if (currentPage === 'wish') {
-      console.log(wish)
       return (
       <div className="cards">
       {wish.map((program) => (

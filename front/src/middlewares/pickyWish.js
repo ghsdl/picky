@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_REMOVE_WISH, GET_BOOKMARK, GET_BOOKMARKS_IDS, getBookmarkSuccess, getBookmarksIdsSuccess,} from 'src/actions/watchlist';
+import { ADD_REMOVE_WISH, REMOVE_FROM_WISH, GET_BOOKMARK, GET_BOOKMARKS_IDS, getBookmarkSuccess, getBookmarksIdsSuccess,} from 'src/actions/watchlist';
 
 const pickyWish = (store) => (next) => (action) => {
   const config = {
@@ -11,7 +11,6 @@ const pickyWish = (store) => (next) => (action) => {
   };
   switch (action.type){
     case ADD_REMOVE_WISH: {
-      console.log(action);
         const bodyParameters = {
           betaseries_id: action.programswish.id,
           poster: action.programswish.poster,
@@ -28,6 +27,16 @@ const pickyWish = (store) => (next) => (action) => {
           });
         break;
     };
+
+    case REMOVE_FROM_WISH: {
+      axios.delete(`https://projet-picky.herokuapp.com/bookmark/${programId}`,
+        config
+        )
+        .then((response) => {
+          console.log(response.data);
+        });
+      break;
+    }
 
     case GET_BOOKMARK: {
     axios.get('https://projet-picky.herokuapp.com/member/bookmark',
