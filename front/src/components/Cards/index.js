@@ -71,14 +71,13 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
         ))}
         </div>
       );
-      {// If the current page is not home (Picky Find), the results are not dynamic yet
-      }
     } else if (currentPage === 'wish') {
+      console.log(wish)
       return (
       <div className="cards">
       {wish.map((program) => (
         <Card
-          id={program.id}
+          id={program.betaseries_id}
           title={program.title}
           poster={program.poster}
           platformsInfos={program.platforms}
