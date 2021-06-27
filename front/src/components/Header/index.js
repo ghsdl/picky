@@ -99,21 +99,24 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
             </ul>
             <div className="separation"></div>
             <div className="brandIcon">
-            <FontAwesomeIcon
-              className="faFacebookSquare"
-              icon={faFacebookSquare}
-            
-            />
-            <FontAwesomeIcon
-              className="faTwitterSquare"
-              icon={faTwitterSquare}
-            
-            />
+            <a href="https://www.facebook.com/pickyaddict/" target="_blank">
+              <FontAwesomeIcon
+                className="faFacebookSquare"
+                icon={faFacebookSquare}
+              />
+            </a>
+            <a href="https://twitter.com/pickyaddict" target="_blank">
+              <FontAwesomeIcon
+                className="faTwitterSquare"
+                icon={faTwitterSquare}
+              />
+            </a>
+            <a href="https://www.instagram.com/pickyaddict/" target="_blank">
             <FontAwesomeIcon
               className="faInstagramSquare"
               icon={faInstagramSquare}
-            
             />
+            </a>
           </div>
           </nav>
           
