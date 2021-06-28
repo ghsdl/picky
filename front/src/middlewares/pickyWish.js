@@ -22,11 +22,14 @@ const pickyWish = (store) => (next) => (action) => {
         // Adds the program to the watchlist with every information needed
         axios.post('https://projet-picky.herokuapp.com/bookmark',
           bodyParameters,
-          configs
+          config
           )
           .then(() => {
             store.dispatch(getBookmarksIds());
             store.dispatch(getBookmark());
+          })
+          .catch((error) => {
+            console.log(`error`, error)
           });
         break;
     };
@@ -41,6 +44,9 @@ const pickyWish = (store) => (next) => (action) => {
         .then(() => {
           store.dispatch(getBookmarksIds());
           store.dispatch(getBookmark());
+        })
+        .catch((error) => {
+          console.log(`error`, error)
         });
       break;
     }
@@ -77,6 +83,9 @@ const pickyWish = (store) => (next) => (action) => {
 
       // The watchlist is sent to be displayed
       store.dispatch(getBookmarkSuccess(bookmarksTransformed));
+    })
+    .catch((error) => {
+      console.log(`error`, error)
     });
     break;
   };
@@ -102,6 +111,9 @@ const pickyWish = (store) => (next) => (action) => {
 
       // The array of ids is sent
       store.dispatch(getBookmarksIdsSuccess(bookmarksIds));
+    })
+    .catch((error) => {
+      console.log(`error`, error)
     });
     break;
   }
