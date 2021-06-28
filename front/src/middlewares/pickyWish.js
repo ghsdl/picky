@@ -48,20 +48,22 @@ const pickyWish = (store) => (next) => (action) => {
 
       const bookmarksTransformed = [];
 
-      bookmarks.forEach((bookmark) => {
-        const bookmarkTransformed = {id: bookmark.id, betaseries_id: bookmark.betaseries_id, title: bookmark.title, poster: bookmark.poster, platforms: []};
-        const platform = `"${bookmark.platform}"`;
-        const replacedPlatform1 = platform.replaceAll(`","`, `,`);
-        const replacedPlatform2 = replacedPlatform1.replace(`{"{`, `[{`);
-        const replacedPlatform3 = replacedPlatform2.replace(`}"}`, `}]`);
-        const replacedPlatform4 = replacedPlatform3.replace(`{}`, `[]`);
-        const parsedPlatform = JSON.parse(replacedPlatform4);
-        const parsedTwicePlatform = JSON.parse(parsedPlatform);
-
-        bookmarkTransformed.platforms = parsedTwicePlatform;
-
-        bookmarksTransformed.push(bookmarkTransformed);
-      });
+      if (bookmarks !== null) {
+        bookmarks.forEach((bookmark) => {
+          const bookmarkTransformed = {id: bookmark.id, betaseries_id: bookmark.betaseries_id, title: bookmark.title, poster: bookmark.poster, platforms: []};
+          const platform = `"${bookmark.platform}"`;
+          const replacedPlatform1 = platform.replaceAll(`","`, `,`);
+          const replacedPlatform2 = replacedPlatform1.replace(`{"{`, `[{`);
+          const replacedPlatform3 = replacedPlatform2.replace(`}"}`, `}]`);
+          const replacedPlatform4 = replacedPlatform3.replace(`{}`, `[]`);
+          const parsedPlatform = JSON.parse(replacedPlatform4);
+          const parsedTwicePlatform = JSON.parse(parsedPlatform);
+  
+          bookmarkTransformed.platforms = parsedTwicePlatform;
+  
+          bookmarksTransformed.push(bookmarkTransformed);
+        });
+      }
 
       store.dispatch(getBookmarkSuccess(bookmarksTransformed));
     });
@@ -76,10 +78,12 @@ const pickyWish = (store) => (next) => (action) => {
 
       const bookmarksIds = [];
 
-      bookmarks.forEach((bookmark) => {
-        const bookmarkId = bookmark.betaseries_id;
-        bookmarksIds.push(bookmarkId);
-      });
+      if(bookmarks !== null) {
+        bookmarks.forEach((bookmark) => {
+          const bookmarkId = bookmark.betaseries_id;
+          bookmarksIds.push(bookmarkId);
+        });
+      }
 
       console.log('bookmarksIds in pickyWish middleware', bookmarksIds);
       store.dispatch(getBookmarksIdsSuccess(bookmarksIds));
