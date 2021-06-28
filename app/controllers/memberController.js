@@ -70,18 +70,11 @@ const memberController = { // BACKEND METHOD
     }
   },
 
-  async update(req, res, next) { // BACKEND AND FRONTEND METHOD
+  async update(req, res, next) {
     try {
-      // GETTING THE MEMBER ID
-      const id = parseInt(req.member.id, 10);
-
-      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      if (isNaN(id)) {
-        return next();
-      }
-
-      // GETTING THE MEMBER FROM DATABASE BY THEIR ID STORED IN THE TOKEN
-      const member = await memberDataMapper.getOne(id);
+      // GETTING THE MEMBER BY ITS ID
+      const member = await memberDataMapper.getOne(req.member.id);
+      console.log(member);
 
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
@@ -109,21 +102,27 @@ const memberController = { // BACKEND METHOD
         member.email = newData.email;
       }
 
-      // UPDATING PSEUDO PASSWORD
+      // UPDATING PASSWORD
       if (newData.password) {
-        member.password = newData.password;
-      }
+        console.log(newData.password);
+        //newData.password = member.password;
 
       // CHECKING IF BOTH PASSWORDS ARE THE SAME
-      if (newData.password !== newData.confirmationPassword) {
-        return res.status(401).json(`Les mots de passe doivent être identiques.`);
-      }
+        if (newData.password !== newData.confirmationPassword) {
+          return res.status(401).json(`Les mots de passe doivent être identiques.`);
+        }
 
       // RE-CRYPTING PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
+
       // GET BACK NEW PASSWORD FROM REQ.BODY AND HASH IT BEFORE SAVING IN DATABASE
-      member.password = await bcrypt.hash(member.password, salt);
+      member.password = await bcrypt.hash(newData.password , salt);
+      
+      const updatedMember = await memberDataMapper.patch(member, req.member.id);
+      console.log("pour modif password", updatedMember);
+      return res.json({ updatedMember });
+      }
 
       // UPDATING PSEUDO PROFILE_PICTURE // V2
       if (newData.profile_picture) {
@@ -131,8 +130,8 @@ const memberController = { // BACKEND METHOD
       }
 
       // UPDATING MEMBER AND SAVE IN DATABASE
-      const updatedMember = await memberDataMapper.patch(member, id);
-
+      const updatedMember = await memberDataMapper.patch(member, req.member.id);
+      console.log(updatedMember);
       res.json({ updatedMember });
     } catch (error) {
       console.log(error);

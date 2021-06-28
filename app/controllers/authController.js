@@ -10,7 +10,6 @@ const authController = {
 
       // DESTRUCTURING REQ.BODY
       const { pseudo, email, password } = req.body;
-      console.log(req.body);
 
       // IF PSEUDO DOES NOT EXIST THEN THROW ERROR
       if (!pseudo) {
@@ -53,14 +52,13 @@ const authController = {
     try {
       // DESTRUCTURING REQ.BODY
       const { email, password } = req.body;
-      console.log(req.body);
 
       // CHECKING IF MEMBER DOES EXIST IN DATABASE VIA THEIR EMAIL
       const member = await authDataMapper.getMemberByEmail(email);
 
       // IF MEMBER DOEST NOT EXIST THROW 401 STATUS
       if (!member) {
-        return res.status(401).json('Email incorrect.');
+        return res.status(401).json('Email ou mot de passe incorrect.');
       }
 
       // COMPARING IF PASSWORD IN DATABASE IS THE SAME AS THE ONE TYPED
@@ -68,7 +66,7 @@ const authController = {
 
       // IF PASSWORD IS INCORRECT THROW 401 STATUS
       if (!correctPassword) {
-        return res.status(401).json('Mot de passe incorrect.');
+        return res.status(401).json('Email ou mot de passe incorrect.');
       }
 
       // SENDING EMAIL PSEUDO AND TOKEN TO THE FRONT
