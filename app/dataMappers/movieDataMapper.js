@@ -1,6 +1,16 @@
 const fetch = require('node-fetch');
 
 module.exports = {
+
+     /**
+     * @typedef searchMovies
+     * @property {number} id - Unique identifier
+     * @property {number} following - number of followers
+     * @property {number} release_date - date of realisation
+     * @property {string} svods - on which platform
+     * @property {string} title - titles of movies
+     */
+
   async randomMovies() {
     try {
       const apiUrl = 'https://api.betaseries.com/movies/random?nb=5&=&key=e7da6c21d678&';

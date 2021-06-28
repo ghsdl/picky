@@ -19,21 +19,7 @@ const SearchBar = ({ searchInputValue, onInputChange, loadPrograms }) => {
     evt.preventDefault();
     loadPrograms();
   };
-/*
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        ref={inputRef}
-        className="searchbar__input"
-        type="text"
-        placeholder="Rechercher une série ou un film"
-        value={searchInputValue}
-        onChange={onInputChange}
-        required
-      />
-    </form>
-  );
-  */
+  
  return (
   <div className="cover">
     <form className="form" onSubmit={handleSubmit}>

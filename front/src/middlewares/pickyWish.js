@@ -1,5 +1,31 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ADD_TO_WISH, REMOVE_FROM_WISH, GET_BOOKMARK, GET_BOOKMARKS_IDS, getBookmarkSuccess, getBookmarksIdsSuccess, getBookmarksIds, getBookmark } from 'src/actions/watchlist';
+
+const notifyAdd = () => {toast.success("Ce programme a bien été ajouté à votre watchlist"),{
+  position: "top-center",
+  autoClose: 5000,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+}};
+
+const notifyDelete = () => {toast.success("Ce programme a bien été supprimé de votre watchlist"),{
+  position: "top-center",
+  autoClose: 5000,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+}};
+
+const notifyVisitor = () => {toast.error("Vous devez être connecté pour ajouter un programme à votre watchlist"),{
+  position: "top-center",
+  autoClose: 5000,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+}};
 
 const pickyWish = (store) => (next) => (action) => {
   const config = {
@@ -27,9 +53,11 @@ const pickyWish = (store) => (next) => (action) => {
           .then(() => {
             store.dispatch(getBookmarksIds());
             store.dispatch(getBookmark());
+            notifyAdd();
           })
           .catch((error) => {
-            console.log(`error`, error)
+            console.log(`error`, error);
+            notifyVisitor();
           });
         break;
     };
@@ -44,6 +72,7 @@ const pickyWish = (store) => (next) => (action) => {
         .then(() => {
           store.dispatch(getBookmarksIds());
           store.dispatch(getBookmark());
+          notifyDelete();
         })
         .catch((error) => {
           console.log(`error`, error)

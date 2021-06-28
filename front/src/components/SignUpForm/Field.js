@@ -16,32 +16,28 @@ export default function Field({
   const inputId = `field-${name}`;
 
   classie(window);
-  //Style();
-  const className= value ? "input input--chisato input--filled" : "input input--chisato"
+  const className = `gate__${name}`
 
   return (
-    <div className="input-middle">
-      <span className={className}>
+    
+      <span>
 				<input 
-          className="input__field input__field--chisato" 
+          className={className}
           value={value}
           onChange={handleChange}
           id={inputId}
           type={type}
           name={name}
+          placeholder={placeholder}
         />
 				<label 
-          className="input__label input__label--chisato" 
-          htmlFor={inputId}>  
-					<span 
-            className="input__label-content input__label-content--chisato "
-            data-content= {placeholder}
-          >
+          htmlFor={placeholder}>  
+          
             {placeholder}
-          </span>
+      
 				</label>
 		  </span>
-    </div>
+   
   );
 }
 

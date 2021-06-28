@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import of components
 import Header from 'src/containers/Header';
@@ -28,6 +30,18 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
 
   return(
   <div>
+    <ToastContainer
+      className="home__toast-Container"
+      color="black"
+      position="top-right"
+      autoClose={5000}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
     {// Header
     }
     <Header />
@@ -47,10 +61,10 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
       <div className="home__pickyMood">
         <p>Vous ne savez pas quoi regarder? Faites nous confiance!</p>
         {isConnected && (
-          <Link to="/mood">Picky Mood</Link>
+          <Link to="/mood" className="home__pickyMood__link">Picky Mood</Link>
         )}
         {!isConnected && (
-          <Link to="/signUp">Picky Mood</Link>
+          <Link to="/signUp" className="home__pickyMood__link">Picky Mood</Link>
         )}
       </div>
       {// Display of the results

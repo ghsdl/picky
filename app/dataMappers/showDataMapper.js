@@ -1,6 +1,16 @@
 const fetch = require('node-fetch');
 
 module.exports = {
+     /**
+     * @typedef searchShows
+     * @property {number} id - Unique identifier
+     * @property {number} following - number of followers
+     * @property {number} release_date - date of realisation
+     * @property {string} svods - on which platform
+     * @property {string} slug - slug title
+     * @property {string} title - titles of shows
+     */
+  
   async randomShows() {
     try {
       const apiUrl =
