@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 //import PropTypes from 'prop-types';
 import PropTypes from 'prop-types';
@@ -126,7 +126,7 @@ const ProfileField = ({
               <ToastContainer
                 className="toast-Container"
                 color="black"
-                position="top-center"
+                position="top-right"
                 autoClose={5000}
                 newestOnTop={false}
                 closeOnClick

@@ -20,9 +20,9 @@ const Wish = ({ loadBookmark }) => {
   return (
   <div className="wish">
     <ToastContainer
-      className="toast-Container"
+      className="wish__toast-Container"
       color="black"
-      position="top-center"
+      position="top-right"
       autoClose={5000}
       newestOnTop={false}
       closeOnClick

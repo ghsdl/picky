@@ -1,8 +1,8 @@
 // Import npm
 import React, {useEffect, useRef} from 'react';
 import lottie from 'lottie-web';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import logoPicky from 'src/assets/logoPicky.png';
 
 // Import of components
 import Card from 'src/containers/Card';
@@ -72,20 +72,30 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
       );
     } else if (currentPage === 'wish') {
       // If the cards display the watchlist of Picky Wish
-      return (
-      <div className="cards">
-      {wish.map((program) => (
-        <Card
-          id={program.betaseries_id}
-          title={program.title}
-          poster={program.poster}
-          platformsInfos={program.platforms}
-          key= {program.id}
-          program={program}
-        />
-      ))}
-      </div>
-      );
+      if(wish.length === 0) {
+        // If there is no program in the watchlist, a message is displayed
+        return (
+          <div className="cards">
+            <p> Vous n'avez pas encore de programme dans votre watchlist.</p>
+            <img className="cards__img" src={logoPicky} alt="Logo de Picky" />
+          </div>
+        )
+      } else {
+        return (
+        <div className="cards">
+        {wish.map((program) => (
+          <Card
+            id={program.betaseries_id}
+            title={program.title}
+            poster={program.poster}
+            platformsInfos={program.platforms}
+            key= {program.id}
+            program={program}
+          />
+        ))}
+        </div>
+        );
+      };
 
     } else if(currentPage === "mood") {
       // If the cards display the results of Picky Mood

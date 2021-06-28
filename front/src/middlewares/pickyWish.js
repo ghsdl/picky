@@ -19,6 +19,14 @@ const notifyDelete = () => {toast.success("Ce programme a bien été supprimé d
   draggable: true,
 }};
 
+const notifyVisitor = () => {toast.error("Vous devez être connecté pour ajouter un programme à votre watchlist"),{
+  position: "top-center",
+  autoClose: 5000,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+}};
+
 const pickyWish = (store) => (next) => (action) => {
   const config = {
     headers: { 
@@ -48,7 +56,8 @@ const pickyWish = (store) => (next) => (action) => {
             notifyAdd();
           })
           .catch((error) => {
-            console.log(`error`, error)
+            console.log(`error`, error);
+            notifyVisitor();
           });
         break;
     };

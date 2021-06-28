@@ -31,9 +31,9 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
   return(
   <div>
     <ToastContainer
-      className="toast-Container"
+      className="home__toast-Container"
       color="black"
-      position="top-center"
+      position="top-right"
       autoClose={5000}
       newestOnTop={false}
       closeOnClick
