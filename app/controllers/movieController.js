@@ -12,7 +12,7 @@ const movieController = {
         res.json(movie);
         // ELSE THROW ERROR
       } else {
-        res.status(404).json("Cannot find movie.");
+        res.status(404).json("Cannot find movies");
       }
     } catch (error) {
       console.log(error);
