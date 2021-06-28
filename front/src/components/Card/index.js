@@ -1,11 +1,12 @@
 // Import npm
 import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import posterPopcorn from 'src/assets/poster-popcorn.jpg';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Import scss
 import './card.scss';
+import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 // Display of one card
 const Card = ({ id, title, poster, platformsInfos, platforms, addRemoveWish, removeFromWish, program, bookmarksIds, getBookmarksIds, loadBookmark }) => {
@@ -52,26 +53,24 @@ const Card = ({ id, title, poster, platformsInfos, platforms, addRemoveWish, rem
             })
           }
           {isInWatchList && (
-            <button
-            className='card__watchlistButton, card__watchlistButton--delete'
-            type="button"
-            onClick = {() => {
-              removeFromWish(id);
-              }}
-          >
-            +
-          </button>
+            <FontAwesomeIcon
+              icon={faTimesCircle}
+              size="2x"
+              className='card__watchlistButton'
+              onClick = {() => {
+                removeFromWish(id);
+                }}
+            />
           )}
           {!isInWatchList && (
-            <button
-            className='card__watchlistButton'
-            type="button"
-            onClick = {() => {
+            <FontAwesomeIcon
+              icon={faPlusCircle}
+              size="2x"
+              className='card__watchlistButton'
+              onClick = {() => {
               addRemoveWish(program);
             }}
-          >
-            +
-          </button>
+            />
           )}
         </div>
       </div>
