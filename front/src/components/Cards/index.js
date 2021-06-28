@@ -1,6 +1,8 @@
 // Import npm
 import React, {useEffect, useRef} from 'react';
 import lottie from 'lottie-web';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import of components
 import Card from 'src/containers/Card';
@@ -26,6 +28,7 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
 
   {// When the results are loading, "Loading" is displayed
   }
+
   if (loading === true) {
     return (
   <div>

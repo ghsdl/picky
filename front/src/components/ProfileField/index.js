@@ -49,8 +49,6 @@ const ProfileField = ({
   profilPseudo,
   resetProfil,
 }) => {
-  console.log(member)
-  console.log(profilPseudo)
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {

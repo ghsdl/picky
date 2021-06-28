@@ -16,7 +16,7 @@ const SignUp = ({ isConnected }) => {
     <div className="signUp">
       <h2 className="signUp__title"> Profitez des avantages d'un Picky Addict, Inscrivez-vous !</h2>
       <SignUpForm isConnected={isConnected} />
-      </div>
+    </div>
 
   </>
   )

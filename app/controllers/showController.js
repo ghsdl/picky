@@ -2,6 +2,7 @@
 const showDataMapper = require('../dataMappers/showDataMapper');
 
 const serieController = {
+  
   randomShows: async (_, res) => {
     try {
       // FETCHING RANDOM SHOWS FROM THIRD PARTY API

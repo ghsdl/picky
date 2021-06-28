@@ -2,6 +2,26 @@ const fetch = require("node-fetch");
 
 module.exports = {
 
+    /**
+     * @typedef searchAll
+     * @property {number} id - Unique identifier
+     * @property {number} thetvdb_id - identifier tv data base
+     * @property {string} imdb_id - identifier
+     * @property {string} title - titles of shows
+     * @property {string} seasons - show's season
+     * @property {string} episodes - show's episode
+     * @property {string} followers - show's followers
+     * @property {string} creation - creation date
+     * @property {string} resource_url - show's poster
+     * @property {number} id - Unique identifier
+     * @property {string} title - titles of movies
+     * @property {string} tmdb_id - identifier 
+     * @property {string} imdb_id - identifier
+     * @property {string} followers - movies's followers
+     * @property {string} production_year - creation date
+     * @property {string} resource_url - movies's poster
+     */
+
   async searchAll(query) {
     const apiUrl = 'https://api.betaseries.com/search/all?v=3.0',
       args = {

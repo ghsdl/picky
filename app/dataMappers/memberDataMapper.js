@@ -12,6 +12,17 @@ module.exports = {
      * @property {string} updated_at - Update date (date ISO 8601)
      */
 
+     /**
+     * @typedef bookmarksMember
+     * @property {number} id - Unique identifier
+     * @property {string} betaseries_id - Member's nickname
+     * @property {string} title - bookmark's email
+     * @property {string} platform - bookmark's platform
+     * @property {string} member_id - references "member" ("id")
+     * @property {string} created_at - Creation date (date ISO 8601)
+     * @property {string} updated_at - Update date (date ISO 8601)
+     */
+
     /**
      * @typedef MemberInput
      * @property {string} pseudo - Member's nickname
@@ -32,6 +43,7 @@ module.exports = {
         return result.rows[0];
     },
    
+
     async getBookmarkMember(memberId) {
         console.log(memberId);
         const result = await pool.query(`SELECT json_agg(bookmark.*) AS bookmark FROM bookmark WHERE member_id = $1;`, [memberId]);
