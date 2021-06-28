@@ -14,17 +14,14 @@
   box-shadow: 0px 0px 20px 0px #00000040;
   box-shadow: 0px 4px 4px 0px #00000040;
 
-  /*
   &:last-child {
-    border-radius: 0px;
     &::after {
       display: block;
       content: '';
-      height: 50px;
+      min-height: 100px;
       width: 100vw;
     }
   }
-  */
 
   &__infos {
     height: auto;
