@@ -16,7 +16,7 @@ function About () {
           name: "Maeva", 
           id: 1,
           role: "Product Owner",
-          dev: "Dev Back",
+          dev: "- Dev Back",
           img: "https://ca.slack-edge.com/T01H7FN28C9-U01HUH1UJG5-4bc3ba217e34-512",
         },
         { 
@@ -37,13 +37,13 @@ function About () {
           name: "Clement", 
           id: 4,
           role: "Référent Technique",
-          dev: "Git Master - Dev Front",
+          dev: "- Git Master - Dev Front",
           img: "https://ca.slack-edge.com/T01H7FN28C9-U01HUGJB529-b45c59226c15-512",
         },
         { 
           name: "Delia", 
           id: 5,
-          dev: "Dev Front",
+          dev: "- Dev Front",
           role: "Scrum Master",
           img: "https://ca.slack-edge.com/T01H7FN28C9-U01J4T1FGSX-5a82dcdf059e-192",
         },
@@ -126,7 +126,7 @@ function About () {
 
 
   return (
-    <div>
+    <div className="wrapper">
       <Header /> 
       <div className="about">
         <div className="accordion">

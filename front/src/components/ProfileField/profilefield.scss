@@ -89,7 +89,7 @@
   max-width: 800px;
   @include epic-sides() {background: inherit;}
   text-align: center;
-  margin-bottom: 5vh;
+  margin-bottom: 3vh;
   
   span {
     position: relative;
@@ -104,6 +104,50 @@
 	font-size: 1.2vh;
   }
 }
+
+.modal-title {
+  margin-bottom: 2vh;
+}
+.p-modal {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.p-modal-confirm{
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+}
+.button-modal {
+  display: flex;
+  justify-content: center;
+}
+
+.delete-button {
+  margin-left: 2vh;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  padding-bottom: 1vh;
+  padding-top:1vh;
+  border: none;
+  border-radius: 5px;
+  background: #2a9d8f;
+  color: white;
+}
+
+.back-button {
+  margin-right: 2vh;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  padding-bottom:1vh;
+  padding-top: 1vh;
+  border: none;
+  border-radius: 5px;
+  background: #CE4257;
+  color: white;
+}
+
 .gate__pseudo {
   display: inline-block;
   width: 50vh;
