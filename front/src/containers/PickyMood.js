@@ -77,7 +77,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   lookForPickyMoodResult: () => {
     dispatch(pickyMoodResult());
-    //console.log(urlAxios)
   },
   resetPage: () => {
     dispatch(reset())

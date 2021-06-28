@@ -9,7 +9,7 @@ import './card.scss';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 // Display of one card
-const Card = ({ id, title, poster, platformsInfos, platforms, addRemoveWish, removeFromWish, program, bookmarksIds, getBookmarksIds, loadBookmark }) => {
+const Card = ({ id, title, poster, platformsInfos, platforms, addToWish, removeFromWish, program, bookmarksIds }) => {
   let isInWatchList = false;
   
   return (
@@ -27,6 +27,9 @@ const Card = ({ id, title, poster, platformsInfos, platforms, addRemoveWish, rem
         <p className="card__infos__title">{title}</p>
         <div className="card__infos__elements">
           <div className="card__platforms">
+
+            { // For every platform, if it is available in France, we get the logo and display it
+            }
             {platformsInfos.map((platformInfo) => (
               platforms.map((platform) => {
                 if(platformInfo.id === platform.id) {
@@ -45,8 +48,7 @@ const Card = ({ id, title, poster, platformsInfos, platforms, addRemoveWish, rem
           {// If the program is in the watchlist, a button to delete it from it is displayed.
             // Otherwise, a button to add it to the watchlist is displayed.
           }
-          {
-            bookmarksIds.map((bookmarkId) => {
+          {bookmarksIds.map((bookmarkId) => {
               if (bookmarkId === id) {
                 isInWatchList = true;
               }
@@ -68,7 +70,7 @@ const Card = ({ id, title, poster, platformsInfos, platforms, addRemoveWish, rem
               size="2x"
               className='card__watchlistButton'
               onClick = {() => {
-              addRemoveWish(program);
+              addToWish(program);
             }}
             />
           )}

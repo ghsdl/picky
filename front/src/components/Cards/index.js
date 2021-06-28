@@ -37,12 +37,9 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
   {// When the results are not loading anymore, they are displayed
   }
   if (loading === false) {
-    {// If the current page is home (Picky Find), the results displayed depend on the request of
-      // the API
-    }
     if (currentPage==="home") {
+      // If the cards display the results of Picky Find
       return (
-        // TODO: make the display of the cards dynamic with a map
         <div className="cards">
         {// The movies are displayed
         }
@@ -71,6 +68,7 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
         </div>
       );
     } else if (currentPage === 'wish') {
+      // If the cards display the watchlist of Picky Wish
       return (
       <div className="cards">
       {wish.map((program) => (
@@ -87,7 +85,9 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
       );
 
     } else if(currentPage === "mood") {
+      // If the cards display the results of Picky Mood
       if(results.length === 0) {
+        // If there is no result, a message is displayed
         return (
           <div className="cards-img">
             <p className="cards">Il n'y a aucun résultat pour votre recherche</p>
@@ -95,9 +95,8 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
         )
       } else {
         return (
+          // If there is at least one result, it is displayed
           <div className="cards">
-            {// The programs are displayed
-            }
             {results.map((result) => (
               <Card
                 id={result.id}
