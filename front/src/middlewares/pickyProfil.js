@@ -21,7 +21,7 @@ const notifyPswd = () => {toast.success("Password modifié"),{
   draggable: true,
 }};
 
-const notifySup = () => {toast.error("Votre compte va être supprimé.."),{
+const notifySup = () => {toast.error("Votre compte va être supprimé..."),{
   position: "top-center",
   autoClose: 3000,
   closeOnClick: true,
@@ -60,16 +60,19 @@ const profil =  (store) => (next) => (action) => {
       const config = {
         headers: {
           "Bearer": `${store.getState().status.token}`,
+          "Accept": "application/json",
+          "Content-Type": "application/json",
         }
       }
       
-      const email = !state.user.email ? state.profil.member : state.user.email
+      const email = state.user.email
       const pseudo = !state.user.pseudo ? state.profil.pseudo : state.user.pseudo;
-            
-      const bodyParameters = {
+      
+      const bodyParameters = !state.user.email ? {pseudo:pseudo}: {pseudo:pseudo, email:email}
+      /*const bodyParameters = {
         pseudo: pseudo,
         email: email,
-     };
+     };*/
      
       axios.patch('https://projet-picky.herokuapp.com/member',
         bodyParameters,
@@ -86,7 +89,7 @@ const profil =  (store) => (next) => (action) => {
         })
         .catch((error)=> {
           console.log(error)
-          store.dispatch(updateProfilErrorEmailOrPseudo(error.response.data))
+          store.dispatch(updateProfilErrorEmailOrPseudo(error.response.data.error || error.response.data))
         });
       break;
     }

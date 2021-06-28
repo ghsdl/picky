@@ -99,14 +99,14 @@ function About () {
         },
         { 
           name: "Express Js", 
-          id: 3,
+          id: 4,
           role: " ",
           dev: " ",
           img: "https://img2.freepng.fr/20180711/yfe/kisspng-express-js-node-js-javascript-mongodb-node-js-5b461d28173fc6.1251392115313216400952.jpg",
         },
         { 
           name: "PostgreSQL", 
-          id: 3,
+          id: 5,
           role: " ",
           dev: " ",
           img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/540px-Postgresql_elephant.svg.png",
