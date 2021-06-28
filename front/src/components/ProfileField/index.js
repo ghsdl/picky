@@ -117,7 +117,7 @@ const ProfileField = ({
               }
 
               <button 
-                className="field-update"
+                className="updateEmailPseudo"
                 type="submit"
               > 
               Modifier mon profil
@@ -166,7 +166,7 @@ const ProfileField = ({
                 </p>
                 }
                 <button 
-                  className="field-update"
+                  className="updateEmailPseudo"
                   type="submit"
                 > 
                 Modifier mon mot de passe

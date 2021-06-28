@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .pickyMood{
   display: flex;
   justify-content: center;
@@ -44,16 +46,39 @@
 	font-size: 1vh;
 }
 .redirectSignIn{
-	width: 44vh;
-	margin-top: 3vh;
-  margin-left: 5vh;
+  width: 100%;
+	margin-top: 4vh;
 	padding: 1vh;
 	background: white;
-	color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0, 0.7);
 	text-transform: uppercase;
 	font-style: italic;
-	letter-spacing: 0.3ch;
-	font-size: 1.2vh;
+  letter-spacing: 0.3ch;
+  font-weight: bold;
+  font-size: 1.2vh;
+  letter-spacing: 0.3ch;
+  border: 3px solid #F4BB01;
+  border-radius: 5px;
+  box-shadow: vars.$shadow;
+  &:active {
+    box-shadow: vars.$inset-shadow;
+  }
+}
+.formUser-login{
+    width: 100%;
+		margin-top: 8vh;
+		text-transform: uppercase;
+		font-style: italic;
+    letter-spacing: 0.3ch;
+    border: none;
+    padding: 10px;
+    background:  #F4BB01;
+    color: white;
+    border-radius: 5px;
+    box-shadow: vars.$shadow;
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
 }
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);

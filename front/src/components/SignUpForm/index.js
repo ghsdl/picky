@@ -47,7 +47,7 @@ const SignUpForm = ({
           <Field
             type="email"
             name="email"
-            placeholder="Adresse Email"
+            placeholder="Adresse email"
             onChange={changeField}
             value={email}
             required
@@ -63,7 +63,7 @@ const SignUpForm = ({
           <Field
             type="password"
             name="confirmationPassword"
-            placeholder="Confirmation du mot de passe"
+            placeholder="Confirmation"
             onChange={changeField}
             value={confirmationPassword}
             required
@@ -74,7 +74,7 @@ const SignUpForm = ({
             </p>
           }
         
-        <button type="submit" className="redirectConnected">S'inscrire</button>
+        <button type="submit" className="formUser-SignUp">S'inscrire</button>
       </div>
       </form>
       <Link to="/signin"> 
