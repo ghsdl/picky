@@ -74,7 +74,6 @@ const memberController = { // BACKEND METHOD
     try {
       // GETTING THE MEMBER BY ITS ID
       const member = await memberDataMapper.getOne(req.member.id);
-      console.log(member);
 
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
@@ -104,10 +103,8 @@ const memberController = { // BACKEND METHOD
 
       // UPDATING PASSWORD
       if (newData.password) {
-        console.log(newData.password);
-        //newData.password = member.password;
 
-      // CHECKING IF BOTH PASSWORDS ARE THE SAME
+        // CHECKING IF BOTH PASSWORDS ARE THE SAME
         if (newData.password !== newData.confirmationPassword) {
           return res.status(401).json(`Les mots de passe doivent être identiques.`);
         }
@@ -120,7 +117,6 @@ const memberController = { // BACKEND METHOD
       member.password = await bcrypt.hash(newData.password , salt);
       
       const updatedMember = await memberDataMapper.patch(member, req.member.id);
-      console.log("pour modif password", updatedMember);
       return res.json({ updatedMember });
       }
 
