@@ -73,11 +73,9 @@ router.get('/search/:query', searchController.searchAll);
 router.post('/moodresults', searchController.mood);
 
 // MOVIES ROUTES
-router.get('/movies', movieController.allMovies);
 router.get('/movies/random', movieController.randomMovies);
 
 // SHOWS ROUTES
-router.get('/shows', showController.allShows);
 router.get('/shows/random', showController.randomShows);
 
 // PLATFORMS ROUTES
