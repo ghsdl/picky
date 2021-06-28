@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .toast-Container{
   color: rgb(53, 53, 53);
   font-style: italic;
@@ -77,17 +79,24 @@
 }
 
 .field-update {
-  font-size: 1.5vh;
+  width: auto;
+  margin-top: 20px;
+  text-transform: uppercase;
   font-style: italic;
   font-weight: bold;
-  background: #F4BB01;
-  border-radius: 2px;
+  letter-spacing: 0.3ch;
   border: none;
-  box-shadow: inset 0 0 0 rgba(0,0,0,0.1), 0px 5px 16px 0px rgba(136, 100, 100, 0.5);
-  padding: 1vh;
+
+  padding: 15px;
+
+  background:  #F4BB01;
+  color: white;
+  border-radius: 5px;
+  
+  box-shadow: vars.$shadow;
 
   &:active {
-    box-shadow: inset 0px 5px 16px 0px rgba(0,0,0,0.5), 0 0 0 rgba(0,0,0,0.1);
+    box-shadow: vars.$inset-shadow;
   }
 }
 .row {
@@ -497,14 +506,25 @@ span:nth-child(2) .gate__confirmationPassword:active{
 
 
 .profile-delete{
-  font-size: 1.5vh;
+  width: auto;
+  margin-top: 20px;
+  text-transform: uppercase;
   font-style: italic;
   font-weight: bold;
-  border: 1px, solid, black;
-  background: #CE4257;
-  border-radius: 5px;
-  padding: 1vh;
+  letter-spacing: 0.3ch;
+  border: none;
+
+  padding: 15px;
+
+  background:  #CE4257;
   color: white;
+  border-radius: 5px;
+  
+  box-shadow: vars.$shadow;
+
+  &:active {
+    box-shadow: vars.$inset-shadow;
+  }
 };
 
 .profile-modal{
