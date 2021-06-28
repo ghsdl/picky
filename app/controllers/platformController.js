@@ -2,6 +2,7 @@
 const platformDataMapper = require('../dataMappers/platformDataMapper');
 
 const platformController = {
+
   async allPlatforms(_, res) {
     try {
       // FETCHING PLATFORMS FROM THIRD PARTY API

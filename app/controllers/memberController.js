@@ -56,6 +56,7 @@ const memberController = {
 
       // GETTING ALL BOOMARKS FOR A MEMBER
       const bookmarkMember = await memberDataMapper.getBookmarkMember(id);
+      
 
       res.json({ bookmarkMember });
     } catch (error) {

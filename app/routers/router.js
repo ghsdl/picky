@@ -18,8 +18,6 @@ router.get('/', (_, res) => {
   res.send(`Bienvenue les fronteux sur l'API Picky!`)
 });
 
-// Affiche un résultat de 50 films sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
-router.get('/movies', movieController.allMovies);
 // Methode qui affiche 5 films au hasard
 router.get('/movies/random', movieController.randomMovies);
 
@@ -29,17 +27,52 @@ router.get('/shows', showController.getShows);
 router.get('/shows/random', showController.randomShows);
 
 // AUTH ROUTES
+/**
+ * Save a new member
+ * @route POST /signup
+ * @returns {newMembe[]} 200 - new member infos
+ * @returns {error} 401 - "Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email."
+ */
 router.post('/signup', (validate.body(memberInsertSchema)), authController.add);
+
+/**
+ * User login
+ * @route POST /signin
+ * @returns {memberConneted[]} 200 - member connected
+ * @returns {error} 401 - "Email ou mot de passe incorrect."
+ */
 router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
 
 // SEARCH ROUTES
+
+/**
+ * Display a list of 10 shows with parameter 'text'
+ * @route GET /search/shows/:text
+ * @param {text} text - parameter text
+ * @returns {searchShows[]} 200 - results
+ * @returns {} 404 - "Resource not found."
+ */
 router.route('/search/shows/:text')
   .get(showController.searchShows);
 
+/**
+ * Display a list of 10 movies with parameter 'text'
+ * @route GET /search/movies/:text
+ * @param {text} text - parameter text
+ * @returns {searchMovies[]} 200 - results
+ * @returns {} 404 - "Resource not found."
+ */
 router.route('/search/movies/:text')
   .get(movieController.searchMovies);
 
+/**
+ * Display a list of 5 movies and shows with parameter 'query'
+ * @route GET /search/:query
+ * @param {text} query - parameter query
+ * @returns {searchAll[]} 200 - results
+ * @returns {} 404 - "Resource not found."
+ */  
 router.route('/search/:query')
   .get(searchController.searchAll);
 
@@ -49,7 +82,15 @@ router.post('/moodresults', searchController.mood);
   .post(searchController.addToBookmark)*/
 
 // PLATFORM ROUTES
+
 router.route('/platform')
+
+/**
+ * All Betaseries platforms 
+ * @route GET /platform
+ * @returns {platforms[]}200 - shows all platforms
+ * @returns {error} 404 - "error": "Resource not found."
+ */
   .get(platformController.allPlatforms);
 
 // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
@@ -62,12 +103,41 @@ router.route('/platform/:id(\\d+)')
 
   // BOOKMARK ROUTES
 router.route('/bookmark')
+
+  /**
+ * All Bookmarks 
+ * @route GET /bookmark
+ * @returns {bookmarks[]}200 - shows all bookmarks
+ * @returns {error} 500 - "Internal Server Error"
+ */
   .get(bookmarkController.get)
+
+    /**
+ * Post Bookmarks 
+ * @route POST /bookmark
+ * @returns 200 - Everything went okay
+ * @returns {error} 500 - "Internal Server Error"
+ */
   .post(bookmarkController.post);
 
 router.route('/bookmark/:id(\\d+)')
+
+  /**
+ * Get Bookmark by id
+ * @route GET /bookmark/id
+ * @param {integer} id - Bookmark id
+ * @returns {oneBookmark[]}200 - show one bookmark
+ * @returns {error} 404 - "error": "Resource not found."
+ */
   .get(bookmarkController.getById)
-  //.patch(bookmarkController.update)
+
+  /**
+ * Delete Bookmark by id
+ * @route DELETE /bookmark/id
+ * @param {integer} id - Bookmark id
+ * @returns {oneBookmark[]}204 - No body returned for esponse
+ * @returns {error} 404 - "error": "Resource not found."
+ */
   .delete(bookmarkController.delete);
 
   // MEMBER ROUTES
@@ -78,7 +148,7 @@ router.route('/members')
    * @returns {Member[]} 200 - Member's list
    * @returns {Error} 500 - Error servor
    */
-  .get(memberController.get);
+  .get( memberController.get);
 
   router.route('/member')
   /**  

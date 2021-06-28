@@ -36,6 +36,7 @@ const bookmarkController = {
       if (!bookmark) {
         return next();
       }
+      console.log(bookmark)
       
       res.json({ bookmark });
     } catch (error) {
