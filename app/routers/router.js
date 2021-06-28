@@ -15,7 +15,20 @@ const auth = require('../middleware/authMiddleware');
 const router = express.Router();
 
 // AUTH ROUTES
+/**
+ * Save a new member
+ * @route POST /signup
+ * @returns {newMembe[]} 200 - new member infos
+ * @returns {error} 401 - "Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email."
+ */
 router.post('/signup', (validate.body(memberInsertSchema)), authController.add);
+
+/**
+ * User login
+ * @route POST /signin
+ * @returns {memberConneted[]} 200 - member connected
+ * @returns {error} 401 - "Email ou mot de passe incorrect."
+ */
 router.post('/signin', authController.log);
 router.get('/verify', auth, authController.verify);
 
@@ -56,31 +69,99 @@ router.route('/member')
 
 // BOOKMARK ROUTES
 router.route('/bookmark')
+
+ /**
+ * All Bookmarks 
+ * @route GET /bookmark
+ * @returns {bookmarks[]}200 - shows all bookmarks
+ * @returns {error} 500 - "Internal Server Error"
+ */
 .get(bookmarkController.get)
+
+    /**
+ * Post Bookmarks 
+ * @route POST /bookmark
+ * @returns 200 - Everything went okay
+ * @returns {error} 500 - "Internal Server Error"
+ */
 .post(auth, bookmarkController.post);
 
 router.route('/bookmark/:id(\\d+)')
+
+/**
+ * Get Bookmark by id
+ * @route GET /bookmark/id
+ * @param {integer} id - Bookmark id
+ * @returns {oneBookmark[]}200 - show one bookmark
+ * @returns {error} 404 - "error": "Resource not found."
+ */
 .get(bookmarkController.getById)
+
+/**
+ * Delete Bookmark by id
+ * @route DELETE /bookmark/id
+ * @param {integer} id - Bookmark id
+ * @returns {oneBookmark[]}204 - No body returned for esponse
+ * @returns {error} 404 - "error": "Resource not found."
+ */
 .delete(auth, bookmarkController.delete);
 
 // MEMBER AND THEIR BOOKMARKS ROUTE
+
+/**
+ * GET Bookmarks for a member
+ * @route GET /member/bookmark
+ * @returns {bookmarksMember[]}200 - Results
+ * @returns {error} 500 - "error servor"
+ */
 router.get('/member/bookmark', auth, memberController.getBookmarkByMember);
 
 // SEARCH ROUTES
+
+/**
+ * Display a list of 10 shows with parameter 'text'
+ * @route GET /search/shows/:text
+ * @param {text} text - parameter text
+ * @returns {searchShows[]} 200 - results
+ * @returns {} 404 - "Resource not found."
+ */
 router.get('/search/shows/:text', showController.searchShows);
+
+/**
+ * Display a list of 10 movies with parameter 'text'
+ * @route GET /search/movies/:text
+ * @param {text} text - parameter text
+ * @returns {searchMovies[]} 200 - results
+ * @returns {} 404 - "Resource not found."
+ */
 router.get('/search/movies/:text', movieController.searchMovies);
+
+/**
+ * Display a list of 5 movies and shows with parameter 'query'
+ * @route GET /search/:query
+ * @param {text} query - parameter query
+ * @returns {searchAll[]} 200 - results
+ * @returns {} 404 - "Resource not found."
+ */
 router.get('/search/:query', searchController.searchAll);
+
+
 router.post('/moodresults', searchController.mood);
 
 // MOVIES ROUTES
-router.get('/movies', movieController.allMovies);
 router.get('/movies/random', movieController.randomMovies);
 
 // SHOWS ROUTES
-router.get('/shows', showController.allShows);
 router.get('/shows/random', showController.randomShows);
 
 // PLATFORMS ROUTES
+
+/**
+ * All Betaseries platforms 
+ * @route GET /platform
+ * @returns {platforms[]}200 - shows all platforms
+ * @returns {error} 404 - "error": "Resource not found."
+ */
 router.get('/platform', platformController.allPlatforms);
 
 // ERROR CONTROLLER

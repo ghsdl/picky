@@ -1,23 +1,17 @@
 const fetch = require('node-fetch');
 
 module.exports = {
-  async getAllMovies() {
-    try {
-      const apiUrl =
-        'https://api.betaseries.com/search/movies?limit=50&svods=1%2C2%2C3&="&key=e7da6c21d678&';
 
-      // Affiche un résultat de 50 films sur les 3 plateformes (Netflix, Amazon Prime Video, OCS Go)
-      const response = await fetch(apiUrl);
+     /**
+     * @typedef searchMovies
+     * @property {number} id - Unique identifier
+     * @property {number} following - number of followers
+     * @property {number} release_date - date of realisation
+     * @property {string} svods - on which platform
+     * @property {string} title - titles of movies
+     */
 
-      let body = await response.json();
-      if (!Array.isArray(body)) {
-        body = [body];
-      }
-      return body;
-    } catch (error) {
-      console.error(error);
-    }
-  },
+  
 
   async randomMovies() {
     try {
