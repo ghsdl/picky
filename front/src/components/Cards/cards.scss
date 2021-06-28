@@ -27,18 +27,11 @@
     z-index: -1;
   }
 
-  &-img {
-    background-image: url(./sadpopcorn.png);
-    background-repeat: no-repeat;
-    width: 100vw;;
-    height: 100vh;
-    margin: auto;
-    
+  &__img {
+    width: 300px;
+    height: 300px;
     position: absolute;
-    left: 50%;
-    top: 35%;
-    transform: translateX(-50%);
-    z-index: -1;
+    margin-top: 50px;
   }
 }
 

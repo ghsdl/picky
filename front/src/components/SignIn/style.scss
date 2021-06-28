@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .pickyMood{
   display: flex;
   justify-content: center;
@@ -33,34 +35,8 @@
   }
   
 }
-.formUser{
-	
-	display: flex;
-	justify-content: center;
-	
 
-	&-input{
-		width: 44vh;
-		margin-top: 6vh;
-	}
-	&-login{
-		width: 100%;
-		margin-top: 10vh;
-		padding: 1vh;
-		background: white;
-		color: rgb(0, 0, 0);
-		text-transform: uppercase;
-		font-style: italic;
-		letter-spacing: 0.3ch;
 
-	}
-	
-}
-.input-middle{
-	display:flex;
-	justify-content: center;
-	
-}
 .input-middle-errorMessage{
 	display: block;
 	text-align: center;
@@ -69,164 +45,255 @@
 	font-style: italic;
 	font-size: 1vh;
 }
-.redirect{
-	width: 100%;
-	margin-top: 3vh;
+.redirectSignIn{
+  width: 100%;
+	margin-top: 4vh;
 	padding: 1vh;
 	background: white;
-	color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0, 0.7);
 	text-transform: uppercase;
 	font-style: italic;
-	letter-spacing: 0.3ch;
-	font-size: 1.2vh;
+  letter-spacing: 0.3ch;
+  font-weight: bold;
+  font-size: 1.2vh;
+  letter-spacing: 0.3ch;
+  border: 3px solid #F4BB01;
+  border-radius: 5px;
+  box-shadow: vars.$shadow;
+  &:active {
+    box-shadow: vars.$inset-shadow;
+  }
 }
-.input {
-	position: relative;
-	z-index: 1;
-	display: inline-block;
-	margin: 1em;
-	max-width: 400px;
-	width: calc(100% - 2em);
-	vertical-align: top;
-}
-
-.input__field {
-	position: relative;
-	display: block;
-	float: right;
-	padding: 0.8em;
-	width: 60%;
-	border: none;
-	border-radius: 0;
-	background: #f0f0f0;
-	color: rgb(0, 0, 0);
-	font-weight: 400;
-	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	-webkit-appearance: none; /* for box shadows to show on iOS */
-}
-
-.input__field:focus {
-	outline: none;
+.formUser-login{
+    width: 100%;
+		margin-top: 8vh;
+		text-transform: uppercase;
+		font-style: italic;
+    letter-spacing: 0.3ch;
+    border: none;
+    padding: 10px;
+    background:  #F4BB01;
+    color: white;
+    border-radius: 5px;
+    box-shadow: vars.$shadow;
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
 }
 
-.input__label {
-	display: inline-block;
-	
-	padding: 0 1em;
-	width: 40%;
-	color: #6a7989;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
+
+
+
+@mixin epic-sides() { // https://codepen.io/MichaelArestad/pen/qltuk
+    position: relative;
+    
+
+    &:before {
+        position: absolute;
+        content: "";
+        display: block;
+        z-index: -1;
+        @content;
+    }
+}
+
+
+.formSignIn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+	margin-top: 10vh;
+
+  &-input{
+		display:flex;
+		flex-direction: column;
+		width: 40vh
+	}
+}
+
+.row {
+  max-width: 800px;
+  @include epic-sides() {background: inherit;}
+  text-align: center;
+  margin-bottom: 3vh;
+  
+  span {
+    position: relative;
+    display: flex;
+    margin: 2vh
+  }
+  &-error{
+    margin-bottom: 2vh;
+    color: red;
 	font-weight: bold;
-	font-size: 70.25%;
-	-webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+	font-style: italic;
+	font-size: 1.2vh;
+  }
 }
 
-.input__label-content {
-	position: relative;
-	display: block;
-	padding: 1.6em 0;
-	width: 100%;
+.gate__email {
+  display: inline-block;
+  width: 50vh;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  background: #ffffff;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 60px; // Arbitrary.
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #070707;
+    text-align: center;
+    font-style: italic;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+  + label {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 11.5px 12px;
+    text-shadow: 0 1px 0 rgba(19,74,70,.4);
+    background: #F4BB01;
+    transition: all .4s ease-in-out;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    transform-origin: left bottom;
+    z-index: 20;
+    font-style: italic;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 3px;
+      background: #F4BB01;
+      transform-origin: left bottom;
+      transition: all .4s ease-in-out;
+      pointer-events: none;
+      z-index: -1;
+    }
+    &:before {
+      background: rgba(3,36,41,.2);
+      z-index: -2;
+      right: 20%;
+    }
+  }
 }
 
-.graphic {
-	position: absolute;
-	top: 0;
-	left: 0;
-	fill: none;
+span:nth-child(2) .gate__email:focus,
+span:nth-child(2) .gate__email:active{
+  text-indent: 0;
+}
+.gate__email:focus,
+.gate__email:active {
+  text-indent: 0;
+  background: #fff;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+  + label {
+    transform: rotate(-66deg);
+    border-radius: 3px;
+    
+    &:before {
+      transform: rotate(10deg);
+    }
+  }
 }
 
-.icon {
-	color: #ddd;
-	font-size: 150%;
-}
+.gate__password {
+  display: inline-block;
+  width: 50vh;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  background: #ffffff;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 20vh; // Arbitrary.
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #070707;
+    text-align: center;
+    font-style: italic;
+    text-indent: 0;
+    font-weight: 300;
+  }
 
-.input--chisato {
-	padding-top: 1em;
+  + label {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 11.5px 12px;
+    text-shadow: 0 1px 0 rgba(19,74,70,.4);
+    background: #F4BB01;
+    transition: all .4s ease-in-out;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    transform-origin: left bottom;
+    z-index: 20;
+    font-style: italic;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 3px;
+      background: #F4BB01;
+      transform-origin: left bottom;
+      transition: all .4s ease-in-out;
+      pointer-events: none;
+      z-index: -1;
+    }
+    &:before {
+      background: rgba(3,36,41,.2);
+      z-index: -2;
+      right: 20%;
+    }
+  }
 }
-
-.input__field--chisato {
-	width: 100%;
-	padding: 0.8em 0.5em;
-	background: transparent;
-	background-color: white;
-	border: 2px solid;
-	color: #000000;
-	-webkit-transition: border-color 0.3s;
-	transition: border-color 0.3s;
+span:nth-child(2) .gate__password {
+  text-indent: 120px;
 }
-
-.input__label--chisato {
-	width: 100%;
-	position: absolute;
-	top: 0;
-	text-align: left;
-	overflow: hidden;
-	padding: 0;
-	pointer-events: none;
-	-webkit-transform: translate3d(0, 3em, 0);
-	transform: translate3d(0, 3em, 0);
+span:nth-child(2) .gate__password:focus,
+span:nth-child(2) .gate__password:active{
+  text-indent: 0;
 }
-
-.input__label-content--chisato {
-	padding: 0 1em;
-	font-weight: 400;
-	color: #b5b5b5;
-}
-
-.input__label-content--chisato::after {
-	content: attr(data-content);
-	position: absolute;
-	top: -200%;
-	left: 0;
-	color: #f4bb01;
-	font-weight: 800;
-}
-.input__field--chisato:focus,
-.input--filled .input__field--chisato {
-	border-color: #f4bb01;
-}
-
-.input__field--chisato:focus + .input__label--chisato,
-.input--filled .input__label--chisato {
-	-webkit-animation: anim-chisato-1 0.3s forwards;
-	animation: anim-chisato-1 0.3s forwards;
-}
-
-.input__field--chisato:focus + .input__label--chisato .input__label-content--chisato,
-.input--filled .input__label-content--chisato {
-	-webkit-animation: anim-chisato-2 0.3s forwards;
-	animation: anim-chisato-2 0.3s forwards;
-}
-
-@-webkit-keyframes anim-chisato-1 {
-	0%, 50% {
-		-webkit-transform: translate3d(0, 3em, 0);
-		transform: translate3d(0, 3em, 0);
-	}
-	51%, 100% {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-	}
-}
-
-@-webkit-keyframes anim-chisato-2 {
-	0% {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-	}
-	50%, 51% {
-		-webkit-transform: translate3d(0, 100%, 0);
-		transform: translate3d(0, 100%, 0);
-	}
-	100% {
-		color: transparent;
-		-webkit-transform: translate3d(0, 200%, 0);
-		transform: translate3d(0, 200%, 0);
-	}
+.gate__password:focus,
+.gate__password:active {
+  text-indent: 0;
+  background: #fff;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+  + label {
+    transform: rotate(-66deg);
+    border-radius: 3px;
+    
+    &:before {
+      transform: rotate(10deg);
+    }
+  }
 }

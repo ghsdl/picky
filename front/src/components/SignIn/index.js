@@ -40,43 +40,46 @@ export default function SignIn({
           Connectez-Vous à Picky
         </div>
       </div>
-      <div className="formUser">
-        <div className="formUser-input">
+      <div className="formSignIn">
+        <div className="form-input">
           <form autoComplete="off" onSubmit={handleSubmit}>
-            <Field
-              type="email"
-              name="email"
-              placeholder="Adresse Email"
-              onChange={changeField}
-              value={email}
-              required
-            />
-            <Field
-              type="password"
-              name="password"
-              placeholder="Mot de passe"
-              onChange={changeField}
-              value={password}
-              required
-            />
-            {errorMessage.length > 1 && <p className="input-middle-errorMessage">
-              {errorMessage}
-            </p>
-            }
+            <div className="row"> 
+              <Field
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={changeField}
+                value={email}
+                required
+              />
+              <Field
+                type="password"
+                name="password"
+                placeholder="Mot de passe"
+                onChange={changeField}
+                value={password}
+                required
+              />
+              {errorMessage.length > 1 && <p className="input-middle-errorMessage">
+                {errorMessage}
+              </p>
+              } 
+            </div>
+            
 
-            <button
-              type="submit"
-              className="formUser-login"
-            >
-              Se Connecter
-            </button>
-
+              <button
+                type="submit"
+                className="formUser-login"
+              >
+                Se Connecter
+              </button>
+           
           </form>
-          <Link to='/signUp'>
-            <button className = "redirect">
-                Pas encore de compte? Inscrivez-vous ! 🍿🍿
-            </button>
-          </Link>
+            <Link to='/signUp'>
+              <button className = "redirectSignIn">
+                  Pas encore de compte? Inscrivez-vous ! 🍿🍿
+              </button>
+            </Link>
         </div>
       </div>
     </>

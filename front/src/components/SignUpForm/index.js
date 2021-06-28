@@ -29,12 +29,13 @@ const SignUpForm = ({
   };
 
   return (
-    <div className="formUser">
-      <div className="formUser-input">
+    <div className="formSignUp">
+      <div className="formSignUp-input">
         <form
           autoComplete="off"
           onSubmit={handleSubmit}
         >
+        <div className="rowSignUp">
           <Field
             type="text"
             name="pseudo"
@@ -46,7 +47,7 @@ const SignUpForm = ({
           <Field
             type="email"
             name="email"
-            placeholder="Adresse Email"
+            placeholder="Adresse email"
             onChange={changeField}
             value={email}
             required
@@ -62,7 +63,7 @@ const SignUpForm = ({
           <Field
             type="password"
             name="confirmationPassword"
-            placeholder="Confirmation du mot de passe"
+            placeholder="Confirmation"
             onChange={changeField}
             value={confirmationPassword}
             required
@@ -73,11 +74,11 @@ const SignUpForm = ({
             </p>
           }
         
-        <button type="submit" className="formUser-login">S'inscrire</button>
-          
+        <button type="submit" className="formUser-SignUp">S'inscrire</button>
+      </div>
       </form>
       <Link to="/signin"> 
-        <button className = "redirect"> 
+        <button className = "redirectSignUp"> 
             Déjà inscrit? Connectez-vous! 
         </button>
       </Link>
