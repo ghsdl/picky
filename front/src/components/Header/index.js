@@ -25,8 +25,11 @@ import logo from 'src/assets/logo_PopCorn.png';
 
 // Import css
 import './style.scss';
-import styled, { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, GlobalStyles } from "src/components/App/theme.js";
+import { ThemeProvider } from 'styled-components';
+import { useDarkMode } from 'src/components//Darkmode';
+import { lightTheme, darkTheme, GlobalStyles } from './theme.js';
+import Toggle from 'src/components/Toggle';
+
 
 /* makeStyle = import for modal use, modal: handling placement of the modal, paper: handling style
 for the modal, back ground collor, border... backDrop: handling modal background.
@@ -55,9 +58,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StyledApp = styled.div`
-color: ${(props) => props.theme.fontColor};
-`;
 
 // Creation of my component Header
 export default function Header({ isConnected, deconnect, resetPickyFind }) {
@@ -76,15 +76,12 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
   const classes = useStyles();
   const getStarted = <div> Get <br /> started </div>;
 
-  const [theme, setTheme] = useState("light");
+const [theme, toggleTheme, componentMounted] = useDarkMode();
 
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
+const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   return (
-  <ThemeProvider theme={ theme === "light" ? lightTheme : darkTheme}>
-    <StyledApp>
+  <ThemeProvider theme={ themeMode }>
       <GlobalStyles/>
         <header className="header">
             <ClickAwayListener onClickAway={handleClickAway}>
@@ -139,7 +136,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
               </div>
 
             </ClickAwayListener>
-            <button onClick={() => themeToggler()}>THEME</button> 
+            <Toggle theme={theme} toggleTheme={toggleTheme} />
             <Link to="/" onClick={resetPickyFind}>
               <img src={LogoPicky} className="header-logo" alt="Logo Picky" />
             </Link>
@@ -215,7 +212,6 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
             </>
             )}    
        </header>
-      </StyledApp>
     </ThemeProvider>  
   );
 }

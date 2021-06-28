@@ -12,14 +12,8 @@ import PickyMood from 'src/containers/PickyMood';
 import SignIn from 'src/containers/SignIn';
 import SignUp from 'src/containers/SignUp';
 
-import styled, { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, GlobalStyles } from "./theme.js";
-
 
 // == Composant
-const StyledApp = styled.div`
-color: ${(props) => props.theme.fontColor};
-`;
 
 function App (props) {
   // When the app opens, we get all the platforms to be able to use the logos anywhere
@@ -27,17 +21,8 @@ function App (props) {
     props.loadPlatforms();
   }, []);
 
-  const [theme, setTheme] = useState("light");
-
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
-
   return (
   <div className="app">
-    <ThemeProvider theme={ theme === "light" ? lightTheme : darkTheme}>
-     <StyledApp>
-     <GlobalStyles/>
         <Switch>
           <Route exact path="/">
             <Home />
@@ -64,8 +49,6 @@ function App (props) {
             <Error />
           </Route>
         </Switch>
-      </StyledApp>
-    </ThemeProvider>
   </div>
   );
 };
