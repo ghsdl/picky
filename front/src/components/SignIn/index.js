@@ -69,7 +69,7 @@ export default function SignIn({
 
               <button
                 type="submit"
-                className="redirectSignIn"
+                className="formUser-login"
               >
                 Se Connecter
               </button>

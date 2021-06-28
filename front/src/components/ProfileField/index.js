@@ -91,7 +91,6 @@ const ProfileField = ({
       <div className="form">
         <div className="form-input"> 
           <form onSubmit={handleSubmit}> 
-            <p className="form-p"> Modifier vos infos personnelles</p>
             <div className="row"> 
             
               <Field
@@ -118,10 +117,10 @@ const ProfileField = ({
               }
 
               <button 
-                className="field-update"
+                className="updateEmailPseudo"
                 type="submit"
               > 
-              Modifier votre profil
+              Modifier mon profil
               </button>
               <div>
               <ToastContainer
@@ -144,10 +143,10 @@ const ProfileField = ({
             <div className="form-input">
               <div className="row">
                 <Field
-                  namebis="New Password"
+                  namebis="Nouveau mot de passe"
                   type="password"
                   name="password"
-                  placeholder="New Password"
+                  placeholder="Nouveau mot de passe"
                   onChange={changeField}
                   value={password}
                   required
@@ -167,10 +166,10 @@ const ProfileField = ({
                 </p>
                 }
                 <button 
-                  className="field-update"
+                  className="updateEmailPseudo"
                   type="submit"
                 > 
-                Modifier votre password
+                Modifier mon mot de passe
                 </button>
               </div>
             </div>

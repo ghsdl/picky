@@ -61,10 +61,10 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
       <div className="home__pickyMood">
         <p>Vous ne savez pas quoi regarder? Faites nous confiance!</p>
         {isConnected && (
-          <Link to="/mood">Picky Mood</Link>
+          <Link to="/mood" className="home__pickyMood__link">Picky Mood</Link>
         )}
         {!isConnected && (
-          <Link to="/signUp">Picky Mood</Link>
+          <Link to="/signUp" className="home__pickyMood__link">Picky Mood</Link>
         )}
       </div>
       {// Display of the results

@@ -29,6 +29,28 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        &__link {
+          width: auto;
+          margin-top: 30px;
+          text-transform: uppercase;
+          font-style: italic;
+          font-weight: bold;
+          letter-spacing: 0.3ch;
+          border: none;
+
+          padding: 15px 20px;
+
+          background:  #F4BB01;
+          color: white;
+          border-radius: 5px;
+          
+          box-shadow: vars.$shadow;
+
+          &:active {
+            box-shadow: vars.$inset-shadow;
+          }
+        }
       }
     }
   }

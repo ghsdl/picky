@@ -46,9 +46,14 @@
       width: 100px;
       padding: 10px;
 
-      background-color:#FF8177;
+      background-color:  #F4BB01;
       color: white;
-      border-radius: 20px;
+      border-radius: 5px;
+      box-shadow: vars.$shadow;
+
+      &:active {
+        box-shadow: vars.$inset-shadow;
+      }
     }
 
     &__text {

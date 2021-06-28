@@ -1,3 +1,4 @@
+@use 'src/styles/vars';
 
 .input-middle-errorMessage{
 	display: block;
@@ -19,28 +20,41 @@
 	font-size: 1.2vh;
 }
 
-.redirectConnected{
-	width: 44vh;
-	margin-top: 6vh;
-	padding: 1vh;
-	background: white;
-	color: rgb(0, 0, 0);
-	text-transform: uppercase;
-	font-style: italic;
-	letter-spacing: 0.3ch;
-	font-size: 1.2vh;
+.formUser-SignUp{
+  width: 100%;
+  margin-top: 10vh;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: 0.3ch;
+  border: none;
+  padding: 10px;
+  background:  #F4BB01;
+  color: white;
+  border-radius: 5px;
+  box-shadow: vars.$shadow;
+  &:active {
+    box-shadow: vars.$inset-shadow;
+  }
 }
 
 .redirectSignUp{
-	width: 44vh;
+  width: 100%;
+	margin-top: 1vh;
 	padding: 1vh;
 	background: white;
-	color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0, 0.7);
 	text-transform: uppercase;
 	font-style: italic;
-	letter-spacing: 0.3ch;
-	font-size: 1.2vh;
-  margin-left: 5vh;
+  letter-spacing: 0.3ch;
+  font-weight: bold;
+  font-size: 1.2vh;
+  letter-spacing: 0.3ch;
+  border: 3px solid #F4BB01;
+  border-radius: 5px;
+  box-shadow: vars.$shadow;
+  &:active {
+    box-shadow: vars.$inset-shadow;
+  }
 }
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
