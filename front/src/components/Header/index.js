@@ -42,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[1],
     outline: 'none',
     padding: '5vh',
-    borderRadius: '50px',
+    borderRadius: '10px',
     alignSelf: 'flex-start',
-    marginTop: 50,
-    marginRight: 50,
+    marginTop: '12vh',
+    marginRight: '2vh',
   },
 
   backDrop: {
@@ -132,7 +132,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
               to="/signIn"
               className="linkSignIn"
             >
-              Se connecter
+              Se connecter 
             </Link>
             <Link
               to="/signUp"
