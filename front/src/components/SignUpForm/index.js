@@ -29,12 +29,13 @@ const SignUpForm = ({
   };
 
   return (
-    <div className="formUser">
-      <div className="formUser-input">
+    <div className="formSignUp">
+      <div className="formSignUp-input">
         <form
           autoComplete="off"
           onSubmit={handleSubmit}
         >
+        <div className="rowSignUp">
           <Field
             type="text"
             name="pseudo"
@@ -73,11 +74,11 @@ const SignUpForm = ({
             </p>
           }
         
-        <button type="submit" className="formUser-login">S'inscrire</button>
-          
+        <button type="submit" className="redirectConnected">S'inscrire</button>
+      </div>
       </form>
       <Link to="/signin"> 
-        <button className = "redirect"> 
+        <button className = "redirectSignUp"> 
             Déjà inscrit? Connectez-vous! 
         </button>
       </Link>
