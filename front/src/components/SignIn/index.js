@@ -45,6 +45,7 @@ export default function SignIn({
           <form autoComplete="off" onSubmit={handleSubmit}>
             <div className="row"> 
               <Field
+                namebis="emailSignIn"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -53,6 +54,7 @@ export default function SignIn({
                 required
               />
               <Field
+                namebis="passwordSignIn"
                 type="password"
                 name="password"
                 placeholder="Mot de passe"

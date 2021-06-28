@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Typical from 'react-typical'
 
 // Import of components
 import Header from 'src/containers/Header';
@@ -52,7 +53,9 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
       <div className="home__searchBar">
         {// Title, searchbar and suggestions
         }
-        <p className="home__searchBar__presentation">Le moteur de recherche pour vos moments devant la TV</p>
+        <p className="home__searchBar__presentation">
+          Le moteur de recherche pour vos moments devant la TV
+        </p>
         <SearchBar />
           <p className="home__searchBar__suggestion">Essayez: {ranmovie.title} ou {ranshow.title}</p>
       </div>

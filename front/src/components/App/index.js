@@ -11,6 +11,7 @@ import Error from 'src/components/Error';
 import PickyMood from 'src/containers/PickyMood';
 import SignIn from 'src/containers/SignIn';
 import SignUp from 'src/containers/SignUp';
+import PickyLucky from 'src/containers/pickyLucky'
 
 
 // == Composant
@@ -44,6 +45,9 @@ const App = (props) => {
       </Route>
       <Route exact path="/about">
         <About />
+      </Route>
+      <Route exact path="/pickyLucky">
+        <PickyLucky/>
       </Route>
       <Route>
         <Error />

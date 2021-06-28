@@ -43,7 +43,7 @@
 	color: red;
 	font-weight: bold;
 	font-style: italic;
-	font-size: 1vh;
+	font-size: 1.5vh;
 }
 .redirectSignIn{
   width: 100%;
@@ -128,11 +128,11 @@
     color: red;
 	font-weight: bold;
 	font-style: italic;
-	font-size: 1.2vh;
+	font-size: 1.5vh;
   }
 }
 
-.gate__email {
+.gate__emailSignIn{
   display: inline-block;
   width: 50vh;
   padding: 10px 0 10px 15px;
@@ -142,7 +142,7 @@
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 60px; // Arbitrary.
+  text-indent: 70px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -190,12 +190,12 @@
   }
 }
 
-span:nth-child(2) .gate__email:focus,
-span:nth-child(2) .gate__email:active{
+span:nth-child(2) .gate__emailSignIn:focus,
+span:nth-child(2) .gate__emailSignIn:active{
   text-indent: 0;
 }
-.gate__email:focus,
-.gate__email:active {
+.gate__emailSignIn:focus,
+.gate__emailSignIn:active {
   text-indent: 0;
   background: #fff;
   border-top-right-radius: 3px;
@@ -214,7 +214,7 @@ span:nth-child(2) .gate__email:active{
   }
 }
 
-.gate__password {
+.gate__passwordSignIn {
   display: inline-block;
   width: 50vh;
   padding: 10px 0 10px 15px;
@@ -224,7 +224,7 @@ span:nth-child(2) .gate__email:active{
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 20vh; // Arbitrary.
+  text-indent: 140px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -272,14 +272,14 @@ span:nth-child(2) .gate__email:active{
   }
 }
 span:nth-child(2) .gate__password {
-  text-indent: 120px;
+  text-indent: 0;
 }
 span:nth-child(2) .gate__password:focus,
 span:nth-child(2) .gate__password:active{
   text-indent: 0;
 }
-.gate__password:focus,
-.gate__password:active {
+.gate__passwordSignIn:focus,
+.gate__passwordSignIn:active {
   text-indent: 0;
   background: #fff;
   border-top-right-radius: 3px;

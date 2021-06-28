@@ -115,7 +115,7 @@
     color: red;
 	font-weight: bold;
 	font-style: italic;
-	font-size: 1.2vh;
+	font-size: 1.5vh;
   }
 }
 
@@ -172,7 +172,7 @@
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 75px; // Arbitrary.
+  text-indent: 80px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -257,7 +257,7 @@ span:nth-child(2) .gate__pseudo:active{
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 60px; // Arbitrary.
+  text-indent: 70px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -340,7 +340,7 @@ span:nth-child(2) .gate__email:active{
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 125px; // Arbitrary.
+  text-indent: 215px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -425,7 +425,7 @@ span:nth-child(2) .gate__password:active{
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 220px; // Arbitrary.
+  text-indent: 140px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {

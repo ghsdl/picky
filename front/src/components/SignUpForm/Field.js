@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { classie } from 'src/selectors/user'
 import './signupform.scss';
 
 export default function Field({
@@ -9,14 +8,15 @@ export default function Field({
   name,
   placeholder,
   onChange,
+  namebis
 }) {
   const handleChange = (evt) => {
     onChange(evt.target.value, name);
   };
   const inputId = `field-${name}`;
 
-  classie(window);
-  const className = `gate__${name}`
+  
+  const className = `gate__${namebis}`
 
   return (
     

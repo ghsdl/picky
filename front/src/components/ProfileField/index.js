@@ -94,7 +94,7 @@ const ProfileField = ({
             <div className="row"> 
             
               <Field
-                namebis="Pseudo"
+                namebis="pseudo"
                 type="text"
                 name="pseudo"
                 placeholder={profilPseudo}
@@ -215,6 +215,24 @@ const ProfileField = ({
 
 
 
+ProfileField.propTypes = {
+  email: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  confirmationPassword: PropTypes.string.isRequired,
+  resetPage: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool,
+  getProfil: PropTypes.func.isRequired,
+  deleteProfil: PropTypes.func.isRequired,
+  patchProfil: PropTypes.func.isRequired,
+  patchPswdProfil: PropTypes.func.isRequired,
+  errorMessageEmailOrPseudo: PropTypes.string.isRequired,
+  errorMessagePswd: PropTypes.string.isRequired,
+  member: PropTypes.string.isRequired,
+  profilPseudo: PropTypes.string.isRequired,
+  resetProfil: PropTypes.func.isRequired,
+};
 
 
 export default ProfileField;
