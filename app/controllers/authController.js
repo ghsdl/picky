@@ -57,6 +57,7 @@ const authController = {
 
       // CHECKING IF MEMBER DOES EXIST IN DATABASE VIA THEIR EMAIL
       const member = await authDataMapper.getMemberByEmail(email);
+      console.log(member);
 
       // IF MEMBER DOEST NOT EXIST THROW 401 STATUS
       if (!member) {
@@ -65,6 +66,7 @@ const authController = {
 
       // COMPARING IF PASSWORD IN DATABASE IS THE SAME AS THE ONE TYPED
       const correctPassword = await bcrypt.compare(password, member.password);
+      console.log(correctPassword);
 
       // IF PASSWORD IS INCORRECT THROW 401 STATUS
       if (!correctPassword) {
