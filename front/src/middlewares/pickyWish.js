@@ -1,52 +1,93 @@
 import axios from 'axios';
-import { addRemoveWish, ADD_REMOVE_WISH, GET_BOOKMARK, getBookmarkSuccess, getBookmark} from 'src/actions/watchlist';
+import { ADD_REMOVE_WISH, REMOVE_FROM_WISH, GET_BOOKMARK, GET_BOOKMARKS_IDS, getBookmarkSuccess, getBookmarksIdsSuccess, getBookmarksIds, getBookmark } from 'src/actions/watchlist';
 
 const pickyWish = (store) => (next) => (action) => {
+  const config = {
+    headers: { 
+      "Bearer": `${store.getState().status.token}`,
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+  };
   switch (action.type){
     case ADD_REMOVE_WISH: {
-        const token =  store.getState().status.token;
-        console.log('action.programswish in middleware', action.programswish);
-        console.log('token in pickywish add_remove_wish middleware', token);
-        /*
-        const addRequest = {
-          method: 'post',
-          url: 'https://projet-picky.herokuapp.com/bookmark',
-          headers: { 
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        */
-        axios.post('https://projet-picky.herokuapp.com/bookmark', {
+        const bodyParameters = {
           betaseries_id: action.programswish.id,
           poster: action.programswish.poster,
           platform: action.programswish.svods,
           title: action.programswish.title,
-          // créer objet config avec headerssssssssssssssssssssssssssssssss
-          header: { 
-            Authorization: `Bearer ${token}`,
-          },
-        })
-          .then((response) => {
-            console.log(response.data);
-            //store.dispatch(addRequest(response.data))
-            //store.dispatch(addRemoveWish(programswish));
+        };
+        
+        axios.post('https://projet-picky.herokuapp.com/bookmark',
+          bodyParameters,
+          config
+          )
+          .then(() => {
+            store.dispatch(getBookmarksIds());
+            store.dispatch(getBookmark());
           });
         break;
-    }
-    case GET_BOOKMARK: {
-      const token = store.getState().status.token;
-      console.log('token in pickywish get_bookmark middleware', token);
-      const getBookmarkRequest = {
-        method: 'get',
-        url: 'https://projet-picky.herokuapp.com/bookmark',
-        headers: {
-          Authorization: `Bearer ${token}`,
-      },
     };
 
-    axios(getBookmarkRequest)
+    case REMOVE_FROM_WISH: {
+      const programId = action.programId;
+      
+      axios.delete(`https://projet-picky.herokuapp.com/bookmark/${programId}`,
+        config
+        )
+        .then(() => {
+          store.dispatch(getBookmarksIds());
+          store.dispatch(getBookmark());
+        });
+      break;
+    }
+
+    case GET_BOOKMARK: {
+    axios.get('https://projet-picky.herokuapp.com/member/bookmark',
+    config)
     .then ((response) => {
-      store.dispatch(getBookmarkSuccess(response.data.wish));
+      const bookmarks = response.data.data;
+
+      const bookmarksTransformed = [];
+
+      if (bookmarks !== null) {
+        bookmarks.forEach((bookmark) => {
+          const bookmarkTransformed = {id: bookmark.id, betaseries_id: bookmark.betaseries_id, title: bookmark.title, poster: bookmark.poster, platforms: []};
+          const platform = `"${bookmark.platform}"`;
+          const replacedPlatform1 = platform.replaceAll(`","`, `,`);
+          const replacedPlatform2 = replacedPlatform1.replace(`{"{`, `[{`);
+          const replacedPlatform3 = replacedPlatform2.replace(`}"}`, `}]`);
+          const replacedPlatform4 = replacedPlatform3.replace(`{}`, `[]`);
+          const parsedPlatform = JSON.parse(replacedPlatform4);
+          const parsedTwicePlatform = JSON.parse(parsedPlatform);
+  
+          bookmarkTransformed.platforms = parsedTwicePlatform;
+  
+          bookmarksTransformed.push(bookmarkTransformed);
+        });
+      }
+
+      store.dispatch(getBookmarkSuccess(bookmarksTransformed));
+    });
+    break;
+  };
+
+  case GET_BOOKMARKS_IDS: {
+      axios.get('https://projet-picky.herokuapp.com/member/bookmark',
+    config)
+    .then ((response) => {
+      const bookmarks = response.data.data;
+
+      const bookmarksIds = [];
+
+      if(bookmarks !== null) {
+        bookmarks.forEach((bookmark) => {
+          const bookmarkId = bookmark.betaseries_id;
+          bookmarksIds.push(bookmarkId);
+        });
+      }
+
+      store.dispatch(getBookmarksIdsSuccess(bookmarksIds));
     });
     break;
   }
