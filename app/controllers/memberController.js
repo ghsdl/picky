@@ -74,57 +74,64 @@ const memberController = { // BACKEND METHOD
     try {
       // GETTING THE MEMBER BY ITS ID
       const member = await memberDataMapper.getOne(req.member.id);
-      
+      console.log(member);
+
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
         return next();
       }
-      
+
       // GETTING REQ.BODY
       const newData = req.body;
-      
+
       // UPDATING PSEUDO
       if (newData.pseudo) {
         member.pseudo = newData.pseudo;
       }
-      
+
       // CHECKING IF EMAIL EXISTS IN DATABASE
       const memberEmail = await authDataMapper.getMemberByEmail(newData.email);
-      
+
       // IF MEMBER EMAIL EXISTS THROW 401 STATUS
       if (memberEmail) {
         return res.status(401).json('Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email.');
       }
-      
+
       // UPDATING EMAIL
       if (newData.email) {
         member.email = newData.email;
       }
-      
-      // UPDATING PSEUDO PASSWORD
+
+      // UPDATING PASSWORD
       if (newData.password) {
-        member.password = newData.password;
-      }
-      
+        console.log(newData.password);
+        //newData.password = member.password;
+
       // CHECKING IF BOTH PASSWORDS ARE THE SAME
-      if (newData.password !== newData.confirmationPassword) {
-        return res.status(401).json(`Les mots de passe doivent être identiques.`);
-      }
-      
+        if (newData.password !== newData.confirmationPassword) {
+          return res.status(401).json(`Les mots de passe doivent être identiques.`);
+        }
+
       // RE-CRYPTING PASSWORD WITH BCRYPT
       const saltRound = 10;
       const salt = await bcrypt.genSalt(saltRound);
-      
+
       // GET BACK NEW PASSWORD FROM REQ.BODY AND HASH IT BEFORE SAVING IN DATABASE
-      member.password = await bcrypt.hash(member.password, salt);
+      member.password = await bcrypt.hash(newData.password , salt);
       
+      const updatedMember = await memberDataMapper.patch(member, req.member.id);
+      console.log("pour modif password", updatedMember);
+      return res.json({ updatedMember });
+      }
+
       // UPDATING PSEUDO PROFILE_PICTURE // V2
       if (newData.profile_picture) {
         member.profile_picture = newData.profile_picture;
       }
-      
+
       // UPDATING MEMBER AND SAVE IN DATABASE
       const updatedMember = await memberDataMapper.patch(member, req.member.id);
+      console.log(updatedMember);
       res.json({ updatedMember });
     } catch (error) {
       console.log(error);
