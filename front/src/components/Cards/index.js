@@ -10,7 +10,7 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, currentPage, results, programswish }) => {
+const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarksIds }) => {
   const container = useRef(null)
 
   useEffect(() => {
@@ -20,7 +20,8 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
       loop: true,
       autoplay: true,
       animationData: require('./movieloading.json')
-    })
+    });
+    getBookmarksIds();
   }, [])
 
   {// When the results are loading, "Loading" is displayed
@@ -36,17 +37,15 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
   {// When the results are not loading anymore, they are displayed
   }
   if (loading === false) {
-    {// If the current page is home (Picky Find), the results displayed depend on the request of
-      // the API
-    }
     if (currentPage==="home") {
+      // If the cards display the results of Picky Find
       return (
-        // TODO: make the display of the cards dynamic with a map
         <div className="cards">
         {// The movies are displayed
         }
         {movies.map((movie) => (
           <Card
+            id={movie.id}
             title={movie.title}
             poster={movie.poster}
             platformsInfos={movie.svods}
@@ -58,6 +57,7 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
         }
         {shows.map((show) => (
           <Card
+            id={show.id}
             title={show.title}
             poster={show.poster}
             platformsInfos={show.svods}
@@ -67,16 +67,16 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
         ))}
         </div>
       );
-      {// If the current page is not home (Picky Find), the results are not dynamic yet
-      }
     } else if (currentPage === 'wish') {
+      // If the cards display the watchlist of Picky Wish
       return (
       <div className="cards">
-      {programswish.map((program) => (
+      {wish.map((program) => (
         <Card
+          id={program.betaseries_id}
           title={program.title}
           poster={program.poster}
-          platformsInfos={program.platform}
+          platformsInfos={program.platforms}
           key= {program.id}
           program={program}
         />
@@ -85,7 +85,9 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
       );
 
     } else if(currentPage === "mood") {
+      // If the cards display the results of Picky Mood
       if(results.length === 0) {
+        // If there is no result, a message is displayed
         return (
           <div className="cards-img">
             <p className="cards">Il n'y a aucun résultat pour votre recherche</p>
@@ -93,43 +95,21 @@ const Cards = ({movies, shows, loading, currentPage, results, programswish }) =>
         )
       } else {
         return (
+          // If there is at least one result, it is displayed
           <div className="cards">
-            {// The programs are displayed
-            }
             {results.map((result) => (
               <Card
+                id={result.id}
                 title={result.title}
                 poster={result.poster}
                 platformsInfos={result.svods}
                 key= {result.id}
+                program={result}
               />
             ))}
             </div>
         )
       }
-    } else {
-
-      const friendsVod= [{id: 1, name: "Netflix"}];
-      return (
-        // TODO: make the display of the cards dynamic with a map
-        <div className="cards">
-        <Card 
-          title="Friends"
-          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
-          platformsInfos={friendsVod}
-        />
-        <Card 
-          title="Friends"
-          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
-          platformsInfos={friendsVod}
-        />
-        <Card 
-          title="Friends"
-          poster="https://images.affiches-et-posters.com//albums/3/50249/affiche-friends-.jpg"
-          platformsInfos={friendsVod}
-        />
-        </div>
-      );
     }
   }
 };

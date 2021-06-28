@@ -24,7 +24,7 @@
       width: 6vh;
       height: 6vh;
       margin-left: 4vh;
-      margin-top: 4vh;
+      margin-top: 1vh;
       z-index: 15;
       transform: rotate(90deg);
       transition: all 300ms ease-in-out;
@@ -49,9 +49,11 @@
     cursor: pointer;
   }
   .svg-inline--fa.fa-w-16{
-    width: 2.5em
+    width: 3vh;
+    margin-top: 3vh;
   }
 }
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -60,25 +62,49 @@
   height: 100%;
   background-color:#F4BB01;
   transition: left 300ms ease-out;
-  z-index: 12;
+  z-index: 1;
   
 }
 .sidebar.active {
   left: 0;
 }
 .sidebar ul {
-  margin: 30px;
+  margin-top: 20vh;
   padding: 0;
 }
 .sidebar li {
   list-style: none;
 }
-.sidebar li a {
-  font-size: 18px;
+.sidebar li {
+  font-size: 2.5vh;
   text-decoration: none;
-  padding: 10px;
+  padding: 2vh;
   display: block;
-  color: #fff;
+  color: #1D120C;
+}
+
+.sidebar li::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #1D120C;
+  transition:  .5s;
+  margin-top: 1vh;
+}
+
+.sidebar li:hover::after{
+  width: 80%;
+  transition:  .5s;
+  margin-left: 2vh;
+}
+
+.separation {
+  border-bottom: black 1px solid;
+  width: 60%;
+  margin-left: 6vh;
+  margin-top: 12vh;
+  
 }
 
 .test li{
@@ -90,9 +116,25 @@
   font-size: 1.3em;
   cursor: pointer;
 }
+.brandIcon{
+  margin-top: 30vh;
+}
+.faFacebookSquare{
+  font-size: 3vh;
+  margin-right: 3vh;
+}
+
+.faTwitterSquare{
+  font-size: 3vh;
+  margin-right: 3vh;
+}
+
+.faInstagramSquare{
+  font-size: 3vh;
+}
 
 .login {
-  height: 6vh;
+  
   margin-top: 4vh;
   margin-right: 4vh;
   font-size: 20px;
@@ -100,8 +142,24 @@
 }
 
 .linkSignUp{
-  padding-left: 20px;
-  padding-right: 20px;
+  
+  padding: 1vh;
+  background-color: #e43e54;
+  color: white;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+}
+.linkSignIn{
+  margin-right: 1vh;
+  padding-top: 1vh;
+  align-items: center;
+}
+
+
+
+.linkSignIn:hover{
+  color: #e43e54;
 }
 
 .getStarted{
@@ -116,17 +174,17 @@
     display: none
   }
   .getStarted{
-    display:flex;
+    display: flex;
     height: 6vh;
-    margin-top: 5vh;
+    margin-top: 4vh;
     margin-right: 4vh;
-    font-size: 3vh;
-    background-color: #f4bb01;
+    font-size: 2vh;
+    background-color: #e43e54;
     text-align: center;
-    padding:0.5em;
-    border-radius: 18%;
-    color: rgb(0, 0, 0);
-    padding-bottom: 7vh;
+    border-radius: 2px;
+    color: white;
+    padding: .5em .5em;
+    
   }
   
 }

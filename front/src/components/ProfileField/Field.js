@@ -8,6 +8,7 @@ function Field({
   name,
   placeholder,
   onChange,
+  namebis,
 
 }){
 
@@ -16,7 +17,7 @@ function Field({
   const handleChange = (evt) => {
     onChange(evt.target.value, name)
   }
-
+ const className = `gate__${name}`
   return (
     <>
     <span>
@@ -27,12 +28,12 @@ function Field({
           type={type}
           name={name}
           placeholder={placeholder}
-          className="gate"
+          className={className}
           onChange={handleChange}
           
         />
         <label htmlFor={placeholder}>
-          {placeholder}
+          {namebis}
         </label>
       </span>
     </>

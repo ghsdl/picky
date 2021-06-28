@@ -2,15 +2,18 @@ import { connect } from 'react-redux';
 import ProfileField from 'src/components/ProfileField';
 // import {} from 'src/actions/profileuser';
 import {changeInputValue, reset} from 'src/actions/user';
-import { getProfil, patchProfil, deleteProfil, patchPswsProfil } from 'src/actions/profil'
+import { resetProfil, getProfil, patchProfil, deleteProfil, patchPswsProfil } from 'src/actions/profil'
+
 const mapStateToProps = (state) => ({
   email: state.user.email,
   pseudo: state.user.pseudo,
   password: state.user.password,
   isConnected: state.status.isConnected,
   confirmationPassword: state.user.confirmationPassword,
-  errorMessage: state.profil.errorMessage,
+  errorMessageEmailOrPseudo: state.profil.errorMessageEmailOrPseudo,
   errorMessagePswd: state.profil.errorMessagePswd,
+  member: state.profil.member,
+  profilPseudo: state.profil.pseudo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -39,7 +42,9 @@ const mapDispatchToProps = (dispatch) => ({
   patchPswdProfil: () => {
     dispatch(patchPswsProfil())
   },
-
+  resetProfil: () => {
+    dispatch(resetProfil())
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileField);

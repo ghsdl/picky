@@ -24,6 +24,8 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
       
     }
   }, []);
+
+
   return(
   <div>
     {// Header

@@ -32,6 +32,7 @@ module.exports = {
         return result.rows[0];
     },
 
+    /*
     async getBookmarkMember(memberId) {
         const result = await pool.query(`SELECT m.pseudo, m.profile_picture, b.created_at,
         json_agg((b.betaseries_id,b.title,b.platform,b.poster)) bookmark
@@ -41,6 +42,13 @@ module.exports = {
         WHERE member_id = $1
         GROUP BY b.title,m.pseudo, m.profile_picture,b.created_at
 		ORDER BY b.created_at;`, [memberId]);
+        return result.rows;
+    },
+    */
+   
+    async getBookmarkMember(memberId) {
+        console.log(memberId);
+        const result = await pool.query(`SELECT json_agg(bookmark.*) AS bookmark FROM bookmark WHERE member_id = $1;`, [memberId]);
         return result.rows;
     },
 
@@ -68,7 +76,7 @@ module.exports = {
         return result.rows[0];
     },
     */
-   
+
     async patch(member, id) {
         const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4, updated_at = now() WHERE id =$5 RETURNING *`, [member.pseudo, member.email, member.password, member.profile_picture, id]);
         return result.rows[0];
