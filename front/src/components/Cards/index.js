@@ -1,7 +1,6 @@
 // Import npm
 import React, {useEffect, useRef} from 'react';
 import lottie from 'lottie-web';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Import of components

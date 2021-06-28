@@ -15,9 +15,9 @@ import './style.scss';
 const Results = ({ newResearch, loading }) => (
   <div className="pickyMood">
     <ToastContainer
-      className="toast-Container"
+      className="pickyMood-toast-Container"
       color="black"
-      position="top-center"
+      position="top-right"
       autoClose={5000}
       newestOnTop={false}
       closeOnClick
