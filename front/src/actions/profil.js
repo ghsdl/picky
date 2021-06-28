@@ -24,15 +24,16 @@ export const deleteProfil = () => ({
 
 export const ACTION_SAVE_PROFIL = 'SAVE_PROFIL';
 
+
 export const actionSaveProfil = (member, pseudo) => ({
   type: ACTION_SAVE_PROFIL,
   member,
   pseudo,
 });
-export const UPDATE_PROFIL_ERROR = 'UPDATE_PROFIL_ERROR';
+export const UPDATE_PROFIL_ERROR_EMAIL_OR_PSEUDO = 'UPDATE_PROFIL_ERROR';
 
-export const updateProfilError = (value) => ({
-  type: UPDATE_PROFIL_ERROR,
+export const updateProfilErrorEmailOrPseudo = (value) => ({
+  type: UPDATE_PROFIL_ERROR_EMAIL_OR_PSEUDO,
   value,
 })
 export const UPDATE_PROFIL_ERROR_FOR_PSWD = 'UPDATE_PROFIL_ERROR_FOR_PSWD';
@@ -42,4 +43,13 @@ export const updateProfilErrorForPswd  = (value) => ({
   value,
 })
 
+export const RESET_PROFIL = 'RESET_PROFIL'; 
 
+export const resetProfil = () => ({
+  type: RESET_PROFIL,
+})
+export const SUCCESS_TOASTIFY_EMAIL_PSEUDO = 'SUCCESS_TOASTIFY_EMAIL_PSEUDO'
+
+export const successToastifyEmailPseudo = () => ({
+  type: SUCCESS_TOASTIFY_EMAIL_PSEUDO
+})

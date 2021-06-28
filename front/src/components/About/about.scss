@@ -54,6 +54,7 @@
     justify-content: space-around;
     margin-top: 15px;
     transition: all 0.5s cubic-brezier(0,1,0,1);
+    margin-right: 8vh;
   }
 
 }
@@ -75,9 +76,11 @@
   }
 
   &-img {
-    border-radius: 30px;
+    border-radius: 40px;
     object-fit: contain;
-    width: 60px;
+    width: 70px;
+    height: 70px;
+
   }
 
 }

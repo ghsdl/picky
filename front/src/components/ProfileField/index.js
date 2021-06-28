@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 //import PropTypes from 'prop-types';
 import PropTypes from 'prop-types';
 import './profilefield.scss';
@@ -44,12 +46,14 @@ const ProfileField = ({
   deleteProfil,
   patchProfil,
   patchPswdProfil,
-  errorMessage,
-  errorMessagePswd
+  errorMessageEmailOrPseudo,
+  errorMessagePswd,
+  member,
+  profilPseudo,
+  resetProfil,
 }) => {
-
-  console.log(errorMessage)
-  console.log(errorMessagePswd.length)
+  console.log(member)
+  console.log(profilPseudo)
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -66,7 +70,7 @@ const ProfileField = ({
   useEffect(() => {
     return () => {
       resetPage();
-      
+      resetProfil();
     }
   }, []);
 
@@ -74,7 +78,7 @@ const ProfileField = ({
     evt.preventDefault();
     patchProfil();
   }
-
+  
   const handlePswdSubmit = (evt) => {
     evt.preventDefault();
     patchPswdProfil();
@@ -92,27 +96,29 @@ const ProfileField = ({
       <div className="form">
         <div className="form-input"> 
           <form onSubmit={handleSubmit}> 
-            <p className="form-p"> Modifier vos info's personnelles</p>
+            <p className="form-p"> Modifier vos infos personnelles</p>
             <div className="row"> 
             
               <Field
+                namebis="Pseudo"
                 type="text"
                 name="pseudo"
-                placeholder="Pseudo"
+                placeholder={profilPseudo}
                 onChange={changeField}
                 value={pseudo}
               />
               
               <Field
+                namebis="Email"
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder={member}
                 onChange={changeField}
                 value={email}
               />
 
-              {errorMessage &&  <p className="row"> 
-                {errorMessage}
+              {errorMessageEmailOrPseudo.length > 1 &&  <p className="row-error"> 
+                {errorMessageEmailOrPseudo}
               </p>
               }
 
@@ -120,8 +126,22 @@ const ProfileField = ({
                 className="field-update"
                 type="submit"
               > 
-              Modifer votre profil
+              Modifier votre profil
               </button>
+              <div>
+              <ToastContainer
+                className="toast-Container"
+                color="black"
+                position="top-center"
+                autoClose={5000}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
+              </div>
             </div> 
           </form>
           
@@ -129,6 +149,7 @@ const ProfileField = ({
             <div className="form-input">
               <div className="row">
                 <Field
+                  namebis="New Password"
                   type="password"
                   name="password"
                   placeholder="New Password"
@@ -137,15 +158,16 @@ const ProfileField = ({
                   required
                 />
                 <Field
+                  namebis="Confirmation"
                   type="password"
                   name="confirmationPassword"
-                  placeholder="New Password Confirmation"
+                  placeholder="Confirmation"
                   onChange={changeField}
                   value={confirmationPassword}
                   required
                 />
                 {errorMessagePswd.length > 1 &&  
-                <p className="row"> 
+                <p className="row-error"> 
                   {errorMessagePswd} 
                 </p>
                 }
@@ -153,7 +175,7 @@ const ProfileField = ({
                   className="field-update"
                   type="submit"
                 > 
-                Modifer Votre password
+                Modifier votre password
                 </button>
               </div>
             </div>
@@ -177,7 +199,7 @@ const ProfileField = ({
           >
             <Fade in={open} onClick={handleClose}>
               <div className={classes.paper}>
-                <h2> Voulez vous vraiment supprimer votre compte ?</h2>
+                <h2> Voulez-vous vraiment supprimer votre compte ?</h2>
                 <button type="button" onClick={deleteProfil}> Oui </button>
                 <button type="button"> Non </button>
               </div>

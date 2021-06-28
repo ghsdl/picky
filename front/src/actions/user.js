@@ -3,7 +3,7 @@ export const LOGIN = 'LOGIN';
 export const ACTION_SAVE_USER = 'ACTION_SAVE_USER';
 export const SIGN_UP = 'SIGN_UP';
 export const LOGOUT = 'LOGOUT';
-export const UPDATE_PROFIL_ERROR = 'UPDATE_PROFIL_ERROR';
+export const UPDATE_SIGN_IN_ERROR = 'UPDATE_SIGN_IN_ERROR';
 export const RESET = 'RESET';
 
 export const changeInputValue = (value, key) => ({
@@ -33,8 +33,8 @@ export const logout = () => ({
   type: LOGOUT,
 });
 
-export const updateProfilError = (value) => ({
-  type: UPDATE_PROFIL_ERROR,
+export const updateSignInError = (value) => ({
+  type: UPDATE_SIGN_IN_ERROR,
   value,
 });
 

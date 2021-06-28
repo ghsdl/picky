@@ -1,11 +1,9 @@
 // REQUIRING MEMBER DATAMAPPER AND PACKAGES
 const memberDataMapper = require('../dataMappers/memberDataMapper');
 const authDataMapper = require('../dataMappers/authDataMapper');
-/*const platformDataMapper = require('../dataMappers/platformDataMapper');*/
 const bcrypt = require('bcrypt');
-const { log } = require('./authController');
 
-const memberController = {
+const memberController = { // BACKEND METHOD
   async get(_, res) {
     try {
       // GETTING THE LIST OF MEMBERS
@@ -18,64 +16,17 @@ const memberController = {
     }
   },
 
-  async getById(req, res, next) {
-    console.log(req.member.id);
+  async getById(req, res, next) { // BACKEND AND FRONTEND METHOD
     try {
-      // GETTING THE MEMBER BY ITS ID
-      const member = await memberDataMapper.getOne(req.member.id);
-
-      // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
-      if (!member) {
-        return next();
-      }
-
-      res.json({ member: member.email, pseudo: member.pseudo });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
-    }
-  },
-
-  async getBookmarkByMember(req, res, next) {
-    try {
-      // GETTING THE MEMBER BY ITS ID
-      const member = await memberDataMapper.getOne(req.member.id);
-
-      // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
-      if (!member) {
-        return next();
-      }
-
-      // GETTING ALL BOOMARKS FOR A MEMBER
-      const bookmarkMember = await memberDataMapper.getBookmarkMember(req.member.id);
-
-      console.log(bookmarkMember);
-
-      //ParsedBookmarkMember = JSON.parse(bookmarkMember);
-
-      //console.log(ParsedBookmarkMember);
-
-      res.json({ bookmarkMember });
-      console.log(bookmarkMember[0].bookmark[0].platform);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
-    }
-  },
-
-  // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
-  /*
-  async getPlatformByMember (req, res, next) {
-    try {
-      // GETTING THE URL PARAMETER
-      const id = parseInt(req.params.id, 10);
+      // GETTING THE MEMBER ID
+      const id = parseInt(req.member.id, 10);
 
       // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      if(isNaN(id)){
+      if (isNaN(id)) {
         return next();
       }
 
-      // GETTING THE MEMBER BY ITS ID
+      // GETTING THE MEMBER FROM DATABASE BY THEIR ID STORED IN THE TOKEN
       const member = await memberDataMapper.getOne(id);
 
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
@@ -83,68 +34,54 @@ const memberController = {
         return next();
       }
 
-      // GETTING ALL PLATFORMS FOR A MEMBER
-      const platforms = await memberDataMapper.getPlatformByMember(id);
-      
-      res.json({ platforms });
+      // SEND DATA TO FRONTEND
+      res.json({ member: member.email, pseudo: member.pseudo });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
     }
   },
-  */
 
-  // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
-  /*
-  async addPlatformToMember(req, res, next) {
+  async getBookmarkByMember(req, res, next) { // BACKEND AND FRONTEND METHOD
     try {
-      // GETTING THE URL PARAMETER
-      const platform_id = parseInt(req.params.platform_id, 10);
+      // GETTING THE MEMBER ID
+      const id = parseInt(req.member.id, 10);
 
       // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      if (isNaN(platform_id)) {
+      if (isNaN(id)) {
         return next();
       }
 
-      // GETTING THE PLATFORM BY ITS ID
-      const platform = await platformDataMapper.getOne(platform_id);
+      // GETTING THE MEMBER FROM DATABASE BY THEIR ID STORED IN THE TOKEN
+      const member = await memberDataMapper.getOne(id);
 
-      // IF PLATFORM DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
-      if (!platform) {
-        return next();
-      }
-
-      // GETTING THE URL PARAMETER
-      const member_id = parseInt(req.params.member_id, 10);
-
-      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      if (isNaN(member_id)) {
-        return next();
-      }
-
-      // GETTING THE MEMBER BY ITS ID
-      const member = await memberDataMapper.getOne(member_id);
-      
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
         return next();
       }
 
-    // ADDING NEW PLATFORM FOR A MEMBER IN DATABASE
-      const newPlatformToMember = await memberDataMapper.post(platform_id, member_id);
+      // GETTING ALL BOOMARKS FOR A MEMBER
+      const bookmarkMember = await memberDataMapper.getBookmarkMember(id);
 
-      res.json({ newPlatformToMember });
+      res.json({ data: bookmarkMember[0].bookmark });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
     }
   },
-  */
 
-  async update(req, res, next) {
+  async update(req, res, next) { // BACKEND AND FRONTEND METHOD
     try {
-      // GETTING THE MEMBER BY ITS ID
-      const member = await memberDataMapper.getOne(req.member.id);
+      // GETTING THE MEMBER ID
+      const id = parseInt(req.member.id, 10);
+
+      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
+      if (isNaN(id)) {
+        return next();
+      }
+
+      // GETTING THE MEMBER FROM DATABASE BY THEIR ID STORED IN THE TOKEN
+      const member = await memberDataMapper.getOne(id);
 
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
@@ -172,7 +109,11 @@ const memberController = {
         member.email = newData.email;
       }
 
-      // UPDATING PSEUDO PASSWORD
+      if (newData.email === null) {
+        member.email = newData.email 
+      }
+
+      // UPDATING PASSWORD
       if (newData.password) {
         member.password = newData.password;
       }
@@ -194,7 +135,7 @@ const memberController = {
       }
 
       // UPDATING MEMBER AND SAVE IN DATABASE
-      const updatedMember = await memberDataMapper.patch(member, req.member.id);
+      const updatedMember = await memberDataMapper.patch(member, id);
 
       res.json({ updatedMember });
     } catch (error) {
@@ -203,10 +144,18 @@ const memberController = {
     }
   },
 
-  async delete(req, res, next) {
+  async delete(req, res, next) { // BACKEND AND FRONTEND METHOD
     try {
-      // GETTING THE MEMBER BY ITS ID
-      const member = await memberDataMapper.getOne(req.member.id);
+      // GETTING THE MEMBER ID
+      const id = parseInt(req.member.id, 10);
+
+      // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
+      if (isNaN(id)) {
+        return next();
+      }
+
+      // GETTING THE MEMBER FROM DATABASE BY THEIR ID STORED IN THE TOKEN
+      const member = await memberDataMapper.getOne(id);
 
       // IF MEMBER DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!member) {
@@ -214,7 +163,7 @@ const memberController = {
       }
 
       // DELETING MEMBER FROM DATABASE
-      await memberDataMapper.delete(req.member.id);
+      await memberDataMapper.delete(id);
 
       res.status(204).json();
     } catch (error) {

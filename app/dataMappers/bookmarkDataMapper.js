@@ -8,7 +8,7 @@ module.exports = {
     },
 
     async getOne(id) {
-        const result = await pool.query(`SELECT * FROM bookmark WHERE id = $1`, [id]);
+        const result = await pool.query(`SELECT * FROM bookmark WHERE betaseries_id = $1`, [id]);
         return result.rows[0];
     },
 
@@ -30,8 +30,8 @@ module.exports = {
         return result.rows[0];
     },*/
 
-    async delete(id) {
-        const result = await pool.query(`SELECT * FROM delete_bookmark($1)`, [id]);
+    async delete(id, memberId) {
+        const result = await pool.query(`DELETE FROM bookmark WHERE betaseries_id = $1 and member_id = $2`, [id, memberId]);
         return result;
     }
 }

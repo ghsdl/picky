@@ -1,12 +1,15 @@
 // REQUIRING SHOW DATAMAPPER 
-const showDataMapper = require("../dataMappers/showDataMapper");
-const dataMapper = require("../dataMappers/showDataMapper");
+const showDataMapper = require('../dataMappers/showDataMapper');
 
 const serieController = {
-  getShows: async (req, res) => {
+  allShows: async (_, res) => {
     try {
-      const shows = await dataMapper.getAllShows();
+      // FETCHING SHOWS FROM THIRD PARTY API
+      const shows = await showDataMapper.getAllShows();
+
+      // IF FETCHING IS A SUCCESS
       if (shows) {
+        // ELSE THROW ERROR
         res.json(shows);
       } else {
         res.status(404).json("Cannot find series");
@@ -17,10 +20,14 @@ const serieController = {
     }
   },
 
-  randomShows: async (req, res) => {
+  randomShows: async (_, res) => {
     try {
-      const serie = await dataMapper.randomShows();
+      // FETCHING RANDOM SHOWS FROM THIRD PARTY API
+      const serie = await showDataMapper.randomShows();
+
+      // IF FETCHING IS A SUCCESS
       if (serie) {
+        // ELSE THROW ERROR
         res.json(serie);
       } else {
         res.status(404).json("Cannot find serie");
@@ -31,17 +38,20 @@ const serieController = {
     }
   },
 
-  searchShows: async (req, res) =>{
+  searchShows: async (req, res) => {
     try {
+      // GETTING THE URL PARAMETER
       const text = req.params;
+
+      // SEARCHING SHOWS FROM THIRD PARTY API
       const search = await showDataMapper.searchShows(text);
+      
       res.json(search);
-  } catch (error) {
+    } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
+    }
   }
-  }
-
 
 };
 

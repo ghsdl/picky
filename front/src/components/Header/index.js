@@ -16,7 +16,8 @@ import {
 // Import pour les îcones de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-
+import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from "@fortawesome/free-brands-svg-icons"
+import LogoPicky from 'src/assets/logoPicky.png'
 // Import de notre logo
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -94,13 +95,35 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
               {!isConnected && (
                 <li><Link to="/signUp">Picky Wish</Link></li>
               )}
-              <li><Link to="/about">A propos</Link></li>
+              <li><Link to="/about">Picky About</Link></li>
             </ul>
+            <div className="separation"></div>
+            <div className="brandIcon">
+            <a href="https://www.facebook.com/pickyaddict/" target="_blank">
+              <FontAwesomeIcon
+                className="faFacebookSquare"
+                icon={faFacebookSquare}
+              />
+            </a>
+            <a href="https://twitter.com/pickyaddict" target="_blank">
+              <FontAwesomeIcon
+                className="faTwitterSquare"
+                icon={faTwitterSquare}
+              />
+            </a>
+            <a href="https://www.instagram.com/pickyaddict/" target="_blank">
+            <FontAwesomeIcon
+              className="faInstagramSquare"
+              icon={faInstagramSquare}
+            />
+            </a>
+          </div>
           </nav>
+          
         </div>
       </ClickAwayListener>
       <Link to="/" onClick={resetPickyFind}>
-        <img src={logo} className="header-logo" alt="Logo Picky" />
+        <img src={LogoPicky} className="header-logo" alt="Logo Picky" />
       </Link>
       { !isConnected && (
         <>
@@ -134,13 +157,15 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
         </>
       )}
       { isConnected && (
+      <>
+      
       <div>
+        
         <FontAwesomeIcon
           onClick={handleOpen}
           icon={faUserCircle}
           className="header-iconProfil"
         />
-
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
@@ -162,7 +187,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
                 </li>
                 <li onClick={deconnect}>
                   <Link to="/">
-                    Se deconnecter
+                    Se déconnecter
                   </Link>
                 </li>
               </ul>
@@ -170,6 +195,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
           </Fade>
         </Modal>
       </div>
+      </>
       )}
     </header>
   );

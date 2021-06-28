@@ -1,3 +1,9 @@
+.toast-Container{
+  color: rgb(53, 53, 53);
+  font-style: italic;
+  box-shadow: 0px 1px 5px rgba(248, 175, 175, 0.1)
+}
+
 .profile {
   display: flex;
   justify-content: space-around;
@@ -7,7 +13,7 @@
   margin-top: 14vh;
 
   &-title {
-    margin-top: 4vh;
+    margin-top: 5vh;
     padding: 2vh;
     display: inline-block;
     border: 3px solid #333333;
@@ -88,10 +94,17 @@
   span {
     position: relative;
     display: flex;
-    margin: 4vh 2vh;
+    margin: 2vh
+  }
+  &-error{
+    margin-bottom: 2vh;
+    color: red;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 1.2vh;
   }
 }
-.gate {
+.gate__pseudo {
   display: inline-block;
   width: 50vh;
   padding: 10px 0 10px 15px;
@@ -101,7 +114,7 @@
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 65px; // Arbitrary.
+  text-indent: 75px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -125,7 +138,7 @@
     border-bottom-left-radius: 3px;
     transform-origin: left bottom;
     z-index: 20;
-    
+    font-style: italic;
     &:before,
     &:after {
       content: "";
@@ -148,15 +161,15 @@
     }
   }
 }
-span:nth-child(2) .gate {
+span:nth-child(2) .gate__pseudo {
   text-indent: 85px;
 }
-span:nth-child(2) .gate:focus,
-span:nth-child(2) .gate:active{
+span:nth-child(2) .gate__pseudo:focus,
+span:nth-child(2) .gate__pseudo:active{
   text-indent: 0;
 }
-.gate:focus,
-.gate:active {
+.gate__pseudo:focus,
+.gate__pseudo:active {
   text-indent: 0;
   background: #fff;
   border-top-right-radius: 3px;
@@ -175,12 +188,271 @@ span:nth-child(2) .gate:active{
   }
 }
 
+
+.gate__email {
+  display: inline-block;
+  width: 50vh;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  background: #ffffff;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 60px; // Arbitrary.
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #070707;
+    text-align: center;
+    font-style: italic;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+  + label {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 11.5px 12px;
+    text-shadow: 0 1px 0 rgba(19,74,70,.4);
+    background: #F4BB01;
+    transition: all .4s ease-in-out;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    transform-origin: left bottom;
+    z-index: 20;
+    font-style: italic;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 3px;
+      background: #F4BB01;
+      transform-origin: left bottom;
+      transition: all .4s ease-in-out;
+      pointer-events: none;
+      z-index: -1;
+    }
+    &:before {
+      background: rgba(3,36,41,.2);
+      z-index: -2;
+      right: 20%;
+    }
+  }
+}
+
+span:nth-child(2) .gate__email:focus,
+span:nth-child(2) .gate__email:active{
+  text-indent: 0;
+}
+.gate__email:focus,
+.gate__email:active {
+  text-indent: 0;
+  background: #fff;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+  + label {
+    transform: rotate(-66deg);
+    border-radius: 3px;
+    
+    &:before {
+      transform: rotate(10deg);
+    }
+  }
+}
+
+
+.gate__password {
+  display: inline-block;
+  width: 50vh;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  background: #ffffff;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 125px; // Arbitrary.
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #070707;
+    text-align: center;
+    font-style: italic;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+  + label {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 11.5px 12px;
+    text-shadow: 0 1px 0 rgba(19,74,70,.4);
+    background: #F4BB01;
+    transition: all .4s ease-in-out;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    transform-origin: left bottom;
+    z-index: 20;
+    font-style: italic;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 3px;
+      background: #F4BB01;
+      transform-origin: left bottom;
+      transition: all .4s ease-in-out;
+      pointer-events: none;
+      z-index: -1;
+    }
+    &:before {
+      background: rgba(3,36,41,.2);
+      z-index: -2;
+      right: 20%;
+    }
+  }
+}
+span:nth-child(2) .gate__password {
+  text-indent: 85px;
+}
+span:nth-child(2) .gate__password:focus,
+span:nth-child(2) .gate__password:active{
+  text-indent: 0;
+}
+.gate__password:focus,
+.gate__password:active {
+  text-indent: 0;
+  background: #fff;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+  + label {
+    transform: rotate(-66deg);
+    border-radius: 3px;
+    
+    &:before {
+      transform: rotate(10deg);
+    }
+  }
+}
+
+
+.gate__confirmationPassword{
+  display: inline-block;
+  width: 50vh;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  background: #ffffff;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 220px; // Arbitrary.
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #070707;
+    text-align: center;
+    font-style: italic;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+  + label {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 11.5px 12px;
+    text-shadow: 0 1px 0 rgba(19,74,70,.4);
+    background: #F4BB01;
+    transition: all .4s ease-in-out;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    transform-origin: left bottom;
+    z-index: 20;
+    font-style: italic;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 3px;
+      background: #F4BB01;
+      transform-origin: left bottom;
+      transition: all .4s ease-in-out;
+      pointer-events: none;
+      z-index: -1;
+    }
+    &:before {
+      background: rgba(3,36,41,.2);
+      z-index: -2;
+      right: 20%;
+    }
+  }
+}
+span:nth-child(2) .gate__confirmationPassword:focus,
+span:nth-child(2) .gate__confirmationPassword:active{
+  text-indent: 0;
+}
+.gate__confirmationPassword:focus,
+.gate__confirmationPassword:active {
+  text-indent: 0;
+  background: #fff;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  
+  &::-webkit-input-placeholder {
+    color: #aaa;
+  }
+  + label {
+    transform: rotate(-66deg);
+    border-radius: 3px;
+    
+    &:before {
+      transform: rotate(10deg);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
 .profile-delete{
   font-size: 1.5vh;
   font-style: italic;
   font-weight: bold;
   border: 1px, solid, black;
-  background: #910000ce;
+  background: #CE4257;
   border-radius: 5px;
   padding: 1vh;
   color: white;

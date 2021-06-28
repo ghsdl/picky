@@ -52,6 +52,7 @@
     width: 2.5em
   }
 }
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -60,25 +61,49 @@
   height: 100%;
   background-color:#F4BB01;
   transition: left 300ms ease-out;
-  z-index: 12;
+  z-index: 1;
   
 }
 .sidebar.active {
   left: 0;
 }
 .sidebar ul {
-  margin: 30px;
+  margin-top: 20vh;
   padding: 0;
 }
 .sidebar li {
   list-style: none;
 }
-.sidebar li a {
-  font-size: 18px;
+.sidebar li {
+  font-size: 2.5vh;
   text-decoration: none;
-  padding: 10px;
+  padding: 2vh;
   display: block;
-  color: #fff;
+  color: #1D120C;
+}
+
+.sidebar li::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #1D120C;
+  transition:  .5s;
+  margin-top: 1vh;
+}
+
+.sidebar li:hover::after{
+  width: 80%;
+  transition:  .5s;
+  margin-left: 2vh;
+}
+
+.separation {
+  border-bottom: black 1px solid;
+  width: 60%;
+  margin-left: 6vh;
+  margin-top: 12vh;
+  
 }
 
 .test li{
@@ -89,6 +114,22 @@
   padding: 1rem;
   font-size: 1.3em;
   cursor: pointer;
+}
+.brandIcon{
+  margin-top: 30vh;
+}
+.faFacebookSquare{
+  font-size: 3vh;
+  margin-right: 3vh;
+}
+
+.faTwitterSquare{
+  font-size: 3vh;
+  margin-right: 3vh;
+}
+
+.faInstagramSquare{
+  font-size: 3vh;
 }
 
 .login {

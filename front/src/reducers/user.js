@@ -1,7 +1,7 @@
 import {
   CHANGE_INPUT_VALUE,
   ACTION_SAVE_USER,
-  UPDATE_PROFIL_ERROR,
+  UPDATE_SIGN_IN_ERROR,
   LOGIN,
   RESET,
 } from 'src/actions/user';
@@ -29,6 +29,7 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         email: '',
         password: '',
+        errorMessage: '',
       }
 
     case ACTION_SAVE_USER:
@@ -36,11 +37,12 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         isConnected: true,
         token: action.token,   
-        pseudo: action.value,  
+        pseudo: action.value,
+        errorMessage: '',  
   
       };
 
-    case UPDATE_PROFIL_ERROR: 
+    case UPDATE_SIGN_IN_ERROR: 
     return {
       ...state,
       errorMessage: action.value,
