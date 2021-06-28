@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_REMOVE_WISH, REMOVE_FROM_WISH, GET_BOOKMARK, GET_BOOKMARKS_IDS, getBookmarkSuccess, getBookmarksIdsSuccess,} from 'src/actions/watchlist';
+import { ADD_REMOVE_WISH, REMOVE_FROM_WISH, GET_BOOKMARK, GET_BOOKMARKS_IDS, getBookmarkSuccess, getBookmarksIdsSuccess, getBookmarksIds, getBookmark } from 'src/actions/watchlist';
 
 const pickyWish = (store) => (next) => (action) => {
   const config = {
@@ -22,8 +22,9 @@ const pickyWish = (store) => (next) => (action) => {
           bodyParameters,
           config
           )
-          .then((response) => {
-            console.log(response.data);
+          .then(() => {
+            store.dispatch(getBookmarksIds());
+            store.dispatch(getBookmark());
           });
         break;
     };
@@ -34,8 +35,9 @@ const pickyWish = (store) => (next) => (action) => {
       axios.delete(`https://projet-picky.herokuapp.com/bookmark/${programId}`,
         config
         )
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
+          store.dispatch(getBookmarksIds());
+          store.dispatch(getBookmark());
         });
       break;
     }
@@ -85,7 +87,6 @@ const pickyWish = (store) => (next) => (action) => {
         });
       }
 
-      console.log('bookmarksIds in pickyWish middleware', bookmarksIds);
       store.dispatch(getBookmarksIdsSuccess(bookmarksIds));
     });
     break;

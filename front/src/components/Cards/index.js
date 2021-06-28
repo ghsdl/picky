@@ -46,7 +46,6 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
         <div className="cards">
         {// The movies are displayed
         }
-        {console.log(movies)}
         {movies.map((movie) => (
           <Card
             id={movie.id}
