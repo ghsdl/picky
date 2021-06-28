@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#FFF',
     boxShadow: theme.shadows[1],
     outline: 'none',
     padding: '5vh',
