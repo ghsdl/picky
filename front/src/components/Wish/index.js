@@ -1,6 +1,8 @@
 // Import npm
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import of components
 import Header from 'src/containers/Header';
@@ -17,6 +19,18 @@ const Wish = ({ loadBookmark }) => {
 
   return (
   <div className="wish">
+    <ToastContainer
+      className="toast-Container"
+      color="black"
+      position="top-center"
+      autoClose={5000}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
     {// Header 
     }
     <Header />

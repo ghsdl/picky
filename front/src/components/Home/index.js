@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import of components
 import Header from 'src/containers/Header';
@@ -28,6 +30,18 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
 
   return(
   <div>
+    <ToastContainer
+      className="toast-Container"
+      color="black"
+      position="top-center"
+      autoClose={5000}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
     {// Header
     }
     <Header />
