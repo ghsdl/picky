@@ -25,6 +25,8 @@ import logo from 'src/assets/logo_PopCorn.png';
 
 // Import css
 import './style.scss';
+import styled, { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme, GlobalStyles } from "src/components/App/theme.js";
 
 /* makeStyle = import for modal use, modal: handling placement of the modal, paper: handling style
 for the modal, back ground collor, border... backDrop: handling modal background.
@@ -53,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const StyledApp = styled.div`
+color: ${(props) => props.theme.fontColor};
+`;
+
 // Creation of my component Header
 export default function Header({ isConnected, deconnect, resetPickyFind }) {
   // Hook for modal with two function, opening and closing.
@@ -69,135 +75,148 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
   const handleClickAway = () => setSidebar(false);
   const classes = useStyles();
   const getStarted = <div> Get <br /> started </div>;
+
+  const [theme, setTheme] = useState("light");
+
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+
   return (
-    <header className="header">
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <div>
-          <FontAwesomeIcon
-            icon={faEllipsisH}
-            className={sidebar ? 'header-ellipsis--onSidebar' : 'header-ellipsis'}
-            onClick={showSidebar}
-          />
+  <ThemeProvider theme={ theme === "light" ? lightTheme : darkTheme}>
+    <StyledApp>
+      <GlobalStyles/>
+        <header className="header">
+            <ClickAwayListener onClickAway={handleClickAway}>
+              <div>
+                <FontAwesomeIcon
+                  icon={faEllipsisH}
+                  className={sidebar ? 'header-ellipsis--onSidebar' : 'header-ellipsis'}
+                  onClick={showSidebar}
+                />
 
-          <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
+                <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
 
-            <ul onClick={showSidebar}>
-              <li><Link to="/">Picky Find</Link></li>
-              {isConnected && (
-                <li><Link to="/mood">Picky Mood</Link></li>
-              )}
-              {!isConnected && (
-                <li><Link to="/signUp">Picky Mood</Link></li>
-              )}
-              {isConnected && (
-                <li><Link to="/wish">Picky Wish</Link></li>
-              )}
-              {!isConnected && (
-                <li><Link to="/signUp">Picky Wish</Link></li>
-              )}
-              <li><Link to="/about">Picky About</Link></li>
-            </ul>
-            <div className="separation"></div>
-            <div className="brandIcon">
-            <a href="https://www.facebook.com/pickyaddict/" target="_blank">
-              <FontAwesomeIcon
-                className="faFacebookSquare"
-                icon={faFacebookSquare}
-              />
-            </a>
-            <a href="https://twitter.com/pickyaddict" target="_blank">
-              <FontAwesomeIcon
-                className="faTwitterSquare"
-                icon={faTwitterSquare}
-              />
-            </a>
-            <a href="https://www.instagram.com/pickyaddict/" target="_blank">
-            <FontAwesomeIcon
-              className="faInstagramSquare"
-              icon={faInstagramSquare}
-            />
-            </a>
-          </div>
-          </nav>
-          
-        </div>
-      </ClickAwayListener>
-      <Link to="/" onClick={resetPickyFind}>
-        <img src={LogoPicky} className="header-logo" alt="Logo Picky" />
-      </Link>
-      { !isConnected && (
-        <>
-          <div className="login">
-            <Link
-              to="/signIn"
-              className="linkSignIn"
-            >
-              Se connecter 
-            </Link>
-            <Link
-              to="/signUp"
-              className="linkSignUp"
-            >
-              S'inscrire
-            </Link>
+                  <ul onClick={showSidebar}>
+                    <li><Link to="/">Picky Find</Link></li>
+                    {isConnected && (
+                      <li><Link to="/mood">Picky Mood</Link></li>
+                    )}
+                    {!isConnected && (
+                      <li><Link to="/signUp">Picky Mood</Link></li>
+                    )}
+                    {isConnected && (
+                      <li><Link to="/wish">Picky Wish</Link></li>
+                    )}
+                    {!isConnected && (
+                      <li><Link to="/signUp">Picky Wish</Link></li>
+                    )}
+                    <li><Link to="/about">Picky About</Link></li>
+                  </ul>
+                  <div className="separation"></div>
+                  <div className="brandIcon">
+                  <a href="https://www.facebook.com/pickyaddict/" target="_blank">
+                    <FontAwesomeIcon
+                      className="faFacebookSquare"
+                      icon={faFacebookSquare}
+                    />
+                  </a>
+                  <a href="https://twitter.com/pickyaddict" target="_blank">
+                    <FontAwesomeIcon
+                      className="faTwitterSquare"
+                      icon={faTwitterSquare}
+                    />
+                  </a>
+                  <a href="https://www.instagram.com/pickyaddict/" target="_blank">
+                  <FontAwesomeIcon
+                    className="faInstagramSquare"
+                    icon={faInstagramSquare}
+                  />
+                  </a>
+                </div>
+                </nav>
+                
+              </div>
 
-            <Link
-              className="getStarted"
-              to="/signIn"
-            >
-              {getStarted}
+            </ClickAwayListener>
+            <button onClick={() => themeToggler()}>THEME</button> 
+            <Link to="/" onClick={resetPickyFind}>
+              <img src={LogoPicky} className="header-logo" alt="Logo Picky" />
             </Link>
-          </div>
-          <Link
-            className="getStarted"
-            to="/signIn"
-          >
-            {getStarted}
-          </Link>
-        </>
-      )}
-      { isConnected && (
-      <>
-      
-      <div>
-        
-        <FontAwesomeIcon
-          onClick={handleOpen}
-          icon={faUserCircle}
-          className="header-iconProfil"
-        />
-        <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          className={classes.modal}
-          open={open}
-          onClose={handleClose}
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
-            className: classes.backDrop,
-          }}
-        >
-          <Fade in={open}>
-            <div className={classes.paper}>
-              <ul className="test">
-                <li>
-                  <Link to="/profil"> Profil </Link>
-                </li>
-                <li onClick={deconnect}>
-                  <Link to="/">
-                    Se déconnecter
+            { !isConnected && (
+              <>
+                <div className="login">
+                  <Link
+                    to="/signIn"
+                    className="linkSignIn"
+                  >
+                    Se connecter 
                   </Link>
-                </li>
-              </ul>
+                  <Link
+                    to="/signUp"
+                    className="linkSignUp"
+                  >
+                    S'inscrire
+                  </Link>
+
+                  <Link
+                    className="getStarted"
+                    to="/signIn"
+                  >
+                    {getStarted}
+                  </Link>
+                </div>
+                <Link
+                  className="getStarted"
+                  to="/signIn"
+                >
+                  {getStarted}
+                </Link>
+              </>
+            )}
+            { isConnected && (
+            <>
+            
+            <div>
+              <FontAwesomeIcon
+                onClick={handleOpen}
+                icon={faUserCircle}
+                className="header-iconProfil"
+              />
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                  className: classes.backDrop,
+                }}
+              >
+                <Fade in={open}>
+                  <div className={classes.paper}>
+                    <ul className="test">
+                      <li>
+                        <Link to="/profil"> Profil </Link>
+                      </li>
+                      <li onClick={deconnect}>
+                        <Link to="/">
+                          Se déconnecter
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </Fade>
+              </Modal>
             </div>
-          </Fade>
-        </Modal>
-      </div>
-      </>
-      )}
-    </header>
+            </>
+            )}    
+       </header>
+      </StyledApp>
+    </ThemeProvider>  
   );
 }
 Header.propTypes = {
