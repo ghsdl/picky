@@ -31,51 +31,12 @@ module.exports = {
         const result = await pool.query(`SELECT * FROM member WHERE id = $1`, [id]);
         return result.rows[0];
     },
-
-    /*
-    async getBookmarkMember(memberId) {
-        const result = await pool.query(`SELECT m.pseudo, m.profile_picture, b.created_at,
-        json_agg((b.betaseries_id,b.title,b.platform,b.poster)) bookmark
-        FROM member AS m
-        JOIN bookmark AS b
-        ON m.id = b.member_id
-        WHERE member_id = $1
-        GROUP BY b.title,m.pseudo, m.profile_picture,b.created_at
-		ORDER BY b.created_at;`, [memberId]);
-        return result.rows;
-    },
-    */
    
     async getBookmarkMember(memberId) {
         console.log(memberId);
         const result = await pool.query(`SELECT json_agg(bookmark.*) AS bookmark FROM bookmark WHERE member_id = $1;`, [memberId]);
         return result.rows;
     },
-
-    // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
-    /*
-    async getPlatformByMember(memberId) {
-        const result = await pool.query(`SELECT m.*, 
-		array_agg(DISTINCT p.name) AS platform_name,
-		array_agg(DISTINCT p.logo) AS platform_logo
-        FROM member AS m
-        JOIN platform_has_member AS phm
-        ON m.id = phm.member_id
-		JOIN platform as p
-		ON p.id = phm.platform_id
-        WHERE member_id = $1
-        GROUP BY m.id;`, [memberId]);
-        return result.rows;
-    },
-    */
-
-    // V2 IF WE DECIDE TO INCLUDE SVODS TO USERS DIRECTLY
-    /*
-    async post(platform_id, member_id) {
-        const result = await pool.query(`INSERT INTO "platform_has_member" ("platform_id", "member_id") VALUES ($1,$2) RETURNING *`, [platform_id, member_id]);
-        return result.rows[0];
-    },
-    */
 
     async patch(member, id) {
         const result = await pool.query(`UPDATE "member" SET pseudo = $1, email = $2, password = $3, profile_picture = $4, updated_at = now() WHERE id =$5 RETURNING *`, [member.pseudo, member.email, member.password, member.profile_picture, id]);

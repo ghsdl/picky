@@ -2,24 +2,6 @@
 const movieDataMapper = require('../dataMappers/movieDataMapper');
 
 const movieController = {
-  async allMovies(_, res) {
-    try {
-      // FETCHING MOVIES FROM THIRD PARTY API
-      const movies = await movieDataMapper.getAllMovies();
-
-      // IF FETCHING IS A SUCCESS
-      if (movies) {
-        res.json(movies);
-        // ELSE THROW ERROR
-      } else {
-        res.status(404).json("Cannot find movies.");
-      }
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
-    }
-  },
-
   async randomMovies(_, res) {
     try {
       // FETCHING RANDOM MOVIES FROM THIRD PARTY API
