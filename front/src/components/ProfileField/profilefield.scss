@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .toast-Container{
   color: rgb(53, 53, 53);
   font-style: italic;
@@ -77,13 +79,25 @@
 }
 
 .field-update {
-  font-size: 1.5vh;
+  width: auto;
+  margin-top: 20px;
+  text-transform: uppercase;
   font-style: italic;
   font-weight: bold;
-  border: 1px solid black;
-  background: #F4BB01;
+  letter-spacing: 0.3ch;
+  border: none;
+
+  padding: 15px;
+
+  background:  #F4BB01;
+  color: white;
   border-radius: 5px;
-  padding: 1vh
+  
+  box-shadow: vars.$shadow;
+
+  &:active {
+    box-shadow: vars.$inset-shadow;
+  }
 }
 .row {
   max-width: 800px;
@@ -492,14 +506,25 @@ span:nth-child(2) .gate__confirmationPassword:active{
 
 
 .profile-delete{
-  font-size: 1.5vh;
+  width: auto;
+  margin-top: 20px;
+  text-transform: uppercase;
   font-style: italic;
   font-weight: bold;
-  border: 1px, solid, black;
-  background: #CE4257;
-  border-radius: 5px;
-  padding: 1vh;
+  letter-spacing: 0.3ch;
+  border: none;
+
+  padding: 15px;
+
+  background:  #CE4257;
   color: white;
+  border-radius: 5px;
+  
+  box-shadow: vars.$shadow;
+
+  &:active {
+    box-shadow: vars.$inset-shadow;
+  }
 };
 
 .profile-modal{
