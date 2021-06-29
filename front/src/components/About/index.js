@@ -126,8 +126,15 @@ function About () {
 
 
   return (
+    <>
+    <Header /> 
+    <div className="pickyMood">
+        <h2 className="pickyMood-question">
+         About Us
+        </h2>
+          
+      </div>
     <div className="wrapper">
-      <Header /> 
       <div className="about">
         <div className="accordion">
           {data.map((informations, i) => (
@@ -154,6 +161,7 @@ function About () {
         </div>
       </div>
     </div>
+    </>
   )
 
 }

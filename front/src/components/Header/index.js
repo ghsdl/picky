@@ -15,7 +15,7 @@ import {
 // ClickAwayListener is here to spot the click outside its parent element
 // Import pour les îcones de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faEllipsisH, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from "@fortawesome/free-brands-svg-icons"
 import LogoPicky from 'src/assets/logoPicky.png'
 // Import de notre logo

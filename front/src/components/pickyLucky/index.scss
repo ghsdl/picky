@@ -1,0 +1,144 @@
+@use 'src/styles/vars';
+
+.profileLuckyPicky{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 4vh;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 14vh;
+
+  &-title {
+    margin-top: 5vh;
+    padding: 2vh;
+    display: inline-block;
+    border: 3px solid #333333;
+    font-size: 2.0vh;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    background: #ffffff;
+    position: relative;
+    z-index: -2;
+    
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+  }
+};
+
+
+.getLucky{
+
+  text-align: center;
+  &-button{
+    height: 12vh;
+    width: 50vh;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 0.3ch;
+    border: none;
+    font-size: 5.5vh;
+    padding: 15px;
+
+    background:  #CE4257;
+    color: white;
+    border-radius: 5px;
+    
+    box-shadow: vars.$shadow;
+    margin-top: 17vh;
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
+  }
+}
+
+.pickyLucky {
+  
+
+  &-footerNoSearch{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  
+   
+    margin-top: 20vh;
+    margin-bottom: 1vh;
+  
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4vh;
+    pointer-events: auto;
+
+    &__link {
+      width: 100px;
+      padding: 10px;
+
+      background-color:  #F4BB01;
+      color: white;
+      border-radius: 5px;
+      box-shadow: vars.$shadow;
+      cursor: pointer;
+
+      &:active {
+        box-shadow: vars.$inset-shadow;
+      }
+      &-again{
+        margin-bottom: 1vh;
+      }
+    }
+
+    &__text {
+      margin: 0 10px;
+    }
+
+  }
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  
+    width: 60vw;
+    margin: auto;
+    margin-bottom: 1vh;
+  
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4vh;
+    pointer-events: auto;
+
+    &__link {
+      width: 100px;
+      padding: 10px;
+
+      background-color:  #F4BB01;
+      color: white;
+      border-radius: 5px;
+      box-shadow: vars.$shadow;
+      cursor: pointer;
+
+      &:active {
+        box-shadow: vars.$inset-shadow;
+      }
+      &-again{
+        margin-bottom: 1vh;
+      }
+    }
+
+    &__text {
+      margin: 0 10px;
+    }
+  }
+}

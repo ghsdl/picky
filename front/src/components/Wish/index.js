@@ -34,7 +34,9 @@ const Wish = ({ loadBookmark }) => {
     {// Header 
     }
     <Header />
-    <h1>Votre watchlist</h1>
+    <div className="pickyMood">
+      <h1 className="pickyMood-question">Votre watchlist</h1>
+    </div>
     {// Cards
     }
     <Cards currentPage="wish" loading={false} />

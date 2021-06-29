@@ -26,26 +26,49 @@ module.exports = {
     }
   },
 
-  async searchMovies(text) {
-    
-    const apiUrl = 'https://api.betaseries.com/search/movies?v=3.0',
-    args = {
-      'text': text,
-      'limit': 10,
-      'key': process.env.BETASERIES_API_KEY,
-    },
-    params = '&text=' + args.text.text + '&limit=' + args.limit + '&key=' + args.key;
-  const result = apiUrl + params;
+  
 
-  const response = await fetch(result);
-
-  let body = await response.json();
-  if (!Array.isArray(body)) {
-    body = [body];
+async searchMovies(text) {
     
-    return body;
-  }
+  const apiUrl = 'https://api.betaseries.com/search/movies?v=3.0',
+  args = {
+    'text': text,
+    'limit': 10,
+    'key': process.env.BETASERIES_API_KEY,
+  },
+  params = '&text=' + args.text.text + '&limit=' + args.limit + '&key=' + args.key;
+const result = apiUrl + params;
+
+const response = await fetch(result);
+
+let body = await response.json();
+if (!Array.isArray(body)) {
+  body = [body];
+  
+  return body;
 }
+},
+
+async searchMovie(id) {
+    
+  const apiUrl = 'https://api.betaseries.com/movies/movie?v=3.0',
+  args = {
+    'id': id,
+    'key': process.env.BETASERIES_API_KEY,
+  },
+  params = '&id=' + args.id.id + '&key=' + args.key;
+const result = apiUrl + params;
+console.log("resultat betaseries :", result)
+
+const response = await fetch(result);
+
+let body = await response.json();
+if (!Array.isArray(body)) {
+  body = [body];
+  
+  return body;
+}
+},
 };
 
 

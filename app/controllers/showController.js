@@ -34,7 +34,21 @@ const serieController = {
       console.log(error);
       res.status(500).json(error.toString());
     }
+  },
+
+  searchShow: async (req, res) => {
+    try {
+      const id = req.params;
+
+      const display = await showDataMapper.oneShow(id);
+
+      res.json(display);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
   }
+  
 
 };
 

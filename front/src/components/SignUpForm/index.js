@@ -14,6 +14,7 @@ const SignUpForm = ({
   handleSignUp,
   errorMessage,
   resetPage,
+  
 }) => {
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const SignUpForm = ({
         >
         <div className="rowSignUp">
           <Field
+            namebis="pseudoSignUp"
             type="text"
             name="pseudo"
             placeholder="Pseudo"
@@ -45,6 +47,7 @@ const SignUpForm = ({
             required
           />
           <Field
+            namebis="emailSignUp"
             type="email"
             name="email"
             placeholder="Adresse email"
@@ -53,6 +56,7 @@ const SignUpForm = ({
             required
           />
           <Field
+            namebis="passwordSignUp"
             type="password"
             name="password"
             placeholder="Mot de passe"
@@ -61,6 +65,7 @@ const SignUpForm = ({
             required
           />
           <Field
+            namebis="passwordConfirmSignUp"
             type="password"
             name="confirmationPassword"
             placeholder="Confirmation"

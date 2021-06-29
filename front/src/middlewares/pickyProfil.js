@@ -6,7 +6,7 @@ import { reset, logout } from 'src/actions/user'
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const notify = () => {toast.success("Pseudo et/ou Email modifié !"),{
-position: "top-center",
+position: "top-right",
 autoClose: 5000,
 closeOnClick: true,
 pauseOnHover: true,
@@ -14,7 +14,7 @@ draggable: true,
 }}
 
 const notifyPswd = () => {toast.success("Password modifié"),{
-  position: "top-center",
+  position: "top-right",
   autoClose: 5000,
   closeOnClick: true,
   pauseOnHover: true,
@@ -22,7 +22,7 @@ const notifyPswd = () => {toast.success("Password modifié"),{
 }};
 
 const notifySup = () => {toast.error("Votre compte va être supprimé..."),{
-  position: "top-center",
+  position: "top-right",
   autoClose: 3000,
   closeOnClick: true,
   pauseOnHover: true,

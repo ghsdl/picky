@@ -18,7 +18,7 @@ const router = express.Router();
 /**
  * Save a new member
  * @route POST /signup
- * @returns {newMembe[]} 200 - new member infos
+ * @returns {newMember[]} 200 - new member infos
  * @returns {error} 401 - "Un(e) utilisateur(rice) est déjà enregistré(e) avec cet email."
  */
 router.post('/signup', (validate.body(memberInsertSchema)), authController.add);
@@ -26,7 +26,7 @@ router.post('/signup', (validate.body(memberInsertSchema)), authController.add);
 /**
  * User login
  * @route POST /signin
- * @returns {memberConneted[]} 200 - member connected
+ * @returns {memberConnected[]} 200 - member connected
  * @returns {error} 401 - "Email ou mot de passe incorrect."
  */
 router.post('/signin', authController.log);
@@ -136,6 +136,7 @@ router.get('/search/shows/:text', showController.searchShows);
  */
 router.get('/search/movies/:text', movieController.searchMovies);
 
+
 /**
  * Display a list of 5 movies and shows with parameter 'query'
  * @route GET /search/:query
@@ -148,11 +149,18 @@ router.get('/search/:query', searchController.searchAll);
 
 router.post('/moodresults', searchController.mood);
 
-// MOVIES ROUTES
+// RANDOM MOVIES ROUTE
 router.get('/movies/random', movieController.randomMovies);
+
+
+// DISPLAY ONE MOVIE 
+router.get('/movie/:id', movieController.searchMovie);
 
 // SHOWS ROUTES
 router.get('/shows/random', showController.randomShows);
+
+// DISPLAY ONE SHOW ROUTE
+router.get('/show/:id', showController.searchShow);
 
 // PLATFORMS ROUTES
 

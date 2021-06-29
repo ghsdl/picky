@@ -1,6 +1,7 @@
 const pool = require('../../database');
 
 module.exports = {
+  
     /**
      * @typedef Member
      * @property {number} id - Unique identifier
@@ -42,6 +43,7 @@ module.exports = {
         const result = await pool.query(`SELECT * FROM member WHERE id = $1`, [id]);
         return result.rows[0];
     },
+   
 
     async getBookmarkMember(memberId) {
         console.log(memberId);
