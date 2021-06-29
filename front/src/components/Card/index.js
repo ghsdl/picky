@@ -11,7 +11,6 @@ import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 // Display of one card
 const Card = ({ id, title, poster, platformsInfos, platforms, addToWish, removeFromWish, program, bookmarksIds }) => {
   let isInWatchList = false;
-  
   return (
     <div className="card">
       { // Poster of the program
