@@ -12,6 +12,7 @@ export const darkTheme = {
   background: "#333",
   fontColor: "#fff",
   border: "3px solid #FFF",
+  red: "#CE4257"
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -32,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.fontColor};
   }
 
-  div.makeStyles-paper-2 {
+  div.makeStyles-paper-2, div.makeStyles-paper-5 {
     background-color: ${(props) => props.theme.body};
     color: ${(props) => props.theme.fontColor};
   }
