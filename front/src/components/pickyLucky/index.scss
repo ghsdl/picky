@@ -3,7 +3,7 @@
 .profileLuckyPicky{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 8vh;
+  margin-bottom: 4vh;
   align-items: center;
   flex-direction: column;
   margin-top: 14vh;
@@ -36,9 +36,6 @@
   }
 };
 
-.pickyLucky{
-  height: 100vh
-}
 
 .getLucky{
 
@@ -59,9 +56,89 @@
     border-radius: 5px;
     
     box-shadow: vars.$shadow;
-    margin-top: 12vh;
+    margin-top: 17vh;
     &:active {
       box-shadow: vars.$inset-shadow;
+    }
+  }
+}
+
+.pickyLucky {
+  
+
+  &-footerNoSearch{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  
+   
+    margin-top: 20vh;
+    margin-bottom: 1vh;
+  
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4vh;
+    pointer-events: auto;
+
+    &__link {
+      width: 100px;
+      padding: 10px;
+
+      background-color:  #F4BB01;
+      color: white;
+      border-radius: 5px;
+      box-shadow: vars.$shadow;
+      cursor: pointer;
+
+      &:active {
+        box-shadow: vars.$inset-shadow;
+      }
+      &-again{
+        margin-bottom: 1vh;
+      }
+    }
+
+    &__text {
+      margin: 0 10px;
+    }
+
+  }
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  
+    width: 60vw;
+    margin: auto;
+    margin-bottom: 1vh;
+  
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4vh;
+    pointer-events: auto;
+
+    &__link {
+      width: 100px;
+      padding: 10px;
+
+      background-color:  #F4BB01;
+      color: white;
+      border-radius: 5px;
+      box-shadow: vars.$shadow;
+      cursor: pointer;
+
+      &:active {
+        box-shadow: vars.$inset-shadow;
+      }
+      &-again{
+        margin-bottom: 1vh;
+      }
+    }
+
+    &__text {
+      margin: 0 10px;
     }
   }
 }
