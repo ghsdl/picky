@@ -23,35 +23,6 @@ function App (props) {
   }, []);
 
   return (
-<<<<<<< HEAD
-  <div className="app">
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/wish">
-            <Wish />
-          </Route>
-          <Route exact path="/mood">
-            <PickyMood />
-          </Route>
-          <Route exact path="/signIn">
-            <SignIn />
-          </Route>
-          <Route exact path="/signUp">
-            <SignUp />
-          </Route>
-          <Route exact path="/profil">
-            <ProfileField />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route>
-            <Error />
-          </Route>
-        </Switch>
-=======
     <div className="app">
     <Switch>
       <Route exact path="/">
@@ -82,7 +53,6 @@ function App (props) {
         <Error />
       </Route>
     </Switch>
->>>>>>> 7d068f07f4164ef2f19c367c13e5b1b51309f6e0
   </div>
   );
 };
