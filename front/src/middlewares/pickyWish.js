@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ADD_TO_WISH, REMOVE_FROM_WISH, GET_BOOKMARK, GET_BOOKMARKS_IDS, getBookmarkSuccess, getBookmarksIdsSuccess, getBookmarksIds, getBookmark } from 'src/actions/watchlist';
 
 const notifyAdd = () => {toast.success("Ce programme a bien été ajouté à votre watchlist"),{
-  position: "top-center",
+  position: "top-right",
   autoClose: 5000,
   closeOnClick: true,
   pauseOnHover: true,
@@ -12,15 +12,15 @@ const notifyAdd = () => {toast.success("Ce programme a bien été ajouté à vot
 }};
 
 const notifyDelete = () => {toast.success("Ce programme a bien été supprimé de votre watchlist"),{
-  position: "top-center",
+  position: "top-right",
   autoClose: 5000,
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
 }};
 
-const notifyVisitor = () => {toast.error("Vous devez être connecté pour ajouter un programme à votre watchlist"),{
-  position: "top-center",
+const notifyVisitor = () => {toast("Vous devez être connecté pour ajouter un programme à votre watchlist"),{
+  position: "top-right",
   autoClose: 5000,
   closeOnClick: true,
   pauseOnHover: true,
