@@ -10,7 +10,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 import platforms from 'src/middlewares/platforms';
 import pickyWish from 'src/middlewares/pickyWish';
-
+import resultPickyLucky from 'src/middlewares/pickyLucky'
 import profil from 'src/middlewares/pickyProfil';
 const persistConfig = {
   key: 'root',
@@ -24,7 +24,7 @@ const persistedReducer = persistReducer(persistConfig, reducer)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(persistedReducer, composeEnhancers(
-  applyMiddleware(signUp, auth, suggestions, result, pickyFind, platforms, pickyWish, profil),
+  applyMiddleware(signUp, auth, suggestions, result, pickyFind, platforms, pickyWish, profil, resultPickyLucky),
 ));
 
 const persistor= persistStore(store)

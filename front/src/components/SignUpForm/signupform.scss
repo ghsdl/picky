@@ -6,7 +6,7 @@
 	color: red;
 	font-weight: bold;
 	font-style: italic;
-	font-size: 1vh;
+	font-size: 1.5vh;
 }
 .redirect{
 	width: 44vh;
@@ -107,7 +107,7 @@
     color: red;
 	font-weight: bold;
 	font-style: italic;
-	font-size: 1.2vh;
+	font-size: 1.5vh;
   }
 }
 
@@ -132,7 +132,7 @@
   color: white;
 }
 
-.gate__pseudo {
+.gate__pseudoSignUp{
   margin-bottom: 2vh;
   display: inline-block;
   width: 50vh;
@@ -143,7 +143,7 @@
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 75px; // Arbitrary.
+  text-indent: 80px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -190,15 +190,15 @@
     }
   }
 }
-span:nth-child(2) .gate__pseudo {
-  text-indent: 85px;
-}
-span:nth-child(2) .gate__pseudo:focus,
-span:nth-child(2) .gate__pseudo:active{
+span:nth-child(2) .gate__pseudoSignUp {
   text-indent: 0;
 }
-.gate__pseudo:focus,
-.gate__pseudo:active {
+span:nth-child(2) .gate__pseudoSignUp:focus,
+span:nth-child(2) .gate__pseudoSignUp:active{
+  text-indent: 0;
+}
+.gate__pseudoSignUp:focus,
+.gate__pseudoSignUp:active {
   text-indent: 0;
   background: #fff;
   border-top-right-radius: 3px;
@@ -218,7 +218,7 @@ span:nth-child(2) .gate__pseudo:active{
 }
 
 
-.gate__email {
+.gate__emailSignUp {
   margin-bottom: 2vh;
   display: inline-block;
   width: 50vh;
@@ -229,7 +229,7 @@ span:nth-child(2) .gate__pseudo:active{
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 60px; // Arbitrary.
+  text-indent: 100px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -276,15 +276,15 @@ span:nth-child(2) .gate__pseudo:active{
     }
   }
 }
-span:nth-child(2) .gate__email {
-  text-indent: 125px;
+span:nth-child(2) .gate__emailSignUp {
+  text-indent: 150px;
 }
-span:nth-child(2) .gate__email:focus,
-span:nth-child(2) .gate__email:active{
+span:nth-child(2) .gate__emailSignUp:focus,
+span:nth-child(2) .gate__emailSignUp:active{
   text-indent: 0;
 }
-.gate__email:focus,
-.gate__email:active {
+.gate__emailSignUp:focus,
+.gate__emailSignUp:active {
   text-indent: 0;
   background: #fff;
   border-top-right-radius: 3px;
@@ -304,7 +304,7 @@ span:nth-child(2) .gate__email:active{
 }
 
 
-.gate__password {
+.gate__passwordSignUp {
   margin-bottom: 2vh;
   display: inline-block;
   width: 50vh;
@@ -315,7 +315,7 @@ span:nth-child(2) .gate__email:active{
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 125px; // Arbitrary.
+  text-indent: 140px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -365,12 +365,12 @@ span:nth-child(2) .gate__email:active{
 span:nth-child(2) .gate__password {
   text-indent: 85px;
 }
-span:nth-child(2) .gate__password:focus,
-span:nth-child(2) .gate__password:active{
+span:nth-child(2) .gate__passwordSignUp:focus,
+span:nth-child(2) .gate__passwordSignUp:active{
   text-indent: 0;
 }
-.gate__password:focus,
-.gate__password:active {
+.gate__passwordSignUp:focus,
+.gate__passwordSignUp:active {
   text-indent: 0;
   background: #fff;
   border-top-right-radius: 3px;
@@ -390,7 +390,7 @@ span:nth-child(2) .gate__password:active{
 }
 
 
-.gate__confirmationPassword{
+.gate__passwordConfirmSignUp{
   display: inline-block;
   width: 50vh;
   padding: 10px 0 10px 15px;
@@ -400,7 +400,7 @@ span:nth-child(2) .gate__password:active{
   border: 0;
   border-radius: 3px;
   outline: 0;
-  text-indent: 230px; // Arbitrary.
+  text-indent: 140px; // Arbitrary.
   transition: all .3s ease-in-out;
   
   &::-webkit-input-placeholder {
@@ -447,12 +447,12 @@ span:nth-child(2) .gate__password:active{
     }
   }
 }
-span:nth-child(2) .gate__confirmationPassword:focus,
-span:nth-child(2) .gate__confirmationPassword:active{
+span:nth-child(2) .gate__passwordConfirmSignUp:focus,
+span:nth-child(2) .gate__passwordConfirmSignUp:active{
   text-indent: 0;
 }
-.gate__confirmationPassword:focus,
-.gate__confirmationPassword:active {
+.gate__passwordConfirmSignUp:focus,
+.gate__passwordConfirmSignUp:active {
   text-indent: 0;
   background: #fff;
   border-top-right-radius: 3px;

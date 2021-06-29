@@ -6,7 +6,7 @@
 
   height: 450px;
   margin: auto;
-  margin-top: 25vh;
+  margin-top: 30vh;
 
   transition: margin-top 700ms ease-in;
 
@@ -14,8 +14,44 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
 
+    &__suggestion {
+      margin-bottom: 10vh;
+    }
+    &__presentation {
+      margin-bottom: 15vh;
+      padding: 2vh;
+      display: inline-block;
+      border: 3px solid #333333;
+      font-size: 2.0vh;
+      border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+      text-transform: uppercase;
+      letter-spacing: 0.3ch;
+      background: #ffffff;
+      position: relative;
+      z-index: -2;
+    
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+    }
+  }
+  .button-homePage{
+    margin-top: 4vh;
+    display: flex;
+    text-align: center;
+    margin-bottom: 2vh;
+  }
+  
   &--noResearch {
     justify-content: space-around;
     transition: none;
@@ -29,10 +65,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 8vh;
 
-        &__link {
+        &__linkLeft {
+          margin-right: 1.5vh;
           width: auto;
-          margin-top: 30px;
+          margin-top: 3vh;
           text-transform: uppercase;
           font-style: italic;
           font-weight: bold;
@@ -50,6 +88,30 @@
           &:active {
             box-shadow: vars.$inset-shadow;
           }
+         
+        }
+        &__linkRight{
+          margin-left: 1.5vh;
+          width: auto;
+          margin-top: 3vh;
+          text-transform: uppercase;
+          font-style: italic;
+          font-weight: bold;
+          letter-spacing: 0.3ch;
+          border: none;
+
+          padding: 15px 20px;
+
+          background:  #F4BB01;
+          color: white;
+          border-radius: 5px;
+          
+          box-shadow: vars.$shadow;
+
+          &:active {
+            box-shadow: vars.$inset-shadow;
+          }
+         
         }
       }
     }

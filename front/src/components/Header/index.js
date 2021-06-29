@@ -15,7 +15,7 @@ import {
 // ClickAwayListener is here to spot the click outside its parent element
 // Import pour les îcones de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faEllipsisH, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from "@fortawesome/free-brands-svg-icons"
 import LogoPicky from 'src/assets/logoPicky.png'
 // Import de notre logo
@@ -95,6 +95,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
               {!isConnected && (
                 <li><Link to="/signUp">Picky Wish</Link></li>
               )}
+              <li><Link to ="/pickyLucky">Picky Lucky</Link></li>
               <li><Link to="/about">Picky About</Link></li>
             </ul>
             <div className="separation"></div>
@@ -187,7 +188,11 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
                 </li>
                 <li onClick={deconnect}>
                   <Link to="/">
-                    Se déconnecter
+                    <FontAwesomeIcon
+                      className= "logOutIcon"
+                      icon ={faSignOutAlt}>
+                    </FontAwesomeIcon>
+                    Déconnexion 
                   </Link>
                 </li>
               </ul>

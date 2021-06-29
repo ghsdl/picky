@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { classie } from 'src/selectors/user'
 import './style.scss';
 
 export default function Field({
   value,
   type,
   name,
+  namebis,
   placeholder,
   onChange,
 }) {
@@ -14,9 +14,9 @@ export default function Field({
     onChange(evt.target.value, name);
   };
   const inputId = `field-${name}`;
-  classie(window);
+  
   //Style();
-  const className= `gate__${name}`
+  const className= `gate__${namebis}`
   return (
     
       <span>
