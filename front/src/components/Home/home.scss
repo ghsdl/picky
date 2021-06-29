@@ -5,8 +5,9 @@
   flex-direction: column;
 
   height: 450px;
+  width: auto;
   margin: auto;
-  margin-top: 30vh;
+  margin-top: 20vh;
 
   transition: margin-top 700ms ease-in;
 
@@ -119,13 +120,10 @@
 
   &--research {
     justify-content: flex-start;
-    margin-top: 13vh;
+    margin-top: 4vh;
 
     .home {
       &__searchBar {
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
         &__presentation {
           display: none;
         }
@@ -151,7 +149,7 @@
   }
 }
 
-@media (max-width: vars.$smallest) {
+@media (max-width: vars.$large) {
   .home {
     margin-left: 25px;
     margin-right: 25px;
