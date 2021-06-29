@@ -3,6 +3,7 @@ import React, {useEffect, useRef} from 'react';
 import lottie from 'lottie-web';
 import 'react-toastify/dist/ReactToastify.css';
 import logoPicky from 'src/assets/logoPicky.png';
+import sadPopcorn from 'src/assets/sadpopcorn.jpg';
 
 // Import of components
 import Card from 'src/containers/Card';
@@ -42,34 +43,46 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
   if (loading === false) {
     if (currentPage==="home") {
       // If the cards display the results of Picky Find
-      return (
-        <div className="cards">
-        {// The movies are displayed
-        }
-        {movies.map((movie) => (
-          <Card
-            id={movie.id}
-            title={movie.title}
-            poster={movie.poster}
-            platformsInfos={movie.svods}
-            key= {movie.id}
-            program={movie}
-          />
-        ))}
-        {// The shows are displayed
-        }
-        {shows.map((show) => (
-          <Card
-            id={show.id}
-            title={show.title}
-            poster={show.poster}
-            platformsInfos={show.svods}
-            key= {show.id}
-            program={show}
-          />
-        ))}
-        </div>
-      );
+      if(movies.length === 0 && shows.length === 0) {
+        // If there is no result, a message is displayed
+        return (
+          <div className="cards cards__result--empty">
+            <div className="result--empty">
+              <img className="cards__img__sadpopcorn" src={sadPopcorn} alt="Logo de Picky" />
+              <p>Il n'y a aucun résultat pour votre recherche</p>
+            </div>
+          </div>
+        )
+      } else {
+        return (
+          <div className="cards">
+          {// The movies are displayed
+          }
+          {movies.map((movie) => (
+            <Card
+              id={movie.id}
+              title={movie.title}
+              poster={movie.poster}
+              platformsInfos={movie.svods}
+              key= {movie.id}
+              program={movie}
+            />
+          ))}
+          {// The shows are displayed
+          }
+          {shows.map((show) => (
+            <Card
+              id={show.id}
+              title={show.title}
+              poster={show.poster}
+              platformsInfos={show.svods}
+              key= {show.id}
+              program={show}
+            />
+          ))}
+          </div>
+        );
+      }
     } else if (currentPage === 'wish') {
       // If the cards display the watchlist of Picky Wish
       if(wish.length === 0) {
@@ -104,8 +117,11 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
       if(results.length === 0) {
         // If there is no result, a message is displayed
         return (
-          <div className="cards-img">
-            <p className="cards">Il n'y a aucun résultat pour votre recherche</p>
+          <div className="cards cards__result--empty">
+            <div className="result--empty">
+              <img className="cards__img__sadpopcorn" src={sadPopcorn} alt="Logo de Picky" />
+              <p>Il n'y a aucun résultat pour votre recherche</p>
+            </div>
           </div>
         )
       } else {
