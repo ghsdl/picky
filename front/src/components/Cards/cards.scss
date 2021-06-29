@@ -15,6 +15,11 @@
   transform: translateX(-50%);
   z-index: -1;
 
+  &--empty {
+    flex-direction: column;
+    bottom: 15vh;
+  }
+
   &-container {
     width: 150px;
     height: 100px;
@@ -30,9 +35,17 @@
   &__img {
     width: 300px;
     height: 300px;
-    position: absolute;
-    margin-top: 50px;
+
   }
+}
+
+.watchlist--empty {
+  width: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: vars.$large) {
@@ -50,6 +63,19 @@
 @media (max-width: vars.$small) {
   .cards {
     width: 90vw;
+    &__img {
+      width: 150px;
+      height: 150px;
+    }
+    &--empty {
+      bottom: 10vh;
+    }
+  }
+  .watchlist--empty {
+    margin: 0 20px;
+    p {
+      margin-top: 20px;
+    }
   }
 }
 
