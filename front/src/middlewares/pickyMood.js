@@ -13,12 +13,13 @@ const result = (store) => (next) => (action) => {
        
       })
         .then((response) => {
+          console.log(response)
           if(response.data[0].movies) {
             // If the results are movies:
             let results = [];
             let randomResults = [];
             let newRandomResult = {};
-            // All the results are put in a single array
+             // All the results are put in a single array
             for (let i=0; i < response.data.length; i++) {
               results = results.concat(response.data[i].movies);
             };
@@ -49,7 +50,7 @@ const result = (store) => (next) => (action) => {
             if (results.length > 20) {
               // If there are more than 20 results, the results are randomized and only 20 are selected
               for(let i=0; i < 20; i++) {
-                newRandomResult = results[Math.floor(Math.random()*results.length)];
+                newRandomResult = results[Math.floor(Math.random()*results.length)] ;
                 if (!randomResults.includes(newRandomResult)) {
                   randomResults.push(newRandomResult);
                 } else {
