@@ -7,7 +7,7 @@ const resultPickyLucky = (store) => (next) => (action) => {
     case GET_RANDOM_FOR_PICKY_LUCKY: {
       axios.get('https://projet-picky.herokuapp.com/movies/random')
         .then((response)=> {
-          console.log(response.data[0].movies[0])
+          //console.log(response.data[0].movies[0])
           const action = setPickyToTrue()
           const  movie  = response.data[0].movies[0]
           store.dispatch(saveInfoPickyLucky(movie))

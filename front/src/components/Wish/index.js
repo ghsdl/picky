@@ -34,8 +34,8 @@ const Wish = ({ loadBookmark }) => {
     {// Header 
     }
     <Header />
-    <div className="pickyMood">
-      <h1 className="pickyMood-question">Votre watchlist</h1>
+    <div className="pickyWish">
+      <h1 className="pickyWish-question">Votre watchlist</h1>
     </div>
     {// Cards
     }
@@ -44,9 +44,9 @@ const Wish = ({ loadBookmark }) => {
     }
     <div className="wish__gradient">
       <div className="wish__footer">
-        <Link className="wish__footer__link" to="/">Find</Link>
+        <Link className="wish__footer__link" to="/">FIND</Link>
         <p className="wish__footer__text">Continuez à explorer</p>
-        <Link className="wish__footer__link" to="/mood">Mood</Link>
+        <Link className="wish__footer__link" to="/mood">MOOD</Link>
       </div>
     </div>
   </div>

@@ -35,9 +35,9 @@ const PickyLucky = ({
             </button>
           </div>
           <div className="pickyLucky-footerNoSearch">
-                <Link className="pickyLucky-footerNoSearch__link" to="/">Find</Link>
+                <Link className="pickyLucky-footerNoSearch__link" to="/">FIND</Link>
                   <p className="pickyLucky-footerNoSearch__text">Continuez à explorer</p>
-                <Link className="pickyLucky-footerNoSearch__link" to="/mood">Mood</Link>
+                <Link className="pickyLucky-footerNoSearch__link" to="/mood">MOOD</Link>
               </div>
         </div>
       )}
@@ -51,9 +51,9 @@ const PickyLucky = ({
           </div>
             <div className="pickyLucky">
               <div className="pickyLucky__footer">
-                <Link className="pickyLucky__footer__link" to="/">Find</Link>
+                <Link className="pickyLucky__footer__link" to="/">FIND</Link>
                   <p className="pickyLucky__footer__text">Continuez à explorer</p>
-                <div className="pickyLucky__footer__link" onClick={pickyLucky}>Luck</div>
+                <div className="pickyLucky__footer__link" onClick={pickyLucky}>LUCK</div>
               </div>
             </div>
         </div>

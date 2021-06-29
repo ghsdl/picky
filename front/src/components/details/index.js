@@ -6,7 +6,6 @@ import noTrailers from './noTrailers.svg';
 import sad from './sad.svg';
 
 const Details = ({ movie }) => {
- console.log(movie.poster)
  const platform = movie.platform_links.length > 0 ? movie.platform_links.map(e => e.platform).join(", ") : [];
  
  const genre = movie.genres.length > 0  ? movie.genres.join(","): []; 
