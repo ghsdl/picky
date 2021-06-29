@@ -33,6 +33,21 @@ const movieController = {
       console.log(error);
       res.status(500).json(error.toString());
     }
+  },
+
+  async searchMovie(req, res) {
+    try {
+      // GETTING THE URL PARAMETER
+      const id = req.params;
+      
+      // SEARCHING MOVIES FROM THIRD PARTY API
+      const movie = await movieDataMapper.searchMovie(id);
+      
+      res.json(movie);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
   }
 
 };

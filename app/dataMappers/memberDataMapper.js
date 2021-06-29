@@ -1,6 +1,10 @@
 const pool = require('../../database');
 
 module.exports = {
+  
+
+
+
     /**
      * @typedef Member
      * @property {number} id - Unique identifier
