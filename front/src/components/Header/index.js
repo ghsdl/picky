@@ -95,6 +95,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
               {!isConnected && (
                 <li><Link to="/signUp">Picky Wish</Link></li>
               )}
+              <li><Link to ="/pickyLucky">Picky Lucky</Link></li>
               <li><Link to="/about">Picky About</Link></li>
             </ul>
             <div className="separation"></div>

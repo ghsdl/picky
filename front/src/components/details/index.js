@@ -6,21 +6,17 @@ import noTrailers from './noTrailers.svg';
 import sad from './sad.svg';
 
 const Details = ({ movie }) => {
-  console.log(movie.platform_links)
-  console.log(movie.genres)
-
- 
+ console.log(movie.poster)
  const platform = movie.platform_links.length > 0 ? movie.platform_links.map(e => e.platform).join(", ") : [];
  
- const genre = movie.genres.length > 0  ? movie.genres.join(","): [];  
- console.log(genre)
+ const genre = movie.genres.length > 0  ? movie.genres.join(","): []; 
   return (
     <>
     <div className="detailsMovie">
       <h1 className="detailsMovie-title">{movie.title}</h1>
       {movie.platform_links.length === 0 && (
       <p className="detailsMovie-noPlateform"> 
-        "{movie.title}" n'est disponible sur aucune plateformes. 
+        "{movie.title}" n'est disponible sur aucune plateforme. 
         <img src={sad} alt="sad" className="detailsMovie-noPlateform-sad"/>
       </p>
       )}
@@ -39,6 +35,9 @@ const Details = ({ movie }) => {
       <Youtube videoId={movie.trailer} className="detailsMovie-youtube"/>
       )}
       {movie.trailer === null && (
+         <img src={movie.poster} alt="noTrailers" className="detailsMovie-noTrailer"/>
+      )}
+      {movie.trailer === null && !movie.poster &&(
         <img src={noTrailers} alt="noTrailers" className="detailsMovie-noTrailer"/>
       )}
       <p className="detailsMovie-synopsis">

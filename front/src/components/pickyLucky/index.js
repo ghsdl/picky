@@ -27,7 +27,7 @@ const PickyLucky = ({
       {!lucky &&(
         <div className="pickyLucky">
           <div className="profileLuckyPicky">
-            <h2 className="profileLuckyPicky-title"> Lucky Picky </h2>
+            <h2 className="profileLuckyPicky-title"> Picky Lucky </h2>
           </div>
           <div className="getLucky">
             <button className="getLucky-button" onClick={pickyLucky}> 
@@ -45,7 +45,7 @@ const PickyLucky = ({
         <div>
           <div className="pickyLucky">
             <div className="profileLuckyPicky">
-              <h2 className="profileLuckyPicky-title"> Lucky Picky </h2>
+              <h2 className="profileLuckyPicky-title"> Picky lucky </h2>
             </div>
             <Details movie={movie} loading={loading}/>
           </div>
