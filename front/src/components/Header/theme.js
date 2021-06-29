@@ -9,6 +9,9 @@ export const lightTheme = {
   borderprofile: "3px solid #F4BB01",
   bordersignin: "3px solid #FFF",
   yellow: "#CE4257",
+  connected: "#F4BB01",
+  borderconnected: "3px solid #F4BB01",
+  fontconnected: "#FFF",
   red: "#F4BB01",
   title: "#FFF",
 };
@@ -21,6 +24,9 @@ export const darkTheme = {
   borderprofile: "3px solid #CE4257",
   bordersignin: "3px solid #F4BB01",
   yellow: "#F4BB01",
+  connected: "#F4BB01",
+  borderconnected: "3px solid #F4BB01",
+  fontconnected: "#FFF",
   red: "#CE4257",
   title: "#333",
 };
@@ -74,8 +80,10 @@ html {
     color: ${(props) => props.theme.fontColor};
   }
   .formUser-login {
-    background-color: ${(props) => props.theme.yellow};
     border: ${(props) => props.theme.bordersignin};
+    background-color: ${(props) => props.theme.connected};
+    border: ${(props) => props.theme.borderconnected};
+    color: ${(props) => props.theme.fontconnected};
   }
   .home__searchBar__presentation, .pickyMood-question, .profileLuckyPicky-title, .pickyMood-question, .profile-title {
     background-color: ${(props) => props.theme.title};
