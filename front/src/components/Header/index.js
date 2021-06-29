@@ -110,11 +110,12 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
                     {!isConnected && (
                       <li><Link to="/signUp">Picky Wish</Link></li>
                     )}
+                    <li><Link to ="/pickyLucky">Picky Lucky</Link></li>
                     <li><Link to="/about">Picky About</Link></li>
                   </ul>
-                  <div className="separation"></div>
 
                   <Toggle theme={theme} toggleTheme={toggleTheme} />
+                  <div className="separation"></div>
                   
                   <div className="brandIcon">
                   <a href="https://www.facebook.com/pickyaddict/" target="_blank">
