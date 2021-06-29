@@ -1,13 +1,18 @@
 import React from 'react'
 import { func, string } from 'prop-types';
-import styled from 'styled-components';
+
+import './toggle.scss';
 
 const Toggle = ({ theme, toggleTheme }) => {
   const isLight = theme === 'light';
+
   return (
-    <button onClick={toggleTheme} >
-      X
-    </button>
+    <div className="switch-checkbox">
+    <label className="switch">
+      <input type="checkbox" onClick={toggleTheme} />
+      <span className="slider round"> </span>
+    </label>
+  </div>
   );
 };
 

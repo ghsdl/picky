@@ -25,6 +25,7 @@ import logo from 'src/assets/logo_PopCorn.png';
 
 // Import css
 import './style.scss';
+// import everything that concern the Dark Mode
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from 'src/components//Darkmode';
 import { lightTheme, darkTheme, GlobalStyles } from './theme.js';
@@ -76,8 +77,9 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
   const classes = useStyles();
   const getStarted = <div> Get <br /> started </div>;
 
-const [theme, toggleTheme, componentMounted] = useDarkMode();
 
+// Hook for the Dark Mode - line 141 you have the toggle for the Dark Mode
+const [theme, toggleTheme] = useDarkMode();
 const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   return (
@@ -111,6 +113,9 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
                     <li><Link to="/about">Picky About</Link></li>
                   </ul>
                   <div className="separation"></div>
+
+                  <Toggle theme={theme} toggleTheme={toggleTheme} />
+                  
                   <div className="brandIcon">
                   <a href="https://www.facebook.com/pickyaddict/" target="_blank">
                     <FontAwesomeIcon
@@ -136,7 +141,7 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
               </div>
 
             </ClickAwayListener>
-            <Toggle theme={theme} toggleTheme={toggleTheme} />
+
             <Link to="/" onClick={resetPickyFind}>
               <img src={LogoPicky} className="header-logo" alt="Logo Picky" />
             </Link>
