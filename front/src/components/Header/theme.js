@@ -85,7 +85,7 @@ html {
     border: ${(props) => props.theme.borderconnected};
     color: ${(props) => props.theme.fontconnected};
   }
-  .home__searchBar__presentation, .pickyMood-question, .profileLuckyPicky-title, .pickyMood-question, .profile-title {
+  .home__searchBar__presentation, .pickyMood-question, .profileLuckyPicky-title, .profile-title {
     background-color: ${(props) => props.theme.title};
     color: ${(props) => props.theme.fontColor};
     border: ${(props) => props.theme.border};
