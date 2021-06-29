@@ -50,13 +50,15 @@
     border: none;
     font-size: 5.5vh;
     padding: 15px;
-
-    background:  #CE4257;
     color: white;
     border-radius: 5px;
+    margin-top: 17vh;
+    background:  #CE4257;
+    
+    
     
     box-shadow: vars.$shadow;
-    margin-top: 17vh;
+    
     &:active {
       box-shadow: vars.$inset-shadow;
     }

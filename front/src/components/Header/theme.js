@@ -11,6 +11,9 @@ export const lightTheme = {
   yellow: "#CE4257",
   red: "#F4BB01",
   title: "#FFF",
+  pickyMood: "#F4BB01",
+  pickyMoodFont: "#FFF",
+  bordermood: "solid 1px #F4BB01",
 };
 
 export const darkTheme = {
@@ -23,6 +26,9 @@ export const darkTheme = {
   yellow: "#F4BB01",
   red: "#CE4257",
   title: "#333",
+  pickyMood: "#CE4257",
+  pickyMoodFont: "#FFF",
+  bordermood: "solid 1px #CE4257",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -33,7 +39,7 @@ html {
   div {
     color: ${(props) => props.theme.fontColor};
   }
-  .search-button, .button-precedent, .button-suivant, .pickMoodContent-item, .button-newResearch {
+  .pickMoodContent-item {
     background-color: ${(props) => props.theme.body};
     color: ${(props) => props.theme.fontColor};
   }
@@ -85,4 +91,14 @@ html {
   .pickyLucky-footerNoSearch__text, .pickyLucky__footer__text {
     color: ${(props) => props.theme.fontColor};
   }
+
+  .pickMoodContent-item-clicked, .button-precedent, .button-suivant,  .button-newResearch, .search-button {
+    background-color: ${(props) => props.theme.pickyMood};
+    color: ${(props) => props.theme.pickyMoodFont};
+  }
+  .pickMoodContent-item {
+    border: ${(props) => props.theme.bordermood};
+  }
+
+
 `;
