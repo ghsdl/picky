@@ -1,13 +1,4 @@
-/*
-@media (max-width: vars.$normal) {
-  .searchbar__input {
-    width: 60vw;
-    height: 30px;
-    
-    border-radius: 20px;
-  }
-}
-*/
+@use 'src/styles/vars';
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
@@ -151,7 +142,11 @@
 
 }
 
-
+@media (max-width: vars.$normal) {
+  .cover {
+    width: 400px;
+  }
+}
 
 
 
