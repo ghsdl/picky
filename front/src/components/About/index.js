@@ -36,8 +36,8 @@ function About () {
         { 
           name: "Clement", 
           id: 4,
-          role: "Référent Technique",
-          dev: "- Git Master - Dev Front",
+          role: "Git Master - ",
+          dev: "Dev Front",
           img: "https://ca.slack-edge.com/T01H7FN28C9-U01HUGJB529-b45c59226c15-512",
         },
         { 
@@ -63,13 +63,6 @@ function About () {
       `,
       about: [],
     },
-  
-    {
-      title: 'Mentions Légales',
-      id: 3,
-      infos: `Ce produit utilise l'API BetaSeries mais n'est ni approuvé, ni certifié par BetaSeries. Les icônes de "popcorn", viennent de flaticon.com`,
-      about: [],
-    },
 
     {
       title: 'Technos utilisées',
@@ -77,7 +70,7 @@ function About () {
       infos: ` `,
       about: [
         { 
-          name: "React", 
+          name: "React JS", 
           id: 1,
           role: " ",
           dev: " ",
@@ -112,7 +105,14 @@ function About () {
           img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/540px-Postgresql_elephant.svg.png",
         },
       ],
-    }
+    },
+
+    {
+      title: 'Mentions Légales',
+      id: 3,
+      infos: `Ce produit utilise l'API BetaSeries mais n'est ni approuvé, ni certifié par BetaSeries. Les icônes de "popcorn", viennent de flaticon.com`,
+      about: [],
+    },
   ]
   
   const [selected, setSelected] = useState(null)

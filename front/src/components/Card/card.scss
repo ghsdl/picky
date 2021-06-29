@@ -19,7 +19,7 @@
       display: block;
       content: '';
       min-height: 100px;
-      width: auto;
+      width: 100px;
     }
   }
 
@@ -97,12 +97,5 @@
       }
     }
 
-    &__platform, &__watchlistButton{
-      width: 20px;
-      height: 20px;
-  
-      border-radius: 20px;
-      font-size: .7em;
-    }
   }
 }
