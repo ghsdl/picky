@@ -1,3 +1,4 @@
+@use 'src/styles/vars';
 .pickyMood{
   display: flex;
   justify-content: center;
@@ -57,18 +58,21 @@
     margin-left: 1vh;
     margin-top: 10vh;
     padding: 1em;
-    border-top: solid 1px rgb(204, 202, 202);
-    border-bottom: solid 1px rgb(204, 202, 202);
-    border-radius: 6px;
+    border: solid 1px rgb(204, 202, 202);
+    border-radius: 5px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.3ch;
     font-size: 1.5vh;
     cursor: pointer;
     &-clicked{
-      font-style:italic;
       font-weight: bold;
-      background-color: rgb(248, 248, 248);
+      background-color:  #CE4257;
+      box-shadow: vars.$shadow;
+    
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
     }
   }
 
@@ -87,6 +91,7 @@
   font-size: 2vh;
   
   
+  
   &-suivant, &-newResearch{
     background-color: rgb(248, 248, 248);
     border-top: solid 1px rgb(204, 202, 202);
@@ -94,6 +99,12 @@
     border-radius: 6px;
     padding: 1vh;
     cursor: pointer;
+    box-shadow: vars.$shadow;
+    
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
+    
     &--hidden{
       display:none;
     }
@@ -106,6 +117,11 @@
     border-radius: 6px;
     padding: 1vh;
     cursor: pointer;
+    box-shadow: vars.$shadow;
+    
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
   }
   
 }
@@ -127,6 +143,11 @@
     border-radius: 6px;
     padding: 1vh;
     cursor: pointer;
+    box-shadow: vars.$shadow;
+    
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
   }
 }
 

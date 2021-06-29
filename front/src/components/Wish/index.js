@@ -35,7 +35,7 @@ const Wish = ({ loadBookmark }) => {
     }
     <Header />
     <div className="pickyWish">
-      <h1 className="pickyWish-question">Votre watchlist</h1>
+      <h2 className="pickyWish-question">Votre watchlist</h2>
     </div>
     {// Cards
     }
