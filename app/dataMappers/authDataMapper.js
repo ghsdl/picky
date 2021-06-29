@@ -17,7 +17,7 @@ module.exports = {
      * @typedef memberConnected
       * @property {string} email - Member's email
       * @property {string} password - Member's password
-      * @property {string} token - authentication token
+      * @property {string} token - authentication token 
      */
 
   async insertMember(newMember) {

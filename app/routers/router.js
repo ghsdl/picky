@@ -136,6 +136,7 @@ router.get('/search/shows/:text', showController.searchShows);
  */
 router.get('/search/movies/:text', movieController.searchMovies);
 
+
 /**
  * Display a list of 5 movies and shows with parameter 'query'
  * @route GET /search/:query
@@ -151,7 +152,11 @@ router.post('/moodresults', searchController.mood);
 // RANDOM MOVIES ROUTE
 router.get('/movies/random', movieController.randomMovies);
 
-// RANDOM SHOWS ROUTE
+
+// DISPLAY ONE MOVIE 
+router.get('/movie/:id', movieController.searchMovie);
+
+// SHOWS ROUTES
 router.get('/shows/random', showController.randomShows);
 
 // DISPLAY ONE SHOW ROUTE
