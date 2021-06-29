@@ -108,7 +108,7 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
                   {!isConnected && (
                     <li><Link to="/signUp">Picky Wish</Link></li>
                   )}
-                  <li><Link to ="/pickyLucky">Picky Lucky</Link></li>
+                  <li><Link to ="/pickyLucky" onClick={()=> window.location.href='/pickyLucky'}>Picky Lucky</Link></li>
                   <li><Link to="/about">Picky About</Link></li>
                 </ul>
                 <Toggle theme={theme} toggleTheme={toggleTheme} />
@@ -201,7 +201,7 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
                       <Link to="/profil"> Profil </Link>
                     </li>
                     <li onClick={deconnect}>
-                      <Link to="/">
+                      <Link to="/" onClick={()=> window.location.href='/'}>
                         <FontAwesomeIcon
                           className= "logOutIcon"
                           icon ={faSignOutAlt}>

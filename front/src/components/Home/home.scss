@@ -1,5 +1,7 @@
 @use 'src/styles/vars';
-
+.b{
+  font-weight: bold;
+}
 .home {
   display: flex;
   flex-direction: column;

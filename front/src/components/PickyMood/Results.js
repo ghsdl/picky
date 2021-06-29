@@ -26,9 +26,9 @@ const Results = ({ newResearch, loading }) => (
       draggable
       pauseOnHover
     />
-    <div className="pickyMood-question">
+    <h2 className="pickyMood-question">
       Suivant vos critères de recherche, nous vous proposons...
-    </div>
+    </h2>
     {// Cards with the results of the research
     }
     <Cards currentPage="mood" loading={loading} />

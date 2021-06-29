@@ -2,7 +2,8 @@ import React, { useEffect }  from 'react'
 import Header from 'src/containers/Header';
 import './index.scss'
 import PropTypes from 'prop-types';
-import Details from 'src/components/details'
+import Details from 'src/components/details';
+import Detailshow from 'src/components/details/detailsShow'
 import { Link } from 'react-router-dom';
 
 const PickyLucky = ({
@@ -10,10 +11,17 @@ const PickyLucky = ({
    lucky,
    loading,
    movie,
-   resetPickyLucky
+   resetPickyLucky,
+   getPicky,
+   luckyShow,
+   show
 }) => {
   const pickyLucky = () => {
     getLucky();
+  }
+
+  const pickyLuckyShow = () => {
+    getPicky();
   }
   useEffect(() => {
     return () => {
@@ -24,14 +32,17 @@ const PickyLucky = ({
   return(
     <>
       <Header/>
-      {!lucky &&(
+      {!lucky && !luckyShow &&(
         <div className="pickyLucky">
           <div className="profileLuckyPicky">
             <h2 className="profileLuckyPicky-title"> Picky Lucky </h2>
           </div>
           <div className="getLucky">
+            <button className="getLucky-button" onClick={pickyLuckyShow}> 
+               BE Picky
+            </button>
             <button className="getLucky-button" onClick={pickyLucky}> 
-              get Lucky
+               BE Lucky
             </button>
           </div>
           <div className="pickyLucky-footerNoSearch">
@@ -41,7 +52,7 @@ const PickyLucky = ({
               </div>
         </div>
       )}
-      {lucky &&(
+      {lucky && !luckyShow&&(
         <div>
           <div className="pickyLucky">
             <div className="profileLuckyPicky">
@@ -53,10 +64,28 @@ const PickyLucky = ({
               <div className="pickyLucky__footer">
                 <Link className="pickyLucky__footer__link" to="/">FIND</Link>
                   <p className="pickyLucky__footer__text">Continuez à explorer</p>
-                <div className="pickyLucky__footer__link" onClick={pickyLucky}>LUCK</div>
+                <div className="pickyLucky__footer__link" onClick={pickyLucky}>AGAIN</div>
               </div>
             </div>
         </div>
+      )}
+
+      {luckyShow && !lucky &&(
+      <div>
+        <div className="pickyLucky">
+          <div className="profileLuckyPicky">
+            <h2 className="profileLuckyPicky-title"> Picky lucky </h2>
+          </div>
+          <Detailshow show={show} loading={loading}/>
+        </div>
+          <div className="pickyLucky">
+            <div className="pickyLucky__footer">
+              <Link className="pickyLucky__footer__link" to="/">FIND</Link>
+                <p className="pickyLucky__footer__text">Continuez à explorer</p>
+              <div className="pickyLucky__footer__link" onClick={pickyLuckyShow}>AGAIN</div>
+            </div>
+          </div>
+      </div>
       )}
     </>
   )
@@ -65,8 +94,10 @@ const PickyLucky = ({
 PickyLucky.propTypes = {
   getLucky: PropTypes.func.isRequired,
   lucky: PropTypes.bool,
+  luckyShow: PropTypes.bool,
   loading: PropTypes.bool,
   resetPickyLucky: PropTypes.func.isRequired,
+  getPicky: PropTypes.func.isRequired,
 };
 
 export default PickyLucky;

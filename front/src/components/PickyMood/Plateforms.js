@@ -37,9 +37,9 @@ export default function Plateforms({
   return (
     <>
       <div className="pickyMood">
-        <div className="pickyMood-question">
+        <h2 className="pickyMood-question">
           Quelles sont vos plateformes préférées?
-        </div>
+        </h2>
       </div>
       <ul className="pickMoodContent">
         {plateformsItem}

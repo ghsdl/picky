@@ -53,11 +53,11 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
       <div className="home__searchBar">
         {// Title, searchbar and suggestions
         }
-        <p className="home__searchBar__presentation">
+        <h2 className="home__searchBar__presentation">
           Le moteur de recherche pour vos moments devant la TV
-        </p>
+        </h2>
         <SearchBar />
-          <p className="home__searchBar__suggestion">Essayez: {ranmovie.title} ou {ranshow.title}</p>
+          <p className="home__searchBar__suggestion">Essayez: <b>{ranmovie.title}</b> ou <b>{ranshow.title}</b></p>
       </div>
       {// Button to go to Picky Mood
       }
