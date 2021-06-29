@@ -70,7 +70,7 @@ function About () {
       infos: ` `,
       about: [
         { 
-          name: "React", 
+          name: "React JS", 
           id: 1,
           role: " ",
           dev: " ",
