@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Import of components
@@ -34,9 +35,11 @@ const Results = ({ newResearch, loading }) => (
     <Cards currentPage="mood" loading={loading} />
     {// Button to do a new research
     }
-    <div className="button">
-      <div className="button-newResearch" onClick={newResearch}>
-        Nouvelle recherche
+    <div className="mood__gradient">
+      <div className="mood__footer">
+        <Link className="mood__footer__link" to="/">FIND</Link>
+        <p className="mood__footer__text">Continuez à explorer</p>
+        <Link className="mood__footer__link" to="#" onClick={newResearch}>NOUVELLE RECHERCHE</Link>
       </div>
     </div>
   </div>

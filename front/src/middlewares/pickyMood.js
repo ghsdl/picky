@@ -13,7 +13,6 @@ const result = (store) => (next) => (action) => {
        
       })
         .then((response) => {
-          console.log(response)
           if(response.data[0].movies) {
             // If the results are movies:
             let results = [];

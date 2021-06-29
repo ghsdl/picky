@@ -9,6 +9,7 @@ loading: state.pickyLucky.loadingPicky,
 movie: state.pickyLucky.movie,
 luckyShow: state.pickyLucky.luckyShow,
 show: state.pickyLucky.shows,
+isConnected: state.status.isConnected
 });
   
 

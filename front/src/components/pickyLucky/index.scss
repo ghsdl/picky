@@ -69,46 +69,20 @@
 }
 
 .pickyLucky {
+  &__gradient {
+    width: 100vw;
+    margin: auto;
+    height: 250px;
   
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    bottom: 0;
 
-  &-footerNoSearch{
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-  
-   
-    margin-top: 20vh;
-    margin-bottom: 1vh;
-  
-    color: black;
-    font-weight: bold;
-    text-align: center;
-    font-size:1.2em;
-    pointer-events: auto;
-
-    &__link {
-      width: 100px;
-      padding: 10px;
-
-      background-color:  #F4BB01;
-      color: white;
-      border-radius: 5px;
-      box-shadow: vars.$shadow;
-      cursor: pointer;
-
-      &:active {
-        box-shadow: vars.$inset-shadow;
-      }
-      &-again{
-        margin-bottom: 1vh;
-      }
-    }
-
-    &__text {
-      margin: 0 10px;
-    }
-
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%);
   }
+
   &__footer {
     display: flex;
     justify-content: center;
@@ -116,13 +90,17 @@
   
     width: 60vw;
     margin: auto;
-    margin-bottom: 1vh;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
+    z-index: -1;
   
     color: black;
     font-weight: bold;
     text-align: center;
     font-size: 1.2em;
-    pointer-events: auto;
+    pointer-events:auto;
 
     &__link {
       width: 100px;
@@ -132,13 +110,9 @@
       color: white;
       border-radius: 5px;
       box-shadow: vars.$shadow;
-      cursor: pointer;
 
       &:active {
         box-shadow: vars.$inset-shadow;
-      }
-      &-again{
-        margin-bottom: 1vh;
       }
     }
 

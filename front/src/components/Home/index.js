@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Typical from 'react-typical'
 
 // Import of components
 import Header from 'src/containers/Header';
@@ -77,6 +76,23 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
       }
       <div className="home__results">
         <Cards currentPage="home" loading={loading} />
+        <div className="home__gradient">
+          <div className="home__footer">
+          {isConnected && (
+            <Link className="home__footer__link" to="/mood">MOOD</Link>
+          )}
+          {!isConnected && (
+            <Link className="home__footer__link" to="/signUp">MOOD</Link>
+          )}
+          <p className="home__footer__text">Continuez à explorer</p>
+          {isConnected && (
+            <Link className="home__footer__link" to="/pickyLucky">LUCKY</Link>
+          )}
+          {!isConnected && (
+            <Link className="home__footer__link" to="/signUp">LUCKY</Link>
+          )}
+          </div>
+        </div>
       </div>
     </div>
   </div>
