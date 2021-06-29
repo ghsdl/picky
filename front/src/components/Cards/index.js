@@ -13,7 +13,7 @@ import './cards.scss';
 
 // Display of the cards
 const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarksIds }) => {
-  const container = useRef(null)
+   const container = useRef(null)
 
   useEffect(() => {
     lottie.loadAnimation({
@@ -24,8 +24,9 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
       animationData: require('./movieloading.json')
     });
     getBookmarksIds();
-  }, [])
+  }, [loading])
 
+ 
   {// When the results are loading, "Loading" is displayed
   }
 
@@ -55,6 +56,7 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
             key= {movie.id}
             program={movie}
           />
+         
         ))}
         {// The shows are displayed
         }

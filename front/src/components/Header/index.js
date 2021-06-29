@@ -187,7 +187,7 @@ export default function Header({ isConnected, deconnect, resetPickyFind }) {
                   <Link to="/profil"> Profil </Link>
                 </li>
                 <li onClick={deconnect}>
-                  <Link to="/">
+                  <Link to="/" onClick={()=> window.location.href='/'}>
                     <FontAwesomeIcon
                       className= "logOutIcon"
                       icon ={faSignOutAlt}>
