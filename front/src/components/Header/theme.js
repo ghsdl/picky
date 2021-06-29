@@ -46,19 +46,20 @@ html {
     color: ${(props) => props.theme.fontColor};
     border: ${(props) => props.theme.border};
   }
-  .gate__pseudo+label:before,   .gate__pseudo+label:after, .gate__pseudoSignUp+label:before, .gate__pseudoSignUp+label:after {
+  .gate__pseudo+label:after, .gate__pseudoSignUp+label:after {
     background-color: ${(props) => props.theme.red};
   }
-  .gate__email+label:before,   .gate__email+label:after, .gate__emailSignUp+label:before, .gate__emailSignUp+label:after  {
+  .gate__email+label:after, .gate__emailSignUp+label:after  {
     background-color: ${(props) => props.theme.red};
   }
-  .gate__password+label:before,   .gate__password+label:after, .gate__passwordSignUp+label:before, .gate__passwordSignUp+label:after {
+  .gate__password+label:after, .gate__passwordSignUp+label:after {
     background-color: ${(props) => props.theme.red};
   }
-  .gate__confirmationPassword+label:before,   .gate__confirmationPassword+label:after, .gate__passwordConfirmSignUp+label:before, .gate__passwordConfirmSignUp+label:after {
+  
+  .gate__confirmationPassword+label:after, .gate__passwordConfirmSignUp+label:after {
     background-color: ${(props) => props.theme.red};
   }
-  .gate__passwordSignIn+label:before,   .gate__passwordSignIn+label:after,   .gate__emailSignIn+label:before,    .gate__emailSignIn+label:after{
+  .gate__passwordSignIn+label:after,  .gate__emailSignIn+label:after{
     background-color: ${(props) => props.theme.red};
   } 
   .updateEmailPseudo {
@@ -81,7 +82,7 @@ html {
     color: ${(props) => props.theme.fontColor};
     border: ${(props) => props.theme.border};
   }
-  .pickyLucky-footerNoSearch__text {
+  .pickyLucky-footerNoSearch__text, .pickyLucky__footer__text {
     color: ${(props) => props.theme.fontColor};
   }
 `;
