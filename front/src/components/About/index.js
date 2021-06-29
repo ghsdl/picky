@@ -36,8 +36,8 @@ function About () {
         { 
           name: "Clement", 
           id: 4,
-          role: "Référent Technique",
-          dev: "- Git Master - Dev Front",
+          role: "Git Master - ",
+          dev: "Dev Front",
           img: "https://ca.slack-edge.com/T01H7FN28C9-U01HUGJB529-b45c59226c15-512",
         },
         { 
@@ -61,13 +61,6 @@ function About () {
       
       Pourquoi “Picky”? Pour deux raisons: de l’anglais “choisir” TO PICK mais aussi de l’anglais “être pointilleux, exigeant" TO BE PICKY, ce qui correspond parfaitement à la démarche de trouver un programme à regarder qui correspond à nos envies ou trouver la plateforme correspondante au programme que l’on souhaite regarder.
       `,
-      about: [],
-    },
-  
-    {
-      title: 'Mentions Légales',
-      id: 3,
-      infos: `Ce produit utilise l'API BetaSeries mais n'est ni approuvé, ni certifié par BetaSeries. Les icônes de "popcorn", viennent de flaticon.com`,
       about: [],
     },
 
@@ -112,7 +105,14 @@ function About () {
           img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/540px-Postgresql_elephant.svg.png",
         },
       ],
-    }
+    },
+
+    {
+      title: 'Mentions Légales',
+      id: 3,
+      infos: `Ce produit utilise l'API BetaSeries mais n'est ni approuvé, ni certifié par BetaSeries. Les icônes de "popcorn", viennent de flaticon.com`,
+      about: [],
+    },
   ]
   
   const [selected, setSelected] = useState(null)
