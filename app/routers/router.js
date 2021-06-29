@@ -154,6 +154,9 @@ router.get('/movies/random', movieController.randomMovies);
 // RANDOM SHOWS ROUTE
 router.get('/shows/random', showController.randomShows);
 
+// DISPLAY ONE SHOW ROUTE
+router.get('/show/:id', showController.searchShow);
+
 // PLATFORMS ROUTES
 
 /**

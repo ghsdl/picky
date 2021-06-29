@@ -43,7 +43,32 @@ module.exports = {
     const response = await fetch(result);
 
     let body = await response.json();
-      console.log(body);
+
+    if (!Array.isArray(body)) {
+      body = [body];
+      
+      return body;
+    }
+  },
+
+  async oneShow(id) {
+    
+    const apiUrl = 'https://api.betaseries.com/shows/display?v=3.0',
+
+    args =  {
+      'id': id,
+      'key': process.env.BETASERIES_API_KEY,
+    },
+
+    params = '&id=' + args.id.id + '&key=' + args.key;
+    
+    const result = apiUrl + params;
+    console.log(result);
+
+    const response = await fetch(result);
+
+    let body = await response.json();
+    console.log(body);
 
     if (!Array.isArray(body)) {
       body = [body];
@@ -51,4 +76,5 @@ module.exports = {
       return body;
     }
   }
+
 };
