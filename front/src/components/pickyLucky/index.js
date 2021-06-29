@@ -14,7 +14,7 @@ const PickyLucky = ({
    resetPickyLucky,
    getPicky,
    luckyShow,
-   show
+   show,
    isConnected
 }) => {
   const pickyLucky = () => {
