@@ -34,10 +34,10 @@ const Details = ({ movie }) => {
       {movie.trailer && (
       <Youtube videoId={movie.trailer} className="detailsMovie-youtube"/>
       )}
-      {movie.trailer === null && (
+      {!movie.trailer && movie.poster  && (
          <img src={movie.poster} alt="noTrailers" className="detailsMovie-noTrailer"/>
       )}
-      {movie.trailer === null && !movie.poster &&(
+      {!movie.trailer && !movie.poster &&(
         <img src={noTrailers} alt="noTrailers" className="detailsMovie-noTrailer"/>
       )}
       <p className="detailsMovie-synopsis">
