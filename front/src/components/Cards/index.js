@@ -75,9 +75,11 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
       if(wish.length === 0) {
         // If there is no program in the watchlist, a message is displayed
         return (
-          <div className="cards">
-            <p> Vous n'avez pas encore de programme dans votre watchlist.</p>
-            <img className="cards__img" src={logoPicky} alt="Logo de Picky" />
+          <div className="cards cards--empty">
+            <div className="watchlist--empty">
+              <img className="cards__img" src={logoPicky} alt="Logo de Picky" />
+              <p> Vous n'avez pas encore de programme dans votre watchlist.</p>
+            </div>
           </div>
         )
       } else {
