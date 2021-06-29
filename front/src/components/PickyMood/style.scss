@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .pickyMood{
   display: flex;
   justify-content: center;
@@ -148,4 +150,60 @@
     cursor: pointer;
   }
 
+}
+
+.mood {
+  &__gradient {
+    width: 100vw;
+    margin: auto;
+    height: 250px;
+  
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    bottom: 0;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%);
+    pointer-events:none;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  
+    width: 60vw;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
+    z-index: -1;
+  
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    pointer-events: auto;
+
+    &__link {
+      max-width: 250px;
+      padding: 10px;
+
+      background-color:  #F4BB01;
+      color: white;
+      border-radius: 5px;
+      box-shadow: vars.$shadow;
+      border: none;
+
+      &:active {
+        box-shadow: vars.$inset-shadow;
+      }
+    }
+
+    &__text {
+      margin: 0 10px;
+    }
+  }
 }
