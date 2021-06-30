@@ -36,7 +36,7 @@ export const darkTheme = {
   title: "#333",
   pickyMood: "#CE4257",
   pickyMoodFont: "#FFF",
-  bordermood: "solid 1px #CE4257",
+  bordermood: "solid 3px #CE4257",
   gradient: "linear-gradient(180deg, rgba(45, 37, 37, 0) 0%, #2D2525 67.81%)",
   gradientFont: "#FFF",
 };
