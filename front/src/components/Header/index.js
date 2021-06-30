@@ -211,10 +211,10 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
                     <li>
                     <p className="helloUser"> Hello {pseudo} </p>
                     </li>
-                    <li>
+                    <li className="test-Li">
                       <Link to="/profil"> <p>Profil</p> </Link>
                     </li>
-                    <li onClick={deconnect}>
+                    <li onClick={deconnect} className="test-Li">
                       <Link to="/" onClick={()=> window.location.href='/'}>
                         <p>
                         <FontAwesomeIcon

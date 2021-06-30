@@ -16,7 +16,7 @@ export const lightTheme = {
   title: "#FFF",
   pickyMood: "#F4BB01",
   pickyMoodFont: "#FFF",
-  bordermood: "solid 1px #F4BB01",
+  bordermood: "solid 3px #F4BB01",
   gradient: "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%)",
   gradientFont: "#000",
 };
