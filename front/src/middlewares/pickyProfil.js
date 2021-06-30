@@ -43,7 +43,6 @@ const profil =  (store) => (next) => (action) => {
         
       })
         .then((response) => {
-          console.log(response)
           const { member , pseudo } = response.data
           const saveProfil = actionSaveProfil(member, pseudo);
           store.dispatch(saveProfil, reset())

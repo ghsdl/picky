@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import { GET_PICKY_DETAILS } from '../actions/details';
+import { GET_PICKY_DETAILS, GET_PICKY_DETAILS_WISH } from '../actions/details';
 
 
 const pickyDetails = (store) => (next) => (action) => {
@@ -27,6 +27,38 @@ const pickyDetails = (store) => (next) => (action) => {
           })
           break;
         }
+    };
+    case GET_PICKY_DETAILS_WISH: {
+      const id = action.id
+      const title = action.title
+
+      axios.get(`https://projet-picky.herokuapp.com/movie/${id}`)
+      
+      .then((response)=> {
+        const titleCheck = response.data[0].movie.title
+
+        if(titleCheck !== title) {
+          axios.get(`https://projet-picky.herokuapp.com/show/${id}`)
+
+          .then((response)=> {
+            console.log(response)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+        }
+      })
+      .catch((error) => {
+        axios.get(`https://projet-picky.herokuapp.com/show/${id}`)
+
+          .then((response)=> {
+            console.log(response)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      })
+      break;
     }
       default: 
       next(action)

@@ -22,7 +22,8 @@ const Cards = ({
   wish, 
   getBookmarksIds,
   genre,
-  getDetails
+  getDetails,
+  getDetailsWish
  }) => {
  
   const container = useRef(null)
@@ -117,6 +118,7 @@ const Cards = ({
         return (
         <div className="cards">
         {wish.map((program) => (
+          <div onClick={() => getDetailsWish(program.betaseries_id, program.title)} key={program.betaseries_id} >
           <Card
             id={program.betaseries_id}
             title={program.title}
@@ -125,6 +127,7 @@ const Cards = ({
             key= {program.id}
             program={program}
           />
+          </div>
         ))}
         </div>
         );

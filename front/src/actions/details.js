@@ -5,3 +5,10 @@ export const getPickyDetails = (id, genre) => ({
   id,
   genre
 })
+
+export const GET_PICKY_DETAILS_WISH = 'GET_PICKY_DETAILS_WISH'
+export const getPickyDetailsWish = (id, title) => ({
+  type: GET_PICKY_DETAILS_WISH,
+  id,
+  title,
+})
