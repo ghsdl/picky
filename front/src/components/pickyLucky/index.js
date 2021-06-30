@@ -76,7 +76,7 @@ const PickyLucky = ({
                   <Link className="pickyLucky__footer__link" to="/signUp">MOOD</Link>
                 )}
                 <p className="pickyLucky__footer__text">Continuez à explorer</p>
-                <Link className="pickyLucky__footer__link" to="#" onClick={pickyLucky}>again</Link>
+                <Link className="pickyLucky__footer__link" to="#" onClick={pickyLucky}>AGAIN</Link>
               </div>
             </div>
           </div>

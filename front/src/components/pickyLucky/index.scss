@@ -110,6 +110,7 @@
       color: white;
       border-radius: 5px;
       box-shadow: vars.$shadow;
+      cursor: pointer;
 
       &:active {
         box-shadow: vars.$inset-shadow;
