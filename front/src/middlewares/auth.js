@@ -17,7 +17,7 @@ const auth = (store) => (next) => (action) => {
           setTimeout(() => {
             store.dispatch(logout()),
             window.localStorage.clear()
-          }, 3600000 );
+         }, 3600000 );
         })
         .catch((error) => {
           store.dispatch(updateSignInError(error.response.data))

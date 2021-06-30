@@ -147,15 +147,17 @@ const Cards = ({
           // If there is at least one result, it is displayed
           <div className="cards">
             {results.map((result) => (
-              <Card
-                id={result.id}
-                title={result.title}
-                poster={result.poster}
-                platformsInfos={result.svods}
-                key= {result.id}
-                program={result}
-                genre={genre}
-              />
+              <div onClick={() => getDetails(result.id, genre)} key={result.id}>
+                <Card
+                  id={result.id}
+                  title={result.title}
+                  poster={result.poster}
+                  platformsInfos={result.svods}
+                  key= {result.id}
+                  program={result}
+                  
+                />
+              </div>
             ))}
             </div>
         )

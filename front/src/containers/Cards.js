@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Cards from 'src/components/Cards';
 import { addToWish, getBookmarksIds } from 'src/actions/watchlist';
-
+import { getPickyDetails } from 'src/actions/details'
 const mapStateToProps = (state) => (
   {
   movies: state.pickyFind.movies,
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => ({
     addToWish: (programswish) => dispatch(addToWish(programswish)),
     getBookmarksIds: () => dispatch(getBookmarksIds()),
-    getDetails: (id, genre) => console.log(id, genre)
+    getDetails: (id, genre) => dispatch(getPickyDetails(id, genre))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cards);
