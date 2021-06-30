@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // Prepartion of the curtain menu link
@@ -60,12 +60,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // Creation of my component Header
-export default function Header({ isConnected, deconnect, resetPickyFind }) {
+export default function Header({ 
+  isConnected, 
+  deconnect, 
+  resetPickyFind, 
+  getProfil,
+  pseudo,
+}) {
+  console.log(pseudo)
   // Hook for modal with two function, opening and closing.
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
+  useEffect(() => {
+    getProfil()
+  }, )
   const handleClose = () => {
     setOpen(false);
   };
@@ -175,6 +185,7 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
           <>
           
           <div>
+           
             
             <FontAwesomeIcon
               onClick={handleOpen}
@@ -198,15 +209,20 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
                 <div className={classes.paper}>
                   <ul className="test">
                     <li>
-                      <Link to="/profil"> Profil </Link>
+                    <p className="helloUser"> Hello {pseudo} </p>
+                    </li>
+                    <li>
+                      <Link to="/profil"> <p>Profil</p> </Link>
                     </li>
                     <li onClick={deconnect}>
                       <Link to="/" onClick={()=> window.location.href='/'}>
+                        <p>
                         <FontAwesomeIcon
                           className= "logOutIcon"
                           icon ={faSignOutAlt}>
                         </FontAwesomeIcon>
                         Déconnexion 
+                        </p>
                       </Link>
                     </li>
                   </ul>
