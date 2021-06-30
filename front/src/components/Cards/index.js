@@ -13,8 +13,19 @@ import Card from 'src/containers/Card';
 import './cards.scss';
 
 // Display of the cards
-const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarksIds }) => {
-   const container = useRef(null)
+const Cards = ({
+  movies,
+  shows, 
+  loading, 
+  currentPage, 
+  results, 
+  wish, 
+  getBookmarksIds,
+  genre,
+  getDetails
+ }) => {
+ 
+  const container = useRef(null)
 
   useEffect(() => {
     lottie.loadAnimation({
@@ -60,26 +71,32 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
           {// The movies are displayed
           }
           {movies.map((movie) => (
-            <Card
-              id={movie.id}
-              title={movie.title}
-              poster={movie.poster}
-              platformsInfos={movie.svods}
-              key= {movie.id}
-              program={movie}
-            />
+           <div onClick={() => getDetails(movie.id, 'movie')} key={movie.id}>
+              <Card
+                id={movie.id}
+                title={movie.title}
+                poster={movie.poster}
+                platformsInfos={movie.svods}
+                key= {movie.id}
+                program={movie}
+                genre= "movie"
+              />
+            </div>
           ))}
           {// The shows are displayed
           }
           {shows.map((show) => (
-            <Card
-              id={show.id}
-              title={show.title}
-              poster={show.poster}
-              platformsInfos={show.svods}
-              key= {show.id}
-              program={show}
-            />
+            <div onClick={() => getDetails(show.id, 'show')} key={show.id}>
+              <Card
+                id={show.id}
+                title={show.title}
+                poster={show.poster}
+                platformsInfos={show.svods}
+                key= {show.id}
+                program={show}
+                genre='show'
+              />
+            </div>
           ))}
           </div>
         );
@@ -137,6 +154,7 @@ const Cards = ({movies, shows, loading, currentPage, results, wish, getBookmarks
                 platformsInfos={result.svods}
                 key= {result.id}
                 program={result}
+                genre={genre}
               />
             ))}
             </div>

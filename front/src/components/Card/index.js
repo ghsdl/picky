@@ -9,7 +9,21 @@ import './card.scss';
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 // Display of one card
-const Card = ({ id, title, poster, platformsInfos, platforms, addToWish, removeFromWish, program, bookmarksIds }) => {
+const Card = ({ 
+  id, 
+  title, 
+  poster, 
+  platformsInfos, 
+  platforms, 
+  addToWish, 
+  removeFromWish, 
+  program, 
+  bookmarksIds,
+  
+}) => {
+  /*const handleClick = () => {
+    console.log("Je clique sur ma carte")
+  }*/
   let isInWatchList = false;
   return (
     <div className="card">

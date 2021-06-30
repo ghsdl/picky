@@ -32,10 +32,10 @@ const result = (store) => (next) => (action) => {
                   i--;
                 }
               };
-              store.dispatch(saveResults(randomResults));
+              store.dispatch(saveResults(randomResults, 'movies'));
             } else {
               // If there are 20 results or less, they are all displayed
-              store.dispatch(saveResults(results));
+              store.dispatch(saveResults(results, 'movies'));
             }
           } else if (response.data[0].shows) {
             // If the results are shows:
@@ -56,10 +56,10 @@ const result = (store) => (next) => (action) => {
                   i--;
                 }
               };
-              store.dispatch(saveResults(randomResults));
+              store.dispatch(saveResults(randomResults, 'shows'));
             } else {
               // If there are 20 results or less, they are all displayed
-              store.dispatch(saveResults(results));
+              store.dispatch(saveResults(results, 'shows'));
             }
           }
         })
