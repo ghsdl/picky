@@ -127,7 +127,7 @@ const memberController = { // BACKEND METHOD
 
       // UPDATING MEMBER AND SAVE IN DATABASE
       const updatedMember = await memberDataMapper.patch(member, req.member.id);
-      console.log(updatedMember);
+
       res.json({ updatedMember });
     } catch (error) {
       console.log(error);

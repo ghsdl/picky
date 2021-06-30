@@ -58,7 +58,6 @@ async searchMovie(id) {
   },
   params = '&id=' + args.id.id + '&key=' + args.key;
 const result = apiUrl + params;
-console.log("resultat betaseries :", result)
 
 const response = await fetch(result);
 
