@@ -56,12 +56,12 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
           Le moteur de recherche pour vos moments devant la TV
         </h2>
         <SearchBar />
-          <p className="home__searchBar__suggestion">Essayez: <b>{ranmovie.title}</b> ou <b>{ranshow.title}</b></p>
+          <p className="home__searchBar__suggestion">Essayez: <span className = "iWantBoldOnSuggestion">{ranmovie.title}</span> ou <span className = "iWantBoldOnSuggestion">{ranshow.title}</span></p>
       </div>
       {// Button to go to Picky Mood
       }
       <div className="home__pickyMood">
-        <p>Vous ne savez pas quoi regarder? Faites nous confiance!</p>
+        <p className="dontKnowWhatToWatch">Vous ne savez pas quoi regarder? Faites nous confiance!</p>
         <div className="button-homePage">
           {isConnected && (
             <Link to="/mood" className="home__pickyMood__linkLeft">Picky Mood</Link>
@@ -85,12 +85,7 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
             <Link className="home__footer__link" to="/signUp">MOOD</Link>
           )}
           <p className="home__footer__text">Continuez à explorer</p>
-          {isConnected && (
             <Link className="home__footer__link" to="/pickyLucky">LUCKY</Link>
-          )}
-          {!isConnected && (
-            <Link className="home__footer__link" to="/signUp">LUCKY</Link>
-          )}
           </div>
         </div>
       </div>

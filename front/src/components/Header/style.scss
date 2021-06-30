@@ -29,6 +29,12 @@
     }
   }
 
+  .helloUser{
+    
+    font-size: 2vh;
+    font-weight: bold;
+  }
+
   &-logo{
     width: 10vh;
     height: 10vh;
@@ -118,8 +124,12 @@
   text-align: center;
   padding: 1rem;
   font-size: 1.3em;
-  cursor: pointer;
+  
+  &-Li{
+    cursor: pointer;
+  }
 }
+
 .brandIcon{
   margin-top: 20vh;
 }

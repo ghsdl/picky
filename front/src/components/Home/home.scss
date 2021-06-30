@@ -49,10 +49,13 @@
     }
   }
   .button-homePage{
-    margin-top: 4vh;
     display: flex;
     text-align: center;
     margin-bottom: 2vh;
+  }
+
+  .iWantBoldOnSuggestion{
+    font-weight: bold;
   }
   
   &--noResearch {
@@ -119,7 +122,10 @@
       }
     }
   }
-
+  .dontKnowWhatToWatch{
+    font-weight: bold;
+    font-size: 2vh;
+  }
   &--research {
     justify-content: flex-start;
     margin-top: 4vh;

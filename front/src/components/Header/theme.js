@@ -16,7 +16,9 @@ export const lightTheme = {
   title: "#FFF",
   pickyMood: "#F4BB01",
   pickyMoodFont: "#FFF",
-  bordermood: "solid 1px #F4BB01",
+  bordermood: "solid 3px #F4BB01",
+  gradient: "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%)",
+  gradientFont: "#000",
 };
 
 export const darkTheme = {
@@ -34,7 +36,9 @@ export const darkTheme = {
   title: "#333",
   pickyMood: "#CE4257",
   pickyMoodFont: "#FFF",
-  bordermood: "solid 1px #CE4257",
+  bordermood: "solid 3px #CE4257",
+  gradient: "linear-gradient(180deg, rgba(45, 37, 37, 0) 0%, #2D2525 67.81%)",
+  gradientFont: "#FFF",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -108,5 +112,23 @@ html {
     border: ${(props) => props.theme.bordermood};
   }
 
+  .wish__gradient, .pickyLucky__gradient, .mood__gradient {
+    background: ${(props) => props.theme.gradient};
+  }
 
+  .home--research {
+    .home__gradient {
+      background: ${(props) => props.theme.gradient};
+    }
+  }
+
+  .wish__footer, .pickyLucky__footer, .mood__footer {
+    color: ${(props) => props.theme.gradientFont};
+  }
+
+  .home--research {
+    .home__footer {
+      color: ${(props) => props.theme.gradientFont};
+    }
+  }
 `;

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // Prepartion of the curtain menu link
 import { Link } from 'react-router-dom';
+
+import ScrollToTop from "src/components/ButtonTop";
 
 // import pour la modal
 import {
@@ -17,11 +19,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faEllipsisH, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from "@fortawesome/free-brands-svg-icons"
-import LogoPicky from 'src/assets/logoPicky.png'
-// Import de notre logo
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import logo from 'src/assets/logo_PopCorn.png';
+// Import de notre logo
+import LogoPicky from 'src/assets/logoPicky.png'
 
 // Import css
 import './style.scss';
@@ -60,12 +60,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // Creation of my component Header
-export default function Header({ isConnected, deconnect, resetPickyFind }) {
+export default function Header({ 
+  isConnected, 
+  deconnect, 
+  resetPickyFind, 
+  getProfil,
+  pseudo,
+}) {
+  console.log(pseudo)
   // Hook for modal with two function, opening and closing.
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
+  useEffect(() => {
+    getProfil()
+  }, )
   const handleClose = () => {
     setOpen(false);
   };
@@ -82,6 +92,7 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   return (
     <ThemeProvider theme={ themeMode }>
+    <ScrollToTop />
       <GlobalStyles/>
         <header className="header">
           <ClickAwayListener onClickAway={handleClickAway}>
@@ -175,6 +186,7 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
           <>
           
           <div>
+           
             
             <FontAwesomeIcon
               onClick={handleOpen}
@@ -198,15 +210,20 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
                 <div className={classes.paper}>
                   <ul className="test">
                     <li>
-                      <Link to="/profil"> Profil </Link>
+                    <p className="helloUser"> Hello {pseudo} </p>
                     </li>
-                    <li onClick={deconnect}>
+                    <li className="test-Li">
+                      <Link to="/profil"> <p>Profil</p> </Link>
+                    </li>
+                    <li onClick={deconnect} className="test-Li">
                       <Link to="/" onClick={()=> window.location.href='/'}>
+                        <p>
                         <FontAwesomeIcon
                           className= "logOutIcon"
                           icon ={faSignOutAlt}>
                         </FontAwesomeIcon>
                         Déconnexion 
+                        </p>
                       </Link>
                     </li>
                   </ul>

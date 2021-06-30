@@ -94,7 +94,7 @@ const ProfileField = ({
             <div className="row"> 
             
               <Field
-                namebis="pseudo"
+                namebis="Pseudo"
                 type="text"
                 name="pseudo"
                 placeholder={profilPseudo}
