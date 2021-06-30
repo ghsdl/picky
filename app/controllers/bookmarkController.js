@@ -21,7 +21,7 @@ const bookmarkController = {
       const id = parseInt(req.params.id, 10);
 
       // IF ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      if(isNaN(id)){
+      if (isNaN(id)) {
         return next();
       }
 
@@ -33,7 +33,7 @@ const bookmarkController = {
         return next();
       }
       console.log(bookmark)
-      
+
       res.json({ bookmark });
     } catch (error) {
       console.log(error);
@@ -54,7 +54,7 @@ const bookmarkController = {
         poster,
         member_id: req.member.id
       });
-      
+
       res.status(200).json(`Everything went okay!`);
     } catch (error) {
       console.log(error);
@@ -68,22 +68,22 @@ const bookmarkController = {
       const betaseries_id = parseInt(req.params.id, 10);
 
       // IF BETASERIES_ID NOT A NUMBER THEN NEXT TO STOP THE EXECUTION
-      if(isNaN(betaseries_id)){
+      if (isNaN(betaseries_id)) {
         return next();
       }
 
       // GETTING THE BOOKMARK BY ITS BETASERIES_ID
       const bookmark = await bookmarkDataMapper.getOne(betaseries_id);
-      
+
       // IF BOOKMARK DOES NOT EXIST THEN NEXT TO STOP THE EXECUTION
       if (!bookmark) {
         return next();
       }
-      
+
       // DELETING THE BOOKMARK FROM DATABASE WITH MEMBER TOKEN
       await bookmarkDataMapper.delete(betaseries_id, req.member.id);
 
-      res.status(204).json({ message: `Favori supprimé avec succès.`});
+      res.status(204).json({ message: `Favori supprimé avec succès.` });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());

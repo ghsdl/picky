@@ -11,17 +11,17 @@ module.exports = {
      * @property {string} profile_picture - password confrimation
      * @property {string} created_at - Creation date (date ISO 8601)
      * @property {string} updated_at - Update date (date ISO 8601)
-     */
+   */
 
-     /**
+  /**
      * @typedef memberConnected
-      * @property {string} email - Member's email
-      * @property {string} password - Member's password
-      * @property {string} token - authentication token 
-     */
+     * @property {string} email - Member's email
+     * @property {string} password - Member's password
+     * @property {string} token - authentication token
+  */
 
   async insertMember(newMember) {
-    // CREATING NEW USER IN DATABASE
+    // ADDING NEW USER IN DATABASE
     const addedMember = await pool.query(
       `INSERT INTO member (pseudo, email, password) VALUES ($1, $2, $3) RETURNING *`,
       [newMember.pseudo, newMember.email, newMember.password]
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   async getMemberByEmail(email) {
-    // CHECKING IF USER DOES EXIST
+    // GETTING USER BY THEIR EMAIL
     const member = await pool.query(`SELECT * FROM member WHERE email = $1`, [email]);
 
     return member.rows[0];

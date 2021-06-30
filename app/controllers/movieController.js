@@ -24,10 +24,10 @@ const movieController = {
     try {
       // GETTING THE URL PARAMETER
       const text = req.params;
-      
+
       // SEARCHING MOVIES FROM THIRD PARTY API
       const movies = await movieDataMapper.searchMovies(text);
-      
+
       res.json(movies);
     } catch (error) {
       console.log(error);
@@ -39,10 +39,10 @@ const movieController = {
     try {
       // GETTING THE URL PARAMETER
       const id = req.params;
-      
+
       // SEARCHING MOVIES FROM THIRD PARTY API
       const movie = await movieDataMapper.searchMovie(id);
-      
+
       res.json(movie);
     } catch (error) {
       console.log(error);

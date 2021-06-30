@@ -2,7 +2,7 @@
 const showDataMapper = require('../dataMappers/showDataMapper');
 
 const serieController = {
-  
+
   randomShows: async (_, res) => {
     try {
       // FETCHING RANDOM SHOWS FROM THIRD PARTY API
@@ -28,7 +28,7 @@ const serieController = {
 
       // SEARCHING SHOWS FROM THIRD PARTY API
       const search = await showDataMapper.searchShows(text);
-      
+
       res.json(search);
     } catch (error) {
       console.log(error);
@@ -38,8 +38,10 @@ const serieController = {
 
   searchShow: async (req, res) => {
     try {
+      // GETTING THE URL PARAMETER
       const id = req.params;
 
+      // DISPLAYING ONE SHOW 
       const display = await showDataMapper.oneShow(id);
 
       res.json(display);
@@ -48,7 +50,6 @@ const serieController = {
       res.status(500).json(error.toString());
     }
   }
-  
 
 };
 

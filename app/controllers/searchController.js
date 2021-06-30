@@ -9,7 +9,7 @@ const searchController = {
 
             // SEARCHING EVERYTHING FROM THIRD PARTY API
             const search = await searchDataMapper.searchAll(query);
-            
+
             res.json(search);
         } catch (error) {
             console.log(error);

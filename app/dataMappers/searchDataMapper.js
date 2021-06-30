@@ -6,7 +6,7 @@ module.exports = {
      * @typedef searchAll
      * @property {number} id - Unique identifier
      * @property {number} thetvdb_id - identifier tv data base
-     * @property {string} imdb_id - identifier
+     * @property {number} imdb_id - identifier
      * @property {string} title - titles of shows
      * @property {string} seasons - show's season
      * @property {string} episodes - show's episode
@@ -15,9 +15,9 @@ module.exports = {
      * @property {string} resource_url - show's poster
      * @property {number} id - Unique identifier
      * @property {string} title - titles of movies
-     * @property {string} tmdb_id - identifier 
-     * @property {string} imdb_id - identifier
-     * @property {string} followers - movies's followers
+     * @property {number} tmdb_id - identifier 
+     * @property {number} imdb_id - identifier
+     * @property {number} followers - movies's followers
      * @property {string} production_year - creation date
      * @property {string} resource_url - movies's poster
      */

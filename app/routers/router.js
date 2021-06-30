@@ -30,12 +30,19 @@ router.post('/signup', (validate.body(memberInsertSchema)), authController.add);
  * @returns {error} 401 - "Email ou mot de passe incorrect."
  */
 router.post('/signin', authController.log);
+
+/**
+ * Verifying token
+ * @route GET /verify
+ * @returns {memberConnected[]} 200 - member connected
+ * @returns {error} 401 - "Email ou mot de passe incorrect."
+ */
 router.get('/verify', auth, authController.verify);
 
 // MEMBERS ROUTE
   /** 
    * Get all the members
-   * @route GET /member
+   * @route GET /members
    * @returns {Member[]} 200 - Member's list
    * @returns {Error} 500 - Error servor
    */
@@ -50,16 +57,18 @@ router.route('/member')
    * @returns {Error} 500 - Error servor
    */
   .get(auth, memberController.getById)
+  
   /**  
-   * Updated member
+   * Update member
    * @route PATCH /member/{id}
    * @param {number} id - Member's id
    * @returns {Member[]} 200 - Member's update
    * @returns {Error} 500 - Error servor
    */
   .patch(auth, validate.body(memberUpdateSchema), memberController.update)
+  
   /**  
-   * Deleted member
+   * Delete member
    * @route DELETE /member/{id}
    * @param {number} id - Member's id
    * @returns {Member[]} 204 - <empty content>
@@ -67,8 +76,17 @@ router.route('/member')
    */
   .delete(auth, memberController.delete);
 
+// MEMBER AND THEIR BOOKMARKS ROUTE
+/**
+ * Get member's bookmarks
+ * @route GET /member/bookmark
+ * @returns {bookmarksMember[]}200 - Results
+ * @returns {error} 500 - "error servor"
+ */
+ router.get('/member/bookmark', auth, memberController.getBookmarkByMember);
+
 // BOOKMARK ROUTES
-router.route('/bookmark')
+router.route('/bookmarks')
 
  /**
  * All Bookmarks 
@@ -78,8 +96,8 @@ router.route('/bookmark')
  */
 .get(bookmarkController.get)
 
-    /**
- * Post Bookmarks 
+/**
+ * Add Bookmark
  * @route POST /bookmark
  * @returns 200 - Everything went okay
  * @returns {error} 500 - "Internal Server Error"
@@ -98,7 +116,7 @@ router.route('/bookmark/:id(\\d+)')
 .get(bookmarkController.getById)
 
 /**
- * Delete Bookmark by id
+ * Delete Bookmark 
  * @route DELETE /bookmark/id
  * @param {integer} id - Bookmark id
  * @returns {oneBookmark[]}204 - No body returned for esponse
@@ -106,18 +124,7 @@ router.route('/bookmark/:id(\\d+)')
  */
 .delete(auth, bookmarkController.delete);
 
-// MEMBER AND THEIR BOOKMARKS ROUTE
-
-/**
- * GET Bookmarks for a member
- * @route GET /member/bookmark
- * @returns {bookmarksMember[]}200 - Results
- * @returns {error} 500 - "error servor"
- */
-router.get('/member/bookmark', auth, memberController.getBookmarkByMember);
-
 // SEARCH ROUTES
-
 /**
  * Display a list of 10 shows with parameter 'text'
  * @route GET /search/shows/:text
@@ -136,7 +143,6 @@ router.get('/search/shows/:text', showController.searchShows);
  */
 router.get('/search/movies/:text', movieController.searchMovies);
 
-
 /**
  * Display a list of 5 movies and shows with parameter 'query'
  * @route GET /search/:query
@@ -146,12 +152,10 @@ router.get('/search/movies/:text', movieController.searchMovies);
  */
 router.get('/search/:query', searchController.searchAll);
 
-
 router.post('/moodresults', searchController.mood);
 
 // RANDOM MOVIES ROUTE
 router.get('/movies/random', movieController.randomMovies);
-
 
 // DISPLAY ONE MOVIE 
 router.get('/movie/:id', movieController.searchMovie);
@@ -163,7 +167,6 @@ router.get('/shows/random', showController.randomShows);
 router.get('/show/:id', showController.searchShow);
 
 // PLATFORMS ROUTES
-
 /**
  * All Betaseries platforms 
  * @route GET /platform

@@ -11,15 +11,14 @@ module.exports = {
      * @property {string} profile_picture - Member's profile picture
      * @property {string} created_at - Creation date (date ISO 8601)
      * @property {string} updated_at - Update date (date ISO 8601)
-     */
+    */
 
      /**
      * @typedef bookmarksMember
-     * @property {number} id - Unique identifier
-     * @property {string} betaseries_id - Member's nickname
+     * @property {number} betaseries_id - Member's nickname
      * @property {string} title - bookmark's email
      * @property {string} platform - bookmark's platform
-     * @property {string} member_id - references "member" ("id")
+     * @property {number} member_id - references "member" ("id")
      * @property {string} created_at - Creation date (date ISO 8601)
      * @property {string} updated_at - Update date (date ISO 8601)
      */

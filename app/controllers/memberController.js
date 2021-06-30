@@ -109,15 +109,15 @@ const memberController = { // BACKEND METHOD
           return res.status(401).json(`Les mots de passe doivent être identiques.`);
         }
 
-      // RE-CRYPTING PASSWORD WITH BCRYPT
-      const saltRound = 10;
-      const salt = await bcrypt.genSalt(saltRound);
+        // RE-CRYPTING PASSWORD WITH BCRYPT
+        const saltRound = 10;
+        const salt = await bcrypt.genSalt(saltRound);
 
-      // GET BACK NEW PASSWORD FROM REQ.BODY AND HASH IT BEFORE SAVING IN DATABASE
-      member.password = await bcrypt.hash(newData.password , salt);
-      
-      const updatedMember = await memberDataMapper.patch(member, req.member.id);
-      return res.json({ updatedMember });
+        // GET BACK NEW PASSWORD FROM REQ.BODY AND HASH IT BEFORE SAVING IN DATABASE
+        member.password = await bcrypt.hash(newData.password, salt);
+
+        const updatedMember = await memberDataMapper.patch(member, req.member.id);
+        return res.json({ updatedMember });
       }
 
       // UPDATING PSEUDO PROFILE_PICTURE // V2
