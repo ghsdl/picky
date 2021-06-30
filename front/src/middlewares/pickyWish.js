@@ -19,7 +19,7 @@ const notifyDelete = () => {toast.success("Ce programme a bien été supprimé d
   draggable: true,
 }};
 
-const notifyVisitor = () => {toast("Vous devez être connecté pour ajouter un programme à votre watchlist"),{
+const notifyVisitor = () => {toast.warning("Vous devez être connecté pour ajouter un programme à votre watchlist"),{
   position: "top-right",
   autoClose: 5000,
   closeOnClick: true,
