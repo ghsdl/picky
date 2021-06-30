@@ -85,12 +85,7 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
             <Link className="home__footer__link" to="/signUp">MOOD</Link>
           )}
           <p className="home__footer__text">Continuez à explorer</p>
-          {isConnected && (
             <Link className="home__footer__link" to="/pickyLucky">LUCKY</Link>
-          )}
-          {!isConnected && (
-            <Link className="home__footer__link" to="/signUp">LUCKY</Link>
-          )}
           </div>
         </div>
       </div>
