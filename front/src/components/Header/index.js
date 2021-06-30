@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 // Prepartion of the curtain menu link
 import { Link } from 'react-router-dom';
 
+import ScrollToTop from "src/components/ButtonTop";
+
 // import pour la modal
 import {
   Modal,
@@ -17,11 +19,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faEllipsisH, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from "@fortawesome/free-brands-svg-icons"
-import LogoPicky from 'src/assets/logoPicky.png'
-// Import de notre logo
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import logo from 'src/assets/logo_PopCorn.png';
+// Import de notre logo
+import LogoPicky from 'src/assets/logoPicky.png'
 
 // Import css
 import './style.scss';
@@ -92,6 +92,7 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   return (
     <ThemeProvider theme={ themeMode }>
+    <ScrollToTop />
       <GlobalStyles/>
         <header className="header">
           <ClickAwayListener onClickAway={handleClickAway}>

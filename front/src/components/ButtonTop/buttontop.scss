@@ -1,0 +1,36 @@
+@use 'src/styles/vars';
+
+.buttonTop {
+  color:  #E43E54;
+  position: fixed;
+  cursor: pointer;
+  bottom: 20px;
+  right: 20px;
+}
+
+@media (max-width: vars.$large) {
+  .buttonTop {
+    width: .7em;
+    height: .7em;
+    bottom: 20px;
+    right: 2px;
+  }
+}
+
+@media (max-width: vars.$small) {
+  .buttonTop {
+    width: .5em;
+    height: .5em;
+    bottom: 26px;
+    right: 2px;
+  }
+}
+
+@media (max-width: 320px) {
+  .buttonTop {
+    width: .5em;
+    height: .5em;
+    bottom: 70px;
+    right: 2px;
+  }
+}
