@@ -125,7 +125,6 @@ const profil =  (store) => (next) => (action) => {
     }
 
     case DELETE_PROFIL: {
-      console.log(store.getState().status.token)
       axios.delete('https://projet-picky.herokuapp.com/member', {
         headers: {
           "Bearer": `${store.getState().status.token}`
@@ -133,7 +132,6 @@ const profil =  (store) => (next) => (action) => {
         
       })
         .then((response) => {
-          console.log('case Delete MiddleWare',response)
           notifySup();
           window.localStorage.clear();
           setTimeout(() => {

@@ -25,9 +25,6 @@ const Card = ({
   bookmarksIds,
   
 }) => {
-  /*const handleClick = () => {
-    console.log("Je clique sur ma carte")
-  }*/
   let isInWatchList = false;
 
   return (

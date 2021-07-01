@@ -34,8 +34,6 @@ const Cards = ({
   genreDetails,
   details,
  }) => {
-   console.log(details)  
-   console.log(genreDetails)
   const container = useRef(null)
 
   useEffect(() => {
@@ -49,18 +47,10 @@ const Cards = ({
     getBookmarksIds();
   }, [loading]);
 
-
-
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
   }
 
   function closeModal() {
@@ -137,7 +127,6 @@ const Cards = ({
           {genreDetails==='movie'&&(
             <Modal     
             isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
             className="modal"
@@ -157,7 +146,6 @@ const Cards = ({
             {genreDetails==='show'&&(
               <Modal     
               isOpen={modalIsOpen}
-              onAfterOpen={afterOpenModal}
               onRequestClose={closeModal}
               style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
               className="modal"
@@ -208,7 +196,6 @@ const Cards = ({
         {genreDetails==='movie'&&(
         <Modal     
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
           className="modal"
@@ -228,7 +215,6 @@ const Cards = ({
       {genreDetails==='show'&&(
         <Modal     
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
           className="modal"
@@ -282,7 +268,6 @@ const Cards = ({
             {genreDetails==='movie'&&(
         <Modal     
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
           className="modal"
@@ -302,7 +287,6 @@ const Cards = ({
       {genreDetails==='show'&&(
         <Modal     
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
           className="modal"
@@ -325,9 +309,7 @@ const Cards = ({
       }
     }
     
-  }
-
-          
+  }      
 };
 
 export default Cards;

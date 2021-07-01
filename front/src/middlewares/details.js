@@ -36,7 +36,6 @@ const pickyDetails = (store) => (next) => (action) => {
             const genreDetails = response.data[0]
             const genre =(Object.keys(genreDetails)[0])
             store.dispatch(savePickyDetails(program, genre));
-            console.log(genre)
           })
           .catch((error) => {
             console.log(error)
