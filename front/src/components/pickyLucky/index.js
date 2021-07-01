@@ -2,8 +2,8 @@ import React, { useEffect }  from 'react'
 import Header from 'src/containers/Header';
 import './index.scss'
 import PropTypes from 'prop-types';
-import Details from 'src/components/details';
-import Detailshow from 'src/components/details/detailsShow'
+import Details from 'src/components/DetailsPickyLucky';
+import Detailshow from 'src/components/DetailsPickyLucky/detailsShow'
 import { Link } from 'react-router-dom';
 
 const PickyLucky = ({
@@ -48,14 +48,16 @@ const PickyLucky = ({
           </div>
           <div className="pickyLucky__gradient">
             <div className="pickyLucky__footer">
+            <Link className="pickyLucky__footer__link" to="/">FIND</Link>
+              <p className="pickyLucky__footer__text">Continuez à explorer</p>
               {isConnected && (
                 <Link className="pickyLucky__footer__link" to="/mood">MOOD</Link>
               )}
               {!isConnected && (
                 <Link className="pickyLucky__footer__link" to="/signUp">MOOD</Link>
               )}
-              <p className="pickyLucky__footer__text">Continuez à explorer</p>
-              <Link className="pickyLucky__footer__link" to="/">FIND</Link>
+              
+              
             </div>
           </div>
         </div>

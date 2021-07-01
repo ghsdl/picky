@@ -33,6 +33,7 @@ const Cards = ({
   getDetailsWish,
   genreDetails,
   details,
+  resetDetails,
  }) => {
   const container = useRef(null)
 
@@ -51,6 +52,7 @@ const Cards = ({
 
   function openModal() {
     setIsOpen(true);
+    resetDetails();
   }
 
   function closeModal() {

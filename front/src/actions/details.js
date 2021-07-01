@@ -19,3 +19,8 @@ export const savePickyDetails = (program, genre) => ({
   program,
   genre
 })
+
+export const RESET_DETAILS_CARDS  = 'RESET_DETAILS_CARDS';
+export const resetDetailsCards = () => ({
+  type: RESET_DETAILS_CARDS,
+})
