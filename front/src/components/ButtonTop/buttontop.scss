@@ -22,7 +22,16 @@
   .buttonTop {
     width: .5em;
     height: .5em;
-    bottom: 26px;
+    bottom: 20px;
+    right: 2px;
+  }
+}
+
+@media (max-width: 530px) {
+  .buttonTop {
+    width: .5em;
+    height: .5em;
+    bottom: 60px;
     right: 2px;
   }
 }
