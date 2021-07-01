@@ -21,6 +21,7 @@ export const lightTheme = {
   gradientFont: "#000",
   bordermood: "solid 1px #F4BB01",
   toastify: "#FFF",
+  modalBackground: "#FFF"
 };
 
 export const darkTheme = {
@@ -43,6 +44,7 @@ export const darkTheme = {
   gradientFont: "#FFF",
   bordermood: "solid 1px #CE4257",
   toastify: "#FFF",
+  modalBackground: "#333"
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -138,5 +140,9 @@ html {
     .home__footer {
       color: ${(props) => props.theme.gradientFont};
     }
+  }
+
+  .modal {
+    background-color: ${(props) => props.theme.modalBackground};
   }
 `;

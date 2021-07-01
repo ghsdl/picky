@@ -26,6 +26,8 @@ const initialState = {
   platforms: [],
   results: [],
   loading: true,
+  genre: '',
+  
 };
 
 const pickyMoodReducer = (state = initialState, action = {}) => {
@@ -238,6 +240,7 @@ const pickyMoodReducer = (state = initialState, action = {}) => {
       return {
           ...state,
         results: action.results,
+        genre: action.genre,
         loading: false,
       };
     };
