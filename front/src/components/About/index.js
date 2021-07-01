@@ -24,7 +24,7 @@ function About () {
           id: 2,
           role: "Lead Dev Back",
           dev: " ",
-          img: "https://scontent-mrs2-2.xx.fbcdn.net/v/t1.6435-9/203691690_453862522354689_1016804025542527691_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=730e14&_nc_ohc=1MMPLMdu5U8AX--y6S7&_nc_ht=scontent-mrs2-2.xx&oh=d8214e6b09d43c0da067d511106ca24d&oe=60DBA435",
+          img: "https://ca.slack-edge.com/T01H7FN28C9-U01JA8K5325-b32a5c98cfab-512",
         },
         { 
           name: "Nina", 
