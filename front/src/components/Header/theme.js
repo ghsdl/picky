@@ -17,6 +17,7 @@ export const lightTheme = {
   pickyMood: "#F4BB01",
   pickyMoodFont: "#FFF",
   bordermood: "solid 1px #F4BB01",
+  toastify: "#FFF",
 };
 
 export const darkTheme = {
@@ -35,6 +36,7 @@ export const darkTheme = {
   pickyMood: "#CE4257",
   pickyMoodFont: "#FFF",
   bordermood: "solid 1px #CE4257",
+  toastify: "#FFF",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -108,5 +110,8 @@ html {
     border: ${(props) => props.theme.bordermood};
   }
 
+  .Toastify__toast-body {
+    color: ${(props) => props.theme.toastify};
+  }
 
 `;
