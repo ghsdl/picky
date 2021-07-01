@@ -69,7 +69,7 @@ const PickyLucky = ({
             <Details movie={movie} loading={loading}/>
             <div className="pickyLucky__gradient">
               <div className="pickyLucky__footer">
-               <Link className="pickyLucky__footer__link" to="/pickyLucky" onClick={()=> window.location.href='/pickyLucky'}>Lucky</Link>
+               <Link className="pickyLucky__footer__link" to="/pickyLucky" onClick={()=> window.location.href='/pickyLucky'}>LUCKY</Link>
                 <p className="pickyLucky__footer__text">Continuez à explorer</p>
                 <Link className="pickyLucky__footer__link" to="#" onClick={pickyLucky}>AGAIN</Link>
               </div>
@@ -87,7 +87,7 @@ const PickyLucky = ({
           <Detailshow show={show} loading={loading}/>
           <div className="pickyLucky__gradient">
               <div className="pickyLucky__footer">
-                <Link className="pickyLucky__footer__link" to="/pickyLucky" onClick={()=> window.location.href='/pickyLucky'}>Lucky</Link>
+                <Link className="pickyLucky__footer__link" to="/pickyLucky" onClick={()=> window.location.href='/pickyLucky'}>LUCKY</Link>
                   <p className="pickyLucky__footer__text">Continuez à explorer</p>
                 <Link className="pickyLucky__footer__link" to="#" onClick={pickyLuckyShow}>AGAIN</Link>
               </div>
