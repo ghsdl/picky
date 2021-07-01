@@ -12,11 +12,9 @@ const signUp = (store) => (next) => (action) => {
         confirmationPassword: state.user.confirmationPassword,
       })
         .then((response) => {
-         console.log(response.data)
          window.location.href="/signIn"
         })
         .catch((error) => {
-          console.log(error.response.data)
           store.dispatch(updateSignInError(error.response.data.error || error.response.data))
         });
       break;

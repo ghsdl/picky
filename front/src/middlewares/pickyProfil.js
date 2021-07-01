@@ -43,7 +43,6 @@ const profil =  (store) => (next) => (action) => {
         
       })
         .then((response) => {
-          console.log(response)
           const { member , pseudo } = response.data
           const saveProfil = actionSaveProfil(member, pseudo);
           store.dispatch(saveProfil, reset())
@@ -126,15 +125,18 @@ const profil =  (store) => (next) => (action) => {
     }
 
     case DELETE_PROFIL: {
+<<<<<<< HEAD
       console.log(store.getState().status.token)
       axios.delete('http://localhost:3000/member', {
+=======
+      axios.delete('https://projet-picky.herokuapp.com/member', {
+>>>>>>> 84e785dbb325e76a3049fd7c115a472926ce0727
         headers: {
           "Bearer": `${store.getState().status.token}`
         },
         
       })
         .then((response) => {
-          console.log('case Delete MiddleWare',response)
           notifySup();
           window.localStorage.clear();
           setTimeout(() => {

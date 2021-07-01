@@ -65,9 +65,10 @@ export const reset = () => ({
   type: RESET,
 });
 
-export const saveResults = (results) => ({
+export const saveResults = (results, genre) => ({
   type: SAVE_RESULTS,
   results,
+  genre,
 });
 
 export const changeState = () => ({

@@ -7,7 +7,6 @@ const resultPickyLucky = (store) => (next) => (action) => {
     case GET_RANDOM_FOR_PICKY_LUCKY: {
       axios.get('http://localhost:3000/movies/random')
         .then((response)=> {
-          //console.log(response.data[0].movies[0])
           const action = setPickyToTrue()
           const  movie  = response.data[0].movies[0]
           store.dispatch(saveInfoPickyLucky(movie))
@@ -22,7 +21,6 @@ const resultPickyLucky = (store) => (next) => (action) => {
     case GET_RANDOM_FOR_PICKY_LUCKY_SHOW: {
       axios.get('http://localhost:3000/shows/random')
         .then((response) => {
-          console.log(response.data[0].shows[0])
           const action = setPickyShowToTrue();
           const show = response.data[0].shows[0];
           store.dispatch(action)

@@ -1,0 +1,86 @@
+@use 'src/styles/vars';
+
+.pickyDetails{
+
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+   
+  &-nbSeasonEpisod{
+    margin-bottom: 1vh;
+    font-size: 1.5vh;
+  }
+  &-poster{
+    width:50vw;
+  }
+  &-title{
+    width: 50%;
+    text-align: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: 2vh;
+    font-weight: bold;
+    text-shadow:0 0 30px #EC637B,5px 9px 5px rgba(0, 0, 0, 0.5), 0 0 150px #CE4257;color:#CE4257
+  }
+  &-genre{
+    margin-bottom:1vh;
+    text-align: center;
+    font-size: 1.5vh;
+    
+  }
+  &-trailer {
+    border-radius: 5px;
+    width:50vh
+  }
+  &-synopsis{
+    width: 80%;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    text-align: center;
+    margin-left:1vh;
+    margin-right: 1vh;
+    font-size: 1.5vh;
+    line-height: 1.3em;
+  }
+  &-release{
+    margin-bottom: 1vh;
+    font-size: 1.5vh
+  }
+  &-director{
+    margin-bottom: 2vh;
+    font-size: 1.5vh
+  }
+  &-noImage{
+    width:15vw
+  }
+}
+.boldChar{
+  font-weight: bold;
+}
+@media (max-width: vars.$large) {
+  .pickyDetails {
+    &-trailer {
+      width: 60vw;
+      height: auto;
+    }
+  }
+
+  .modal {
+    max-height: 80vh;
+    width: 80vw;
+  }
+}
+
+@media (max-width: vars.$normal) {
+  .pickyDetails {
+    &-trailer {
+      width: 60vw;
+      height: auto;
+    }
+  }
+
+  .modal {
+    width: 80vw;
+  }
+}
