@@ -19,6 +19,8 @@ export const lightTheme = {
   bordermood: "solid 3px #F4BB01",
   gradient: "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%)",
   gradientFont: "#000",
+  bordermood: "solid 1px #F4BB01",
+  toastify: "#FFF",
 };
 
 export const darkTheme = {
@@ -39,6 +41,8 @@ export const darkTheme = {
   bordermood: "solid 3px #CE4257",
   gradient: "linear-gradient(180deg, rgba(45, 37, 37, 0) 0%, #2D2525 67.81%)",
   gradientFont: "#FFF",
+  bordermood: "solid 1px #CE4257",
+  toastify: "#FFF",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -120,6 +124,10 @@ html {
     .home__gradient {
       background: ${(props) => props.theme.gradient};
     }
+  }
+
+  .Toastify__toast-body {
+    color: ${(props) => props.theme.toastify};
   }
 
   .wish__footer, .pickyLucky__footer, .mood__footer {
