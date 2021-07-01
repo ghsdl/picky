@@ -16,9 +16,14 @@ export const lightTheme = {
   title: "#FFF",
   pickyMood: "#F4BB01",
   pickyMoodFont: "#FFF",
+<<<<<<< HEAD
   bordermood: "solid 3px #F4BB01",
   gradient: "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%)",
   gradientFont: "#000",
+=======
+  bordermood: "solid 1px #F4BB01",
+  toastify: "#FFF",
+>>>>>>> DarkMode3
 };
 
 export const darkTheme = {
@@ -36,9 +41,14 @@ export const darkTheme = {
   title: "#333",
   pickyMood: "#CE4257",
   pickyMoodFont: "#FFF",
+<<<<<<< HEAD
   bordermood: "solid 3px #CE4257",
   gradient: "linear-gradient(180deg, rgba(45, 37, 37, 0) 0%, #2D2525 67.81%)",
   gradientFont: "#FFF",
+=======
+  bordermood: "solid 1px #CE4257",
+  toastify: "#FFF",
+>>>>>>> DarkMode3
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -112,6 +122,7 @@ html {
     border: ${(props) => props.theme.bordermood};
   }
 
+<<<<<<< HEAD
   .wish__gradient, .pickyLucky__gradient, .mood__gradient {
     background: ${(props) => props.theme.gradient};
   }
@@ -120,6 +131,10 @@ html {
     .home__gradient {
       background: ${(props) => props.theme.gradient};
     }
+=======
+  .Toastify__toast-body {
+    color: ${(props) => props.theme.toastify};
+>>>>>>> DarkMode3
   }
 
   .wish__footer, .pickyLucky__footer, .mood__footer {
