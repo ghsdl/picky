@@ -12,6 +12,8 @@ const mapStateToProps = (state) => (
   wish: state.watchlist.wish,
   wishIds: state.watchlist.wishIds,
   genre: state.pickyMood.genre,
+  details: state.details.program,
+  genreDetails: state.details.genreDetails,
 });
 
 const mapDispatchToProps = (dispatch) => ({

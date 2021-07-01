@@ -32,10 +32,10 @@ const result = (store) => (next) => (action) => {
                   i--;
                 }
               };
-              store.dispatch(saveResults(randomResults, 'movies'));
+              store.dispatch(saveResults(randomResults, 'movie'));
             } else {
               // If there are 20 results or less, they are all displayed
-              store.dispatch(saveResults(results, 'movies'));
+              store.dispatch(saveResults(results, 'movie'));
             }
           } else if (response.data[0].shows) {
             // If the results are shows:

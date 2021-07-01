@@ -67,7 +67,7 @@ export default function Header({
   getProfil,
   pseudo,
 }) {
-  console.log(pseudo)
+
   // Hook for modal with two function, opening and closing.
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {

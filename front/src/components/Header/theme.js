@@ -19,6 +19,7 @@ export const lightTheme = {
   bordermood: "solid 3px #F4BB01",
   gradient: "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%)",
   gradientFont: "#000",
+  modalBackground: "#FFF"
 };
 
 export const darkTheme = {
@@ -39,6 +40,7 @@ export const darkTheme = {
   bordermood: "solid 3px #CE4257",
   gradient: "linear-gradient(180deg, rgba(45, 37, 37, 0) 0%, #2D2525 67.81%)",
   gradientFont: "#FFF",
+  modalBackground: "#333"
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -130,5 +132,9 @@ html {
     .home__footer {
       color: ${(props) => props.theme.gradientFont};
     }
+  }
+
+  .modal {
+    background-color: ${(props) => props.theme.modalBackground};
   }
 `;

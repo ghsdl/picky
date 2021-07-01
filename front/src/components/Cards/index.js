@@ -1,18 +1,25 @@
 // Import npm
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import lottie from 'lottie-web';
 import 'react-toastify/dist/ReactToastify.css';
 import logoPicky from 'src/assets/logoPicky.png';
 import sadPopcorn from 'src/assets/sadpopcorn.jpg';
+import Modal from 'react-modal';
 
 // Import of components
 import Card from 'src/containers/Card';
-
+import DetailsMovie from 'src/components/PickyDetails/Movie';
+import DetailsShow from 'src/components/PickyDetails/Show';
+import Youtube from 'react-youtube';
 
 // Import of scss
 import './cards.scss';
 
 // Display of the cards
+
+
+Modal.setAppElement('#root')
+
 const Cards = ({
   movies,
   shows, 
@@ -23,9 +30,12 @@ const Cards = ({
   getBookmarksIds,
   genre,
   getDetails,
-  getDetailsWish
+  getDetailsWish,
+  genreDetails,
+  details,
  }) => {
- 
+   console.log(details)  
+   console.log(genreDetails)
   const container = useRef(null)
 
   useEffect(() => {
@@ -37,9 +47,31 @@ const Cards = ({
       animationData: require('./movieloading.json')
     });
     getBookmarksIds();
-  }, [loading])
+  }, [loading]);
 
- 
+
+
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  const genreOf = Object.keys(details) !==0 && details.genres && details.genres.length> 0  ? details.genres.join(", "): []; 
+  
+  const genreShow = details.length >0 ? Object.values(details.genres) : null
+  const finalGenre = genreShow !== null ? genreShow.join(', ') : null
+  const images = details.length > 0 && details.images ? details.images.show : null
   {// When the results are loading, "Loading" is displayed
   }
 
@@ -68,12 +100,13 @@ const Cards = ({
         )
       } else {
         return (
+          <>
           <div className="cards">
           {// The movies are displayed
           }
           {movies.map((movie) => (
-           <div onClick={() => getDetails(movie.id, 'movie')} key={movie.id}>
-              <Card
+           <div onClick={() =>{openModal();getDetails(movie.id, 'movie')}} key={movie.id}>
+              <Card 
                 id={movie.id}
                 title={movie.title}
                 poster={movie.poster}
@@ -83,11 +116,12 @@ const Cards = ({
                 genre= "movie"
               />
             </div>
+            
           ))}
           {// The shows are displayed
           }
           {shows.map((show) => (
-            <div onClick={() => getDetails(show.id, 'show')} key={show.id}>
+            <div onClick={() => {openModal();getDetails(show.id, 'show')}} key={show.id}>
               <Card
                 id={show.id}
                 title={show.title}
@@ -100,6 +134,47 @@ const Cards = ({
             </div>
           ))}
           </div>
+          {genreDetails==='movie'&&(
+            <Modal     
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
+            className="modal"
+            >
+              <DetailsMovie
+                title = {details.title} 
+                genre={genreOf} 
+                year={details.production_year} 
+                director={details.director} 
+                trailer={details.trailer}  
+                backdrop={details.backdrop} 
+                synopsis={details.synopsis}
+              />
+            </Modal>
+             )}
+
+            {genreDetails==='show'&&(
+              <Modal     
+              isOpen={modalIsOpen}
+              onAfterOpen={afterOpenModal}
+              onRequestClose={closeModal}
+              style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
+              className="modal"
+              >
+                <DetailsShow 
+                  title={details.title}
+                  seasons={details.seasons}
+                  episodes={details.episodes}
+                  genre={finalGenre}
+                  year={details.creation}
+                  trailer={details.next_trailer}
+                  poster={images}
+                  synopsis={details.description}
+                />
+            </Modal>
+             )}
+          </>
         );
       }
     } else if (currentPage === 'wish') {
@@ -116,9 +191,10 @@ const Cards = ({
         )
       } else {
         return (
+         
         <div className="cards">
         {wish.map((program) => (
-          <div onClick={() => getDetailsWish(program.betaseries_id, program.title)} key={program.betaseries_id} >
+          <div onClick={() => {openModal();getDetailsWish(program.betaseries_id, program.title)}} key={program.betaseries_id} >
           <Card
             id={program.betaseries_id}
             title={program.title}
@@ -129,7 +205,48 @@ const Cards = ({
           />
           </div>
         ))}
-        </div>
+        {genreDetails==='movie'&&(
+        <Modal     
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
+          className="modal"
+          >
+          <DetailsMovie
+            title = {details.title} 
+            genre={genreOf} 
+            year={details.production_year} 
+            director={details.director} 
+            trailer={details.trailer}  
+            backdrop={details.backdrop} 
+            synopsis={details.synopsis}
+          />
+        </Modal>
+   )}
+
+      {genreDetails==='show'&&(
+        <Modal     
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
+          className="modal"
+        >
+          <DetailsShow 
+            title={details.title}
+            seasons={details.seasons}
+            episodes={details.episodes}
+            genre={finalGenre}
+            year={details.creation}
+            trailer={details.next_trailer}
+            poster={images}
+            synopsis={details.description}
+          />
+        </Modal>
+      )}
+        
+    </div>
         );
       };
 
@@ -147,10 +264,10 @@ const Cards = ({
         )
       } else {
         return (
-          // If there is at least one result, it is displayed
+          <>
           <div className="cards">
             {results.map((result) => (
-              <div onClick={() => getDetails(result.id, genre)} key={result.id}>
+              <div onClick={() => {openModal();getDetails(result.id, genre)}} key={result.id}>
                 <Card
                   id={result.id}
                   title={result.title}
@@ -162,11 +279,55 @@ const Cards = ({
                 />
               </div>
             ))}
+            {genreDetails==='movie'&&(
+        <Modal     
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
+          className="modal"
+          >
+          <DetailsMovie
+            title = {details.title} 
+            genre={genreOf} 
+            year={details.production_year} 
+            director={details.director} 
+            trailer={details.trailer}  
+            backdrop={details.backdrop} 
+            synopsis={details.synopsis}
+          />
+        </Modal>
+   )}
+
+      {genreDetails==='show'&&(
+        <Modal     
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={{overlay: {backgroundColor: "rgba(0, 0, 0, 0.5)"}}}
+          className="modal"
+        >
+          <DetailsShow 
+            title={details.title}
+            seasons={details.seasons}
+            episodes={details.episodes}
+            genre={finalGenre}
+            year={details.creation}
+            trailer={details.next_trailer}
+            poster={images}
+            synopsis={details.description}
+          />
+        </Modal>
+   )}
             </div>
+          </>
         )
       }
     }
+    
   }
+
+          
 };
 
 export default Cards;
