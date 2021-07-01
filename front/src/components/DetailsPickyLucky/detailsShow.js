@@ -15,21 +15,21 @@ const Detailshow = ({ show }) => {
     <div className="detailsMovie">
       <h1 className="detailsMovie-title">{show.title}</h1>
       <p className="detailsMovie-genre">
-        Nombre de saison : {show.seasons} &nbsp; &nbsp; Nombre d'épisodes : {show.episodes}
+        Nombre de saison : <span className="bold">{show.seasons}</span> &nbsp; &nbsp; Nombre d'épisodes : <span className="bold">{show.episodes}</span>
       </p>
       {show.country !== null && show.creation && (
         <p className="detailsMovie-genre">
-          {show.country} &nbsp; &nbsp; {show.creation}
+          <span className="bold">{show.country}</span> &nbsp; &nbsp; <span className="bold">{show.creation}</span>
         </p>
       )}
        {show.country === null && show.creation && (
         <p className="detailsMovie-genre">
-         {show.creation}
+         <span className="bold"> {show.creation} </span>
         </p>
       )}
       {finalGenre !== null && finalGenre.length > 0 && (
          <p className="detailsMovie-genre">
-          Genre : {finalGenre}
+          Genre : <span className="bold">{finalGenre}</span>
         </p>
       )}
       {show.next_trailer &&(

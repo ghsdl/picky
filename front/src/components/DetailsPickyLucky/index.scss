@@ -37,6 +37,8 @@
     
   }
 
+  
+
   &-noTrailerShow{
     width: 55vh;
     border-radius: 5px;
@@ -49,14 +51,19 @@
   }
   &-genre{
     margin-bottom: 1vh;
+    font-size: 1.8vh;
   }
 
   &-noPlateform{
     margin-bottom: 3vh;
     text-align: center;
+    font-size: 1.8vh;
 
     &-sad{
       width: 2vh;
     }
   }
+}
+.bold{
+  font-weight: bold;
 }
