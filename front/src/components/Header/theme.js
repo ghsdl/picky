@@ -124,6 +124,8 @@ html {
     .home__gradient {
       background: ${(props) => props.theme.gradient};
     }
+  }
+
   .Toastify__toast-body {
     color: ${(props) => props.theme.toastify};
   }
