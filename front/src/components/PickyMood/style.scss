@@ -76,6 +76,16 @@
     }
   }
 
+  @media (max-width: 550px) {
+    .pickMoodContent {
+      &-item {
+        font-size: 1.5vw;
+      }
+    }
+  
+   
+  }
+
   :hover {
     transform: scale(1.05)
   }

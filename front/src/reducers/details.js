@@ -1,4 +1,4 @@
-import { SAVE_PICKY_DETAILS } from 'src/actions/details'
+import { SAVE_PICKY_DETAILS, RESET_DETAILS_CARDS } from 'src/actions/details'
 
 
 const initialState = {
@@ -14,6 +14,13 @@ const detailsReducer = (state = initialState, action = {}) => {
         program: action.program,
         genreDetails: action.genre,
       }
+
+    case RESET_DETAILS_CARDS: 
+    return {
+      ...state,
+      program: {},
+      genreDetails: '',
+    }
       default: 
         return state;
   }
