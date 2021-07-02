@@ -6,11 +6,11 @@ const pickyFind = (store) => (next) => (action) => {
    case FETCH_PROGRAMS: {
      // Firt request for movies based on what the user has typed in the searchbar
      const searchInput = store.getState().search.searchInputValue;
-    axios.get(`https://projet-picky.herokuapp.com/search/movies/${searchInput}`)
+    axios.get(`http://localhost:3000/search/movies/${searchInput}`)
       .then((response) => {
         const { movies } = response.data[0];
         // If the first request worked, second request for shows base on what the user has typed
-          axios.get(`https://projet-picky.herokuapp.com/search/shows/${searchInput}`)
+          axios.get(`http://localhost:3000/search/shows/${searchInput}`)
             .then((response) => {
               const { shows } = response.data[0];
               // Movies and shows are sent to be displayed

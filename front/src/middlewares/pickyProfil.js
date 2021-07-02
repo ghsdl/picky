@@ -34,7 +34,7 @@ const profil =  (store) => (next) => (action) => {
   switch (action.type){
     case GET_PROFIL: {
       const state = store.getState();
-      axios.get('https://projet-picky.herokuapp.com/member', {
+      axios.get('http://localhost:3000/member', {
         headers: {
           "Bearer": `${store.getState().status.token}`,
           "Accept": "application/json",
@@ -73,7 +73,7 @@ const profil =  (store) => (next) => (action) => {
         email: email,
      };*/
      
-      axios.patch('https://projet-picky.herokuapp.com/member',
+      axios.patch('http://localhost:3000/member',
         bodyParameters,
         config
       )
@@ -106,7 +106,7 @@ const profil =  (store) => (next) => (action) => {
         confirmationPassword: state.user.confirmationPassword,
      };
      
-      axios.patch('https://projet-picky.herokuapp.com/member',
+      axios.patch('http://localhost:3000/member',
         bodyParameters,
         config
       )
@@ -125,7 +125,7 @@ const profil =  (store) => (next) => (action) => {
     }
 
     case DELETE_PROFIL: {
-      axios.delete('https://projet-picky.herokuapp.com/member', {
+      axios.delete('http://localhost:3000/member', {
         headers: {
           "Bearer": `${store.getState().status.token}`
         },

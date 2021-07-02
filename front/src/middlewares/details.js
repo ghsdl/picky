@@ -9,7 +9,7 @@ const pickyDetails = (store) => (next) => (action) => {
       const id = action.id;
 
         if(genre==='movie'){
-          axios.get(`https://projet-picky.herokuapp.com/movie/${id}`)
+          axios.get(`http://localhost:3000/movie/${id}`)
           .then((response)=> {
             const program = response.data[0].movie;
             const genreDetails = response.data[0];
@@ -29,7 +29,7 @@ const pickyDetails = (store) => (next) => (action) => {
           })
           break;
         }else{
-          axios.get(`https://projet-picky.herokuapp.com/show/${id}`)
+          axios.get(`http://localhost:3000/show/${id}`)
           .then((response)=> {
             
             const program = response.data[0].show;
@@ -47,13 +47,13 @@ const pickyDetails = (store) => (next) => (action) => {
       const id = action.id;
       const title = action.title;
 
-      axios.get(`https://projet-picky.herokuapp.com/movie/${id}`)
+      axios.get(`http://localhost:3000/movie/${id}`)
       
       .then((response)=> {
         const titleCheck = response.data[0].movie.title;
 
         if(titleCheck !== title) {
-          axios.get(`https://projet-picky.herokuapp.com/show/${id}`)
+          axios.get(`http://localhost:3000/show/${id}`)
 
           .then((response)=> {
             const program = response.data[0].show;
@@ -72,7 +72,7 @@ const pickyDetails = (store) => (next) => (action) => {
         }
       })
       .catch((error) => {
-        axios.get(`https://projet-picky.herokuapp.com/show/${id}`)
+        axios.get(`http://localhost:3000/show/${id}`)
 
           .then((response)=> {
             const program = response.data[0].show;

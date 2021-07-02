@@ -5,7 +5,7 @@ import { saveInfoPickyLuckyShow, setPickyShowToTrue,  setPickyToTrue, saveInfoPi
 const resultPickyLucky = (store) => (next) => (action) => {
   switch (action.type){
     case GET_RANDOM_FOR_PICKY_LUCKY: {
-      axios.get('https://projet-picky.herokuapp.com/movies/random')
+      axios.get('http://localhost:3000/movies/random')
         .then((response)=> {
           const action = setPickyToTrue()
           const  movie  = response.data[0].movies[0]
@@ -19,7 +19,7 @@ const resultPickyLucky = (store) => (next) => (action) => {
     }
 
     case GET_RANDOM_FOR_PICKY_LUCKY_SHOW: {
-      axios.get('https://projet-picky.herokuapp.com/shows/random')
+      axios.get('http://localhost:3000/shows/random')
         .then((response) => {
           const action = setPickyShowToTrue();
           const show = response.data[0].shows[0];

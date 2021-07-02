@@ -46,7 +46,7 @@ const pickyWish = (store) => (next) => (action) => {
         };
         
         // Adds the program to the watchlist with every information needed
-        axios.post('https://projet-picky.herokuapp.com/bookmark',
+        axios.post('http://localhost:3000/bookmark',
           bodyParameters,
           config
           )
@@ -67,7 +67,7 @@ const pickyWish = (store) => (next) => (action) => {
       
       
       // Deletes the program from the watchlist thanks to its ID
-      axios.delete(`https://projet-picky.herokuapp.com/bookmark/${programId}`,
+      axios.delete(`http://localhost:3000/bookmark/${programId}`,
         config
         )
         .then(() => {
@@ -82,7 +82,7 @@ const pickyWish = (store) => (next) => (action) => {
     }
 
     case GET_BOOKMARK: {
-    axios.get('https://projet-picky.herokuapp.com/member/bookmark',
+    axios.get('http://localhost:3000/member/bookmark',
     config)
     .then ((response) => {
       // Gets all the programs that are currently in the watchlist
@@ -121,7 +121,7 @@ const pickyWish = (store) => (next) => (action) => {
   };
 
   case GET_BOOKMARKS_IDS: {
-      axios.get('https://projet-picky.herokuapp.com/member/bookmark',
+      axios.get('http://localhost:3000/member/bookmark',
     config)
     .then ((response) => {
       // Gets all the programs that are currently in the watchlist
