@@ -3,6 +3,7 @@ import ProfileField from 'src/components/ProfileField';
 // import {} from 'src/actions/profileuser';
 import {changeInputValue, reset} from 'src/actions/user';
 import { resetProfil, getProfil, patchProfil, deleteProfil, patchPswsProfil } from 'src/actions/profil'
+import { checkToken } from 'src/actions/profil';
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
@@ -44,6 +45,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetProfil: () => {
     dispatch(resetProfil())
+  },
+
+  checkTokenValidity: () => {
+    dispatch(checkToken());
   },
 });
 

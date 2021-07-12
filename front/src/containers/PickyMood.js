@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PickyMood from 'src/components/PickyMood';
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { checkToken } from 'src/actions/profil';
 import {
   showOrSeriesToEmotions,
   backToShowOrMovies,
@@ -80,6 +81,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetPage: () => {
     dispatch(reset())
+  },
+  checkTokenValidity: () => {
+    dispatch(checkToken());
   },
 });
 

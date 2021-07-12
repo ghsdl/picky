@@ -14,6 +14,7 @@ export default function SignIn({
   isConnected,
   errorMessage,
   resetPage,
+  checkTokenValidity,
 
 }) {
   const handleSubmit = (evt) => {
@@ -26,6 +27,10 @@ export default function SignIn({
       resetPage();
 
     }
+  }, []);
+
+  useEffect(() => {
+    checkTokenValidity();
   }, []);
   return (
 

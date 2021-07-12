@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from 'src/containers/Header';
 import { useState } from 'react';
 // import PropTypes from 'prop-types';
 
 import './about.scss';
 
-function About () {
+function About ({ checkTokenValidity }) {
   const data = [
     {
       title: 'About Us - Crew',
@@ -123,6 +123,10 @@ function About () {
 
     setSelected(i)
   }
+
+  useEffect(() => {
+    checkTokenValidity();
+  }, []);
 
 
   return (

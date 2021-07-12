@@ -15,15 +15,17 @@ import Cards from 'src/containers/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, loading }) => {
+const Home = ({ checkTokenValidity, getRandom, ranmovie, ranshow, research, isConnected, resetPage, loading }) => {
 
   useEffect(()=>{
     getRandom();
   }, []);
   useEffect(() => {
+    checkTokenValidity();
+  }, []);
+  useEffect(() => {
     return () => {
       resetPage();
-      
     }
   }, []);
 

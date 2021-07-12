@@ -15,7 +15,8 @@ const PickyLucky = ({
    getPicky,
    luckyShow,
    show,
-   isConnected
+   isConnected, 
+   checkTokenValidity,
 }) => {
   const pickyLucky = () => {
     getLucky();
@@ -28,6 +29,10 @@ const PickyLucky = ({
     return () => {
       resetPickyLucky();
     }
+  }, []);
+
+  useEffect(() => {
+    checkTokenValidity();
   }, []);
 
   return(

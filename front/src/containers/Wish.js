@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Wish from 'src/components/Wish';
 
 import { getBookmark } from 'src/actions/watchlist';
-
+import { checkToken } from 'src/actions/profil';
 const mapStateToProps = (state) => {
   return {
     wish: state.watchlist.wish,
@@ -12,6 +12,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   loadBookmark: () => {
     dispatch(getBookmark());
+  },
+
+  checkTokenValidity: () => {
+    dispatch(checkToken());
   },
 });
 

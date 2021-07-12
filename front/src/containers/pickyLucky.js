@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import PickyLucky from 'src/components/pickyLucky';
 
 import {getRandomForPickyLucky, cleanUpPickyLucky, getRandomForPickyLuckyShow} from 'src/actions/lucky';
+import { checkToken } from 'src/actions/profil';
 
 const mapStateToProps = (state) => ({
 lucky: state.pickyLucky.lucky,
@@ -27,7 +28,11 @@ const mapDispatchToProps = (dispatch) => ({
   resetPickyLucky: () => {
     const action = cleanUpPickyLucky()
     dispatch(action)
-  }
+  },
+
+  checkTokenValidity: () => {
+    dispatch(checkToken());
+  },
   
 })
 

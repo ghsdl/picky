@@ -125,6 +125,7 @@
   .dontKnowWhatToWatch{
     font-weight: bold;
     font-size: 2vh;
+    text-align: center;
   }
   &--research {
     justify-content: flex-start;
@@ -138,6 +139,7 @@
         }
         &__suggestion {
           display: none;
+          text-align: center;
         }
       }
 

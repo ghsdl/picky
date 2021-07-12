@@ -20,7 +20,6 @@ const auth = (store) => (next) => (action) => {
         })
         .catch((error) => {
           store.dispatch(updateSignInError(error.response.data))
-          console.log(error.response.data)
         });
       break;
     }

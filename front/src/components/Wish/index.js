@@ -12,9 +12,13 @@ import Cards from 'src/containers/Cards';
 import './wish.scss';
 
 // Display of watchlist
-const Wish = ({ loadBookmark }) => {
+const Wish = ({ loadBookmark, checkTokenValidity }) => {
   useEffect(() => {
     loadBookmark();
+  }, []);
+
+  useEffect(() => {
+    checkTokenValidity();
   }, []);
 
   return (

@@ -35,6 +35,7 @@ export default function PickyMood({
   lookForPickyMoodResult,
   resetPage,
   loading,
+  checkTokenValidity,
 }) {
 
   useEffect(() => {
@@ -42,6 +43,10 @@ export default function PickyMood({
     resetPage();
     
   }
+}, []);
+
+useEffect(() => {
+  checkTokenValidity();
 }, []);
   return (
     <>

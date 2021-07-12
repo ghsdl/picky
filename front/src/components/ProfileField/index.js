@@ -48,6 +48,7 @@ const ProfileField = ({
   member,
   profilPseudo,
   resetProfil,
+  checkTokenValidity,
 }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -60,6 +61,7 @@ const ProfileField = ({
 
   useEffect(()=>{
     getProfil();
+    checkTokenValidity();
   }, [])
 
   useEffect(() => {

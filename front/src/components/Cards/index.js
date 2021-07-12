@@ -3,8 +3,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import lottie from 'lottie-web';
 import 'react-toastify/dist/ReactToastify.css';
 import logoPicky from 'src/assets/logoPicky.png';
-import sadPopcorn from 'src/assets/sadpopcorn.jpg';
 import Modal from 'react-modal';
+
 
 // Import of components
 import Card from 'src/containers/Card';
@@ -85,7 +85,7 @@ const Cards = ({
         return (
           <div className="cards cards__result--empty">
             <div className="result--empty">
-              <img className="cards__img__sadpopcorn" src={sadPopcorn} alt="Logo de Picky" />
+              <img className="cards__img__noresult" src={logoPicky} alt="Logo de Picky" />
               <p>Il n'y a aucun résultat pour votre recherche</p>
             </div>
           </div>
@@ -245,7 +245,7 @@ const Cards = ({
         return (
           <div className="cards cards__result--empty">
             <div className="result--empty">
-              <img className="cards__img__sadpopcorn" src={sadPopcorn} alt="Logo de Picky" />
+              <img className="cards__img__noresult" src={logoPicky} alt="Logo de Picky" />
               <p>Il n'y a aucun résultat pour votre recherche</p>
             </div>
           </div>
