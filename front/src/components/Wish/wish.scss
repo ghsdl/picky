@@ -1,5 +1,5 @@
  @use 'src/styles/vars';
- .pickyMood{
+ .pickyWish{
   display: flex;
   justify-content: center;
   align-content: center;
@@ -7,7 +7,7 @@
  
 
   &-question{
-    margin-top: 5vh;
+    margin-top: 8vh;
     padding: 2vh;
     display: inline-block;
     border: 3px solid #333333;
@@ -37,8 +37,11 @@
 }
 
 .wish {
-  margin-top: 15vh;
- 
+  & h1 {
+    text-align: center;
+    margin-top: 8vh;
+    font-size: 2em;
+  }
 
   &__gradient {
     width: 100vw;
@@ -48,7 +51,6 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    z-index: -1;
     bottom: 0;
 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%);
@@ -66,7 +68,6 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: 15px;
-    z-index: -1;
   
     color: black;
     font-weight: bold;
@@ -97,12 +98,6 @@
     color: white;
     font-style: italic;
     margin-top: 10vh;
-  }
-}
-
-@media (max-width: vars.$normal) {
-  .wish__footer {
-    width: 70vw;
   }
 }
 

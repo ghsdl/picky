@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Home from 'src/components/Home';
 import { getRandom, reset } from 'src/actions/suggestions';
-
+import { checkToken } from 'src/actions/profil';
 const mapStateToProps = (state) => ({
   searchInputValue: state.search.searchInputValue,
   ranmovie: state.sug.ranmovie,
@@ -21,6 +21,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   resetPage: () => {
     dispatch(reset())
+  },
+
+  checkTokenValidity: () => {
+    dispatch(checkToken())
   }
 });
 

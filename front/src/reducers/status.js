@@ -13,7 +13,6 @@ const statusReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     
     case ACTION_SAVE_USER:
-      console.log(action);
       return {
         ...state,
         isConnected: true,

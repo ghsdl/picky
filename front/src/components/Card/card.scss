@@ -13,13 +13,14 @@
   position: relative;
   box-shadow: 0px 0px 20px 0px #00000040;
   box-shadow: 0px 4px 4px 0px #00000040;
+  
 
   &:last-child {
     &::after {
       display: block;
       content: '';
       min-height: 100px;
-      width: 100vw;
+      width: 100px;
     }
   }
 
@@ -97,12 +98,5 @@
       }
     }
 
-    &__platform, &__watchlistButton{
-      width: 20px;
-      height: 20px;
-  
-      border-radius: 20px;
-      font-size: .7em;
-    }
   }
 }

@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import Typical from 'react-typical';
 import PropTypes from 'prop-types';
 import './style.scss';
 
@@ -14,33 +13,33 @@ export default function Feelings({
 }) {
 
   const emotionsMovies = [
-    { emotion: 'Amusé', genre: 'comedie' },
-    { emotion: 'Amoureux', genre: 'romance' },
-    { emotion: 'Ébahi', genre: 'science-fiction' },
-    { emotion: 'Transporté', genre: 'aventure' },
-    { emotion: 'Apeuré', genre: 'horreur' },
-    { emotion: 'Instruit', genre: 'histoire' },
-    { emotion: 'Scotché', genre: 'action' },
-    { emotion: 'Aventurier', genre: 'western' },
-    { emotion: 'Intrigué', genre: 'mystere' },
-    { emotion: 'Bouleversé', genre: 'drame' },
-    { emotion: 'Attendri', genre: 'animation' },
-    { emotion: 'Angoissé', genre: 'thriller' },
+    { emotion: 'Amusé.e', genre: 'comedie' },
+    { emotion: 'Amoureux.se', genre: 'romance' },
+    { emotion: 'Ébahi.e', genre: 'science-fiction' },
+    { emotion: 'Transporté.e', genre: 'aventure' },
+    { emotion: 'Apeuré.e', genre: 'horreur' },
+    { emotion: 'Instruit.e', genre: 'histoire' },
+    { emotion: 'Scotché.e', genre: 'action' },
+    { emotion: 'Aventurier.ère', genre: 'western' },
+    { emotion: 'Intrigué.e', genre: 'mystere' },
+    { emotion: 'Bouleversé.e', genre: 'drame' },
+    { emotion: 'Attendri.e', genre: 'animation' },
+    { emotion: 'Angoissé.e', genre: 'thriller' },
   ];
 
   const emotionsShows = [
-    { emotion: 'Amusé', genre: 'comedy' },
-    { emotion: 'Amoureux', genre: 'romance' },
-    { emotion: 'Ébahi', genre: 'science_fiction' },
-    { emotion: 'Transporté', genre: 'adventure' },
-    { emotion: 'Apeuré', genre: 'horror' },
-    { emotion: 'Instruit', genre: 'documentary' },
-    { emotion: 'Scotché', genre: 'action' },
-    { emotion: 'Diverti', genre: 'reality' },
-    { emotion: 'Bouleversé', genre: 'drama' },
-    { emotion: 'Attendri', genre: 'animation' },
-    { emotion: 'Angoissé', genre: 'crime' },
-    { emotion: 'Rêveur', genre: 'anime' },
+    { emotion: 'Amusé.e', genre: 'comedy' },
+    { emotion: 'Amoureux.se', genre: 'romance' },
+    { emotion: 'Ébahi.e', genre: 'science_fiction' },
+    { emotion: 'Transporté.e', genre: 'adventure' },
+    { emotion: 'Apeuré.e', genre: 'horror' },
+    { emotion: 'Instruit.e', genre: 'documentary' },
+    { emotion: 'Scotché.e', genre: 'action' },
+    { emotion: 'Diverti.e', genre: 'reality' },
+    { emotion: 'Bouleversé.e', genre: 'drama' },
+    { emotion: 'Attendri.e', genre: 'animation' },
+    { emotion: 'Angoissé.e', genre: 'crime' },
+    { emotion: 'Rêveur.se', genre: 'anime' },
   ];
   
   const emotionsCardforMovie = emotionsMovies.map((emotion) => {
@@ -71,7 +70,7 @@ export default function Feelings({
       </li>
     );
   });
-  const className = 'button-suivant';
+  const className = emotions.length < 1 ? 'button-suivant  button-suivant--hidden' : 'button-suivant';
   return (
     <>
       <div className="pickyMood">

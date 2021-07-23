@@ -1,3 +1,4 @@
+@use 'src/styles/vars';
 .pickyMood{
   display: flex;
   justify-content: center;
@@ -6,7 +7,6 @@
  
 
   &-question{
-    margin-top: 5vh;
     padding: 2vh;
     display: inline-block;
     border: 3px solid #333333;
@@ -58,19 +58,32 @@
     margin-left: 1vh;
     margin-top: 10vh;
     padding: 1em;
-    border-top: solid 1px rgb(204, 202, 202);
-    border-bottom: solid 1px rgb(204, 202, 202);
-    border-radius: 6px;
+    border: solid 1px rgb(204, 202, 202);
+    border-radius: 5px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.3ch;
     font-size: 1.5vh;
     cursor: pointer;
     &-clicked{
-      font-style:italic;
       font-weight: bold;
-      background-color: rgb(248, 248, 248);
+      background-color:  #CE4257;
+      box-shadow: vars.$shadow;
+    
+    &:active {
+      box-shadow: vars.$inset-shadow;
     }
+    }
+  }
+
+  @media (max-width: 550px) {
+    .pickMoodContent {
+      &-item {
+        font-size: 2.1vw;
+      }
+    }
+  
+   
   }
 
   :hover {
@@ -88,6 +101,7 @@
   font-size: 2vh;
   
   
+  
   &-suivant, &-newResearch{
     background-color: rgb(248, 248, 248);
     border-top: solid 1px rgb(204, 202, 202);
@@ -95,6 +109,12 @@
     border-radius: 6px;
     padding: 1vh;
     cursor: pointer;
+    box-shadow: vars.$shadow;
+    
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
+    
     &--hidden{
       display:none;
     }
@@ -107,6 +127,11 @@
     border-radius: 6px;
     padding: 1vh;
     cursor: pointer;
+    box-shadow: vars.$shadow;
+    
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
   }
   
 }
@@ -128,6 +153,11 @@
     border-radius: 6px;
     padding: 1vh;
     cursor: pointer;
+    box-shadow: vars.$shadow;
+    
+    &:active {
+      box-shadow: vars.$inset-shadow;
+    }
   }
 }
 
@@ -149,4 +179,57 @@
     cursor: pointer;
   }
 
+}
+
+.mood {
+  &__gradient {
+    width: 100vw;
+    margin: auto;
+    height: 250px;
+  
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%);
+    pointer-events:none;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  
+    width: 60vw;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;  
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    pointer-events: auto;
+
+    &__link {
+      max-width: 250px;
+      padding: 10px;
+
+      background-color:  #F4BB01;
+      color: white;
+      border-radius: 5px;
+      box-shadow: vars.$shadow;
+      border: none;
+
+      &:active {
+        box-shadow: vars.$inset-shadow;
+      }
+    }
+
+    &__text {
+      margin: 0 10px;
+    }
+  }
 }

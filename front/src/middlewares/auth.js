@@ -10,18 +10,16 @@ const auth = (store) => (next) => (action) => {
         password: state.user.password,
       })
         .then((response) => {
-          console.log(`response`, response)
           const { email, token, pseudo} = response.data;
           const saveUser = actionSaveUser(email, token, pseudo);
           store.dispatch(saveUser);
           setTimeout(() => {
             store.dispatch(logout()),
             window.localStorage.clear()
-          }, 3600000 );
+         }, 3600000 );
         })
         .catch((error) => {
           store.dispatch(updateSignInError(error.response.data))
-          console.log(error.response.data)
         });
       break;
     }

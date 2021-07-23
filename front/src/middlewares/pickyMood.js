@@ -18,7 +18,7 @@ const result = (store) => (next) => (action) => {
             let results = [];
             let randomResults = [];
             let newRandomResult = {};
-            // All the results are put in a single array
+             // All the results are put in a single array
             for (let i=0; i < response.data.length; i++) {
               results = results.concat(response.data[i].movies);
             };
@@ -32,10 +32,10 @@ const result = (store) => (next) => (action) => {
                   i--;
                 }
               };
-              store.dispatch(saveResults(randomResults));
+              store.dispatch(saveResults(randomResults, 'movie'));
             } else {
               // If there are 20 results or less, they are all displayed
-              store.dispatch(saveResults(results));
+              store.dispatch(saveResults(results, 'movie'));
             }
           } else if (response.data[0].shows) {
             // If the results are shows:
@@ -49,17 +49,17 @@ const result = (store) => (next) => (action) => {
             if (results.length > 20) {
               // If there are more than 20 results, the results are randomized and only 20 are selected
               for(let i=0; i < 20; i++) {
-                newRandomResult = results[Math.floor(Math.random()*results.length)];
+                newRandomResult = results[Math.floor(Math.random()*results.length)] ;
                 if (!randomResults.includes(newRandomResult)) {
                   randomResults.push(newRandomResult);
                 } else {
                   i--;
                 }
               };
-              store.dispatch(saveResults(randomResults));
+              store.dispatch(saveResults(randomResults, 'shows'));
             } else {
               // If there are 20 results or less, they are all displayed
-              store.dispatch(saveResults(results));
+              store.dispatch(saveResults(results, 'shows'));
             }
           }
         })

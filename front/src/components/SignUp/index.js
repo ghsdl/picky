@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import SignUpForm from 'src/containers/SignUpForm';
 import PropTypes from 'prop-types';
 
 import './signup.scss';
-const SignUp = ({ isConnected }) => {
-  
+const SignUp = ({ isConnected, checkTokenValidity }) => {
+  useEffect(() => {
+    checkTokenValidity();
+  }, []);
+
   return (
   <>
    {isConnected && (

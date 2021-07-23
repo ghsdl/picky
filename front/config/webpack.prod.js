@@ -15,6 +15,7 @@ module.exports = merge(common, {
     }),
     // Stats bundle
     new BundleStatsWebpackPlugin(),
+    
   ],
   module: {
     rules: [

@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Typical from 'react-typical'
 
 // Import of components
 import Header from 'src/containers/Header';
@@ -16,15 +15,17 @@ import Cards from 'src/containers/Cards';
 import './home.scss';
 
 // Display of home
-const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, loading }) => {
+const Home = ({ checkTokenValidity, getRandom, ranmovie, ranshow, research, isConnected, resetPage, loading }) => {
 
   useEffect(()=>{
     getRandom();
   }, []);
   useEffect(() => {
+    checkTokenValidity();
+  }, []);
+  useEffect(() => {
     return () => {
       resetPage();
-      
     }
   }, []);
 
@@ -53,16 +54,16 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
       <div className="home__searchBar">
         {// Title, searchbar and suggestions
         }
-        <p className="home__searchBar__presentation">
+        <h2 className="home__searchBar__presentation">
           Le moteur de recherche pour vos moments devant la TV
-        </p>
+        </h2>
         <SearchBar />
-          <p className="home__searchBar__suggestion">Essayez: {ranmovie.title} ou {ranshow.title}</p>
+          <p className="home__searchBar__suggestion">Essayez: <span className = "iWantBoldOnSuggestion">{ranmovie.title}</span> ou <span className = "iWantBoldOnSuggestion">{ranshow.title}</span></p>
       </div>
       {// Button to go to Picky Mood
       }
       <div className="home__pickyMood">
-        <p>Vous ne savez pas quoi regarder? Faites nous confiance!</p>
+        <p className="dontKnowWhatToWatch">Vous ne savez pas quoi regarder? Faites nous confiance!</p>
         <div className="button-homePage">
           {isConnected && (
             <Link to="/mood" className="home__pickyMood__linkLeft">Picky Mood</Link>
@@ -77,6 +78,18 @@ const Home = ({ getRandom, ranmovie, ranshow, research, isConnected, resetPage, 
       }
       <div className="home__results">
         <Cards currentPage="home" loading={loading} />
+        <div className="home__gradient">
+          <div className="home__footer">
+          {isConnected && (
+            <Link className="home__footer__link" to="/mood">MOOD</Link>
+          )}
+          {!isConnected && (
+            <Link className="home__footer__link" to="/signUp">MOOD</Link>
+          )}
+          <p className="home__footer__text">Continuez à explorer</p>
+            <Link className="home__footer__link" to="/pickyLucky">LUCKY</Link>
+          </div>
+        </div>
       </div>
     </div>
   </div>

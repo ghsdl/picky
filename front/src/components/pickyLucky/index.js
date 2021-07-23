@@ -2,7 +2,8 @@ import React, { useEffect }  from 'react'
 import Header from 'src/containers/Header';
 import './index.scss'
 import PropTypes from 'prop-types';
-import Details from 'src/components/details'
+import Details from 'src/components/DetailsPickyLucky';
+import Detailshow from 'src/components/DetailsPickyLucky/detailsShow'
 import { Link } from 'react-router-dom';
 
 const PickyLucky = ({
@@ -10,10 +11,19 @@ const PickyLucky = ({
    lucky,
    loading,
    movie,
-   resetPickyLucky
+   resetPickyLucky,
+   getPicky,
+   luckyShow,
+   show,
+   isConnected, 
+   checkTokenValidity,
 }) => {
   const pickyLucky = () => {
     getLucky();
+  }
+
+  const pickyLuckyShow = () => {
+    getPicky();
   }
   useEffect(() => {
     return () => {
@@ -21,42 +31,77 @@ const PickyLucky = ({
     }
   }, []);
 
+  useEffect(() => {
+    checkTokenValidity();
+  }, []);
+
   return(
     <>
       <Header/>
-      {!lucky &&(
+      {!lucky && !luckyShow &&(
         <div className="pickyLucky">
           <div className="profileLuckyPicky">
             <h2 className="profileLuckyPicky-title"> Picky Lucky </h2>
           </div>
           <div className="getLucky">
+            <button className="getLucky-button" onClick={pickyLuckyShow}> 
+               BE Picky
+            </button>
             <button className="getLucky-button" onClick={pickyLucky}> 
-              get Lucky
+               BE Lucky
             </button>
           </div>
-          <div className="pickyLucky-footerNoSearch">
-                <Link className="pickyLucky-footerNoSearch__link" to="/">Find</Link>
-                  <p className="pickyLucky-footerNoSearch__text">Continuez à explorer</p>
-                <Link className="pickyLucky-footerNoSearch__link" to="/mood">Mood</Link>
-              </div>
+          <div className="pickyLucky__gradient">
+            <div className="pickyLucky__footer">
+            <Link className="pickyLucky__footer__link" to="/">FIND</Link>
+              <p className="pickyLucky__footer__text">Continuez à explorer</p>
+              {isConnected && (
+                <Link className="pickyLucky__footer__link" to="/mood">MOOD</Link>
+              )}
+              {!isConnected && (
+                <Link className="pickyLucky__footer__link" to="/signUp">MOOD</Link>
+              )}
+              
+              
+            </div>
+          </div>
         </div>
       )}
-      {lucky &&(
+      {lucky && !luckyShow&&(
         <div>
           <div className="pickyLucky">
             <div className="profileLuckyPicky">
               <h2 className="profileLuckyPicky-title"> Picky lucky </h2>
             </div>
             <Details movie={movie} loading={loading}/>
-          </div>
-            <div className="pickyLucky">
+            <div className="pickyLucky__gradient">
               <div className="pickyLucky__footer">
-                <Link className="pickyLucky__footer__link" to="/">Find</Link>
+               <Link className="pickyLucky__footer__link" to="/pickyLucky" onClick={()=> window.location.href='/pickyLucky'}>LUCKY</Link>
+                <p className="pickyLucky__footer__text">Continuez à explorer</p>
+                <Link className="pickyLucky__footer__link" to="#" onClick={pickyLucky}>AGAIN</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {luckyShow && !lucky &&(
+      <div>
+        <div className="pickyLucky">
+          <div className="profileLuckyPicky">
+            <h2 className="profileLuckyPicky-title"> Picky lucky </h2>
+          </div>
+          <Detailshow show={show} loading={loading}/>
+          <div className="pickyLucky__gradient">
+              <div className="pickyLucky__footer">
+                <Link className="pickyLucky__footer__link" to="/pickyLucky" onClick={()=> window.location.href='/pickyLucky'}>LUCKY</Link>
                   <p className="pickyLucky__footer__text">Continuez à explorer</p>
-                <div className="pickyLucky__footer__link" onClick={pickyLucky}>Luck</div>
+                <Link className="pickyLucky__footer__link" to="#" onClick={pickyLuckyShow}>AGAIN</Link>
               </div>
             </div>
         </div>
+          
+      </div>
       )}
     </>
   )
@@ -65,8 +110,10 @@ const PickyLucky = ({
 PickyLucky.propTypes = {
   getLucky: PropTypes.func.isRequired,
   lucky: PropTypes.bool,
+  luckyShow: PropTypes.bool,
   loading: PropTypes.bool,
   resetPickyLucky: PropTypes.func.isRequired,
+  getPicky: PropTypes.func.isRequired,
 };
 
 export default PickyLucky;

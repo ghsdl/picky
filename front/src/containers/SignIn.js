@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import SignIn from 'src/components/SignIn';
 import { changeInputValue, login, reset } from 'src/actions/user';
+import { checkToken } from 'src/actions/profil';
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
@@ -25,7 +26,11 @@ const mapDispatchToProps = (dispatch) => ({
   resetPage: () => {
     const action = reset();
     dispatch(action)
-  }
+  },
+
+  checkTokenValidity: () => {
+    dispatch(checkToken());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

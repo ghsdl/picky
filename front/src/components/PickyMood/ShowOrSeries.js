@@ -32,9 +32,9 @@ export default function ShowOrSeries({
     displayPickyMoodShowOrSerie && (
       <div>
         <div className="pickyMood">
-          <div className="pickyMood-question">
+          <h2 className="pickyMood-question">
             Vous êtes plutôt...
-          </div>
+          </h2>
         </div>
         <ul className="pickMoodContent">
           {showOrMovieCard}

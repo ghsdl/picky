@@ -1,12 +1,15 @@
 @use 'src/styles/vars';
-
+.b{
+  font-weight: bold;
+}
 .home {
   display: flex;
   flex-direction: column;
 
   height: 450px;
+  width: auto;
   margin: auto;
-  margin-top: 30vh;
+  margin-top: 20vh;
 
   transition: margin-top 700ms ease-in;
 
@@ -46,10 +49,13 @@
     }
   }
   .button-homePage{
-    margin-top: 4vh;
     display: flex;
     text-align: center;
     margin-bottom: 2vh;
+  }
+
+  .iWantBoldOnSuggestion{
+    font-weight: bold;
   }
   
   &--noResearch {
@@ -116,21 +122,24 @@
       }
     }
   }
-
+  .dontKnowWhatToWatch{
+    font-weight: bold;
+    font-size: 2vh;
+    text-align: center;
+  }
   &--research {
     justify-content: flex-start;
-    margin-top: 13vh;
+    margin-top: 4vh;
 
     .home {
+      pointer-events:none;
       &__searchBar {
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
         &__presentation {
           display: none;
         }
         &__suggestion {
           display: none;
+          text-align: center;
         }
       }
 
@@ -140,6 +149,57 @@
 
       &__results {
         display: flex;
+      }
+
+      &__gradient {
+        width: 100vw;
+        margin: auto;
+        height: 250px;
+      
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+    
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 85%);
+        pointer-events:none;
+      }
+    
+      &__footer {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+      
+        width: 60vw;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15px;
+      
+        color: black;
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.2em;
+        pointer-events: auto;
+    
+        &__link {
+          width: 100px;
+          padding: 10px;
+    
+          background-color:  #F4BB01;
+          color: white;
+          border-radius: 5px;
+          box-shadow: vars.$shadow;
+    
+          &:active {
+            box-shadow: vars.$inset-shadow;
+          }
+        }
+    
+        &__text {
+          margin: 0 10px;
+        }
       }
     }
   }
@@ -151,7 +211,7 @@
   }
 }
 
-@media (max-width: vars.$smallest) {
+@media (max-width: vars.$large) {
   .home {
     margin-left: 25px;
     margin-right: 25px;

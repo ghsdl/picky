@@ -13,7 +13,16 @@
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: -1;
+
+  &--empty {
+    flex-direction: column;
+    bottom: 15vh;
+  }
+
+  &__result--empty {
+    flex-direction: column;
+    bottom: 4vh;
+  }
 
   &-container {
     width: 150px;
@@ -30,8 +39,40 @@
   &__img {
     width: 300px;
     height: 300px;
-    position: absolute;
-    margin-top: 50px;
+
+    &__noresult{
+      width: 30vw;
+      height: auto;
+      border-radius: 5px;
+    }
+  }
+
+}
+
+.watchlist--empty {
+  width: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result--empty {
+  width: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+
+  p {
+    margin-top: 4vh;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
   }
 }
 
@@ -50,6 +91,29 @@
 @media (max-width: vars.$small) {
   .cards {
     width: 90vw;
+    &__img {
+      width: 150px;
+      height: 150px;
+      &__sadpopcorn {
+        width: 300px;
+      }
+    }
+    &--empty {
+      bottom: 10vh;
+    }
+  }
+  .watchlist--empty {
+    margin: 0 20px;
+    p {
+      margin-top: 20px;
+    }
+  }
+
+  .result--empty {
+    p {
+      bottom: 10px;
+      font-weight: bold;
+    }
   }
 }
 
@@ -59,3 +123,101 @@
   }
 }
 
+.modal{
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom:auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  background-color: #333;
+  border-radius: 10px;
+  position: absolute;
+  outline: none;
+}
+
+.pickyDetails{
+
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+   
+  &-nbSeasonEpisod{
+    margin-bottom: 1vh;
+    font-size: 1.5vh;
+  }
+  &-poster{
+    width:50vw;
+  }
+  &-title{
+    width: 50%;
+    text-align: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: 2vh;
+    font-weight: bold;
+    text-shadow:0 0 30px #EC637B,5px 9px 5px rgba(0, 0, 0, 0.5), 0 0 150px #CE4257;color:#CE4257
+  }
+  &-genre{
+    margin-bottom:1vh;
+    text-align: center;
+    font-size: 1.5vh;
+    
+  }
+  &-trailer {
+    border-radius: 5px;
+    width:50vh
+  }
+  &-synopsis{
+    width: 80%;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    text-align: center;
+    margin-left:1vh;
+    margin-right: 1vh;
+    font-size: 1.5vh;
+    line-height: 1.3em;
+  }
+  &-release{
+    margin-bottom: 1vh;
+    font-size: 1.5vh
+  }
+  &-director{
+    margin-bottom: 2vh;
+    font-size: 1.5vh
+  }
+  &-noImage{
+    width:15vw
+  }
+}
+.boldChar{
+  font-weight: bold;
+}
+@media (max-width: vars.$large) {
+  .pickyDetails {
+    &-trailer {
+      width: 60vw;
+      height: auto;
+    }
+  }
+
+  .modal {
+    max-height: 80vh;
+    width: 80vw;
+  }
+}
+
+@media (max-width: vars.$normal) {
+  .pickyDetails {
+    &-trailer {
+      width: 60vw;
+      height: auto;
+    }
+  }
+
+  .modal {
+    width: 80vw;
+  }
+}

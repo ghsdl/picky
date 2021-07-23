@@ -6,7 +6,7 @@ import './styles.css';
 import Home from 'src/containers/Home';
 import Wish from 'src/containers/Wish';
 import ProfileField from 'src/containers/ProfileField';
-import About from 'src/components/About';
+import About from 'src/containers/about';
 import Error from 'src/components/Error';
 import PickyMood from 'src/containers/PickyMood';
 import SignIn from 'src/containers/SignIn';
@@ -20,8 +20,9 @@ const App = (props) => {
   // When the app opens, we get all the platforms to be able to use the logos anywhere
   useEffect(() => {
     props.loadPlatforms();
+    props.checkTokenValidity();
   }, []);
-
+ 
   return (
     <div className="app">
     <Switch>

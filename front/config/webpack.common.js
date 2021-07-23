@@ -22,6 +22,7 @@ module.exports = {
     },
   },
   plugins: [
+    
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
